@@ -1,0 +1,245 @@
+.nivo-icon {
+    display: block;
+    width: 52px;
+    height: 52px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+.nivo-icon-nivo {
+    background-image: url('../assets/nivo-logo-circle.png');
+}
+
+.nivo-icon-back {
+    background-image: url('../assets/nivo-mini-nav-back-grey.png');
+}
+
+.nivo-icon-back.red,
+.nivo-icon-back:hover,
+.nivo_components_item:hover .nivo-icon-back,
+.mini-nav_item.active .nivo-icon-back,
+.sidebar_link.active .nivo-icon-back,
+.chart-tabs_menu_item.active .nivo-icon-back {
+    background-image: url('../assets/nivo-mini-nav-back-red.png');
+}
+
+.nivo-icon-react {
+    background-image: url('../assets/react-logo-grey.png');
+}
+
+.nivo-icon-react.red,
+.nivo-icon-react:hover,
+.nivo_components_item:hover .nivo-icon-react,
+.mini-nav_item.active .nivo-icon-react,
+.sidebar_link.active .nivo-icon-react,
+.chart-tabs_menu_item.active .nivo-icon-react {
+    background-image: url('../assets/react-logo-red.png');
+}
+
+.nivo-icon-code {
+    background-image: url('../assets/nivo-chart-icon-bubble-placeholders-grey.png');
+}
+
+.nivo-icon-code.red,
+.nivo-icon-code:hover,
+.nivo_components_item:hover .nivo-icon-code,
+.mini-nav_item.active .nivo-icon-code,
+.sidebar_link.active .nivo-icon-code,
+.chart-tabs_menu_item.active .nivo-icon-code {
+    background-image: url('../assets/nivo-chart-icon-bubble-placeholders-red.png');
+}
+
+.nivo-icon-data {
+    background-image: url('../assets/nivo-api-grey.png');
+}
+
+.nivo-icon-data.red,
+.nivo-icon-data:hover,
+.nivo_components_item:hover .nivo-icon-data,
+.mini-nav_item.active .nivo-icon-data,
+.sidebar_link.active .nivo-icon-data,
+.chart-tabs_menu_item.active .nivo-icon-data {
+    background-image: url('../assets/nivo-api-red.png');
+}
+
+.nivo-icon-api {
+    background-image: url('../assets/nivo-api-grey.png');
+}
+
+.nivo-icon-api.red,
+.nivo-icon-api:hover,
+.nivo_components_item:hover .nivo-icon-api,
+.mini-nav_item.active .nivo-icon-api,
+.sidebar_link.active .nivo-icon-api,
+.chart-tabs_menu_item.active .nivo-icon-api {
+    background-image: url('../assets/nivo-api-red.png');
+}
+
+.nivo-icon-svg {
+    background-image: url('../assets/nivo-svg-grey.png');
+}
+
+.nivo-icon-svg.red,
+.nivo-icon-svg:hover,
+.nivo_components_item:hover .nivo-icon-svg,
+.mini-nav_item.active .nivo-icon-svg,
+.sidebar_link.active .nivo-icon-svg,
+.chart-tabs_menu_item.active .nivo-icon-svg {
+    background-image: url('../assets/nivo-svg-red.png');
+}
+
+.nivo-icon-html {
+    background-image: url('../assets/nivo-html-grey.png');
+}
+
+.nivo-icon-html.red,
+.nivo-icon-html:hover,
+.nivo_components_item:hover .nivo-icon-html,
+.mini-nav_item.active .nivo-icon-html,
+.sidebar_link.active .nivo-icon-html,
+.chart-tabs_menu_item.active .nivo-icon-html {
+    background-image: url('../assets/nivo-html-red.png');
+}
+
+.nivo-icon-placeholders {
+    background-image: url('../assets/nivo-chart-icon-bubble-placeholders-grey.png');
+}
+
+.nivo-icon-placeholders.red,
+.nivo-icon-placeholders:hover,
+.nivo_components_item:hover .nivo-icon-placeholders,
+.mini-nav_item.active .nivo-icon-placeholders,
+.sidebar_link.active .nivo-icon-placeholders,
+.chart-tabs_menu_item.active .nivo-icon-placeholders {
+    background-image: url('../assets/nivo-chart-icon-bubble-placeholders-red.png');
+}
+
+.nivo-icon-bar {
+    background-image: url('../assets/nivo-chart-icon-bars-grey.png');
+}
+
+.nivo-icon-bar.red,
+.nivo-icon-bar:hover,
+.nivo_components_item:hover .nivo-icon-bar,
+.mini-nav_item.active .nivo-icon-bar,
+.sidebar_link.active .nivo-icon-bar,
+.chart-tabs_menu_item.active .nivo-icon-bar {
+    background-image: url('../assets/nivo-chart-icon-bars-red.png');
+}
+
+.nivo-icon-radar {
+    background-image: url('../assets/nivo-chart-icon-radar-grey.png');
+}
+
+.nivo-icon-radar.red,
+.nivo-icon-radar:hover,
+.nivo_components_item:hover .nivo-icon-radar,
+.mini-nav_item.active .nivo-icon-radar,
+.sidebar_link.active .nivo-icon-radar,
+.chart-tabs_menu_item.active .nivo-icon-radar {
+    background-image: url('../assets/nivo-chart-icon-radar-red.png');
+}
+
+.nivo-icon-line {
+    background-image: url('../assets/nivo-chart-icon-line-grey.png');
+}
+
+.nivo-icon-line.red,
+.nivo-icon-line:hover,
+.nivo_components_item:hover .nivo-icon-line,
+.mini-nav_item.active .nivo-icon-line,
+.sidebar_link.active .nivo-icon-line,
+.chart-tabs_menu_item.active .nivo-icon-line {
+    background-image: url('../assets/nivo-chart-icon-line-red.png');
+}
+
+.nivo-icon-pie {
+    background-image: url('../assets/nivo-chart-icon-pie-grey.png');
+}
+
+.nivo-icon-pie.red,
+.nivo-icon-pie:hover,
+.nivo_components_item:hover .nivo-icon-pie,
+.mini-nav_item.active .nivo-icon-pie,
+.sidebar_link.active .nivo-icon-pie,
+.chart-tabs_menu_item.active .nivo-icon-pie {
+    background-image: url('../assets/nivo-chart-icon-pie-red.png');
+}
+
+.nivo-icon-bubble {
+    background-image: url('../assets/nivo-chart-icon-bubble-grey.png');
+}
+
+.nivo-icon-bubble.red,
+.nivo-icon-bubble:hover,
+.nivo_components_item:hover .nivo-icon-bubble,
+.mini-nav_item.active .nivo-icon-bubble,
+.sidebar_link.active .nivo-icon-bubble,
+.chart-tabs_menu_item.active .nivo-icon-bubble {
+    background-image: url('../assets/nivo-chart-icon-bubble-red.png');
+}
+
+.nivo-icon-treemap {
+    background-image: url('../assets/nivo-chart-icon-treemap-grey.png');
+}
+
+.nivo-icon-treemap.red,
+.nivo-icon-treemap:hover,
+.nivo_components_item:hover .nivo-icon-treemap,
+.mini-nav_item.active .nivo-icon-treemap,
+.chart-tabs_menu_item.active .nivo-icon-treemap {
+    background-image: url('../assets/nivo-chart-icon-treemap-red.png');
+}
+
+.nivo-icon-calendar {
+    background-image: url('../assets/nivo-chart-icon-calendar-grey.png');
+}
+
+.nivo-icon-calendar.red,
+.nivo-icon-calendar:hover,
+.nivo_components_item:hover .nivo-icon-calendar,
+.mini-nav_item.active .nivo-icon-calendar,
+.sidebar_link.active .nivo-icon-calendar,
+.chart-tabs_menu_item.active .nivo-icon-calendar {
+    background-image: url('../assets/nivo-chart-icon-calendar-red.png');
+}
+
+.nivo-icon-chord {
+    background-image: url('../assets/nivo-chart-icon-chord-grey.png');
+}
+
+.nivo-icon-chord.red,
+.nivo-icon-chord:hover,
+.nivo_components_item:hover .nivo-icon-chord,
+.mini-nav_item.active .nivo-icon-chord,
+.sidebar_link.active .nivo-icon-chord,
+.chart-tabs_menu_item.active .nivo-icon-chord {
+    background-image: url('../assets/nivo-chart-icon-chord-red.png');
+}
+
+.nivo-icon-voronoi {
+    background-image: url('../assets/nivo-icon-voronoi-grey.png');
+}
+
+.nivo-icon-voronoi.red,
+.nivo-icon-voronoi:hover,
+.nivo_components_item:hover .nivo-icon-voronoi,
+.mini-nav_item.active .nivo-icon-voronoi,
+.sidebar_link.active .nivo-icon-voronoi,
+.chart-tabs_menu_item.active .nivo-icon-voronoi {
+    background-image: url('../assets/nivo-icon-voronoi-red.png');
+}
+
+.nivo-icon-colors {
+    background-image: url('../assets/nivo-colors-icon-grey.png');
+}
+
+.nivo-icon-colors.red,
+.nivo-icon-colors:hover,
+.nivo_components_item:hover .nivo-icon-colors,
+.mini-nav_item.active .nivo-icon-colors,
+.sidebar_link.active .nivo-icon-colors,
+.chart-tabs_menu_item.active .nivo-icon-colors {
+    background-image: url('../assets/nivo-colors-icon.png');
+}

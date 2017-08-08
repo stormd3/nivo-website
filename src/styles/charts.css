@@ -1,0 +1,184 @@
+.chart-tabs {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.chart-tabs_menu {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 20;
+    display: flex;
+}
+
+.chart-tabs_menu_item {
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .35);
+    width: 34px;
+    height: 34px;
+    margin-left: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.chart-tabs_menu_item .nivo-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.chart_header {
+    flex-direction: column;
+    color: #fff;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.chart_header_wrapper {
+    margin-bottom: 0;
+}
+
+.chart_header-left {
+    justify-content: flex-start;
+}
+
+.chart {
+    width: 100%;
+    height: 240px;
+}
+
+.main-chart {
+    background: var(--card-background-color);
+    width: 100%;
+    height: 420px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+}
+
+.main-chart-horizontal {
+    height: 320px;
+}
+
+/*
+
+
+.nivo_treemap_node
+  border-radius 2px
+  font-size 11px
+  line-height 14px
+
+.home .nivo_treemap_node
+  font-size 10px
+*/
+.nivo_tick_line {
+    stroke: #555 !important;
+}
+.nivo_tick_text {
+    fill: #555 !important;
+    font-size: 11px;
+}
+
+.home .nivo_tick_line {
+    stroke: #c6432d !important;
+}
+.home .nivo_tick_text {
+    fill: #c6432d !important;
+    font-size: 9px;
+}
+.home .nivo_grid_line {
+    stroke: #d6513e !important;
+}
+
+svg text {
+    fill: var(--chart-meta-color);
+    font-size: 12px;
+    font-family: 'Space Mono', monospace;
+}
+/*
+.nivo_bar_legend text
+  font-size 10px
+  fill #555
+
+.nivo_calendar_year_legend,
+.nivo_calendar_month_legend
+  fill #555
+  font-size 11px
+  font-weight bold
+
+.nivo_calendar_month_legend
+  font-size 9px
+  text-transform uppercase
+
+  .home &
+    text-transform lowercase
+
+.nivo_tree
+  text
+    font-size 10px
+
+.home
+  .nivo_tree
+    text
+      font-size 8px
+
+.bubble_page svg text
+  font-weight 600
+
+.nivo_radial-stack_area
+  opacity 0.9
+
+.nivo_radial-stack_radius-axis
+  .domain,
+  .tick line
+      stroke-width 1
+      stroke #333
+
+  text
+    fill #333
+
+
+.nivo_radial-axis_tick line,
+.nivo_radial-axis_circle
+  stroke $accent-color
+  stroke-dasharray 1,3
+
+.nivo_stack_slicer_line
+  stroke-dasharray 2,4
+
+.nivo_radial-axis_tick
+  rect
+    fill #fff !important
+  text
+    fill $accent-color !important
+    font-size 11px
+    font-weight bold
+
+.nivo_pie_outline
+  fill none
+
+.domain
+  fill none
+
+.chart__shape__area
+  fill rgba(245, 126, 88, 0.25)
+
+.chart__shape__line
+  fill none
+  stroke $accent-color
+  stroke-width 2
+
+polyline
+  stroke $main-text-color
+  stroke-width 1
+*/
+.tick line {
+    stroke-width: .5;
+    stroke: var(--chart-meta-color);
+}

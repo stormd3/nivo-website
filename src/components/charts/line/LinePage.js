@@ -1,47 +1,44 @@
-import React, { Component, PropTypes } from 'react'
-import { Link }                        from 'react-router'
-import { generateDrinkStats }          from 'nivo-generators'
-import { barsDataSchema }              from 'nivo'
-import {
-    randomUniform,
-} from 'd3'
+import React, { Component } from 'react'
+import Helmet from 'react-helmet'
+import { generateDrinkStats } from 'nivo-generators'
+import _ from 'lodash'
 
-
-const randSize = () => Math.round(randomUniform(8, 16)())
-
+const generateData = () => generateDrinkStats(_.random(8, 12))
 
 class LinePage extends Component {
-    constructor(props) {
-        super(props)
-
-        this.handleDiceRoll   = this.handleDiceRoll.bind(this)
-        this.handleDataUpdate = this.handleDataUpdate.bind(this)
-
-        this.state = { data: generateDrinkStats(randSize()) }
+    state = {
+        data: generateData(),
     }
 
-    handleDiceRoll() {
-        this.setState({ data: generateDrinkStats(randSize()) })
+    diceRoll = () => {
+        this.setState({ data: generateData() })
     }
 
-    handleDataUpdate(data) {
+    handleDataUpdate = data => {
         this.setState({ data })
     }
 
     render() {
-        const { data } = this.state;
+        const { childRoutes } = this.props
+        const { data } = this.state
 
         return (
-            <div className="bars_page">
-                <span className="dice-roll" onClick={this.handleDiceRoll}>roll the dices</span>
-                {React.cloneElement(this.props.children, {
-                    data,
-                    onDataUpdate: this.handleDataUpdate,
+            <div className="inner-content line_page">
+                <Helmet title="Line component" />
+                {childRoutes.map(childRoute => {
+                    return React.cloneElement(childRoute, {
+                        component: null,
+                        render: () =>
+                            <childRoute.props.component
+                                data={data}
+                                diceRoll={this.diceRoll}
+                                onDataUpdate={this.handleDataUpdate}
+                            />,
+                    })
                 })}
             </div>
         )
     }
 }
-
 
 export default LinePage

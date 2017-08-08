@@ -1,51 +1,45 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-
-class CollapsibleCard extends Component {
-    constructor(props) {
-        super(props);
-
-        this.handleToggleClick = this.handleToggleClick.bind(this);
-
-        this.state = {
-            expanded: props.expandedByDefault
-        };
+export default class CollapsibleCard extends Component {
+    static propTypes = {
+        expandedByDefault: PropTypes.bool.isRequired,
     }
 
-    handleToggleClick() {
-        const { expanded } = this.state;
-        this.setState({ expanded: !expanded });
+    static defaultProps = {
+        expandedByDefault: false,
+    }
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            expanded: props.expandedByDefault,
+        }
+    }
+
+    handleToggleClick = () => {
+        const { expanded } = this.state
+        this.setState({ expanded: !expanded })
     }
 
     render() {
-        const { title, children } = this.props;
-        const { expanded }        = this.state;
+        const { title, children } = this.props
+        const { expanded } = this.state
 
         return (
             <div className={`card ${expanded ? '_is-expanded' : ''}`}>
                 <div className="card_header" onClick={this.handleToggleClick}>
-                    <h3>{title}</h3>
+                    <h3>
+                        {title}
+                    </h3>
                     <span className="card_toggle" />
                 </div>
-                {expanded && (
+                {expanded &&
                     <div className="card_body">
                         {children}
-                    </div>
-                )}
+                    </div>}
             </div>
-        );
+        )
     }
 }
-
-const { bool } = PropTypes;
-
-CollapsibleCard.propTypes = {
-    expandedByDefault: bool.isRequired,
-};
-
-CollapsibleCard.defaultProps = {
-    expandedByDefault: false
-};
-
-
-export default CollapsibleCard;

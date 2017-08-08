@@ -1,22 +1,37 @@
-import React, { Component, PropTypes } from 'react'
-import _                               from 'lodash'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import _ from 'lodash'
 
+export default class SliderControl extends Component {
+    static propTypes = {
+        id: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
+        value: PropTypes.number.isRequired,
+        unit: PropTypes.string,
+        onChange: PropTypes.func.isRequired,
+        help: PropTypes.string.isRequired,
+        min: PropTypes.number.isRequired,
+        max: PropTypes.number.isRequired,
+        step: PropTypes.number,
+    }
 
-class SliderControl extends Component {
+    shouldComponentUpdate(nextProps) {
+        return nextProps.value !== this.props.value
+    }
+
     render() {
-        const {
-            id,
-            label,
-            value,
-            onChange,
-            help,
-        } = this.props
+        const { id, label, value, unit, onChange, help } = this.props
 
         return (
             <div className="chart-controls_item">
-                <label htmlFor={id}>
-                    {label}: <code className="code code-number">{value}</code>
-                </label><br />
+                <label className="control_label" htmlFor={id}>
+                    {label}:&nbsp;
+                    <code className="code code-number">{value}</code>
+                    {unit &&
+                        <span className="unit">
+                            &nbsp;{unit}
+                        </span>}
+                </label>
                 <input
                     id={id}
                     type="range"
@@ -24,22 +39,10 @@ class SliderControl extends Component {
                     onChange={onChange}
                     {..._.pick(this.props, ['min', 'max', 'step'])}
                 />
-                <div className="control-help">{help}</div>
+                <div className="control-help">
+                    {help}
+                </div>
             </div>
         )
     }
 }
-
-SliderControl.propTypes = {
-    id:       PropTypes.string.isRequired,
-    label:    PropTypes.string.isRequired,
-    value:    PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired,
-    help:     PropTypes.string.isRequired,
-    min:      PropTypes.number.isRequired,
-    max:      PropTypes.number.isRequired,
-    step:     PropTypes.number,
-}
-
-
-export default SliderControl

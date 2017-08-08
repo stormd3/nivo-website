@@ -1,33 +1,37 @@
-import React, { Component, PropTypes } from 'react';
-import { Link }                        from 'react-router';
-import { getSectionItems }             from '../SiteMap';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import { getSectionItems } from '../SiteMap'
 
+const miscItems = getSectionItems('misc')
 
-const miscItems = getSectionItems('misc');
+export default class Header extends Component {
+    static propTypes = {
+        onNavToggle: PropTypes.func.isRequired,
+    }
 
-
-class Header extends Component {
     render() {
-        const { onNavToggle } = this.props;
+        const { onNavToggle } = this.props
 
         return (
             <header>
                 <span className="nav_toggle" onClick={onNavToggle} />
-                <Link className="brand" to="/"/>
+                <Link className="brand" to="/" />
                 <nav>
-                    {miscItems.map(item => (
-                        <Link key={item.className} to={`/${item.path}`}>{item.label}</Link>
-                    ))}
-                    <a href="https://github.com/plouc/nivo" target="_blank">GitHub</a>
+                    {miscItems.map(item =>
+                        <Link key={item.className} to={item.path}>
+                            {item.label}
+                        </Link>
+                    )}
+                    <a
+                        href="https://github.com/plouc/nivo"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        GitHub
+                    </a>
                 </nav>
             </header>
-        );
+        )
     }
 }
-
-Header.propTypes = {
-    onNavToggle: PropTypes.func.isRequired
-};
-
-
-export default Header;

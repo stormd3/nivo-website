@@ -1,123 +1,139 @@
-import React, { Component, PropTypes }    from 'react'
-import _                                  from 'lodash'
-import { Link }                           from 'react-router'
-import { ResponsiveBubblePlaceholders }   from 'nivo'
-import ChartHeader                        from '../../ChartHeader'
-import ChartCodeAndData                   from '../../ChartCodeAndData'
-import Properties                         from '../../Properties'
-import { generateBubblePlaceholdersCode } from '../../../code-generators/bubbleCodeGenerator'
-import BubbleControls                     from './BubbleControls'
+import React, { Component } from 'react'
+import _ from 'lodash'
+import { Link } from 'react-router-dom'
+import MediaQuery from 'react-responsive'
+import { ResponsiveBubblePlaceholders } from 'nivo'
+import ChartHeader from '../../ChartHeader'
+import ChartTabs from '../../ChartTabs'
+import generateCode from '../../../generateChartCode'
+import BubbleControls from './BubbleControls'
+import ComponentPropsDocumentation from '../../ComponentPropsDocumentation'
+import properties from './properties'
 
-
-class BubblePlaceholdersPage extends Component {
-    constructor(props) {
-        super(props)
-
-        this.handleSettingsUpdate = this.handleSettingsUpdate.bind(this)
-
-        this.state = {
-            settings: {
-                padding:         1,
-                colors:          'nivo',
-                motionStiffness: 120,
-                motionDamping:   10,
-            }
-        }
+export default class BubblePlaceholdersPage extends Component {
+    state = {
+        settings: {
+            margin: {
+                top: 20,
+                right: 20,
+                bottom: 20,
+                left: 20,
+            },
+            namespace: 'html',
+            identity: 'name',
+            value: 'loc',
+            padding: 1,
+            leavesOnly: false,
+            colors: 'nivo',
+            colorBy: 'depth',
+            animate: true,
+            motionStiffness: 120,
+            motionDamping: 10,
+        },
     }
 
-    handleSettingsUpdate(settings) {
+    handleSettingsUpdate = settings => {
         this.setState({ settings })
     }
 
     render() {
-        const { root }     = this.props
+        const { root, diceRoll } = this.props
         const { settings } = this.state
 
-        const code = generateBubblePlaceholdersCode(settings)
+        const code = generateCode('BubblePlaceholders', settings)
 
         return (
-            <div>
-                <ChartHeader chartClass="BubblePlaceholders" tags={['bubble', 'hierarchy', 'placeholders', 'isomorphic']} />
-                <div className="page_content">
-                    <div className="grid">
-                        <div className="grid_item grid_item-1_3">
-                            <div className="main-chart">
-                                <ResponsiveBubblePlaceholders
-                                    margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-                                    root={_.cloneDeep(root)}
-                                    namespace="html"
-                                    identity="name"
-                                    value="loc"
-                                    {...settings}
-                                >
-                                    {nodes => nodes.map(node => {
+            <div className="page_content grid">
+                <div className="chart-page_aside">
+                    <MediaQuery query="(max-width: 1000px)">
+                        <ChartHeader
+                            chartClass="BubblePlaceholders"
+                            tags={[
+                                'bubble',
+                                'hierarchy',
+                                'placeholders',
+                                'isomorphic',
+                            ]}
+                            diceRoll={diceRoll}
+                        />
+                    </MediaQuery>
+                    <div className="main-chart">
+                        <ChartTabs chartClass="bubble" code={code} data={root}>
+                            <ResponsiveBubblePlaceholders
+                                root={_.cloneDeep(root)}
+                                {...settings}
+                            >
+                                {nodes =>
+                                    nodes.map(node => {
                                         return (
                                             <div
                                                 key={node.key}
                                                 style={{
-                                                    position:        'absolute',
-                                                    top:             node.style.y - node.style.r,
-                                                    left:            node.style.x - node.style.r,
-                                                    width:           node.style.r * 2,
-                                                    height:          node.style.r * 2,
-                                                    borderRadius:    node.style.r,
-                                                    border:          `2px solid ${node.style.color}`,
-                                                    backgroundSize:  'contain',
-                                                    backgroundImage: `url(http://placekitten.com/240/240)`
+                                                    position: 'absolute',
+                                                    top:
+                                                        node.style.y -
+                                                        node.style.r,
+                                                    left:
+                                                        node.style.x -
+                                                        node.style.r,
+                                                    width: node.style.r * 2,
+                                                    height: node.style.r * 2,
+                                                    borderRadius: node.style.r,
+                                                    border: `2px solid ${node
+                                                        .style.color}`,
+                                                    backgroundSize: 'contain',
+                                                    backgroundImage: `url(http://placekitten.com/240/240)`,
                                                 }}
                                             />
-                                        );
+                                        )
                                     })}
-                                </ResponsiveBubblePlaceholders>
-                            </div>
-                            <p className="description">Take total control over Bubble component (kittens compliant).</p>
-                            <p className="description">This chart offer various implementations, you can render it using <Link to="/bubble/d3">pure d3</Link> or <Link to="/bubble">let react handles all the rendering</Link> and you can even <Link to="/bubble/placeholders">render whatever you want</Link> instead of the boring circles.</p>
-                        </div>
-                        <div className="grid_item grid_item-2_3">
-                            <BubbleControls
-                                target="BubblePlaceholders"
-                                settings={settings}
-                                onChange={this.handleSettingsUpdate}
-                            />
-                            <ChartCodeAndData code={code} data={root} />
-                        </div>
-                        <div className="grid_item grid_item-full">
-                            <Properties
-                                chartClass="BubblePlaceholders"
-                                properties={[
-                                    'width',
-                                    'height',
-                                    ['root', 'object', true, '', 'the hierarchical data object.'],
-                                    ['value', 'string|function', true, (<code className="code-string">"value"</code>), (
-                                        <span>
-                                            define value accessor, if string given, will use <code>datum[value]</code>,<br/>if function given, it will be invoked for each node and will receive the node as first argument, it must the node value.
-                                        </span>
-                                    )],
-                                    ['namespace', 'string', true, (<code className="code-string">"html"</code>), (
-                                        <span>
-                                            must be one of <code className="code-string">"html"</code> or <code className="code-string">"svg"</code>,<br/>when <code className="code-string">"html"</code> used, the surrounding elements will be <code>&lt;div/&gt;</code> tags,<br/>for <code className="code-string">"svg"</code>, you'll have a <code>&lt;g/&gt;</code> tag wrapped inside an <code>&lt;svg/&gt;</code> tag.
-                                        </span>
-                                    )],
-                                    ['padding', 'number', true, (<code className="code-number">1</code>), (
-                                        <span>sets the approximate padding between adjacent circles, in pixels. see <a href="https://github.com/mbostock/d3/wiki/Pack-Layout#padding" target="_blank">official d3 documentation</a>.</span>
-                                    )],
-                                    ['colors', '*', true, (<code>Nivo.defaults.colorRange</code>), (
-                                        <span>
-                                            colors used to colorize the circles, <Link to="/guides/colors">see dedicated documentation</Link>.
-                                        </span>
-                                    )],
-                                    'animate',
-                                    'motionStiffness',
-                                    'motionDamping',
-                                ]}
-                            />
-                        </div>
+                            </ResponsiveBubblePlaceholders>
+                        </ChartTabs>
                     </div>
                 </div>
+                <div className="chart-page_main">
+                    <MediaQuery query="(min-width: 1000px)">
+                        <ChartHeader
+                            chartClass="BubblePlaceholders"
+                            tags={[
+                                'bubble',
+                                'hierarchy',
+                                'placeholders',
+                                'isomorphic',
+                            ]}
+                            diceRoll={diceRoll}
+                        />
+                    </MediaQuery>
+                    <p className="description">
+                        Take total control over Bubble component (kittens
+                        compliant).
+                    </p>
+                    <p className="description">
+                        This chart offer various implementations, you can render
+                        it using <Link to="/bubble/d3">pure d3</Link> or{' '}
+                        <Link to="/bubble">
+                            let react handles all the rendering
+                        </Link>{' '}
+                        and you can even{' '}
+                        <Link to="/bubble/placeholders">
+                            render whatever you want
+                        </Link>{' '}
+                        instead of the boring circles.
+                    </p>
+
+                    <BubbleControls
+                        scope="BubblePlaceholders"
+                        settings={settings}
+                        onChange={this.handleSettingsUpdate}
+                    />
+                </div>
+                <div className="grid_item grid_item-full">
+                    <ComponentPropsDocumentation
+                        chartClass="BubblePlaceholders"
+                        properties={properties}
+                    />
+                </div>
             </div>
-        );
+        )
     }
 }
-
-
-export default BubblePlaceholdersPage;

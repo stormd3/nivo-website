@@ -1,15 +1,21 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
+export default class SwitchControl extends Component {
+    static propTypes = {
+        id: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
+        value: PropTypes.bool.isRequired,
+        onChange: PropTypes.func.isRequired,
+        help: PropTypes.string.isRequired,
+    }
 
-class SwitchControl extends Component {
+    shouldComponentUpdate(nextProps) {
+        return nextProps.value !== this.props.value
+    }
+
     render() {
-        const {
-            id,
-            label,
-            value,
-            onChange,
-            help,
-        } = this.props
+        const { id, label, value, onChange, help } = this.props
 
         return (
             <div className="chart-controls_item">
@@ -30,14 +36,3 @@ class SwitchControl extends Component {
         )
     }
 }
-
-SwitchControl.propTypes = {
-    id:       PropTypes.string.isRequired,
-    label:    PropTypes.string.isRequired,
-    value:    PropTypes.bool.isRequired,
-    onChange: PropTypes.func.isRequired,
-    help:     PropTypes.string.isRequired,
-}
-
-
-export default SwitchControl

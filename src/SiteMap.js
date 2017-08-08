@@ -1,169 +1,290 @@
-import React                                from 'react'
-import _                                    from 'lodash'
-import { Route, IndexRoute, IndexRedirect } from 'react-router'
+/*
+ * This file is part of the nivo project.
+ *
+ * (c) 2016 Raphaël Benitte
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
+import React from 'react'
+import _ from 'lodash'
+import { Route } from 'react-router-dom'
 
-import BarsPage            from './components/charts/bars/BarsPage'
-import Bars                from './components/charts/bars/Bars'
-import BarsPlaceholders    from './components/charts/bars/BarsPlaceholders'
-import LinePage            from './components/charts/line/LinePage'
-import Line                from './components/charts/line/Line'
-import BubblePage          from './components/charts/bubble/BubblePage'
-import BubbleReact         from './components/charts/bubble/BubbleReact'
-import BubblePlaceholders  from './components/charts/bubble/BubblePlaceholders'
-import TreeMapPage         from './components/charts/treemap/TreeMap'
-import TreeMapReact        from './components/charts/treemap/TreeMapReact'
+import BarPage from './components/charts/bar/BarPage'
+import Bar from './components/charts/bar/Bar'
+import BarAPI from './components/charts/bar/BarAPI'
+import LinePage from './components/charts/line/LinePage'
+import Line from './components/charts/line/Line'
+import LineAPI from './components/charts/line/LineAPI'
+import PiePage from './components/charts/pie/PiePage'
+import Pie from './components/charts/pie/Pie'
+import RadarPage from './components/charts/radar/RadarPage'
+import Radar from './components/charts/radar/Radar'
+import BubblePage from './components/charts/bubble/BubblePage'
+import BubbleReact from './components/charts/bubble/BubbleReact'
+import BubbleAPI from './components/charts/bubble/BubbleAPI'
+import BubblePlaceholders from './components/charts/bubble/BubblePlaceholders'
+import TreeMapPage from './components/charts/treemap/TreeMapPage'
+import TreeMapReact from './components/charts/treemap/TreeMapReact'
+import TreeMapHTML from './components/charts/treemap/TreeMapHTML'
 import TreeMapPlaceholders from './components/charts/treemap/TreeMapPlaceholders'
-import ChordPage           from './components/charts/chord/ChordPage'
-import Chord               from './components/charts/chord/Chord'
-import Colors              from './components/guides/Colors'
-import About               from './components/About'
-import Features            from './components/Features'
-import API                 from './components/api/API'
-
+import TreeMapAPI from './components/charts/treemap/TreeMapAPI'
+import CalendarPage from './components/charts/calendar/CalendarPage'
+import Calendar from './components/charts/calendar/Calendar'
+import CalendarAPI from './components/charts/calendar/CalendarAPI'
+import ChordPage from './components/charts/chord/ChordPage'
+import Chord from './components/charts/chord/Chord'
+import ChordAPI from './components/charts/chord/ChordAPI'
+import VoronoiPage from './components/charts/voronoi/VoronoiPage'
+import Voronoi from './components/charts/voronoi/Voronoi'
+import Colors from './components/pages/Colors'
+import About from './components/pages/About'
+import Components from './components/Components'
+import API from './components/API'
 
 const SITEMAP = [
     {
-        label:    'Charts',
+        label: 'Charts',
         children: [
             {
-                className: 'bars',
-                path:      'bars',
-                label:     'Bars',
-                component: BarsPage,
-                children:  [
+                className: 'bar',
+                path: '/bar',
+                label: 'Bar',
+                component: BarPage,
+                children: [
                     {
-                        className: 'bars-react',
-                        path:      'react',
-                        label:     '<Bars />',
-                        component: Bars,
-                        isIndex:   true,
+                        className: 'react',
+                        path: '/',
+                        label: '<Bar />',
+                        component: Bar,
+                        exact: true,
                     },
-                    //{
-                    //    className: 'bars-placeholders',
-                    //    path:      'placeholders',
-                    //    label:     '<BarsPlaceholders />',
-                    //    component: BarsPlaceholders,
-                    //},
-                ]
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: '<Bar /> HTTP API',
+                        component: BarAPI,
+                    },
+                ],
             },
             {
                 className: 'line',
-                path:      'line',
-                label:     'Line',
+                path: '/line',
+                label: 'Line',
                 component: LinePage,
-                children:  [
+                children: [
                     {
-                        className: 'line-react',
-                        path:      'react',
-                        label:     '<Line />',
+                        className: 'react',
+                        path: '/',
+                        label: '<Line />',
                         component: Line,
-                        isIndex:   true,
+                        exact: true,
                     },
-                ]
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: '<Line /> HTTP API',
+                        component: LineAPI,
+                    },
+                ],
+            },
+            {
+                className: 'pie',
+                path: '/pie',
+                label: 'Pie',
+                component: PiePage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: '<Pie />',
+                        component: Pie,
+                        exact: true,
+                    },
+                    //{
+                    //    className: 'api',
+                    //    path:      'api',
+                    //    label:     '<Pie /> HTTP API',
+                    //    component: PiePage,
+                    //},
+                ],
+            },
+            {
+                className: 'radar',
+                path: '/radar',
+                label: 'Radar',
+                component: RadarPage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: '<Radar />',
+                        component: Radar,
+                        exact: true,
+                    },
+                ],
             },
             {
                 className: 'bubble',
-                path:      'bubble',
-                label:     'Bubble',
+                path: '/bubble',
+                label: 'Bubble',
                 component: BubblePage,
-                children:  [
+                children: [
                     {
-                        className: 'bubble-react',
-                        path:      'react',
-                        label:     '<Bubble />',
+                        className: 'react',
+                        path: '/',
+                        label: '<Bubble />',
                         component: BubbleReact,
-                        isIndex:   true,
+                        exact: true,
                     },
                     {
-                        className: 'bubble-placeholders',
-                        path:      'placeholders',
-                        label:     '<BubblePlaceholders />',
+                        className: 'placeholders',
+                        path: '/placeholders',
+                        label: '<BubblePlaceholders />',
                         component: BubblePlaceholders,
                     },
-                ]
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: '<Bubble /> HTTP API',
+                        component: BubbleAPI,
+                    },
+                ],
             },
             {
                 className: 'treemap',
-                path:      'treemap',
-                label:     'TreeMap',
+                path: '/treemap',
+                label: 'TreeMap',
                 component: TreeMapPage,
-                children:  [
+                children: [
                     {
-                        className: 'treemap-react',
-                        path:      'react',
-                        label:     '<TreeMap />',
+                        className: 'react',
+                        path: '/',
+                        label: '<TreeMap />',
                         component: TreeMapReact,
-                        isIndex:   true,
+                        exact: true,
                     },
                     {
-                        className: 'treemap-placeholders',
-                        path:      'placeholders',
-                        label:     '<TreeMapPlaceholders />',
+                        className: 'html',
+                        path: '/html',
+                        label: '<TreeMapHTML />',
+                        component: TreeMapHTML,
+                    },
+                    {
+                        className: 'placeholders',
+                        path: '/placeholders',
+                        label: '<TreeMapPlaceholders />',
                         component: TreeMapPlaceholders,
                     },
-                ]
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: '<TreeMap /> HTTP API',
+                        component: TreeMapAPI,
+                    },
+                ],
+            },
+            {
+                className: 'calendar',
+                path: '/calendar',
+                label: 'Calendar',
+                component: CalendarPage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: '<Calendar />',
+                        component: Calendar,
+                        exact: true,
+                    },
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: '<Calendar /> HTTP API',
+                        component: CalendarAPI,
+                    },
+                ],
             },
             {
                 className: 'chord',
-                path:      'chord',
-                label:     'Chord',
+                path: '/chord',
+                label: 'Chord',
                 component: ChordPage,
-                children:  [
+                children: [
                     {
-                        className: 'chord-react',
-                        path:      'react',
-                        label:     '<Chord />',
+                        className: 'react',
+                        path: '/',
+                        label: '<Chord />',
                         component: Chord,
-                        isIndex:   true,
+                        exact: true,
+                    },
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: '<Chord /> HTTP API',
+                        component: ChordAPI,
+                    },
+                ],
+            },
+            {
+                className: 'voronoi',
+                path: '/voronoi',
+                label: 'Voronoi',
+                component: VoronoiPage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: '<Voronoi />',
+                        component: Voronoi,
+                        isIndex: true,
                     },
                 ],
             },
         ],
     },
     {
-        label:    'Guides',
+        label: 'Guides',
         children: [
             {
                 className: 'colors',
-                path:      'guides/colors',
-                label:     'Colors',
+                path: '/guides/colors',
+                label: 'Colors',
                 component: Colors,
             },
-        ]
+        ],
     },
     {
-        label:    'misc',
+        label: 'misc',
         children: [
             {
                 className: 'about',
-                path:      'about',
-                label:     'About',
+                path: '/about',
+                label: 'About',
                 component: About,
             },
             {
-                className: 'features',
-                path:      'features',
-                label:     'Features',
-                component: Features,
+                className: 'components',
+                path: '/components',
+                label: 'Components',
+                component: Components,
             },
             {
                 className: 'api-client',
-                path:      'api',
-                label:     'API',
+                path: '/api',
+                label: 'API',
                 component: API,
-            }
-        ]
-    }
+            },
+        ],
+    },
 ]
 
-
-export const getSectionItems = (sectionLabel) => {
+export const getSectionItems = sectionLabel => {
     const section = _.find(SITEMAP, { label: sectionLabel })
 
     return section.children
 }
-
 
 export const getRoutes = () => {
     const routes = []
@@ -175,20 +296,12 @@ export const getRoutes = () => {
 
                 if (sectionItem.children) {
                     sectionItem.children.forEach(childItem => {
-                        if (childItem.isIndex) {
-                            routeChildren.push(
-                                <IndexRedirect
-                                    key={`${childItem.path}.index-redirect`}
-                                    to={`/${sectionItem.path}/${childItem.path}`}
-                                />
-                            )
-                        }
-
                         routeChildren.push(
                             <Route
-                                key={childItem.path}
-                                path={childItem.path}
+                                key={`${sectionItem.path}${childItem.path}`}
+                                path={`${sectionItem.path}${childItem.path}`}
                                 component={childItem.component}
+                                exact={!!childItem.exact}
                             />
                         )
                     })
@@ -198,10 +311,11 @@ export const getRoutes = () => {
                     <Route
                         key={sectionItem.path}
                         path={sectionItem.path}
-                        component={sectionItem.component || null}
-                    >
-                        {routeChildren}
-                    </Route>
+                        render={() =>
+                            <sectionItem.component
+                                childRoutes={routeChildren}
+                            />}
+                    />
                 )
             })
         }

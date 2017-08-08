@@ -1,138 +1,137 @@
-import React, { Component, PropTypes }      from 'react';
-import _                                    from 'lodash';
-import { Link }                             from 'react-router';
-import { generateProgrammingLanguageStats } from 'nivo-generators';
-import ChartHeader                          from '../../ChartHeader';
-import ChartCodeAndData                     from '../../ChartCodeAndData';
-import Properties                           from '../../Properties';
-import PieControls                          from './PieControls';
-import PieSliceLegendsControls              from './PieSliceLegendsControls';
-import generatePieCode                      from '../../../code-generators/generatePieCode';
-import {
-    ResponsivePie,
-    PieColumnLegends,
-    PieRadialLegends,
-    PieSliceLegends
-} from 'nivo';
+import React, { Component } from 'react'
+import MediaQuery from 'react-responsive'
+import ChartHeader from '../../ChartHeader'
+import ChartTabs from '../../ChartTabs'
+import PieControls from './PieControls'
+import { ResponsivePie } from 'nivo'
+import generateCode from '../../../generateChartCode'
+import ComponentPropsDocumentation from '../../ComponentPropsDocumentation'
+import properties from './properties'
 
-
-class PiePage extends Component {
-    constructor(props) {
-        super(props);
-
-        this.handleDiceRoll                   = this.handleDiceRoll.bind(this);
-        this.handleSettingsUpdate             = this.handleSettingsUpdate.bind(this);
-        this.handleSliceLegendsSettingsUpdate = this.handleSliceLegendsSettingsUpdate.bind(this);
-
-        this.state = {
-            data:     [],
-            settings: {
-                innerRadius:  0,
-                colors:       'nivo',
-                padAngle:     0,
-                cornerRadius: 0
+export default class Pie extends Component {
+    state = {
+        settings: {
+            margin: {
+                top: 80,
+                right: 80,
+                bottom: 30,
+                left: 80,
             },
-            sliceLegendsSettings: {
-                radius:     16,
-                badgeColor: 'inherit:darker(.2)',
-                textColor:  'inherit:brighter(2)',
-            }
-        };
+            innerRadius: 0.5,
+            colors: 'nivo',
+            colorBy: 'id',
+            padAngle: 1,
+            cornerRadius: 3,
+
+            // border
+            borderWidth: 0,
+            borderColor: 'inherit:darker(0.6)',
+
+            // radial labels
+            enableRadialLabels: true,
+            radialLabel: 'id',
+            radialLabelsSkipAngle: 0,
+            radialLabelsTextXOffset: 6,
+            radialLabelsTextColor: 'inherit:darker(1)',
+            radialLabelsLinkOffset: 0,
+            radialLabelsLinkDiagonalLength: 16,
+            radialLabelsLinkHorizontalLength: 24,
+            radialLabelsLinkStrokeWidth: 2,
+            radialLabelsLinkColor: 'inherit',
+
+            enableSlicesLabels: true,
+            sliceLabel: 'value',
+            slicesLabelsSkipAngle: 0,
+            slicesLabelsTextColor: 'inherit:darker(1)',
+
+            animate: true,
+            motionStiffness: 90,
+            motionDamping: 15,
+        },
     }
 
-    handleDiceRoll() {
-        const data = generateProgrammingLanguageStats(true, 3).map(({ label, value }) => ({
-            id: label, label, value
-        }));
-
-        this.setState({ data });
-    }
-
-    handleSettingsUpdate(settings) {
-        this.setState({ settings });
-    }
-
-    handleSliceLegendsSettingsUpdate(sliceLegendsSettings) {
-        this.setState({ sliceLegendsSettings });
-    }
-
-    componentWillMount() {
-        this.handleDiceRoll();
+    handleSettingsUpdate = settings => {
+        this.setState({ settings })
     }
 
     render() {
-        const { data, settings, sliceLegendsSettings } = this.state;
+        const { data, diceRoll } = this.props
+        const { settings } = this.state
 
-        const code = generatePieCode(settings);
+        const colorBy =
+            settings.colorBy === 'd => d.color'
+                ? d => d.color
+                : settings.colorBy
+        const radialLabel =
+            settings.radialLabel === 'd => `${d.id} (${d.value})`'
+                ? d => `${d.id} (${d.value})`
+                : settings.radialLabel
+        const sliceLabel =
+            settings.sliceLabel === 'd => `${d.id} (${d.value})`'
+                ? d => `${d.id} (${d.value})`
+                : settings.sliceLabel
 
-        /*
-         */
+        const code = generateCode('Pie', {
+            ...settings,
+            colorBy,
+            radialLabel,
+            sliceLabel,
+        })
+
+        const header = (
+            <ChartHeader
+                chartClass="Pie"
+                tags={['pie', 'basics', 'radial', 'circle']}
+                diceRoll={diceRoll}
+            />
+        )
 
         return (
-            <div>
-                <ChartHeader chartClass="Pie" tags={['pie', 'basics', 'radial', 'circle']} />
-                <span className="dice-roll" onClick={this.handleDiceRoll}>roll the dices</span>
-                <div className="page_content">
-                    <div className="grid">
-                        <div className="grid_item grid_item-1_3">
-                            <div className="main-chart">
-                                <ResponsivePie
-                                    margin={{ top: 60, right: 60, bottom: 60, left: 60 }}
-                                    data={_.cloneDeep(data)}
-                                    transitionDuration={2000} transitionEasing="linear"
-                                    {...settings}
-                                >
-                                    <PieColumnLegends
-                                        lineColor="inherit:darker(.7)"
-                                        badgeColor="inherit:darker(.7)"
-                                        textColor="inherit:brighter(.3)"
-                                    />
-                                    <PieSliceLegends
-                                        labelFn={d => d.data.label}
-                                        {...sliceLegendsSettings}
-                                    />
-                                </ResponsivePie>
-                            </div>
-                        </div>
-                        <div className="grid_item grid_item-2_3">
-                            <PieControls
-                                settings={settings}
-                                onChange={this.handleSettingsUpdate}
+            <div className="page_content grid">
+                <div className="chart-page_aside">
+                    <MediaQuery query="(max-width: 1000px)">
+                        {header}
+                    </MediaQuery>
+                    <div className="main-chart">
+                        <ChartTabs chartClass="pie" code={code} data={data}>
+                            <ResponsivePie
+                                data={data}
+                                {...settings}
+                                colorBy={colorBy}
+                                radialLabel={radialLabel}
+                                sliceLabel={sliceLabel}
                             />
-                            <PieSliceLegendsControls
-                                settings={sliceLegendsSettings}
-                                onSettingsUpdate={this.handleSliceLegendsSettingsUpdate}
-                            />
-                            <ChartCodeAndData code={code} dataKey="data" data={data} />
-                        </div>
-                        <div className="grid_item grid_item-full">
-                            <Properties
-                                chartClass="Pie"
-                                properties={[
-                                    ['sort', 'function', false, (<code>null</code>), ''],
-                                    ['data', 'array', true, '', (
-                                        <span>
-                                            must be an array of object, each object having <code className="code-string">"id"</code>, <code className="code-string">"label"</code> and <code className="code-string">"value"</code> properties.
-                                        </span>
-                                    )],
-                                    ['keyProp', 'string', true, (<code className="code-string">'label'</code>), ''],
-                                    ['valueProp', 'string', true, (<code className="code-string">'value'</code>), ''],
-                                    ['startAngle', 'number', true, (<code className="code-number">0</code>), ''],
-                                    ['endAngle', 'number', true, (<code className="code-number">360</code>), ''],
-                                    ['padAngle', 'number', true, (<code className="code-number">0</code>), 'a padding to add between each slice (deg).'],
-                                    ['innerRadius', 'number', true, (<code className="code-number">0</code>), 'if greater than 0, you\'ll have a donut.'],
-                                    'colors',
-                                    'transitionDuration',
-                                    'transitionEasing'
-                                ]}
-                            />
-                        </div>
+                        </ChartTabs>
                     </div>
                 </div>
+                <div className="chart-page_main">
+                    <MediaQuery query="(min-width: 1000px)">
+                        {header}
+                    </MediaQuery>
+                    <p>
+                        Generates a pie chart from an array of data, each datum
+                        must have an id and a value property.<br />
+                        Note that margin object does not take radial labels into
+                        account,&nbsp; so you should adjust it to leave enough
+                        room for it.
+                    </p>
+                    <p className="description">
+                        The responsive alternative of this component is&nbsp;
+                        <code>&lt;ResponsivePie /&gt;</code>.
+                    </p>
+                    <PieControls
+                        scope="Pie"
+                        settings={settings}
+                        onChange={this.handleSettingsUpdate}
+                    />
+                </div>
+                <div className="grid_item grid_item-full">
+                    <ComponentPropsDocumentation
+                        chartClass="Pie"
+                        properties={properties}
+                    />
+                </div>
             </div>
-        );
+        )
     }
 }
-
-
-export default PiePage;

@@ -1,0 +1,33 @@
+.chart-controls_menu {
+    display: flex;
+    padding: 5px 15px 0 15px;
+    background: var(--main-background-color);
+    overflow-x: auto;
+}
+
+.chart-controls_menu_item {
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 9px 15px;
+    color: #999;
+    white-space: pre;
+    border-radius: 3px 3px 0 0;
+}
+
+.chart-controls_menu_item.active {
+    color: var(--main-text-color);
+    background: #fff;
+}
+
+.chart-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    padding: 15px 20px 0 20px;
+}
+
+.chart-controls_item {
+    width: 31%;
+    margin-bottom: 15px;
+}

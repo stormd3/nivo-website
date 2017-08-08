@@ -1,38 +1,43 @@
-import React, { Component, PropTypes } from 'react';
-
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class ChartHeader extends Component {
     shouldComponentUpdate() {
-        return false;
+        return false
     }
 
     render() {
-        const { chartClass, tags, chartSize } = this.props;
+        const { chartClass, tags, diceRoll } = this.props
 
         return (
-            <div className="grid chart_header">
-                <div className={`grid_item grid_item-${chartSize}_3 chart_header_wrapper`}>
-                    <h1 className="page_header">&lt;{chartClass} /&gt;</h1>
-                    <div className="component_meta">
-                        {tags.map(tag => (
-                            <span key={tag} className="component_meta_tag">{tag}</span>
-                        ))}
-                    </div>
+            <div className="chart_header">
+                <h1 className="page_header">
+                    &lt;{chartClass} /&gt;
+                </h1>
+                <div className="component_meta">
+                    {tags.map(tag =>
+                        <span key={tag} className="component_meta_tag">
+                            {tag}
+                        </span>
+                    )}
                 </div>
+                {diceRoll &&
+                    <span className="dice-roll no-select" onClick={diceRoll}>
+                        roll the dices
+                    </span>}
             </div>
-        );
+        )
     }
 }
 
-const { number } = PropTypes;
-
 ChartHeader.propTypes = {
-    chartSize: number,
-};
+    chartClass: PropTypes.string.isRequired,
+    tags: PropTypes.array.isRequired,
+    diceRoll: PropTypes.func,
+}
 
 ChartHeader.defaultProps = {
-    chartSize: 2,
-};
+    tags: [],
+}
 
-
-export default ChartHeader;
+export default ChartHeader

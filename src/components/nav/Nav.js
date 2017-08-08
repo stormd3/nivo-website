@@ -1,16 +1,22 @@
-import React, { Component } from 'react'
-import { Link }             from 'react-router'
-import { getSectionItems }  from '../../SiteMap'
+/*
+ * This file is part of the nivo project.
+ *
+ * (c) 2016 Raphaël Benitte
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
+import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
+import { getSectionItems } from '../../SiteMap'
 
 const chartsItems = getSectionItems('Charts')
 const guidesItems = getSectionItems('Guides')
 
-
-
 class Nav extends Component {
-    render () {
-        const { onNavClose } = this.props;
+    render() {
+        const { onNavClose } = this.props
 
         return (
             <div>
@@ -18,50 +24,67 @@ class Nav extends Component {
                 <aside className="sidebar">
                     <h3>Charts</h3>
                     {chartsItems.map(item => {
-                        const links = [(
-                            <Link
-                                to={`/${item.path}`}
+                        const links = [
+                            <NavLink
+                                key={item.path}
+                                to={item.path}
                                 onClick={onNavClose}
-                                className={`chart_link chart_link-${item.className}`}
+                                className="sidebar_link"
                                 activeClassName="active"
                             >
-                                <span>{item.label}</span>
-                            </Link>
-                        )];
+                                <span
+                                    className={`nivo-icon nivo-icon-${item.className}`}
+                                />
+                                <span>
+                                    {item.label}
+                                </span>
+                            </NavLink>,
+                        ]
 
                         if (item.children) {
                             item.children.forEach(child => {
                                 links.push(
-                                    <Link
-                                        to={`/${item.path}/${child.path}`}
+                                    <NavLink
+                                        key={`${item.path}${child.path}`}
+                                        to={`${item.path}${child.path}`}
                                         onClick={onNavClose}
-                                        className={`chart_link chart_link-sub chart_link-${child.className}`}
+                                        className="sidebar_link sidebar_link-sub"
                                         activeClassName="active"
                                     >
-                                        <span>{child.label}</span>
-                                    </Link>
-                                );
-                            });
+                                        <span
+                                            className={`nivo-icon nivo-icon-${child.className}`}
+                                        />
+                                        <span>
+                                            {child.label}
+                                        </span>
+                                    </NavLink>
+                                )
+                            })
                         }
 
-                        return links;
+                        return links
                     })}
                     <h3>Guides</h3>
-                    {guidesItems.map(item => (
-                        <Link
-                            className={`sidebar_link sidebar_link-${item.className}`}
-                            activeClassName="active"
-                            to={`/${item.path}`}
+                    {guidesItems.map(item =>
+                        <NavLink
+                            key={item.path}
+                            to={item.path}
                             onClick={onNavClose}
+                            className="sidebar_link"
+                            activeClassName="active"
                         >
-                            {item.label}
-                        </Link>
-                    ))}
+                            <span
+                                className={`nivo-icon nivo-icon-${item.className}`}
+                            />
+                            <span>
+                                {item.label}
+                            </span>
+                        </NavLink>
+                    )}
                 </aside>
             </div>
-        );
+        )
     }
 }
 
-
-export default Nav;
+export default Nav

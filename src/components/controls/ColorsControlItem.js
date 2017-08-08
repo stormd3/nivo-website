@@ -1,53 +1,41 @@
-import React, { Component, PropTypes } from 'react';
-import classNames                      from 'classnames'
+/*
+ * This file is part of the nivo project.
+ *
+ * (c) 2016 Raphaël Benitte
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class ColorsControlItem extends Component {
-    constructor(props) {
-        super(props);
-
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    shouldComponentUpdate(nextProps) {
-        return nextProps.isCurrent !== this.props.isCurrent;
-    }
-
-    handleClick() {
-        const { onClick, id } = this.props;
-        onClick(id);
-    }
-
     render() {
-        const { colors, isCurrent } = this.props;
+        const { id, colors } = this.props
 
         return (
-            <div
-                className={classNames('control-colors_colors', {
-                    '_is-current': isCurrent
-                })}
-                onClick={this.handleClick}
-            >
-                {colors.map(color => (
-                    <span
-                        key={color}
-                        className="control-colors_colors_item"
-                        style={{ background: color }}
-                    />
-                ))}
+            <div className="colors_item">
+                <span className="colors_item_label">
+                    {id}
+                </span>
+                <div className="colors_item_colors">
+                    {colors.map(color =>
+                        <span
+                            key={color}
+                            className="colors_item_colors_item"
+                            style={{ background: color }}
+                        />
+                    )}
+                </div>
             </div>
-        );
+        )
     }
 }
 
-const { string, bool, array, func } = PropTypes;
-
 ColorsControlItem.propTypes = {
-    id:        string.isRequired,
-    colors:    array.isRequired,
-    isCurrent: bool.isRequired,
-    onClick:   func.isRequired
-};
+    id: PropTypes.string.isRequired,
+    colors: PropTypes.array.isRequired,
+}
 
-
-export default ColorsControlItem;
+export default ColorsControlItem

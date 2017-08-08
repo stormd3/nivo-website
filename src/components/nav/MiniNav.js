@@ -1,203 +1,210 @@
-import React, { Component }         from 'react';
-import { Link }                     from 'react-router';
-import { TransitionMotion, spring } from 'react-motion';
-import _                            from 'lodash';
-import MiniNavLink                  from './MiniNavLink';
+/*
+ * This file is part of the nivo project.
+ *
+ * (c) 2016 Raphaël Benitte
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { TransitionMotion, spring } from 'react-motion'
+import _ from 'lodash'
+import MiniNavLink from './MiniNavLink'
+import { getSectionItems } from '../../SiteMap'
 
-const miniNavItems = [
-    { className: 'bars', path: '/bars', label: 'Bars', children: [
-        { className: 'bars-react',        path: '/bars/react',        label: '<Bars />'             },
-        //{ className: 'bars-placeholders', path: '/bars/placeholders', label: '<BarsPlaceholders />' },
-    ] },
-    { className: 'line', path: '/line', label: 'Line', children: [
-        { className: 'line-react', path: '/line/react', label: '<Line />' },
-    ] },
-    { className: 'bubble', path: '/bubble', label: 'Bubble', children: [
-        { className: 'bubble-react',        path: '/bubble/react',        label: '<Bubble />' },
-        { className: 'bubble-placeholders', path: '/bubble/placeholders', label: '<BubblePlaceholders />' },
-    ] },
-    /*
-    { className: 'calendar',     path: '/calendar',     label: 'Calendar', children: [
-        { className: 'calendar-react', path: '/calendar/react', label: '<Calendar />' },
-        { className: 'calendar-d3', path: '/calendar/d3', label: '<CalendarD3 />' },
-    ] },
-    { className: 'pie',          path: '/pie',          label: '<Pie />'         },
-    { className: 'radial-stack', path: '/radial-stack', label: '<RadialStack />' },
-    { className: 'stack',        path: '/stack',        label: '<Stack />'       },
-    { className: 'tree',         path: '/tree',         label: '<Tree />'        },
-    */
-    { className: 'treemap', path: '/treemap', label: 'TreeMap', children: [
-        { className: 'treemap-react',        path: '/treemap/react',        label: '<TreeMap />'             },
-        //{ className: 'treemap-d3',           path: '/treemap/d3',           label: '<TreeMapD3 />'           },
-        { className: 'treemap-placeholders', path: '/treemap/placeholders', label: '<TreeMapPlaceholders />' },
-    ] },
-    { className: 'chord', path: '/chord', label: 'Chord', children: [
-        { className: 'chord-react', path: '/chord/react', label: '<Chord />' },
-    ] },
-    { className: 'colors', path: '/guides/colors', label: 'Colors' },
-].map((item, i) => {
-    item.index = i;
-    item.absIndex = i;
+const miniNavItems = getSectionItems('Charts').map((item, i) => {
+    item.index = i
+    item.absIndex = i
+    let children = []
     if (item.children) {
-        item.children = item.children.map((child, childIndex) => {
-            child.index       = childIndex + 1;
-            child.parentIndex = item.index;
-            child.absIndex    = item.index + childIndex + 1;
-
-            return child;
+        children = item.children.map((child, childIndex) => {
+            return Object.assign({}, child, {
+                path: `${item.path}${child.path}`,
+                index: childIndex + 1,
+                parentIndex: item.index,
+                absIndex: item.index + childIndex + 1,
+            })
         })
     }
 
-    return item;
-});
-
+    return Object.assign({}, item, {
+        children,
+    })
+})
 
 class MiniNav extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
-        this.closeChildren = this.closeChildren.bind(this);
-        this.openChildren  = this.openChildren.bind(this);
+        this.closeChildren = this.closeChildren.bind(this)
+        this.openChildren = this.openChildren.bind(this)
 
-        this.state = { children: true };
+        this.state = { children: true }
     }
 
     closeChildren() {
-        this.setState({ children: false });
+        this.setState({ children: false })
     }
 
     openChildren() {
-        this.setState({ children: true });
+        this.setState({ children: true })
     }
 
     componentWillReceiveProps(nextProps) {
-        let oldParentPath = '/';
-        if (this.props.routes.length > 1) {
-            oldParentPath += this.props.routes[1].path;
+        let oldParentPath = '/'
+        if (this.props.location) {
+            oldParentPath += this.props.location.pathname
         }
 
-        let newParentPath = '/';
-        if (nextProps.routes.length > 1) {
-            newParentPath += nextProps.routes[1].path;
+        let newParentPath = '/'
+        if (nextProps.location) {
+            newParentPath += nextProps.location.pathname
         }
 
         if (oldParentPath !== newParentPath) {
-            this.setState({ children: true });
+            this.setState({ children: true })
         }
     }
 
     willEnter(item) {
-        const index = item.data.parentIndex !== undefined ? item.data.parentIndex : (item.data.index + 1);
+        const index =
+            item.data.parentIndex !== undefined
+                ? item.data.parentIndex
+                : item.data.index + 1
 
         return {
-            top:     (index + 1) * 56,
-            scale:   0.6,
+            top: (index + 1) * 56,
+            scale: 0.6,
             opacity: 0.1,
-            zIndex:  10
-        };
+            zIndex: 10,
+        }
     }
 
     willLeave(item) {
-        const index = item.data.parentIndex !== undefined ? item.data.parentIndex : item.data.index;
+        const index =
+            item.data.parentIndex !== undefined
+                ? item.data.parentIndex
+                : item.data.index
 
         return {
-            top:     spring((index + 1) * 56, { stiffness: 300, damping: 40 }),
-            scale:   spring(0.6, { stiffness: 300, damping: 40 }),
+            top: spring((index + 1) * 56, { stiffness: 300, damping: 40 }),
+            scale: spring(0.6, { stiffness: 300, damping: 40 }),
             opacity: spring(0, { stiffness: 300, damping: 40 }),
-            zIndex:  0
-        };
+            zIndex: 0,
+        }
     }
 
-    render () {
-        const { routes } = this.props;
+    render() {
+        const { location } = this.props
 
-        let currentParent = null;
-        let hasChildren   = false;
-        let childrenItems = [];
+        let currentParent = null
+        let hasChildren = false
+        let childrenItems = []
 
-        if (routes.length > 1) {
-            const parent = _.find(miniNavItems, { path: `/${routes[1].path}`});
+        if (location) {
+            const parent = _.find(miniNavItems, ({ path }) => {
+                return location.pathname.startsWith(path)
+            })
             if (parent && parent.children) {
-                hasChildren   = true;
-                currentParent = parent;
+                hasChildren = true
+                currentParent = parent
             }
         }
 
         let parentItems = miniNavItems.map(item => {
-            const itemProps = _.assign({}, item);
+            const itemProps = _.assign({}, item)
             if (item === currentParent) {
-                itemProps.onClick = this.openChildren;
+                itemProps.onClick = this.openChildren
             }
 
-            return itemProps;
-        });
+            return itemProps
+        })
 
         if (hasChildren) {
-            childrenItems = [{
-                label: 'back',
-                index: 0
-            }].concat(currentParent.children);
+            childrenItems = [
+                {
+                    label: 'back',
+                    index: 0,
+                },
+            ].concat(currentParent.children)
         }
 
-        let currentItems;
+        let currentItems
         if (hasChildren) {
             if (this.state.children) {
-                currentItems = childrenItems;
+                currentItems = childrenItems
             } else {
-                currentItems = parentItems;
+                currentItems = parentItems
             }
         } else {
-            currentItems = parentItems;
+            currentItems = parentItems
         }
 
         return (
             <aside className="mini-nav">
                 <Link className="mini-nav_item mini-nav_item-nivo" to="/">
-                    <span className="mini-nav_item_icon" />
+                    <span className="nivo-icon nivo-icon-nivo" />
                 </Link>
                 <TransitionMotion
                     willEnter={this.willEnter}
                     willLeave={this.willLeave}
                     styles={currentItems.map(item => {
                         return {
-                            key:   item.label,
-                            data:  item,
+                            key: item.label,
+                            data: item,
                             style: {
-                                top:     spring((item.index + 1) * 56, { stiffness: 120, damping: 11 }),
-                                scale:   spring(1, { stiffness: 120, damping: 11 }),
+                                top: spring((item.index + 1) * 56, {
+                                    stiffness: 120,
+                                    damping: 11,
+                                }),
+                                scale: spring(1, {
+                                    stiffness: 120,
+                                    damping: 11,
+                                }),
                                 opacity: spring(1),
-                                zIndex:  10,
-                            }
-                        };
+                                zIndex: 10,
+                            },
+                        }
                     })}
                 >
-                    {interpolatedStyles => (
+                    {interpolatedStyles =>
                         <div>
                             {interpolatedStyles.map(item => {
                                 const style = {
-                                    opacity:   item.style.opacity,
-                                    transform: `translate3d(0,${item.style.top}px,0) scale(${item.style.scale})`,
-                                    zIndex:    item.style.zIndex
-                                };
+                                    opacity: item.style.opacity,
+                                    transform: `translate3d(0,${item.style
+                                        .top}px,0) scale(${item.style.scale})`,
+                                    zIndex: item.style.zIndex,
+                                }
 
                                 if (item.data.path) {
-                                    return <MiniNavLink key={item.key} style={style} {...item.data} />;
+                                    return (
+                                        <MiniNavLink
+                                            key={item.key}
+                                            style={style}
+                                            {...item.data}
+                                        />
+                                    )
                                 }
 
                                 return (
-                                    <span key="back" onClick={this.closeChildren} className="mini-nav_item mini-nav_item-back" style={style}>
-                                        <span className="mini-nav_item_icon" />
+                                    <span
+                                        key="back"
+                                        onClick={this.closeChildren}
+                                        className="mini-nav_item mini-nav_item-back"
+                                        style={style}
+                                    >
+                                        <span className="nivo-icon nivo-icon-back" />
                                     </span>
-                                );
+                                )
                             })}
-                        </div>
-                    )}
+                        </div>}
                 </TransitionMotion>
             </aside>
-        );
+        )
     }
 }
 
-
-export default MiniNav;
+export default MiniNav
