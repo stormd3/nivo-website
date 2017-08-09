@@ -55,10 +55,7 @@ export default class BubbleReact extends Component {
         const { root, diceRoll } = this.props
         const { settings } = this.state
 
-        const colorBy =
-            settings.colorBy === 'd => d.color'
-                ? d => d.color
-                : settings.colorBy
+        const colorBy = settings.colorBy === 'd => d.color' ? d => d.color : settings.colorBy
 
         const code = generateCode('Bubble', { ...settings, colorBy })
 
@@ -68,12 +65,7 @@ export default class BubbleReact extends Component {
                     <MediaQuery query="(max-width: 1000px)">
                         <ChartHeader
                             chartClass="Bubble"
-                            tags={[
-                                'bubble',
-                                'hierarchy',
-                                'react',
-                                'isomorphic',
-                            ]}
+                            tags={['bubble', 'hierarchy', 'react', 'isomorphic']}
                             diceRoll={diceRoll}
                         />
                     </MediaQuery>
@@ -91,30 +83,19 @@ export default class BubbleReact extends Component {
                     <MediaQuery query="(min-width: 1000px)">
                         <ChartHeader
                             chartClass="Bubble"
-                            tags={[
-                                'bubble',
-                                'hierarchy',
-                                'react',
-                                'isomorphic',
-                            ]}
+                            tags={['bubble', 'hierarchy', 'react', 'isomorphic']}
                             diceRoll={diceRoll}
                         />
                     </MediaQuery>
                     <p className="description">
-                        Use React for rendering and react-motion for
-                        transitions.
+                        Use React for rendering and react-motion for transitions.
                     </p>
                     <p className="description">
-                        This chart offer various implementations, you can render
-                        it using <Link to="/bubble/d3">pure d3</Link> or{' '}
-                        <Link to="/bubble">
-                            let react handles all the rendering
-                        </Link>{' '}
-                        and you can even{' '}
-                        <Link to="/bubble/placeholders">
-                            render whatever you want
-                        </Link>{' '}
-                        instead of the boring circles.
+                        This chart offer various implementations, you can render it using{' '}
+                        <Link to="/bubble/d3">pure d3</Link> or{' '}
+                        <Link to="/bubble">let react handles all the rendering</Link> and you can
+                        even <Link to="/bubble/placeholders">render whatever you want</Link> instead
+                        of the boring circles.
                     </p>
                     <BubbleControls
                         scope="Bubble"
@@ -123,10 +104,7 @@ export default class BubbleReact extends Component {
                     />
                 </div>
                 <div className="grid_item grid_item-full">
-                    <ComponentPropsDocumentation
-                        chartClass="Bubble"
-                        properties={properties}
-                    />
+                    <ComponentPropsDocumentation chartClass="Bubble" properties={properties} />
                 </div>
             </div>
         )

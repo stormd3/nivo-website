@@ -121,11 +121,7 @@
     top: 0;
     z-index: 2;
     background-image: url('../assets/color-picker-panel-board-value.svg');
-    background-image: -webkit-linear-gradient(
-        top,
-        transparent 0%,
-        #000000 100%
-    );
+    background-image: -webkit-linear-gradient(top, transparent 0%, #000000 100%);
     background-image: linear-gradient(to bottom, transparent 0%, #000000 100%);
 }
 .react-colorpicker-panel-board-saturation {
@@ -137,11 +133,7 @@
     top: 0;
     z-index: 1;
     background-image: url('../assets/color-picker-panel-board-saturation.svg');
-    background-image: -webkit-linear-gradient(
-        left,
-        #ffffff 0%,
-        transparent 100%
-    );
+    background-image: -webkit-linear-gradient(left, #ffffff 0%, transparent 100%);
     background-image: linear-gradient(to right, #ffffff 0%, transparent 100%);
 }
 .react-colorpicker-panel-board-handler {
@@ -307,8 +299,8 @@
     cursor: pointer;
 }
 .react-colorpicker {
-    font-family: Arial, "Hiragino Sans GB", "Microsoft Yahei",
-        "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;
+    font-family: Arial, "Hiragino Sans GB", "Microsoft Yahei", "Microsoft Sans Serif",
+        "WenQuanYi Micro Hei", sans-serif;
 }
 .react-colorpicker-picker {
     position: absolute;

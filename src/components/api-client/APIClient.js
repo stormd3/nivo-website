@@ -126,19 +126,10 @@ export default class APIClient extends Component {
                                     responseStatus={responseStatus}
                                     url={response ? response.url : null}
                                 />
-                                <APIResponse
-                                    responseStatus={responseStatus}
-                                    response={response}
-                                />
+                                <APIResponse responseStatus={responseStatus} response={response} />
                             </div>
-                            <MediaQuery
-                                query="(max-width: 1000px)"
-                                className="api-client_aside"
-                            >
-                                <APISubmit
-                                    loading={loading}
-                                    onClick={this.handleSubmit}
-                                />
+                            <MediaQuery query="(max-width: 1000px)" className="api-client_aside">
+                                <APISubmit loading={loading} onClick={this.handleSubmit} />
                                 {dataBlock}
                             </MediaQuery>
                             {React.createElement(controls, {
@@ -147,19 +138,10 @@ export default class APIClient extends Component {
                                 onChange: this.handleSettingsUpdate,
                             })}
                         </div>
-                        <MediaQuery
-                            query="(min-width: 1000px)"
-                            className="api-client_aside"
-                        >
-                            <APISubmit
-                                loading={loading}
-                                onClick={this.handleSubmit}
-                            />
+                        <MediaQuery query="(min-width: 1000px)" className="api-client_aside">
+                            <APISubmit loading={loading} onClick={this.handleSubmit} />
                             {dataBlock}
-                            <CollapsibleCard
-                                title="Body"
-                                expandedByDefault={true}
-                            >
+                            <CollapsibleCard title="Body" expandedByDefault={true}>
                                 <div className="code-snippet">
                                     <pre>
                                         {JSON.stringify(props, null, '  ')}

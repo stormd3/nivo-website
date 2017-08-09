@@ -61,9 +61,7 @@ export default class ComponentPropsTable extends PureComponent {
                                 {prop.required ? 'yes' : 'no'}
                             </td>
                             <td>
-                                {prop.default !== undefined
-                                    ? defaultValue(prop.default)
-                                    : 'n/a'}
+                                {prop.default !== undefined ? defaultValue(prop.default) : 'n/a'}
                             </td>
                             <td>
                                 {prop.description}

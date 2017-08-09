@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-    RadarDefaultProps as defaults,
-    RadarMarkers,
-    closedCurvePropKeys,
-} from 'nivo'
+import { RadarDefaultProps as defaults, RadarMarkers, closedCurvePropKeys } from 'nivo'
 import { marginProperties } from '../../componentProperties'
 
 const markersDefaults = RadarMarkers.defaultProps
@@ -167,8 +163,7 @@ export default [
     },
     {
         key: 'gridShape',
-        description:
-            'Determine shape of the grid, must be one of: circular, linear.',
+        description: 'Determine shape of the grid, must be one of: circular, linear.',
         help: 'Determine shape of the grid.',
         type: '{string}',
         required: false,

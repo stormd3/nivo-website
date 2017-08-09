@@ -11,14 +11,9 @@ export default class ComponentPropsDocumentation extends Component {
         const { chartClass, properties } = this.props
 
         return (
-            <CollapsibleCard
-                title={`<${chartClass} /> properties`}
-                expandedByDefault={true}
-            >
+            <CollapsibleCard title={`<${chartClass} /> properties`} expandedByDefault={true}>
                 <ComponentPropsTable
-                    properties={properties.filter(
-                        property => property.excludeFromDoc !== true
-                    )}
+                    properties={properties.filter(property => property.excludeFromDoc !== true)}
                 />
             </CollapsibleCard>
         )

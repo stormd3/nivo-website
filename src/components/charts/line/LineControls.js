@@ -30,13 +30,6 @@ export default class LineControls extends PureComponent {
 
         const groups = groupsByScope[scope]
 
-        return (
-            <ChartControls
-                ns="line"
-                settings={settings}
-                onChange={onChange}
-                groups={groups}
-            />
-        )
+        return <ChartControls ns="line" settings={settings} onChange={onChange} groups={groups} />
     }
 }

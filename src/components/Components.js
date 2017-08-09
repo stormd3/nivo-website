@@ -242,9 +242,7 @@ class Components extends Component {
                         <input
                             type="text"
                             onChange={this.handleSearch}
-                            placeholder={
-                                'Search components by term, e.g. "chord"'
-                            }
+                            placeholder={'Search components by term, e.g. "chord"'}
                             value={term || ''}
                         />
                     </div>

@@ -52,10 +52,7 @@ export default class Calendar extends Component {
         const code = generateCode('Calendar', settings)
 
         const header = (
-            <ChartHeader
-                chartClass="Calendar"
-                tags={['calendar', 'react', 'isomorphic']}
-            />
+            <ChartHeader chartClass="Calendar" tags={['calendar', 'react', 'isomorphic']} />
         )
 
         return (
@@ -65,11 +62,7 @@ export default class Calendar extends Component {
                         {header}
                     </MediaQuery>
                     <div className="main-chart" style={{ height: '500px' }}>
-                        <ChartTabs
-                            chartClass="calendar"
-                            code={code}
-                            data={data}
-                        >
+                        <ChartTabs chartClass="calendar" code={code} data={data}>
                             <ResponsiveCalendar
                                 from={from}
                                 to={to}
@@ -112,27 +105,22 @@ export default class Calendar extends Component {
                         </a>.
                     </p>
                     <p className="description">
-                        This component renders the calendar using d3 only for
-                        computing positions. DOM mutations are managed by React,
-                        you can enable transitions using the <code>motion</code>{' '}
-                        property, but due to the large amount of nodes, it's
-                        barely usable, if you want the fancy animations you
-                        should use the{' '}
-                        <Link to="/calendar/d3">&lt;CalendarD3 /&gt;</Link>{' '}
-                        component instead which deals better with transitions.
+                        This component renders the calendar using d3 only for computing positions.
+                        DOM mutations are managed by React, you can enable transitions using the{' '}
+                        <code>motion</code> property, but due to the large amount of nodes, it's
+                        barely usable, if you want the fancy animations you should use the{' '}
+                        <Link to="/calendar/d3">&lt;CalendarD3 /&gt;</Link> component instead which
+                        deals better with transitions.
                     </p>
                     <p>
-                        This component is suitable for isomorphic rendering but
-                        require to disable transitions (<code>{'motion={false}'}</code>)
-                        and use the <code>&lt;Calendar /&gt;</code> component
-                        not the <code>&lt;ResponsiveCalendar /&gt;</code> one.
+                        This component is suitable for isomorphic rendering but require to disable
+                        transitions (<code>{'motion={false}'}</code>) and use the{' '}
+                        <code>&lt;Calendar /&gt;</code> component not the{' '}
+                        <code>&lt;ResponsiveCalendar /&gt;</code> one.
                     </p>
                 </div>
                 <div className="grid_item grid_item-full">
-                    <ComponentPropsDocumentation
-                        chartClass="Calendar"
-                        properties={properties}
-                    />
+                    <ComponentPropsDocumentation chartClass="Calendar" properties={properties} />
                 </div>
             </div>
         )

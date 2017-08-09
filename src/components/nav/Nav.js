@@ -32,9 +32,7 @@ class Nav extends Component {
                                 className="sidebar_link"
                                 activeClassName="active"
                             >
-                                <span
-                                    className={`nivo-icon nivo-icon-${item.className}`}
-                                />
+                                <span className={`nivo-icon nivo-icon-${item.className}`} />
                                 <span>
                                     {item.label}
                                 </span>
@@ -73,9 +71,7 @@ class Nav extends Component {
                             className="sidebar_link"
                             activeClassName="active"
                         >
-                            <span
-                                className={`nivo-icon nivo-icon-${item.className}`}
-                            />
+                            <span className={`nivo-icon nivo-icon-${item.className}`} />
                             <span>
                                 {item.label}
                             </span>

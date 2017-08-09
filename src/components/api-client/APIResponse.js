@@ -22,9 +22,7 @@ class APIResponse extends Component {
         return (
             <div className="api-client_response">
                 <CollapsibleCard
-                    title={`Response (${responseStatus
-                        ? responseStatus
-                        : 'n/a'})`}
+                    title={`Response (${responseStatus ? responseStatus : 'n/a'})`}
                     expandedByDefault={true}
                 >
                     <div className="code-snippet">

@@ -15,20 +15,14 @@ class ComponentsItem extends Component {
                     {extras.length > 0 &&
                         <div className="extras">
                             {extras.map(extra =>
-                                <span
-                                    key={extra}
-                                    className={`nivo-icon nivo-icon-${extra}`}
-                                />
+                                <span key={extra} className={`nivo-icon nivo-icon-${extra}`} />
                             )}
                         </div>}
                 </div>
                 {tags.length > 0 &&
                     <div className="nivo_components_item_tags">
                         {tags.map(tag =>
-                            <span
-                                key={tag}
-                                className="nivo_components_item_tags_item"
-                            >
+                            <span key={tag} className="nivo_components_item_tags_item">
                                 {tag}
                             </span>
                         )}

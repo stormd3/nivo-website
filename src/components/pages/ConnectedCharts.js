@@ -153,36 +153,34 @@ class ConnectedCharts extends Component {
             )
         }
 
-        const stackData = []
-            .concat(constrainedActivities, niceActivities)
-            .map(activity => {
-                const activitySerie = []
+        const stackData = [].concat(constrainedActivities, niceActivities).map(activity => {
+            const activitySerie = []
 
-                let currentMonth = 0
-                let currentMonthValue = 0
+            let currentMonth = 0
+            let currentMonthValue = 0
 
-                rawData.forEach((day, i) => {
-                    if (day.date.getMonth() !== currentMonth) {
-                        activitySerie.push({
-                            type: activity,
-                            x: currentMonth,
-                            y: currentMonthValue,
-                        })
-
-                        currentMonth = day.date.getMonth()
-                        currentMonthValue = 0
-                    }
-
-                    const activityData = _.find(day.activities, {
+            rawData.forEach((day, i) => {
+                if (day.date.getMonth() !== currentMonth) {
+                    activitySerie.push({
                         type: activity,
+                        x: currentMonth,
+                        y: currentMonthValue,
                     })
-                    currentMonthValue += activityData ? activityData.hours : 0
+
+                    currentMonth = day.date.getMonth()
+                    currentMonthValue = 0
+                }
+
+                const activityData = _.find(day.activities, {
+                    type: activity,
                 })
-
-                activitySerie.push({ x: currentMonth, y: currentMonthValue })
-
-                return activitySerie
+                currentMonthValue += activityData ? activityData.hours : 0
             })
+
+            activitySerie.push({ x: currentMonth, y: currentMonthValue })
+
+            return activitySerie
+        })
 
         const barsData = stackData[0].map((datum, i) => {
             return {
@@ -299,10 +297,7 @@ class ConnectedCharts extends Component {
                                     transitionDuration={transitionDuration}
                                     transitionEasing={transitionEasing}
                                 >
-                                    <StackSlicer
-                                        radius={4}
-                                        color="inherit:brighter(.6)"
-                                    />
+                                    <StackSlicer radius={4} color="inherit:brighter(.6)" />
                                 </ResponsiveStack>
                             </div>
                         </div>

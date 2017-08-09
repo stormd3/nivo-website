@@ -28,13 +28,12 @@ class About extends Component {
                         >
                             nivo
                         </a>{' '}
-                        provides supercharged React components to easily build
-                        dataviz apps, it's built on top of d3.
+                        provides supercharged React components to easily build dataviz apps, it's
+                        built on top of d3.
                     </p>
                     <p>
-                        Several libraries already exist for React d3
-                        integration, but just a few provide server side
-                        rendering ability and fully declarative charts.
+                        Several libraries already exist for React d3 integration, but just a few
+                        provide server side rendering ability and fully declarative charts.
                     </p>
                     <div className="grid">
                         <div className="grid_item grid_item-2_4">
@@ -60,14 +59,12 @@ class About extends Component {
                                     >
                                         responsive charts
                                     </Link>{' '}
-                                    (<code>&lt;Responsive* /&gt;</code>{' '}
-                                    components)
+                                    (<code>&lt;Responsive* /&gt;</code> components)
                                 </li>
                                 <li>highly customizable</li>
                                 <li>
-                                    motion/transitions, even the non-d3 based
-                                    components (DOM managed by React) support
-                                    transitions within the help of{' '}
+                                    motion/transitions, even the non-d3 based components (DOM
+                                    managed by React) support transitions within the help of{' '}
                                     <a
                                         href="https://github.com/chenglou/react-motion"
                                         target="_blank"
@@ -154,8 +151,7 @@ class About extends Component {
                                     >
                                         nivo-generators
                                     </a>{' '}
-                                    - the data generators used for nivo-website
-                                    and http API samples
+                                    - the data generators used for nivo-website and http API samples
                                 </li>
                                 <li>
                                     <a

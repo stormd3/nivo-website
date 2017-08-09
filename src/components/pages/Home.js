@@ -37,10 +37,7 @@ const colors = redColorRange
 const calendarFrom = new Date(2015, 1, 1)
 const calendarTo = new Date(2016, 1, 1)
 const calendarData = generateDayCounts(calendarFrom, calendarTo)
-const voronoiData = _.range(80).map(() => [
-    Math.random() * 360,
-    Math.random() * 200,
-])
+const voronoiData = _.range(80).map(() => [Math.random() * 360, Math.random() * 200])
 
 const radarFacets = ['fruity', 'bitter', 'heavy', 'strong', 'sunny']
 const generateRadarData = () =>
@@ -174,8 +171,8 @@ class Home extends Component {
                 </div>
                 <div className="home_item home_item-baseline">
                     <p>
-                        nivo provides a rich set of dataviz components,<br />built
-                        on top of the awesome d3 and Reactjs libraries.
+                        nivo provides a rich set of dataviz components,<br />built on top of the
+                        awesome d3 and Reactjs libraries.
                     </p>
                 </div>
                 <Link className="home_item" to="/line">
@@ -205,10 +202,10 @@ class Home extends Component {
                                 bottom: 26,
                                 left: 60,
                             }}
-                            data={generateProgrammingLanguageStats(
-                                true,
-                                12
-                            ).map(d => ({ id: d.label, ...d }))}
+                            data={generateProgrammingLanguageStats(true, 12).map(d => ({
+                                id: d.label,
+                                ...d,
+                            }))}
                             innerRadius={0.6}
                             enableSlicesLabels={false}
                             radialLabelsLinkDiagonalLength={10}

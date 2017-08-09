@@ -34,9 +34,7 @@ const generate = (name, props, children = []) => {
         properties.push(`${key}=${value}`)
     })
 
-    const imports = [name, ...children.map(([c]) => c)].map(
-        i => `import { ${i} } from 'nivo'`
-    )
+    const imports = [name, ...children.map(([c]) => c)].map(i => `import { ${i} } from 'nivo'`)
 
     return `import { render } from 'react-dom'
 ${imports.join('\n')}

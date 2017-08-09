@@ -14,8 +14,7 @@ class InnerRadiusControl extends Component {
 
     handleInnerRadiusUpdate(e) {
         const { onChange } = this.props
-        const innerRadius =
-            e.target.value === '0' ? 0 : parseFloat(e.target.value)
+        const innerRadius = e.target.value === '0' ? 0 : parseFloat(e.target.value)
         onChange(innerRadius)
     }
 
@@ -25,8 +24,7 @@ class InnerRadiusControl extends Component {
         return (
             <div className="control control-inner-radius">
                 <label>
-                    innerRadius:{' '}
-                    <code className="code code-number">{value}</code>
+                    innerRadius: <code className="code code-number">{value}</code>
                 </label>
                 <div className="control-help">
                     {help}

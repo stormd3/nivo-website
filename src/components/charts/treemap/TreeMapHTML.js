@@ -65,10 +65,7 @@ export default class TreeMapHTML extends Component {
         const { root, diceRoll } = this.props
         const { settings } = this.state
 
-        const colorBy =
-            settings.colorBy === 'd => d.color'
-                ? d => d.color
-                : settings.colorBy
+        const colorBy = settings.colorBy === 'd => d.color' ? d => d.color : settings.colorBy
         const label =
             settings.label === 'd => `${d.name} (${d.loc})`'
                 ? d => `${d.name} (${d.loc})`
@@ -127,17 +124,15 @@ export default class TreeMapHTML extends Component {
                             rel="noopener noreferrer"
                         >
                             this block
-                        </a>. The difference with the{' '}
-                        <code>&lt;TreeMap /&gt;</code> component is this one
-                        generates HTML markup whereas the other generates SVG.
+                        </a>. The difference with the <code>&lt;TreeMap /&gt;</code> component is
+                        this one generates HTML markup whereas the other generates SVG.
                     </p>
                     <p className="description">
                         The responsive alternative of this component is{' '}
                         <code>&lt;ResponsiveTreeMapHTML /&gt;</code>.
                     </p>
                     <p className="description">
-                        The <code>&lt;TreeMap /&gt;</code> component is also
-                        available in the{' '}
+                        The <code>&lt;TreeMap /&gt;</code> component is also available in the{' '}
                         <a
                             href="https://github.com/plouc/nivo-api"
                             target="_blank"
@@ -152,10 +147,7 @@ export default class TreeMapHTML extends Component {
                         >
                             sample
                         </a>{' '}
-                        or{' '}
-                        <Link to="/treemap/api">
-                            try it using the API client
-                        </Link>.
+                        or <Link to="/treemap/api">try it using the API client</Link>.
                     </p>
                     <TreeMapControls
                         scope="TreeMapHTML"
@@ -164,10 +156,7 @@ export default class TreeMapHTML extends Component {
                     />
                 </div>
                 <div className="grid_item grid_item-full">
-                    <ComponentPropsDocumentation
-                        chartClass="TreeMapHTML"
-                        properties={properties}
-                    />
+                    <ComponentPropsDocumentation chartClass="TreeMapHTML" properties={properties} />
                 </div>
             </div>
         )

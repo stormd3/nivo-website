@@ -54,11 +54,7 @@
 }
 
 .cmn-toggle:checked + label:after {
-    transform: translate3d(
-        calc(var(--control-switch-width) - var(--control-switch-height)),
-        0,
-        0
-    );
+    transform: translate3d(calc(var(--control-switch-width) - var(--control-switch-height)), 0, 0);
 }
 
 .control_label {

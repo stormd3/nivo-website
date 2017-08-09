@@ -37,10 +37,7 @@ class VoronoiPage extends Component {
                     return React.cloneElement(childRoute, {
                         component: null,
                         render: () =>
-                            <childRoute.props.component
-                                data={data}
-                                diceRoll={this.diceRoll}
-                            />,
+                            <childRoute.props.component data={data} diceRoll={this.diceRoll} />,
                     })
                 })}
             </div>

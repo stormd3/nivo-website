@@ -97,13 +97,7 @@ export default class ChartControls extends Component {
             case 'range':
                 return (
                     <SliderControl
-                        {..._.pick(config, [
-                            'min',
-                            'max',
-                            'unit',
-                            'step',
-                            'help',
-                        ])}
+                        {..._.pick(config, ['min', 'max', 'unit', 'step', 'help'])}
                         key={config.name}
                         id={id}
                         label={config.name}
@@ -166,12 +160,9 @@ export default class ChartControls extends Component {
                         return (
                             <div
                                 key={group.name}
-                                className={classNames(
-                                    'chart-controls_menu_item',
-                                    {
-                                        active: openedGroup === group.name,
-                                    }
-                                )}
+                                className={classNames('chart-controls_menu_item', {
+                                    active: openedGroup === group.name,
+                                })}
                                 onClick={e => {
                                     this.handleGroupToggle(group.name)
                                 }}
@@ -186,10 +177,7 @@ export default class ChartControls extends Component {
                         <div
                             key={group.name}
                             style={{
-                                display:
-                                    openedGroup === group.name
-                                        ? 'block'
-                                        : 'none',
+                                display: openedGroup === group.name ? 'block' : 'none',
                             }}
                         >
                             <div className="chart-controls">

@@ -12,12 +12,7 @@ import PropTypes from 'prop-types'
 import Nivo from 'nivo'
 import Select from 'react-select'
 import ColorsControlItem from './ColorsControlItem'
-import {
-    schemeCategory10,
-    schemeCategory20,
-    schemeCategory20b,
-    schemeCategory20c,
-} from 'd3-scale'
+import { schemeCategory10, schemeCategory20, schemeCategory20b, schemeCategory20c } from 'd3-scale'
 import {
     schemeAccent,
     schemeDark2,
@@ -87,9 +82,7 @@ class ColorsControl extends Component {
         return (
             <div className="control control-colors">
                 <label className="control_label">
-                    colors:&nbsp;<code className="code code-string">
-                        "{value}"
-                    </code>
+                    colors:&nbsp;<code className="code code-string">"{value}"</code>
                 </label>
                 <Select
                     options={colors.map(({ id, colors }) => {

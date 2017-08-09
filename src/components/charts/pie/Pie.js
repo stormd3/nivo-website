@@ -58,10 +58,7 @@ export default class Pie extends Component {
         const { data, diceRoll } = this.props
         const { settings } = this.state
 
-        const colorBy =
-            settings.colorBy === 'd => d.color'
-                ? d => d.color
-                : settings.colorBy
+        const colorBy = settings.colorBy === 'd => d.color' ? d => d.color : settings.colorBy
         const radialLabel =
             settings.radialLabel === 'd => `${d.id} (${d.value})`'
                 ? d => `${d.id} (${d.value})`
@@ -109,11 +106,10 @@ export default class Pie extends Component {
                         {header}
                     </MediaQuery>
                     <p>
-                        Generates a pie chart from an array of data, each datum
-                        must have an id and a value property.<br />
-                        Note that margin object does not take radial labels into
-                        account,&nbsp; so you should adjust it to leave enough
-                        room for it.
+                        Generates a pie chart from an array of data, each datum must have an id and
+                        a value property.<br />
+                        Note that margin object does not take radial labels into account,&nbsp; so
+                        you should adjust it to leave enough room for it.
                     </p>
                     <p className="description">
                         The responsive alternative of this component is&nbsp;
@@ -126,10 +122,7 @@ export default class Pie extends Component {
                     />
                 </div>
                 <div className="grid_item grid_item-full">
-                    <ComponentPropsDocumentation
-                        chartClass="Pie"
-                        properties={properties}
-                    />
+                    <ComponentPropsDocumentation chartClass="Pie" properties={properties} />
                 </div>
             </div>
         )

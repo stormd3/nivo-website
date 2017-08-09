@@ -48,21 +48,13 @@ export default class BubblePlaceholdersPage extends Component {
                     <MediaQuery query="(max-width: 1000px)">
                         <ChartHeader
                             chartClass="BubblePlaceholders"
-                            tags={[
-                                'bubble',
-                                'hierarchy',
-                                'placeholders',
-                                'isomorphic',
-                            ]}
+                            tags={['bubble', 'hierarchy', 'placeholders', 'isomorphic']}
                             diceRoll={diceRoll}
                         />
                     </MediaQuery>
                     <div className="main-chart">
                         <ChartTabs chartClass="bubble" code={code} data={root}>
-                            <ResponsiveBubblePlaceholders
-                                root={_.cloneDeep(root)}
-                                {...settings}
-                            >
+                            <ResponsiveBubblePlaceholders root={_.cloneDeep(root)} {...settings}>
                                 {nodes =>
                                     nodes.map(node => {
                                         return (
@@ -70,17 +62,12 @@ export default class BubblePlaceholdersPage extends Component {
                                                 key={node.key}
                                                 style={{
                                                     position: 'absolute',
-                                                    top:
-                                                        node.style.y -
-                                                        node.style.r,
-                                                    left:
-                                                        node.style.x -
-                                                        node.style.r,
+                                                    top: node.style.y - node.style.r,
+                                                    left: node.style.x - node.style.r,
                                                     width: node.style.r * 2,
                                                     height: node.style.r * 2,
                                                     borderRadius: node.style.r,
-                                                    border: `2px solid ${node
-                                                        .style.color}`,
+                                                    border: `2px solid ${node.style.color}`,
                                                     backgroundSize: 'contain',
                                                     backgroundImage: `url(http://placekitten.com/240/240)`,
                                                 }}
@@ -95,30 +82,19 @@ export default class BubblePlaceholdersPage extends Component {
                     <MediaQuery query="(min-width: 1000px)">
                         <ChartHeader
                             chartClass="BubblePlaceholders"
-                            tags={[
-                                'bubble',
-                                'hierarchy',
-                                'placeholders',
-                                'isomorphic',
-                            ]}
+                            tags={['bubble', 'hierarchy', 'placeholders', 'isomorphic']}
                             diceRoll={diceRoll}
                         />
                     </MediaQuery>
                     <p className="description">
-                        Take total control over Bubble component (kittens
-                        compliant).
+                        Take total control over Bubble component (kittens compliant).
                     </p>
                     <p className="description">
-                        This chart offer various implementations, you can render
-                        it using <Link to="/bubble/d3">pure d3</Link> or{' '}
-                        <Link to="/bubble">
-                            let react handles all the rendering
-                        </Link>{' '}
-                        and you can even{' '}
-                        <Link to="/bubble/placeholders">
-                            render whatever you want
-                        </Link>{' '}
-                        instead of the boring circles.
+                        This chart offer various implementations, you can render it using{' '}
+                        <Link to="/bubble/d3">pure d3</Link> or{' '}
+                        <Link to="/bubble">let react handles all the rendering</Link> and you can
+                        even <Link to="/bubble/placeholders">render whatever you want</Link> instead
+                        of the boring circles.
                     </p>
 
                     <BubbleControls

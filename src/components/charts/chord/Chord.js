@@ -58,9 +58,7 @@ class Bars extends Component {
 
         const code = generateCode('Chord', settings)
 
-        const header = (
-            <ChartHeader chartClass="Chord" tags={['chord', 'nivo-api']} />
-        )
+        const header = <ChartHeader chartClass="Chord" tags={['chord', 'nivo-api']} />
 
         return (
             <div className="page_content grid">
@@ -112,10 +110,7 @@ class Bars extends Component {
                         >
                             sample
                         </a>{' '}
-                        or{' '}
-                        <Link to="/chord/api">
-                            try it using the API client
-                        </Link>.
+                        or <Link to="/chord/api">try it using the API client</Link>.
                     </p>
                     <ChordControls
                         scope="Chord"
@@ -124,10 +119,7 @@ class Bars extends Component {
                     />
                 </div>
                 <div className="grid_item grid_item-full">
-                    <ComponentPropsDocumentation
-                        chartClass="Chord"
-                        properties={properties}
-                    />
+                    <ComponentPropsDocumentation chartClass="Chord" properties={properties} />
                 </div>
             </div>
         )

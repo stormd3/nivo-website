@@ -70,9 +70,7 @@ class MiniNav extends Component {
 
     willEnter(item) {
         const index =
-            item.data.parentIndex !== undefined
-                ? item.data.parentIndex
-                : item.data.index + 1
+            item.data.parentIndex !== undefined ? item.data.parentIndex : item.data.index + 1
 
         return {
             top: (index + 1) * 56,
@@ -83,10 +81,7 @@ class MiniNav extends Component {
     }
 
     willLeave(item) {
-        const index =
-            item.data.parentIndex !== undefined
-                ? item.data.parentIndex
-                : item.data.index
+        const index = item.data.parentIndex !== undefined ? item.data.parentIndex : item.data.index
 
         return {
             top: spring((index + 1) * 56, { stiffness: 300, damping: 40 }),
@@ -174,18 +169,14 @@ class MiniNav extends Component {
                             {interpolatedStyles.map(item => {
                                 const style = {
                                     opacity: item.style.opacity,
-                                    transform: `translate3d(0,${item.style
-                                        .top}px,0) scale(${item.style.scale})`,
+                                    transform: `translate3d(0,${item.style.top}px,0) scale(${item
+                                        .style.scale})`,
                                     zIndex: item.style.zIndex,
                                 }
 
                                 if (item.data.path) {
                                     return (
-                                        <MiniNavLink
-                                            key={item.key}
-                                            style={style}
-                                            {...item.data}
-                                        />
+                                        <MiniNavLink key={item.key} style={style} {...item.data} />
                                     )
                                 }
 

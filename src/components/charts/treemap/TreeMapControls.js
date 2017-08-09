@@ -16,12 +16,7 @@ export default class TreeMapControls extends Component {
     static propTypes = {
         settings: PropTypes.object.isRequired,
         onChange: PropTypes.func.isRequired,
-        scope: PropTypes.oneOf([
-            'TreeMap',
-            'TreeMapHTML',
-            'TreeMapPlaceholders',
-            'api',
-        ]).isRequired,
+        scope: PropTypes.oneOf(['TreeMap', 'TreeMapHTML', 'TreeMapPlaceholders', 'api']).isRequired,
     }
 
     render() {

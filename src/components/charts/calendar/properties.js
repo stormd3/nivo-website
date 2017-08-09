@@ -10,9 +10,7 @@ export default [
         scopes: ['api'],
         description: (
             <span>
-                not required if using&nbsp;<code>
-                    &lt;ResponsiveCalendar&nbsp;/&gt;
-                </code>.
+                not required if using&nbsp;<code>&lt;ResponsiveCalendar&nbsp;/&gt;</code>.
             </span>
         ),
         help: 'Chart width.',
@@ -32,9 +30,7 @@ export default [
         scopes: ['api'],
         description: (
             <span>
-                not required if using&nbsp;<code>
-                    &lt;ResponsiveCalendar&nbsp;/&gt;
-                </code>.
+                not required if using&nbsp;<code>&lt;ResponsiveCalendar&nbsp;/&gt;</code>.
             </span>
         ),
         help: 'Chart height.',
@@ -78,8 +74,7 @@ export default [
     // Years
     {
         key: 'yearSpacing',
-        description:
-            'define spacing between each year row/column depending on the direction.',
+        description: 'define spacing between each year row/column depending on the direction.',
         type: '{number}',
         required: false,
         default: defaults.yearSpacing,

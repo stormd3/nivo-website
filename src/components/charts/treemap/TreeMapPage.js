@@ -22,10 +22,7 @@ export default class TreeMapPage extends Component {
                         return React.cloneElement(childRoute, {
                             component: null,
                             render: () =>
-                                <childRoute.props.component
-                                    root={root}
-                                    diceRoll={this.diceRoll}
-                                />,
+                                <childRoute.props.component root={root} diceRoll={this.diceRoll} />,
                         })
                     })}
                 </Switch>

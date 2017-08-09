@@ -16,8 +16,7 @@ export default class BubbleControls extends Component {
     static propTypes = {
         onChange: PropTypes.func.isRequired,
         settings: PropTypes.object.isRequired,
-        scope: PropTypes.oneOf(['Bubble', 'BubblePlaceholders', 'api'])
-            .isRequired,
+        scope: PropTypes.oneOf(['Bubble', 'BubblePlaceholders', 'api']).isRequired,
     }
 
     render() {

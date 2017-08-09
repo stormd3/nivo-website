@@ -1,11 +1,6 @@
 import _ from 'lodash'
 
-export const marginProperties = [
-    'top',
-    'right',
-    'bottom',
-    'left',
-].map(marginType => ({
+export const marginProperties = ['top', 'right', 'bottom', 'left'].map(marginType => ({
     key: `margin.${marginType}`,
     scopes: '*',
     description: `${_.upperFirst(marginType)} margin.`,
@@ -116,9 +111,7 @@ export const getPropertiesGroupControls = (properties, group, scope) => {
     const scopeFilter = filterPropertiesByScope(scope)
 
     return properties
-        .filter(
-            property => property.controlGroup === group && scopeFilter(property)
-        )
+        .filter(property => property.controlGroup === group && scopeFilter(property))
         .map(property => ({
             name: property.key,
             help: property.help || property.description,
@@ -132,10 +125,7 @@ export const getPropertiesGroupsControls = (properties, scope) => {
 
     const groups = _.uniq(
         properties
-            .filter(
-                property =>
-                    property.controlGroup !== undefined && scopeFilter(property)
-            )
+            .filter(property => property.controlGroup !== undefined && scopeFilter(property))
             .map(property => property.controlGroup)
     )
 

@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
-import {
-    schemeCategory10,
-    schemeCategory20,
-    schemeCategory20b,
-    schemeCategory20c,
-} from 'd3-scale'
+import { schemeCategory10, schemeCategory20, schemeCategory20b, schemeCategory20c } from 'd3-scale'
 import {
     schemeAccent,
     schemeDark2,
@@ -31,10 +26,10 @@ class Colors extends Component {
                     <h2>The colors property</h2>
                     <div className="intro">
                         <p className="description">
-                            Beside highlighting data insights, your dataviz
-                            should be pretty, right ?<br />
-                            nivo provides an easy way to deal with colors, very
-                            useful when using nested components.
+                            Beside highlighting data insights, your dataviz should be pretty, right
+                            ?<br />
+                            nivo provides an easy way to deal with colors, very useful when using
+                            nested components.
                         </p>
                     </div>
                     {/*
@@ -94,13 +89,11 @@ class Colors extends Component {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'data'
-                                        </code>
+                                        <code className="code-string">'data'</code>
                                     </td>
                                     <td>
-                                        use this directive when your data set
-                                        already contains a color property (<code>d.color || d.data.color</code>).
+                                        use this directive when your data set already contains a
+                                        color property (<code>d.color || d.data.color</code>).
                                     </td>
                                 </tr>
                                 <tr>
@@ -108,45 +101,35 @@ class Colors extends Component {
                                         <code>function</code>
                                     </td>
                                     <td>
-                                        if you want a full control over color
-                                        generation, you can provide a custom
-                                        generator function, it will receive the
-                                        data bound to each element you want to
-                                        colorize.
+                                        if you want a full control over color generation, you can
+                                        provide a custom generator function, it will receive the
+                                        data bound to each element you want to colorize.
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'nivo'
-                                        </code>
+                                        <code className="code-string">'nivo'</code>
                                     </td>
                                     <td>
                                         <p>
-                                            looks familiar isn't it, obviously
-                                            it's the categorical colors used on
-                                            this doc.
+                                            looks familiar isn't it, obviously it's the categorical
+                                            colors used on this doc.
                                         </p>
-                                        {Nivo.colors
-                                            .nivoCategoricalColors()
-                                            .range()
-                                            .map(color =>
-                                                <span
-                                                    style={{
-                                                        display: 'inline-block',
-                                                        background: color,
-                                                        width: 18,
-                                                        height: 18,
-                                                    }}
-                                                />
-                                            )}
+                                        {Nivo.colors.nivoCategoricalColors().range().map(color =>
+                                            <span
+                                                style={{
+                                                    display: 'inline-block',
+                                                    background: color,
+                                                    width: 18,
+                                                    height: 18,
+                                                }}
+                                            />
+                                        )}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'd310'
-                                        </code>
+                                        <code className="code-string">'d310'</code>
                                     </td>
                                     <td>
                                         <p>
@@ -181,9 +164,7 @@ class Colors extends Component {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'd320'
-                                        </code>
+                                        <code className="code-string">'d320'</code>
                                     </td>
                                     <td>
                                         <p>
@@ -218,9 +199,7 @@ class Colors extends Component {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'd320b'
-                                        </code>
+                                        <code className="code-string">'d320b'</code>
                                     </td>
                                     <td>
                                         <p>
@@ -255,9 +234,7 @@ class Colors extends Component {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'd320c'
-                                        </code>
+                                        <code className="code-string">'d320c'</code>
                                     </td>
                                     <td>
                                         <p>
@@ -292,9 +269,7 @@ class Colors extends Component {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'accent'
-                                        </code>
+                                        <code className="code-string">'accent'</code>
                                     </td>
                                     <td>
                                         <p>
@@ -329,9 +304,7 @@ class Colors extends Component {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'dark2'
-                                        </code>
+                                        <code className="code-string">'dark2'</code>
                                     </td>
                                     <td>
                                         <p>
@@ -366,9 +339,7 @@ class Colors extends Component {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'paired'
-                                        </code>
+                                        <code className="code-string">'paired'</code>
                                     </td>
                                     <td>
                                         <p>
@@ -403,9 +374,7 @@ class Colors extends Component {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'pastel1'
-                                        </code>
+                                        <code className="code-string">'pastel1'</code>
                                     </td>
                                     <td>
                                         <p>
@@ -440,9 +409,7 @@ class Colors extends Component {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'pastel2'
-                                        </code>
+                                        <code className="code-string">'pastel2'</code>
                                     </td>
                                     <td>
                                         <p>
@@ -477,9 +444,7 @@ class Colors extends Component {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'set1'
-                                        </code>
+                                        <code className="code-string">'set1'</code>
                                     </td>
                                     <td>
                                         <p>
@@ -514,9 +479,7 @@ class Colors extends Component {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'set2'
-                                        </code>
+                                        <code className="code-string">'set2'</code>
                                     </td>
                                     <td>
                                         <p>
@@ -551,9 +514,7 @@ class Colors extends Component {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'set3'
-                                        </code>
+                                        <code className="code-string">'set3'</code>
                                     </td>
                                     <td>
                                         <p>
@@ -592,8 +553,8 @@ class Colors extends Component {
                     <div className="grid_item grid_item-full">
                         <h2>Single color property</h2>
                         <p className="description">
-                            A lot of components have a <code>*Color</code>{' '}
-                            property, but what can we pass to it ?
+                            A lot of components have a <code>*Color</code> property, but what can we
+                            pass to it ?
                         </p>
                     </div>
                     {/*colorDirectives.map(directive => (
@@ -628,36 +589,25 @@ class Colors extends Component {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'none'
-                                        </code>
+                                        <code className="code-string">'none'</code>
                                     </td>
                                     <td>
-                                        will do nothing, it's often the default,
-                                        it's useful if you manage chart styles
-                                        via <code>css</code>
+                                        will do nothing, it's often the default, it's useful if you
+                                        manage chart styles via <code>css</code>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'inherit'
-                                        </code>
+                                        <code className="code-string">'inherit'</code>
                                     </td>
-                                    <td>
-                                        will use color from parent
-                                        context/component
-                                    </td>
+                                    <td>will use color from parent context/component</td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'inherit:darker(.5)'
-                                        </code>
+                                        <code className="code-string">'inherit:darker(.5)'</code>
                                     </td>
                                     <td>
-                                        will use parent context/component color,
-                                        and apply{' '}
+                                        will use parent context/component color, and apply{' '}
                                         <a
                                             href="https://github.com/mbostock/d3/wiki/Colors#rgb_darker"
                                             target="_blank"
@@ -671,13 +621,10 @@ class Colors extends Component {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <code className="code-string">
-                                            'inherit:brighter(1)'
-                                        </code>
+                                        <code className="code-string">'inherit:brighter(1)'</code>
                                     </td>
                                     <td>
-                                        will use parent context/component color,
-                                        and apply{' '}
+                                        will use parent context/component color, and apply{' '}
                                         <a
                                             href="https://github.com/mbostock/d3/wiki/Colors#rgb_brighter"
                                             target="_blank"

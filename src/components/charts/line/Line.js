@@ -93,10 +93,7 @@ export default class Line extends Component {
         const { data, diceRoll } = this.props
         const { settings } = this.state
 
-        const colorBy =
-            settings.colorBy === 'd => d.color'
-                ? d => d.color
-                : settings.colorBy
+        const colorBy = settings.colorBy === 'd => d.color' ? d => d.color : settings.colorBy
 
         const code = generateCode('Line', {
             ..._.omit(settings, [
@@ -106,15 +103,9 @@ export default class Line extends Component {
                 'enable axisLeft',
             ]),
             axisTop: settings['enable axisTop'] ? settings.axisTop : undefined,
-            axisRight: settings['enable axisRight']
-                ? settings.axisRight
-                : undefined,
-            axisBottom: settings['enable axisBottom']
-                ? settings.axisBottom
-                : undefined,
-            axisLeft: settings['enable axisLeft']
-                ? settings.axisLeft
-                : undefined,
+            axisRight: settings['enable axisRight'] ? settings.axisRight : undefined,
+            axisBottom: settings['enable axisBottom'] ? settings.axisBottom : undefined,
+            axisLeft: settings['enable axisLeft'] ? settings.axisLeft : undefined,
             colorBy,
         })
 
@@ -137,26 +128,12 @@ export default class Line extends Component {
                             <ResponsiveLine
                                 data={data}
                                 {...settings}
-                                axisTop={
-                                    settings['enable axisTop']
-                                        ? settings.axisTop
-                                        : null
-                                }
-                                axisRight={
-                                    settings['enable axisRight']
-                                        ? settings.axisRight
-                                        : null
-                                }
+                                axisTop={settings['enable axisTop'] ? settings.axisTop : null}
+                                axisRight={settings['enable axisRight'] ? settings.axisRight : null}
                                 axisBottom={
-                                    settings['enable axisBottom']
-                                        ? settings.axisBottom
-                                        : null
+                                    settings['enable axisBottom'] ? settings.axisBottom : null
                                 }
-                                axisLeft={
-                                    settings['enable axisLeft']
-                                        ? settings.axisLeft
-                                        : null
-                                }
+                                axisLeft={settings['enable axisLeft'] ? settings.axisLeft : null}
                                 colorBy={colorBy}
                             />
                         </ChartTabs>
@@ -171,14 +148,11 @@ export default class Line extends Component {
                     <MediaQuery query="(min-width: 1000px)">
                         {header}
                     </MediaQuery>
-                    <p className="description">
-                        Line chart with stacking ability.
-                    </p>
+                    <p className="description">Line chart with stacking ability.</p>
                     <p>
-                        Given an array of data series having an id and a nested
-                        array of points (with x, y properties), it will compute
-                        the line for each data serie.&nbsp; If stacked is true,
-                        y values will be automatically aggregated.
+                        Given an array of data series having an id and a nested array of points
+                        (with x, y properties), it will compute the line for each data serie.&nbsp;
+                        If stacked is true, y values will be automatically aggregated.
                     </p>
                     <p className="description">
                         The responsive alternative of this component is{' '}
@@ -200,15 +174,11 @@ export default class Line extends Component {
                         >
                             sample
                         </a>{' '}
-                        or{' '}
-                        <Link to="/line/api">try it using the API client</Link>.
+                        or <Link to="/line/api">try it using the API client</Link>.
                     </p>
                 </div>
                 <div className="grid_item grid_item-full">
-                    <ComponentPropsDocumentation
-                        chartClass="Line"
-                        properties={properties}
-                    />
+                    <ComponentPropsDocumentation chartClass="Line" properties={properties} />
                 </div>
             </div>
         )

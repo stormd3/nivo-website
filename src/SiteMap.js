@@ -311,10 +311,7 @@ export const getRoutes = () => {
                     <Route
                         key={sectionItem.path}
                         path={sectionItem.path}
-                        render={() =>
-                            <sectionItem.component
-                                childRoutes={routeChildren}
-                            />}
+                        render={() => <sectionItem.component childRoutes={routeChildren} />}
                     />
                 )
             })

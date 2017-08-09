@@ -162,9 +162,7 @@ export default [
         scopes: ['api'],
         description: (
             <span>
-                not required if using&nbsp;<code>
-                    &lt;ResponsiveBubble&nbsp;/&gt;
-                </code>.
+                not required if using&nbsp;<code>&lt;ResponsiveBubble&nbsp;/&gt;</code>.
             </span>
         ),
         type: '{number}',
@@ -183,9 +181,7 @@ export default [
         scopes: ['api'],
         description: (
             <span>
-                not required if using&nbsp;<code>
-                    &lt;ResponsiveBubble&nbsp;/&gt;
-                </code>.
+                not required if using&nbsp;<code>&lt;ResponsiveBubble&nbsp;/&gt;</code>.
             </span>
         ),
         type: '{number}',
@@ -256,8 +252,7 @@ export default [
         scopes: '*',
         description: (
             <span>
-                sets the approximate padding between adjacent circles, in
-                pixels. see{' '}
+                sets the approximate padding between adjacent circles, in pixels. see{' '}
                 <a
                     href="https://github.com/mbostock/d3/wiki/Pack-Layout#padding"
                     target="_blank"
@@ -343,8 +338,7 @@ export default [
     {
         key: 'labelSkipRadius',
         scopes: ['Bubble', 'api'],
-        description:
-            'Skip label rendering if node radius is lower than given value, 0 to disable.',
+        description: 'Skip label rendering if node radius is lower than given value, 0 to disable.',
         type: '{number}',
         required: false,
         default: defaults.labelSkipRadius,

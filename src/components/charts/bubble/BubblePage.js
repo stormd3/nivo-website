@@ -22,10 +22,7 @@ export default class BubblePage extends Component {
                     return React.cloneElement(childRoute, {
                         component: null,
                         render: () =>
-                            <childRoute.props.component
-                                root={libTree}
-                                diceRoll={this.diceRoll}
-                            />,
+                            <childRoute.props.component root={libTree} diceRoll={this.diceRoll} />,
                     })
                 })}
             </div>

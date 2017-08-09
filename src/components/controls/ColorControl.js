@@ -14,9 +14,7 @@ import Select from 'react-select'
 const getModifierGamma = directive => {
     let gamma = 1
 
-    const inheritMatches = directive.match(
-        /inherit:(darker|brighter)\(([0-9.]+)\)/
-    )
+    const inheritMatches = directive.match(/inherit:(darker|brighter)\(([0-9.]+)\)/)
     if (inheritMatches) {
         gamma = parseFloat(inheritMatches[2])
     }
@@ -86,9 +84,7 @@ class ColorControl extends Component {
         return (
             <div className="control control-color">
                 <label className="control_label">
-                    {label}:&nbsp;<code className="code code-string">
-                        "{value}"
-                    </code>
+                    {label}:&nbsp;<code className="code code-string">"{value}"</code>
                 </label>
                 <div>
                     <Select

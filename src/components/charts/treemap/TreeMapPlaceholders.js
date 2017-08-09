@@ -68,16 +68,14 @@ export default class TreeMapPlaceholders extends Component {
                                     nodes.map((node, i) => {
                                         return (
                                             <div
-                                                key={`${i}.${node.key}.${node
-                                                    .data.loc}`}
+                                                key={`${i}.${node.key}.${node.data.loc}`}
                                                 style={{
                                                     position: 'absolute',
                                                     top: node.style.y,
                                                     left: node.style.x,
                                                     width: node.style.width,
                                                     height: node.style.height,
-                                                    background:
-                                                        node.style.color,
+                                                    background: node.style.color,
                                                     borderRadius: '3px',
                                                 }}
                                             />
@@ -108,9 +106,7 @@ export default class TreeMapPlaceholders extends Component {
                             this block
                         </a>.
                     </p>
-                    <p className="description">
-                        Take total control over TreeMap component.
-                    </p>
+                    <p className="description">Take total control over TreeMap component.</p>
                     <TreeMapControls
                         scope="TreeMapPlaceholders"
                         settings={settings}

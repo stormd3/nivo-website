@@ -65,10 +65,7 @@ export default class Radar extends Component {
         const { data, facets, diceRoll } = this.props
         const { settings } = this.state
 
-        const colorBy =
-            settings.colorBy === 'd => d.color'
-                ? d => d.color
-                : settings.colorBy
+        const colorBy = settings.colorBy === 'd => d.color' ? d => d.color : settings.colorBy
         const radialLabel =
             settings.radialLabel === 'd => `${d.id} (${d.value})`'
                 ? d => `${d.id} (${d.value})`
@@ -112,13 +109,11 @@ export default class Radar extends Component {
                         {header}
                     </MediaQuery>
                     <p>
-                        Generates a radar chart from an array of data series
-                        having an id and an array of values, it also requires an
-                        array of facets, it will compute the radial shape for
-                        each data serie.<br />
-                        Note that margin object does not take grid labels into
-                        account,&nbsp; so you should adjust it to leave enough
-                        room for it.
+                        Generates a radar chart from an array of data series having an id and an
+                        array of values, it also requires an array of facets, it will compute the
+                        radial shape for each data serie.<br />
+                        Note that margin object does not take grid labels into account,&nbsp; so you
+                        should adjust it to leave enough room for it.
                     </p>
                     <p className="description">
                         The responsive alternative of this component is&nbsp;
@@ -131,10 +126,7 @@ export default class Radar extends Component {
                     />
                 </div>
                 <div className="grid_item grid_item-full">
-                    <ComponentPropsDocumentation
-                        chartClass="Radar"
-                        properties={properties}
-                    />
+                    <ComponentPropsDocumentation chartClass="Radar" properties={properties} />
                 </div>
             </div>
         )

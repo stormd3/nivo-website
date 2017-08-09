@@ -25,9 +25,8 @@ class APIPreview extends Component {
             content = (
                 <div>
                     <p>
-                        Click the generate button in order to generate the
-                        chart.&nbsp; You can customize settings and data by
-                        using dedicated sections.
+                        Click the generate button in order to generate the chart.&nbsp; You can
+                        customize settings and data by using dedicated sections.
                     </p>
                 </div>
             )

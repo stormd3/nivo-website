@@ -111,15 +111,9 @@ class Bars extends Component {
                 'enable axisLeft',
             ]),
             axisTop: settings['enable axisTop'] ? settings.axisTop : undefined,
-            axisRight: settings['enable axisRight']
-                ? settings.axisRight
-                : undefined,
-            axisBottom: settings['enable axisBottom']
-                ? settings.axisBottom
-                : undefined,
-            axisLeft: settings['enable axisLeft']
-                ? settings.axisLeft
-                : undefined,
+            axisRight: settings['enable axisRight'] ? settings.axisRight : undefined,
+            axisBottom: settings['enable axisBottom'] ? settings.axisBottom : undefined,
+            axisLeft: settings['enable axisLeft'] ? settings.axisLeft : undefined,
             colorBy,
         })
 
@@ -134,25 +128,15 @@ class Bars extends Component {
                             <ResponsiveBar
                                 data={data}
                                 {...settings}
-                                axisTop={
-                                    settings['enable axisTop']
-                                        ? settings.axisTop
-                                        : undefined
-                                }
+                                axisTop={settings['enable axisTop'] ? settings.axisTop : undefined}
                                 axisRight={
-                                    settings['enable axisRight']
-                                        ? settings.axisRight
-                                        : undefined
+                                    settings['enable axisRight'] ? settings.axisRight : undefined
                                 }
                                 axisBottom={
-                                    settings['enable axisBottom']
-                                        ? settings.axisBottom
-                                        : undefined
+                                    settings['enable axisBottom'] ? settings.axisBottom : undefined
                                 }
                                 axisLeft={
-                                    settings['enable axisLeft']
-                                        ? settings.axisLeft
-                                        : undefined
+                                    settings['enable axisLeft'] ? settings.axisLeft : undefined
                                 }
                                 colorBy={colorBy}
                             />
@@ -169,8 +153,7 @@ class Bars extends Component {
                         {header}
                     </MediaQuery>
                     <p className="description">
-                        Bar chart with grouping ability, stacked or side by
-                        side.
+                        Bar chart with grouping ability, stacked or side by side.
                     </p>
                     <p className="description">
                         The responsive alternative of this component is{' '}
@@ -185,21 +168,14 @@ class Bars extends Component {
                         >
                             nivo-api
                         </a>, see{' '}
-                        <a
-                            href={`${config.nivoApiUrl}/samples/bar`}
-                            target="_blank"
-                        >
+                        <a href={`${config.nivoApiUrl}/samples/bar`} target="_blank">
                             sample
                         </a>{' '}
-                        or{' '}
-                        <Link to="/bar/api">try it using the API client</Link>.
+                        or <Link to="/bar/api">try it using the API client</Link>.
                     </p>
                 </div>
                 <div className="grid_item grid_item-full">
-                    <ComponentPropsDocumentation
-                        chartClass="bar"
-                        properties={properties}
-                    />
+                    <ComponentPropsDocumentation chartClass="bar" properties={properties} />
                 </div>
             </div>
         )

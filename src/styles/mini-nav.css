@@ -49,8 +49,7 @@
 }
 
 .mini-nav_item .nivo-icon {
-    background-size: calc(var(--mini-nav-item-size) * 0.7)
-        calc(var(--mini-nav-item-size) * 0.7);
+    background-size: calc(var(--mini-nav-item-size) * 0.7) calc(var(--mini-nav-item-size) * 0.7);
     background-position: center center;
     background-repeat: no-repeat;
 }

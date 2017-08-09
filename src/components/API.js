@@ -29,25 +29,15 @@ class API extends Component {
                         >
                             nivo-api
                         </a>{' '}
-                        repository. The following components are exposed through
-                        the API:
+                        repository. The following components are exposed through the API:
                     </p>
                     <p className="description">
-                        The components exposed through the API are rendered to
-                        svg, which allow to use the rendered charts as{' '}
-                        <code>&lt;img /&gt;</code> <code>src</code>.
+                        The components exposed through the API are rendered to svg, which allow to
+                        use the rendered charts as <code>&lt;img /&gt;</code> <code>src</code>.
                     </p>
                     <div className="nivo_components">
-                        <ComponentsItem
-                            path="/bar/api"
-                            name="<Bar />"
-                            className="bar"
-                        />
-                        <ComponentsItem
-                            path="/line/api"
-                            name="<Line />"
-                            className="line"
-                        />
+                        <ComponentsItem path="/bar/api" name="<Bar />" className="bar" />
+                        <ComponentsItem path="/line/api" name="<Line />" className="line" />
                         {/*
                         <ComponentsItem
                             path="/pie/api"
@@ -55,11 +45,7 @@ class API extends Component {
                             className="pie"
                         />
                         */}
-                        <ComponentsItem
-                            path="/bubble/api"
-                            name="<Bubble />"
-                            className="bubble"
-                        />
+                        <ComponentsItem path="/bubble/api" name="<Bubble />" className="bubble" />
                         <ComponentsItem
                             path="/treemap/api"
                             name="<TreeMap />"
@@ -70,11 +56,7 @@ class API extends Component {
                             name="<Calendar />"
                             className="calendar"
                         />
-                        <ComponentsItem
-                            path="/chord/api"
-                            name="<Chord />"
-                            className="chord"
-                        />
+                        <ComponentsItem path="/chord/api" name="<Chord />" className="chord" />
                     </div>
                 </div>
             </div>

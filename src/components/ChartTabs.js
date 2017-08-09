@@ -59,9 +59,7 @@ export default class ChartTabs extends Component {
                                     active: tab === currentTab,
                                 })}
                             >
-                                <span
-                                    className={`nivo-icon nivo-icon-${icon}`}
-                                />
+                                <span className={`nivo-icon nivo-icon-${icon}`} />
                             </span>
                         )
                     })}

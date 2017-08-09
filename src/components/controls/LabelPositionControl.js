@@ -35,10 +35,7 @@ class LabelPositionControl extends Component {
                         />
                     )}
                 </span>
-                <select
-                    value={value === null ? '' : value}
-                    onChange={this.handlePositionChange}
-                >
+                <select value={value === null ? '' : value} onChange={this.handlePositionChange}>
                     <option value="">auto</option>
                     {positions.map(position =>
                         <option key={position} value={position}>

@@ -13,9 +13,7 @@ class Animation extends Component {
                 <div className="page_content">
                     <div className="grid">
                         <div className="grid_item">
-                            <p className="description">
-                                How to deal with animations in nivo.
-                            </p>
+                            <p className="description">How to deal with animations in nivo.</p>
                             <p>
                                 see{' '}
                                 <a

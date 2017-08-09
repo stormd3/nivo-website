@@ -55,8 +55,7 @@ export default [
         scopes: '*',
         description: (
             <span>
-                valid values are:{' '}
-                <code className="code-string">'squarify'</code>,{' '}
+                valid values are: <code className="code-string">'squarify'</code>,{' '}
                 <code className="code-string">'slice'</code>,{' '}
                 <code className="code-string">'dice'</code>,{' '}
                 <code className="code-string">'slice-dice'</code>, see{' '}
@@ -187,11 +186,7 @@ export default [
         controlType: 'choices',
         controlGroup: 'Labels',
         controlOptions: {
-            choices: [
-                'loc',
-                'name',
-                'd => `${d.name} (${d.loc})`',
-            ].map(prop => ({
+            choices: ['loc', 'name', 'd => `${d.name} (${d.loc})`'].map(prop => ({
                 label: prop,
                 value: prop,
             })),
