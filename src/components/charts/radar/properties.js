@@ -1,5 +1,9 @@
 import React from 'react'
-import { RadarDefaultProps as defaults, RadarMarkers, closedCurvePropKeys } from 'nivo'
+import {
+    RadarDefaultProps as defaults,
+    RadarMarkers,
+    closedCurvePropKeys,
+} from 'nivo'
 import { marginProperties } from '../../componentProperties'
 
 const markersDefaults = RadarMarkers.defaultProps

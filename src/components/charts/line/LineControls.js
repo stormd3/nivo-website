@@ -14,7 +14,7 @@ import { getPropertiesGroupsControls } from '../../componentProperties'
 import properties from './properties'
 
 const groupsByScope = {
-    Line:  getPropertiesGroupsControls(properties, 'Line'),
+    Line: getPropertiesGroupsControls(properties, 'Line'),
     api: getPropertiesGroupsControls(properties, 'api'),
 }
 

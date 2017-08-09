@@ -4,7 +4,7 @@ import { getPropertiesGroupsControls } from '../../componentProperties'
 import properties from './properties'
 
 const groupsByScope = {
-    Radar: getPropertiesGroupsControls(properties, 'Radar')
+    Radar: getPropertiesGroupsControls(properties, 'Radar'),
 }
 
 export default class RadarControls extends PureComponent {

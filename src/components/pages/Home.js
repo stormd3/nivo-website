@@ -51,7 +51,6 @@ const generateRadarData = () =>
     }))
 const radarMargin = { top: 20, right: 40, bottom: 10, left: 40 }
 
-
 const homeTheme = {
     axis: {
         fontSize: '9px',
