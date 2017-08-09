@@ -6,7 +6,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
@@ -16,6 +15,7 @@ import SliderControl from './SliderControl'
 import SwitchControl from './SwitchControl'
 import ColorsControl from './ColorsControl'
 import ColorControl from './ColorControl'
+import TextControl from './TextControl'
 import Select from 'react-select'
 
 export default class ChartControls extends Component {
@@ -54,6 +54,12 @@ export default class ChartControls extends Component {
     handleRangeUpdate = key => e => {
         const { onChange, settings } = this.props
         onChange(_.merge({}, settings, _.set({}, key, Number(e.target.value))))
+    }
+
+    handleTextUpdate = key => e => {
+        console.log('handleTextUpdate', e.target.value)
+        const { onChange, settings } = this.props
+        onChange(_.merge({}, settings, _.set({}, key, e.target.value)))
     }
 
     handleDirectUpdate = key => value => {
@@ -114,6 +120,18 @@ export default class ChartControls extends Component {
                         label={config.name}
                         value={_.get(settings, config.name)}
                         onChange={this.handleSwitchUpdate(config.name)}
+                        help={config.help}
+                    />
+                )
+
+            case 'text':
+                return (
+                    <TextControl
+                        key={config.name}
+                        id={id}
+                        label={config.name}
+                        value={_.get(settings, config.name)}
+                        onChange={this.handleTextUpdate(config.name)}
                         help={config.help}
                     />
                 )

@@ -6,23 +6,29 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import ChartControls from '../../controls/ChartControls'
 import { getPropertiesGroupsControls } from '../../componentProperties'
 import properties from './properties'
 
-export default class BubbleControls extends Component {
+const groupsByScope = {
+    Bubble: getPropertiesGroupsControls(properties, 'Bubble'),
+    BubblePlaceholders: getPropertiesGroupsControls(properties, 'BubblePlaceholders'),
+    api: getPropertiesGroupsControls(properties, 'api'),
+}
+
+export default class BubbleControls extends PureComponent {
     static propTypes = {
         onChange: PropTypes.func.isRequired,
         settings: PropTypes.object.isRequired,
-        scope: PropTypes.oneOf(['Bubble', 'BubblePlaceholders', 'api']).isRequired,
+        scope: PropTypes.oneOf(Object.keys(groupsByScope)).isRequired,
     }
 
     render() {
         const { settings, scope, onChange } = this.props
 
-        const groups = getPropertiesGroupsControls(properties, scope)
+        const groups = groupsByScope[scope]
 
         return (
             <ChartControls

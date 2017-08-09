@@ -6,23 +6,28 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import ChartControls from '../../controls/ChartControls'
 import { getPropertiesGroupsControls } from '../../componentProperties'
 import properties from './properties'
 
-export default class CalendarControls extends Component {
+const groupsByScope = {
+    Calendar: getPropertiesGroupsControls(properties, 'Calendar'),
+    api: getPropertiesGroupsControls(properties, 'api'),
+}
+
+export default class CalendarControls extends PureComponent {
     static propTypes = {
         settings: PropTypes.object.isRequired,
         onChange: PropTypes.func.isRequired,
-        scope: PropTypes.oneOf(['Calendar', 'api']).isRequired,
+        scope: PropTypes.oneOf(Object.keys(groupsByScope)).isRequired,
     }
 
     render() {
         const { scope, settings, onChange } = this.props
 
-        const groups = getPropertiesGroupsControls(properties, scope)
+        const groups = groupsByScope[scope]
 
         return (
             <ChartControls
