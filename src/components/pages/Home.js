@@ -30,6 +30,7 @@ import {
     ResponsiveCalendar,
     ResponsiveVoronoi,
     ResponsiveRadar,
+    ResponsiveStream,
 } from 'nivo'
 
 const colors = redColorRange
@@ -47,6 +48,15 @@ const generateRadarData = () =>
         data: generateSerie(radarFacets.length),
     }))
 const radarMargin = { top: 20, right: 40, bottom: 10, left: 40 }
+
+const streamDataLayerCount = 5
+const generateStreamData = () =>
+    _.range(16).map(() =>
+        _.range(streamDataLayerCount).reduce((acc, i) => {
+            acc[i] = _.random(10, 200)
+            return acc
+        }, {})
+    )
 
 const homeTheme = {
     axis: {
@@ -141,6 +151,7 @@ class Home extends Component {
                             theme={homeTheme}
                             enableLabels={false}
                             animate={false}
+                            isInteractive={false}
                             {...commonAxes}
                         />
                         <span className="home_item_label">
@@ -159,6 +170,7 @@ class Home extends Component {
                             theme={homeTheme}
                             enableLabels={false}
                             animate={false}
+                            isInteractive={false}
                             {...commonAxes}
                         />
                         <span className="home_item_label">
@@ -175,22 +187,20 @@ class Home extends Component {
                         awesome d3 and Reactjs libraries.
                     </p>
                 </div>
-                <Link className="home_item" to="/line">
-                    <ResponsiveLine
+                <Link className="home_item" to="/stream">
+                    <ResponsiveStream
+                        data={generateStreamData()}
+                        keys={_.range(streamDataLayerCount)}
                         margin={{ top: 10, bottom: 15, left: 24, right: 10 }}
-                        data={generateDrinkStats(12)}
-                        curve="monotoneX"
                         theme={homeTheme}
                         colors={colors}
-                        {...commonAxes}
+                        fillOpacity={.75}
                         animate={false}
-                        enableMarkers={false}
-                        markersSize={7}
-                        markersBorderWidth={1}
-                        markersBorderColor="#e25d47"
+                        isInteractive={false}
+                        {...commonAxes}
                     />
                     <span className="home_item_label">
-                        <span>Line documentation</span>
+                        <span>Stream documentation</span>
                     </span>
                 </Link>
                 <MediaQuery query="(min-width: 1200px)" className="home_item">
@@ -210,9 +220,10 @@ class Home extends Component {
                             enableSlicesLabels={false}
                             radialLabelsLinkDiagonalLength={10}
                             radialLabelsLinkHorizontalLength={16}
-                            animate={false}
                             colors={colors}
                             colorBy="id"
+                            animate={false}
+                            isInteractive={false}
                             theme={homeTheme}
                         />
                         <span className="home_item_label">
@@ -249,6 +260,7 @@ class Home extends Component {
                         margin={radarMargin}
                         theme={homeTheme}
                         colors={colors}
+                        curve="catmullRomClosed"
                         markersSize={7}
                         markersBorderWidth={1}
                         markersBorderColor="#e25d47"

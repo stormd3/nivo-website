@@ -6,7 +6,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 import React, { Component } from 'react'
 import _ from 'lodash'
 import { Link } from 'react-router-dom'
@@ -18,6 +17,14 @@ import generateCode from '../../../generateChartCode'
 import BubbleControls from './BubbleControls'
 import ComponentPropsDocumentation from '../../ComponentPropsDocumentation'
 import properties from './properties'
+import { settingsMapper } from '../../../lib/settings'
+
+const mapSettings = settingsMapper({
+    colorBy: value => {
+        if (value === 'd => d.color') return d => d.color
+        return value
+    },
+})
 
 export default class BubbleReact extends Component {
     state = {
@@ -55,9 +62,9 @@ export default class BubbleReact extends Component {
         const { root, diceRoll } = this.props
         const { settings } = this.state
 
-        const colorBy = settings.colorBy === 'd => d.color' ? d => d.color : settings.colorBy
+        const mappedSettings = mapSettings(settings)
 
-        const code = generateCode('Bubble', { ...settings, colorBy })
+        const code = generateCode('Bubble', mappedSettings)
 
         return (
             <div className="page_content grid">
@@ -71,11 +78,7 @@ export default class BubbleReact extends Component {
                     </MediaQuery>
                     <div className="main-chart">
                         <ChartTabs chartClass="bubble" code={code} data={root}>
-                            <ResponsiveBubble
-                                root={_.cloneDeep(root)}
-                                {...settings}
-                                colorBy={colorBy}
-                            />
+                            <ResponsiveBubble root={_.cloneDeep(root)} {...mappedSettings} />
                         </ChartTabs>
                     </div>
                 </div>

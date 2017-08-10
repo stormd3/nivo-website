@@ -8,6 +8,20 @@ import { ResponsiveRadar } from 'nivo'
 import generateCode from '../../../generateChartCode'
 import ComponentPropsDocumentation from '../../ComponentPropsDocumentation'
 import properties from './properties'
+import { settingsMapper } from '../../../lib/settings'
+
+const mapSettings = settingsMapper({
+    colorBy: value => {
+        if (value === 'd => d.color') return d => d.color
+        return value
+    },
+    markersLabel: value => {
+        if (value === `d => \`\${d.facet}: \${d.value}\``) return d => `${d.facet}: ${d.value}`
+        if (value === `d => \`\${d.serie.id}: \${d.value}\``)
+            return d => `${d.serie.id}: ${d.value}`
+        return value
+    },
+})
 
 export default class Radar extends Component {
     static propTypes = {
@@ -23,13 +37,13 @@ export default class Radar extends Component {
     state = {
         settings: {
             margin: {
-                top: 40,
-                right: 60,
+                top: 70,
+                right: 80,
                 bottom: 40,
-                left: 60,
+                left: 80,
             },
 
-            curve: 'linearClosed',
+            curve: 'catmullRomClosed',
 
             // border
             borderWidth: 2,
@@ -38,7 +52,7 @@ export default class Radar extends Component {
             // axes & grid
             gridLevels: 5,
             gridShape: 'circular',
-            gridLabelOffset: 16,
+            gridLabelOffset: 36,
 
             // markers
             enableMarkers: true,
@@ -46,6 +60,9 @@ export default class Radar extends Component {
             markersColor: 'inherit',
             markersBorderWidth: 0,
             markersBorderColor: '#fff',
+            enableMarkersLabel: true,
+            markersLabel: 'value',
+            markersLabelYOffset: -12,
 
             colors: 'nivo',
             colorBy: 'id',
@@ -65,17 +82,11 @@ export default class Radar extends Component {
         const { data, facets, diceRoll } = this.props
         const { settings } = this.state
 
-        const colorBy = settings.colorBy === 'd => d.color' ? d => d.color : settings.colorBy
-        const radialLabel =
-            settings.radialLabel === 'd => `${d.id} (${d.value})`'
-                ? d => `${d.id} (${d.value})`
-                : settings.radialLabel
+        const mappedSettings = mapSettings(settings)
 
         const code = generateCode('Radar', {
             facets,
-            ...settings,
-            colorBy,
-            radialLabel,
+            ...mappedSettings,
         })
 
         const header = (
@@ -94,13 +105,7 @@ export default class Radar extends Component {
                     </MediaQuery>
                     <div className="main-chart">
                         <ChartTabs chartClass="radar" code={code} data={data}>
-                            <ResponsiveRadar
-                                facets={facets}
-                                data={data}
-                                {...settings}
-                                colorBy={colorBy}
-                                radialLabel={radialLabel}
-                            />
+                            <ResponsiveRadar facets={facets} data={data} {...mappedSettings} />
                         </ChartTabs>
                     </div>
                 </div>

@@ -164,9 +164,9 @@ export default [
         controlType: 'choices',
         controlGroup: 'Radial labels',
         controlOptions: {
-            choices: ['id', 'value', 'd => `${d.id} (${d.value})`'].map(prop => ({
-                label: prop,
-                value: prop,
+            choices: ['id', 'value', `d => \`\${d.id} (\${d.value})\``].map(choice => ({
+                label: choice,
+                value: choice,
             })),
         },
     },
@@ -297,9 +297,9 @@ export default [
         controlType: 'choices',
         controlGroup: 'Slices labels',
         controlOptions: {
-            choices: ['id', 'value', 'd => `${d.id} (${d.value})`'].map(prop => ({
-                label: prop,
-                value: prop,
+            choices: ['id', 'value', `d => \`\${d.id} (\${d.value})\``].map(choice => ({
+                label: choice,
+                value: choice,
             })),
         },
     },

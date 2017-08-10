@@ -186,7 +186,7 @@ export default [
         controlType: 'choices',
         controlGroup: 'Labels',
         controlOptions: {
-            choices: ['loc', 'name', 'd => `${d.name} (${d.loc})`'].map(prop => ({
+            choices: ['loc', 'name', `d => \`\${d.name} (\${d.loc})\``].map(prop => ({
                 label: prop,
                 value: prop,
             })),

@@ -30,6 +30,13 @@ export default class Header extends Component {
                     >
                         GitHub
                     </a>
+                    <a
+                        href="http://nivo.rocks/storybook/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        storybook
+                    </a>
                 </nav>
             </header>
         )

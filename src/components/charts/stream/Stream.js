@@ -7,16 +7,14 @@
  * file that was distributed with this source code.
  */
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
-import { ResponsiveLine } from 'nivo'
+import { ResponsiveStream } from 'nivo'
 import ChartHeader from '../../ChartHeader'
 import ChartTabs from '../../ChartTabs'
-import LineControls from './LineControls'
+import StreamControls from './StreamControls'
 import generateCode from '../../../generateChartCode'
 import ComponentPropsDocumentation from '../../ComponentPropsDocumentation'
 import properties from './properties'
-import config from '../../../config'
 import { settingsMapper } from '../../../lib/settings'
 
 const mapSettings = settingsMapper(
@@ -39,7 +37,7 @@ const mapSettings = settingsMapper(
     }
 )
 
-export default class Line extends Component {
+export default class Stream extends Component {
     state = {
         settings: {
             margin: {
@@ -71,35 +69,26 @@ export default class Line extends Component {
                 orient: 'bottom',
                 tickSize: 5,
                 tickPadding: 5,
-                legend: 'country code',
+                legend: '',
                 legendOffset: 36,
             },
-            'enable axisLeft': true,
+            'enable axisLeft': false,
             axisLeft: {
                 orient: 'left',
                 tickSize: 5,
                 tickPadding: 5,
-                legend: 'count',
+                legend: '',
                 legendOffset: -40,
             },
             enableGridX: true,
-            enableGridY: true,
+            enableGridY: false,
 
-            stacked: true,
+            curve: 'catmullRom',
+            offsetType: 'wiggle',
+            order: 'none',
 
-            curve: 'linear',
             colors: 'nivo',
-            colorBy: 'id',
-
-            // markers
-            enableMarkers: true,
-            markersSize: 12,
-            markersColor: 'inherit:darker(.3)',
-            markersBorderWidth: 2,
-            markersBorderColor: '#fff',
-            enableMarkersLabel: true,
-            markersLabel: 'y',
-            markersLabelYOffset: -12,
+            fillOpacity: 0.85,
 
             // motion
             animate: true,
@@ -113,19 +102,15 @@ export default class Line extends Component {
     }
 
     render() {
-        const { data, diceRoll } = this.props
+        const { data, keys, diceRoll } = this.props
         const { settings } = this.state
 
         const mappedSettings = mapSettings(settings)
 
-        const code = generateCode('Line', mappedSettings)
+        const code = generateCode('Stream', mappedSettings)
 
         const header = (
-            <ChartHeader
-                chartClass="Line"
-                tags={['line', 'basics', 'isomorphic', 'nivo-api']}
-                diceRoll={diceRoll}
-            />
+            <ChartHeader chartClass="Stream" tags={['stream', 'isomorphic']} diceRoll={diceRoll} />
         )
 
         return (
@@ -135,12 +120,12 @@ export default class Line extends Component {
                         {header}
                     </MediaQuery>
                     <div className="main-chart main-chart-horizontal">
-                        <ChartTabs chartClass="line" code={code} data={data}>
-                            <ResponsiveLine data={data} {...mappedSettings} />
+                        <ChartTabs chartClass="stream" code={code} data={data}>
+                            <ResponsiveStream data={data} keys={keys} {...mappedSettings} />
                         </ChartTabs>
                     </div>
-                    <LineControls
-                        scope="Line"
+                    <StreamControls
+                        scope="Stream"
                         settings={settings}
                         onChange={this.handleSettingsUpdate}
                     />
@@ -149,37 +134,14 @@ export default class Line extends Component {
                     <MediaQuery query="(min-width: 1000px)">
                         {header}
                     </MediaQuery>
-                    <p className="description">Line chart with stacking ability.</p>
-                    <p>
-                        Given an array of data series having an id and a nested array of points
-                        (with x, y properties), it will compute the line for each data serie.&nbsp;
-                        If stacked is true, y values will be automatically aggregated.
-                    </p>
+                    <p className="description">Stream chart.</p>
                     <p className="description">
                         The responsive alternative of this component is{' '}
-                        <code>&lt;ResponsiveLine /&gt;</code>.
-                    </p>
-                    <p className="description">
-                        This component is available in the{' '}
-                        <a
-                            href="https://github.com/plouc/nivo-api"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            nivo-api
-                        </a>, see{' '}
-                        <a
-                            href={`${config.nivoApiUrl}/samples/line`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            sample
-                        </a>{' '}
-                        or <Link to="/line/api">try it using the API client</Link>.
+                        <code>&lt;ResponsiveStream /&gt;</code>.
                     </p>
                 </div>
                 <div className="grid_item grid_item-full">
-                    <ComponentPropsDocumentation chartClass="Line" properties={properties} />
+                    <ComponentPropsDocumentation chartClass="Stream" properties={properties} />
                 </div>
             </div>
         )

@@ -1,5 +1,9 @@
 import React from 'react'
-import { Line, LineDefaultProps as defaults, curvePropKeys } from 'nivo'
+import {
+    LineDefaultProps as defaults,
+    curvePropKeys,
+    MarkersItemDefaultProps as markerDefaults,
+} from 'nivo'
 import { marginProperties, axesProperties } from '../../componentProperties'
 
 const curveOptions = []
@@ -24,7 +28,7 @@ export default [
                 not required if using&nbsp;<code>&lt;ResponsiveLine&nbsp;/&gt;</code>.
             </span>
         ),
-        help: 'Chart width.',
+        help: 'Chart width (px).',
         type: '{number}',
         required: true,
         controlType: 'range',
@@ -44,7 +48,7 @@ export default [
                 not required if using&nbsp;<code>&lt;ResponsiveLine&nbsp;/&gt;</code>.
             </span>
         ),
-        help: 'Chart height.',
+        help: 'Chart height (px).',
         type: '{number}',
         required: true,
         controlType: 'range',
@@ -132,7 +136,7 @@ export default [
     },
     {
         key: 'markersSize',
-        description: 'Size of the markers.',
+        description: 'Size of the markers (px).',
         type: '{number}',
         required: false,
         default: defaults.markersSize,
@@ -156,7 +160,7 @@ export default [
     },
     {
         key: 'markersBorderWidth',
-        description: 'Width of the markers border.',
+        description: 'Width of the markers border (px).',
         type: '{number}',
         required: false,
         default: defaults.markersBorderWidth,
@@ -177,6 +181,46 @@ export default [
         default: defaults.markersBorderColor,
         controlType: 'color',
         controlGroup: 'Markers',
+    },
+    {
+        key: 'enableMarkersLabel',
+        scopes: '*',
+        description: 'Enable/disable markers label.',
+        type: '{boolean}',
+        required: false,
+        default: defaults.enableMarkersLabel,
+        controlType: 'switch',
+        controlGroup: 'Markers',
+    },
+    {
+        key: 'markersLabel',
+        description:
+            'Property to use to determine marker label. If a function is provided, it will receive current value and serie and must return a label.',
+        type: '{string}',
+        required: false,
+        //default: markersDefaults.label,
+        controlType: 'choices',
+        controlGroup: 'Markers',
+        controlOptions: {
+            choices: ['y', 'x', 'serie.id', `d => \`\${d.x}: \${d.y}\``].map(choice => ({
+                label: choice,
+                value: choice,
+            })),
+        },
+    },
+    {
+        key: 'markersLabelYOffset',
+        description: 'Label Y offset from marker shape (px).',
+        type: '{number}',
+        required: false,
+        default: markerDefaults.labelYOffset,
+        controlType: 'range',
+        controlGroup: 'Markers',
+        controlOptions: {
+            unit: 'px',
+            min: -24,
+            max: 24,
+        },
     },
     ...axesProperties,
     {

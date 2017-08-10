@@ -17,6 +17,8 @@ import BarAPI from './components/charts/bar/BarAPI'
 import LinePage from './components/charts/line/LinePage'
 import Line from './components/charts/line/Line'
 import LineAPI from './components/charts/line/LineAPI'
+import StreamPage from './components/charts/stream/StreamPage'
+import Stream from './components/charts/stream/Stream'
 import PiePage from './components/charts/pie/PiePage'
 import Pie from './components/charts/pie/Pie'
 import RadarPage from './components/charts/radar/RadarPage'
@@ -86,6 +88,21 @@ const SITEMAP = [
                         path: '/api',
                         label: '<Line /> HTTP API',
                         component: LineAPI,
+                    },
+                ],
+            },
+            {
+                className: 'stream',
+                path: '/stream',
+                label: 'Stream',
+                component: StreamPage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: '<Stream />',
+                        component: Stream,
+                        exact: true,
                     },
                 ],
             },

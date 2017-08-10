@@ -67,7 +67,7 @@ export default class TreeMapHTML extends Component {
 
         const colorBy = settings.colorBy === 'd => d.color' ? d => d.color : settings.colorBy
         const label =
-            settings.label === 'd => `${d.name} (${d.loc})`'
+            settings.label === `d => \`\${d.name} (\${d.loc})\``
                 ? d => `${d.name} (${d.loc})`
                 : settings.label
         const labelFormat = label === 'loc' ? settings.labelFormat : undefined

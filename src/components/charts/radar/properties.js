@@ -1,5 +1,10 @@
 import React from 'react'
-import { RadarDefaultProps as defaults, RadarMarkers, closedCurvePropKeys } from 'nivo'
+import {
+    RadarDefaultProps as defaults,
+    RadarMarkers,
+    closedCurvePropKeys,
+    MarkersItemDefaultProps as markerDefaults,
+} from 'nivo'
 import { marginProperties } from '../../componentProperties'
 
 const markersDefaults = RadarMarkers.defaultProps
@@ -90,7 +95,7 @@ export default [
     {
         key: 'colorBy',
         description:
-            'Property to use to determine node color. If a function is provided, it will receive current node data and must return a color',
+            'Property to use to determine node color. If a function is provided, it will receive current node data and must return a color.',
         type: '{string|Function}',
         required: false,
         default: defaults.colorBy,
@@ -125,7 +130,7 @@ export default [
     },
     {
         key: 'borderWidth',
-        description: 'Shape border width.',
+        description: 'Shape border width (px).',
         type: '{number}',
         required: false,
         default: defaults.borderWidth,
@@ -179,7 +184,7 @@ export default [
     },
     {
         key: 'gridLabelOffset',
-        description: 'Label offset from outer radius.',
+        description: 'Label offset from outer radius (px).',
         type: '{number}',
         required: false,
         default: defaults.gridLabelOffset,
@@ -203,7 +208,7 @@ export default [
     },
     {
         key: 'markersSize',
-        description: 'Size of the markers.',
+        description: 'Size of the markers (px).',
         type: '{number}',
         required: false,
         default: markersDefaults.size,
@@ -212,7 +217,7 @@ export default [
         controlOptions: {
             unit: 'px',
             min: 2,
-            max: 20,
+            max: 64,
         },
     },
     {
@@ -227,7 +232,7 @@ export default [
     },
     {
         key: 'markersBorderWidth',
-        description: 'Width of the markers border.',
+        description: 'Width of the markers border (px).',
         type: '{number}',
         required: false,
         default: markersDefaults.borderWidth,
@@ -248,6 +253,52 @@ export default [
         default: markersDefaults.borderColor,
         controlType: 'color',
         controlGroup: 'Markers',
+    },
+    {
+        key: 'enableMarkersLabel',
+        scopes: '*',
+        description: 'Enable/disable markers label.',
+        type: '{boolean}',
+        required: false,
+        default: markersDefaults.enableLabel,
+        controlType: 'switch',
+        controlGroup: 'Markers',
+    },
+    {
+        key: 'markersLabel',
+        description:
+            'Property to use to determine marker label. If a function is provided, it will receive current value and serie and must return a label.',
+        type: '{string}',
+        required: false,
+        default: markersDefaults.label,
+        controlType: 'choices',
+        controlGroup: 'Markers',
+        controlOptions: {
+            choices: [
+                'value',
+                'facet',
+                'serie.id',
+                `d => \`\${d.facet}: \${d.value}\``,
+                `d => \`\${d.serie.id}: \${d.value}\``,
+            ].map(choice => ({
+                label: choice,
+                value: choice,
+            })),
+        },
+    },
+    {
+        key: 'markersLabelYOffset',
+        description: 'Label Y offset from marker shape (px).',
+        type: '{number}',
+        required: false,
+        default: markerDefaults.labelYOffset,
+        controlType: 'range',
+        controlGroup: 'Markers',
+        controlOptions: {
+            unit: 'px',
+            min: -24,
+            max: 24,
+        },
     },
     {
         key: 'animate',

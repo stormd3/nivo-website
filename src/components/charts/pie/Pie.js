@@ -7,6 +7,22 @@ import { ResponsivePie } from 'nivo'
 import generateCode from '../../../generateChartCode'
 import ComponentPropsDocumentation from '../../ComponentPropsDocumentation'
 import properties from './properties'
+import { settingsMapper } from '../../../lib/settings'
+
+const mapSettings = settingsMapper({
+    colorBy: value => {
+        if (value === 'd => d.color') return d => d.color
+        return value
+    },
+    radialLabel: value => {
+        if (value === `d => \`\${d.id} (\${d.value})\``) return d => `${d.id} (${d.value})`
+        return value
+    },
+    sliceLabel: value => {
+        if (value === `d => \`\${d.id} (\${d.value})\``) return d => `${d.id} (${d.value})`
+        return value
+    },
+})
 
 export default class Pie extends Component {
     state = {
@@ -58,22 +74,9 @@ export default class Pie extends Component {
         const { data, diceRoll } = this.props
         const { settings } = this.state
 
-        const colorBy = settings.colorBy === 'd => d.color' ? d => d.color : settings.colorBy
-        const radialLabel =
-            settings.radialLabel === 'd => `${d.id} (${d.value})`'
-                ? d => `${d.id} (${d.value})`
-                : settings.radialLabel
-        const sliceLabel =
-            settings.sliceLabel === 'd => `${d.id} (${d.value})`'
-                ? d => `${d.id} (${d.value})`
-                : settings.sliceLabel
+        const mappedSettings = mapSettings(settings)
 
-        const code = generateCode('Pie', {
-            ...settings,
-            colorBy,
-            radialLabel,
-            sliceLabel,
-        })
+        const code = generateCode('Pie', mappedSettings)
 
         const header = (
             <ChartHeader
@@ -91,13 +94,7 @@ export default class Pie extends Component {
                     </MediaQuery>
                     <div className="main-chart">
                         <ChartTabs chartClass="pie" code={code} data={data}>
-                            <ResponsivePie
-                                data={data}
-                                {...settings}
-                                colorBy={colorBy}
-                                radialLabel={radialLabel}
-                                sliceLabel={sliceLabel}
-                            />
+                            <ResponsivePie data={data} {...mappedSettings} />
                         </ChartTabs>
                     </div>
                 </div>

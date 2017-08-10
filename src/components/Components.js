@@ -40,6 +40,20 @@ const defaultComponents = [
         extras: ['react', 'svg'],
     },
     {
+        key: 'stream',
+        path: '/stream',
+        name: '<Stream />',
+        className: 'stream',
+        extras: ['react', 'svg'],
+    },
+    {
+        key: 'responsive-stream',
+        path: '/stream',
+        name: '<ResponsiveStream />',
+        className: 'stream',
+        extras: ['react', 'svg'],
+    },
+    {
         key: 'line-api',
         path: '/line/api',
         name: '<Line /> HTTP API',
