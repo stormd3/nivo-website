@@ -119,7 +119,7 @@ export default [
         description: 'Defines how to compute line color.',
         type: '{string|Function}',
         required: false,
-        default: 'Nivo.defaults.colorRange',
+        default: defaults.colors,
         controlType: 'colors',
         controlGroup: 'Base',
     },

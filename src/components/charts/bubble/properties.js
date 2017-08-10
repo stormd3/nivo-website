@@ -215,8 +215,9 @@ export default [
             </span>
         ),
         help: 'Defines how to compute node color.',
+        type: '{string|Function|Array}',
         required: false,
-        default: 'Nivo.defaults.colorRange',
+        default: defaults.colors,
         controlType: 'colors',
         controlGroup: 'Base',
     },

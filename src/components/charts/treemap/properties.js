@@ -1,5 +1,8 @@
 import React from 'react'
 import { marginProperties } from '../../componentProperties'
+import { TreeMap } from 'nivo'
+
+const defaults = TreeMap.defaultProps
 
 /*
 [
@@ -92,8 +95,9 @@ export default [
         key: 'colors',
         scopes: '*',
         description: 'Defines how to compute node color.',
+        type: '{string|Function|Array}',
         required: false,
-        default: 'Nivo.defaults.colorRange',
+        default: defaults.colors,
         controlType: 'colors',
         controlGroup: 'Base',
     },

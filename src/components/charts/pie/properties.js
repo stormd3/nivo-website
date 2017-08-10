@@ -49,7 +49,7 @@ export default [
         key: 'colors',
         description: 'Defines how to compute slice color.',
         required: false,
-        default: 'Nivo.defaults.colorRange',
+        default: defaults.colors,
         controlType: 'colors',
         controlGroup: 'Base',
     },
