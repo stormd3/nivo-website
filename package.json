@@ -16,6 +16,7 @@
     "d3-scale-chromatic": "^1.1.1",
     "d3-time": "^1.0.7",
     "d3-time-format": "^2.0.5",
+    "dedent-js": "^1.0.1",
     "lodash": "^4.17.4",
     "nivo": "^0.8.0",
     "nivo-generators": "^0.3.0",

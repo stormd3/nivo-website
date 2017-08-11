@@ -52,6 +52,10 @@ code,
       */
 }
 
+.code-block {
+    display: block;
+}
+
 .code-number {
     font-weight: bold;
     color: var(--code-number-color);

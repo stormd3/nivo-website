@@ -1,4 +1,5 @@
 import React from 'react'
+import dedent from 'dedent-js'
 import {
     LineDefaultProps as defaults,
     curvePropKeys,
@@ -19,7 +20,25 @@ curvePropKeys.forEach((curve, i) => {
 })
 
 export default [
-    // ['data', 'array', true, '', <div>The chart data.</div>],
+    {
+        key: 'data',
+        scopes: '*',
+        description: (
+            <div>
+                Chart data, which must conform to this structure:
+                <pre className="code code-block">
+                    {dedent`
+                        Array.<{
+                            id: {string|number}
+                            data: Array.<{ x: {string|number}, y: {number} }}>
+                        }>
+                    `}
+                </pre>
+            </div>
+        ),
+        type: 'see description',
+        required: true,
+    },
     {
         key: 'width',
         scopes: ['api'],

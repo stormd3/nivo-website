@@ -36,7 +36,7 @@ export default class ComponentPropsTable extends PureComponent {
         const { properties } = this.props
 
         return (
-            <table>
+            <table className="table">
                 <thead>
                     <tr>
                         <th>property</th>

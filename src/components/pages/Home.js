@@ -194,7 +194,7 @@ class Home extends Component {
                         margin={{ top: 10, bottom: 15, left: 24, right: 10 }}
                         theme={homeTheme}
                         colors={colors}
-                        fillOpacity={.75}
+                        fillOpacity={0.75}
                         animate={false}
                         isInteractive={false}
                         {...commonAxes}
