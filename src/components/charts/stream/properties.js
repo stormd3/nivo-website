@@ -170,6 +170,16 @@ export default [
         controlGroup: 'Interactivity',
     },
     {
+        key: 'enableStackTooltip',
+        scopes: ['Stream'],
+        description: `Enable/disable stack tooltip ('isInteractive' must also be 'true').`,
+        type: '{boolean}',
+        required: false,
+        default: defaults.enableStackTooltip,
+        controlType: 'switch',
+        controlGroup: 'Interactivity',
+    },
+    {
         key: 'animate',
         scopes: ['Stream'],
         description: 'Enable/disable transitions.',

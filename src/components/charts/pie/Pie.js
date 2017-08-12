@@ -46,7 +46,7 @@ export default class Pie extends Component {
             // radial labels
             enableRadialLabels: true,
             radialLabel: 'id',
-            radialLabelsSkipAngle: 0,
+            radialLabelsSkipAngle: 5,
             radialLabelsTextXOffset: 6,
             radialLabelsTextColor: 'inherit:darker(1)',
             radialLabelsLinkOffset: 0,
@@ -55,9 +55,10 @@ export default class Pie extends Component {
             radialLabelsLinkStrokeWidth: 2,
             radialLabelsLinkColor: 'inherit',
 
+            // slice labels
             enableSlicesLabels: true,
             sliceLabel: 'value',
-            slicesLabelsSkipAngle: 0,
+            slicesLabelsSkipAngle: 5,
             slicesLabelsTextColor: 'inherit:darker(1)',
 
             // motion

@@ -97,6 +97,9 @@ export default class Stream extends Component {
 
             // interactivity
             isInteractive: true,
+
+            // stack tooltip
+            enableStackTooltip: true,
         },
     }
 
