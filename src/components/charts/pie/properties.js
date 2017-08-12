@@ -1,8 +1,6 @@
 import React from 'react'
-import { Pie } from 'nivo'
+import { PieDefaultProps as defaults } from 'nivo'
 import { marginProperties } from '../../componentProperties'
-
-const defaults = Pie.defaultProps
 
 export default [
     {
