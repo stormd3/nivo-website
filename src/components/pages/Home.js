@@ -118,6 +118,7 @@ class Home extends Component {
                         theme={homeTheme}
                         colors={colors}
                         animate={false}
+                        isInteractive={false}
                         {...commonAxes}
                         markersSize={7}
                         markersBorderWidth={1}
@@ -336,6 +337,7 @@ class Home extends Component {
                             {...commonAxes}
                             stacked={true}
                             animate={false}
+                            isInteractive={false}
                             markersSize={7}
                             markersBorderWidth={1}
                             markersBorderColor="#e25d47"
