@@ -160,6 +160,16 @@ export default [
         controlGroup: 'Grid',
     },
     {
+        key: 'isInteractive',
+        scopes: ['Stream'],
+        description: 'Enable/disable interactivity.',
+        type: '{boolean}',
+        required: false,
+        default: defaults.isInteractive,
+        controlType: 'switch',
+        controlGroup: 'Interactivity',
+    },
+    {
         key: 'animate',
         scopes: ['Stream'],
         description: 'Enable/disable transitions.',

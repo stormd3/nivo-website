@@ -26,9 +26,14 @@ export default class BubblePlaceholdersPage extends Component {
             leavesOnly: false,
             colors: 'nivo',
             colorBy: 'depth',
+
+            // motion
             animate: true,
             motionStiffness: 120,
             motionDamping: 10,
+
+            // interactivity
+            isInteractive: true,
         },
     }
 

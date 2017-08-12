@@ -94,6 +94,9 @@ export default class Stream extends Component {
             animate: true,
             motionStiffness: 90,
             motionDamping: 15,
+
+            // interactivity
+            isInteractive: true,
         },
     }
 

@@ -73,6 +73,7 @@ export default class Line extends Component {
                 tickPadding: 5,
                 legend: 'country code',
                 legendOffset: 36,
+                legendPosition: 'center',
             },
             'enable axisLeft': true,
             axisLeft: {
@@ -81,6 +82,7 @@ export default class Line extends Component {
                 tickPadding: 5,
                 legend: 'count',
                 legendOffset: -40,
+                legendPosition: 'center',
             },
             enableGridX: true,
             enableGridY: true,

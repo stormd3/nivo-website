@@ -352,6 +352,16 @@ export default [
         },
     },
     {
+        key: 'isInteractive',
+        scopes: ['Bubble', 'BubblePlaceholders'],
+        description: 'Enable/disable interactivity.',
+        type: '{boolean}',
+        required: false,
+        default: defaults.isInteractive,
+        controlType: 'switch',
+        controlGroup: 'Interactivity',
+    },
+    {
         key: 'animate',
         scopes: ['Bubble', 'BubblePlaceholders'],
         description: 'Enable/disable transitions.',

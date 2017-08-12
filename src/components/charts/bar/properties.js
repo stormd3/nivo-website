@@ -190,6 +190,16 @@ export default [
     },
     */
     {
+        key: 'isInteractive',
+        scopes: ['Bar'],
+        description: 'Enable/disable interactivity.',
+        type: '{boolean}',
+        required: false,
+        default: defaults.isInteractive,
+        controlType: 'switch',
+        controlGroup: 'Interactivity',
+    },
+    {
         key: 'animate',
         scopes: ['Bar'],
         description: 'Enable/disable transitions.',

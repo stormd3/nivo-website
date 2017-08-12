@@ -48,9 +48,14 @@ export default class BubbleReact extends Component {
             labelTextDY: 4,
             borderWidth: 0,
             borderColor: 'inherit:darker(.3)',
+
+            // motion
             animate: true,
             motionStiffness: 120,
             motionDamping: 10,
+
+            // interactivity
+            isInteractive: true,
         },
     }
 

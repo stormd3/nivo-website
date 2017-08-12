@@ -60,9 +60,13 @@ export default class Pie extends Component {
             slicesLabelsSkipAngle: 0,
             slicesLabelsTextColor: 'inherit:darker(1)',
 
+            // motion
             animate: true,
             motionStiffness: 90,
             motionDamping: 15,
+
+            // isInteractive
+            isInteractive: true,
         },
     }
 

@@ -72,9 +72,14 @@ class Bars extends Component {
             enableLabels: true,
             labelsTextColor: 'inherit:darker(1.6)',
             labelsLinkColor: 'inherit',
+
+            // motion
             animate: true,
             motionStiffness: 90,
             motionDamping: 15,
+
+            // interactivity
+            isInteractive: true,
         },
     }
 
