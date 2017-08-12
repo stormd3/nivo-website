@@ -2,19 +2,19 @@ import React from 'react'
 import dedent from 'dedent-js'
 import {
     LineDefaultProps as defaults,
-    curvePropKeys,
+    lineCurvePropKeys,
     MarkersItemDefaultProps as markerDefaults,
 } from 'nivo'
 import { marginProperties, axesProperties } from '../../componentProperties'
 
 const curveOptions = []
-curvePropKeys.forEach((curve, i) => {
+lineCurvePropKeys.forEach((curve, i) => {
     curveOptions.push(
         <code key={curve}>
             '{curve}'
         </code>
     )
-    if (i < curvePropKeys.length - 1) {
+    if (i < lineCurvePropKeys.length - 1) {
         curveOptions.push(<span key={`${curve}.comma`}>,&nbsp;</span>)
     }
 })
@@ -105,7 +105,7 @@ export default [
         controlType: 'choices',
         controlGroup: 'Base',
         controlOptions: {
-            choices: curvePropKeys.map(key => ({
+            choices: lineCurvePropKeys.map(key => ({
                 label: key,
                 value: key,
             })),
