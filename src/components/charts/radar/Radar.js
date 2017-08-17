@@ -1,3 +1,11 @@
+/*
+ * This file is part of the nivo project.
+ *
+ * Copyright 2016-present, Raphaël Benitte.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import MediaQuery from 'react-responsive'
@@ -5,8 +13,8 @@ import ChartHeader from '../../ChartHeader'
 import ChartTabs from '../../ChartTabs'
 import RadarControls from './RadarControls'
 import { ResponsiveRadar } from 'nivo'
-import generateCode from '../../../generateChartCode'
-import ComponentPropsDocumentation from '../../ComponentPropsDocumentation'
+import generateCode from '../../../lib/generateChartCode'
+import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
 import properties from './properties'
 import { settingsMapper } from '../../../lib/settings'
 

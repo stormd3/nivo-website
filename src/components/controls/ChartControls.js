@@ -57,7 +57,6 @@ export default class ChartControls extends Component {
     }
 
     handleTextUpdate = key => e => {
-        console.log('handleTextUpdate', e.target.value)
         const { onChange, settings } = this.props
         onChange(_.merge({}, settings, _.set({}, key, e.target.value)))
     }

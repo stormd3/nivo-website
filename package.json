@@ -18,7 +18,7 @@
     "d3-time-format": "^2.0.5",
     "dedent-js": "^1.0.1",
     "lodash": "^4.17.4",
-    "nivo": "^0.8.0",
+    "nivo": "^0.15.0",
     "nivo-generators": "^0.3.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
@@ -38,6 +38,6 @@
     "analyze": "source-map-explorer build/static/js/main.*",
     "fmt": "prettier --print-width=100 --tab-width=4 --bracket-spacing --no-semi --trailing-comma es5 --single-quote --write 'src/**/*.js' 'src/**/*.css'",
     "fmt:check": "prettier --print-width=100 --tab-width=4 --bracket-spacing --no-semi --trailing-comma es5 --single-quote --list-different 'src/**/*.js' 'src/**/*.css'",
-    "ghpages:publish": "npm run build && gh-pages -d build -r git@github.com:plouc/nivo.git -b gh-pages"
+    "demo:publish": "npm run build && gh-pages -d build -r git@github.com:plouc/nivo.git -b gh-pages"
   }
 }

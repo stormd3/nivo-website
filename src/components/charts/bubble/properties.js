@@ -1,25 +1,20 @@
+/*
+ * This file is part of the nivo project.
+ *
+ * Copyright 2016-present, Raphaël Benitte.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Bubble } from 'nivo'
-import { marginProperties } from '../../componentProperties'
+import { marginProperties } from '../../../lib/componentProperties'
 
 const defaults = Bubble.defaultProps
 
 /*
 [
-    [
-        'value',
-        'string|function',
-        true,
-        <code className="code-string">"value"</code>,
-        <span>
-            define value accessor, if string given, will
-            use <code>datum[value]</code>,<br />if
-            function given, it will be invoked for each
-            node and will receive the node as first
-            argument, it must the node value.
-        </span>,
-    ],
     [
         'borderColor',
         'any',
@@ -194,6 +189,19 @@ export default [
             max: 1000,
             step: 5,
         },
+    },
+    {
+        key: 'value',
+        description: (
+            <span>
+                define value accessor, if string given, will use <code>datum[value]</code>,<br />if
+                function given, it will be invoked for each node and will receive the node as first
+                argument, it must return the node value.
+            </span>
+        ),
+        type: '{string|Function}',
+        required: false,
+        default: defaults.value,
     },
     {
         key: 'leavesOnly',

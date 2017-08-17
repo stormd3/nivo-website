@@ -1,6 +1,14 @@
+/*
+ * This file is part of the nivo project.
+ *
+ * Copyright 2016-present, Raphaël Benitte.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 import React from 'react'
 import { PieDefaultProps as defaults } from 'nivo'
-import { marginProperties } from '../../componentProperties'
+import { marginProperties } from '../../../lib/componentProperties'
 
 export default [
     {
@@ -45,7 +53,8 @@ export default [
     },
     {
         key: 'colors',
-        description: 'Defines how to compute slice color.',
+        description: 'Defines color range.',
+        type: '{string|Function|Array}',
         required: false,
         default: defaults.colors,
         controlType: 'colors',

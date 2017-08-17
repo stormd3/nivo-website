@@ -1,7 +1,14 @@
+/*
+ * This file is part of the nivo project.
+ *
+ * Copyright 2016-present, Raphaël Benitte.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 import React from 'react'
-import dedent from 'dedent-js'
 import { Bar } from 'nivo'
-import { marginProperties, axesProperties } from '../../componentProperties'
+import { marginProperties, axesProperties } from '../../../lib/componentProperties'
 
 const defaults = Bar.defaultProps
 
@@ -9,21 +16,26 @@ export default [
     {
         key: 'data',
         scopes: '*',
-        description: (
-            <div>
-                Chart data, which must conform to this structure:
-                <pre className="code code-block">
-                    {dedent`
-                        Array.<{
-                            id: {string|number}
-                            data: Array.<{ x: {string|number}, y: {number} }}>
-                        }>
-                    `}
-                </pre>
-            </div>
-        ),
-        type: 'see description',
+        description: 'Chart data.',
+        type: '{Array.<Object>}',
         required: true,
+    },
+    {
+        key: 'indexBy',
+        scopes: '*',
+        description:
+            'Key to use to index the data, this key must exist in each data item. You can also provide a function which will receive the data item and must return the desired index',
+        type: '{string|Function}',
+        required: false,
+        default: defaults.indexBy,
+    },
+    {
+        key: 'keys',
+        scopes: '*',
+        description: 'Keys to use to determine each serie.',
+        type: '{Array.<string>}',
+        required: false,
+        default: defaults.keys,
     },
     {
         key: 'width',
@@ -82,36 +94,53 @@ export default [
         },
     },
     {
+        key: 'layout',
+        scopes: '*',
+        description: `How to display bars, must be one of: 'horizontal', 'vertical'.`,
+        type: '{string}',
+        required: false,
+        default: defaults.layout,
+        controlType: 'choices',
+        controlGroup: 'Base',
+        controlOptions: {
+            choices: [
+                { label: 'horizontal', value: 'horizontal' },
+                { label: 'vertical', value: 'vertical' },
+            ],
+        },
+    },
+    {
         key: 'colors',
         scopes: '*',
-        description: 'Defines how to compute bars color.',
+        description: 'Defines color range.',
         type: '{string|Function|Array}',
         required: false,
-        default: defaults.colors,
+        default: 'nivo',
         controlType: 'colors',
         controlGroup: 'Base',
     },
     {
         key: 'colorBy',
         scopes: '*',
-        description: 'Property to use to determine node color.',
+        description:
+            'Property to use to determine node color. If a function is provided, it will receive current node data and must return a color.',
         required: false,
-        default: defaults.colorBy,
+        default: 'id',
         controlType: 'choices',
         controlGroup: 'Base',
         controlOptions: {
             choices: [
                 {
-                    label: 'serie.id',
-                    value: 'serie.id',
+                    label: 'id',
+                    value: 'id',
                 },
                 {
-                    label: 'd => d.serie.color',
-                    value: 'd => d.serie.color',
+                    label: 'index',
+                    value: 'index',
                 },
                 {
-                    label: 'd => d.color',
-                    value: 'd => d.color',
+                    label: `({ id, data }) => data[\`\${id}Color\`]`,
+                    value: `({ id, data }) => data[\`\${id}Color\`]`,
                 },
             ],
         },
@@ -183,12 +212,6 @@ export default [
         controlType: 'switch',
         controlGroup: 'Grid',
     },
-    /*
-    {
-        name: 'Axes',
-        controls: axesControls,
-    },
-    */
     {
         key: 'isInteractive',
         scopes: ['Bar'],
@@ -205,7 +228,7 @@ export default [
         description: 'Enable/disable transitions.',
         type: '{boolean}',
         required: false,
-        default: defaults.animate,
+        default: true,
         controlType: 'switch',
         controlGroup: 'Animation',
     },

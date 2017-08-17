@@ -1,21 +1,20 @@
 /*
  * This file is part of the nivo project.
  *
- * (c) 2016 Raphaël Benitte
+ * Copyright 2016-present, Raphaël Benitte.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
 import ChartHeader from '../../ChartHeader'
 import ChartTabs from '../../ChartTabs'
-import generateCode from '../../../generateChartCode'
+import generateCode from '../../../lib/generateChartCode'
 import CalendarControls from './CalendarControls'
 import { ResponsiveCalendar } from 'nivo'
-import ComponentPropsDocumentation from '../../ComponentPropsDocumentation'
+import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
 import properties from './properties'
 
 export default class Calendar extends Component {

@@ -112,6 +112,20 @@ const defaultComponents = [
         extras: ['react', 'svg'],
     },
     {
+        key: 'sunburst',
+        path: '/sunburst',
+        name: '<Sunburst />',
+        className: 'sunburst',
+        extras: ['react', 'svg'],
+    },
+    {
+        key: 'responsive-sunburst',
+        path: '/sunburst',
+        name: '<ResponsiveSunburst />',
+        className: 'sunburst',
+        extras: ['react', 'svg'],
+    },
+    {
         key: 'bubble-placeholders',
         path: '/bubble/placeholders',
         name: '<BubblePlaceholders />',

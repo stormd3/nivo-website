@@ -1,12 +1,11 @@
 /*
  * This file is part of the nivo project.
  *
- * (c) 2016 Raphaël Benitte
+ * Copyright 2016-present, Raphaël Benitte.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 import React, { Component } from 'react'
 import _ from 'lodash'
 import { Link } from 'react-router-dom'
@@ -14,10 +13,10 @@ import MediaQuery from 'react-responsive'
 import { ResponsiveTreeMapHTML } from 'nivo'
 import ChartHeader from '../../ChartHeader'
 import TreeMapControls from './TreeMapControls'
-import generateCode from '../../../generateChartCode'
+import generateCode from '../../../lib/generateChartCode'
 import ChartTabs from '../../ChartTabs'
 import config from '../../../config'
-import ComponentPropsDocumentation from '../../ComponentPropsDocumentation'
+import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
 import properties from './properties'
 
 export default class TreeMapHTML extends Component {

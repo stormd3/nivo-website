@@ -1,7 +1,7 @@
 /*
  * This file is part of the nivo project.
  *
- * (c) 2016 Raphaël Benitte
+ * Copyright 2016-present, Raphaël Benitte.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,11 +13,12 @@ import MediaQuery from 'react-responsive'
 import { ResponsiveBubble } from 'nivo'
 import ChartHeader from '../../ChartHeader'
 import ChartTabs from '../../ChartTabs'
-import generateCode from '../../../generateChartCode'
+import generateCode from '../../../lib/generateChartCode'
 import BubbleControls from './BubbleControls'
-import ComponentPropsDocumentation from '../../ComponentPropsDocumentation'
+import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
 import properties from './properties'
 import { settingsMapper } from '../../../lib/settings'
+import nivoTheme from '../../../nivoTheme'
 
 const mapSettings = settingsMapper({
     colorBy: value => {
@@ -83,7 +84,11 @@ export default class BubbleReact extends Component {
                     </MediaQuery>
                     <div className="main-chart">
                         <ChartTabs chartClass="bubble" code={code} data={root}>
-                            <ResponsiveBubble root={_.cloneDeep(root)} {...mappedSettings} />
+                            <ResponsiveBubble
+                                root={_.cloneDeep(root)}
+                                {...mappedSettings}
+                                theme={nivoTheme}
+                            />
                         </ChartTabs>
                     </div>
                 </div>

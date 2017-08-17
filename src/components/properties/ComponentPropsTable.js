@@ -5,7 +5,19 @@ const defaultValue = value => {
     if (_.isPlainObject(value)) {
         return `${JSON.stringify(value)}`
     } else if (_.isArray(value)) {
-        return `[${value.join(', ')}}]`
+        const elements = value.reduce((acc, v, i) => {
+            acc.push(React.cloneElement(defaultValue(v), { key: i }))
+            if (i + 1 < value.length) {
+                acc.push(<span key={`${i}.comma`}>, </span>)
+            }
+            return acc
+        }, [])
+
+        return (
+            <span>
+                [{elements}]
+            </span>
+        )
     } else if (_.isString(value)) {
         return (
             <code className="code-string">

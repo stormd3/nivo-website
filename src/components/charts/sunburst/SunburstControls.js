@@ -13,11 +13,11 @@ import { getPropertiesGroupsControls } from '../../../lib/componentProperties'
 import properties from './properties'
 
 const groupsByScope = {
-    Radar: getPropertiesGroupsControls(properties, 'Radar'),
+    Sunburst: getPropertiesGroupsControls(properties, 'Sunburst'),
     api: getPropertiesGroupsControls(properties, 'api'),
 }
 
-export default class RadarControls extends PureComponent {
+export default class SunburstControls extends PureComponent {
     static propTypes = {
         settings: PropTypes.object.isRequired,
         onChange: PropTypes.func.isRequired,
@@ -31,7 +31,7 @@ export default class RadarControls extends PureComponent {
 
         return (
             <ChartControls
-                ns="radar"
+                ns="sunburst"
                 scope={scope}
                 settings={settings}
                 onChange={onChange}

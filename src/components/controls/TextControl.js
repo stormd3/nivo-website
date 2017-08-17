@@ -5,7 +5,7 @@ export default class TextControl extends Component {
     static propTypes = {
         id: PropTypes.string.isRequired,
         label: PropTypes.string.isRequired,
-        value: PropTypes.bool.isRequired,
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
         onChange: PropTypes.func.isRequired,
         help: PropTypes.string.isRequired,
     }
@@ -19,7 +19,7 @@ export default class TextControl extends Component {
 
         return (
             <div className="chart-controls_item">
-                <input id={id} type="text" checked={value} onChange={onChange} />
+                <input id={id} type="text" value={value} onChange={onChange} />
                 <label htmlFor={id} />
                 &nbsp;
                 <label htmlFor={id}>{label}</label>

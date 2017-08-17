@@ -1,7 +1,7 @@
 /*
  * This file is part of the nivo project.
  *
- * (c) 2016 Raphaël Benitte
+ * (c) 2016-today Raphaël Benitte
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,6 +27,8 @@ import BubblePage from './components/charts/bubble/BubblePage'
 import BubbleReact from './components/charts/bubble/BubbleReact'
 import BubbleAPI from './components/charts/bubble/BubbleAPI'
 import BubblePlaceholders from './components/charts/bubble/BubblePlaceholders'
+import SunburstPage from './components/charts/sunburst/SunburstPage'
+import Sunburst from './components/charts/sunburst/Sunburst'
 import TreeMapPage from './components/charts/treemap/TreeMapPage'
 import TreeMapReact from './components/charts/treemap/TreeMapReact'
 import TreeMapHTML from './components/charts/treemap/TreeMapHTML'
@@ -166,6 +168,21 @@ const SITEMAP = [
                         path: '/api',
                         label: '<Bubble /> HTTP API',
                         component: BubbleAPI,
+                    },
+                ],
+            },
+            {
+                className: 'sunburst',
+                path: '/sunburst',
+                label: 'Sunburst',
+                component: SunburstPage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: '<Sunburst />',
+                        component: Sunburst,
+                        exact: true,
                     },
                 ],
             },

@@ -10,32 +10,40 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import { generateLibTree } from 'nivo-generators'
 
-class ChordPage extends Component {
+export default class SunburstPage extends Component {
     state = {
-        libTree: generateLibTree(),
+        data: generateLibTree(),
     }
 
-    handleDiceRoll = () => {
-        this.setState({ libTree: generateLibTree() })
+    diceRoll = () => {
+        this.setState({
+            data: generateLibTree(),
+        })
+    }
+
+    handleDataUpdate = data => {
+        this.setState({ data })
     }
 
     render() {
         const { childRoutes } = this.props
-        const { libTree } = this.state
+        const { data } = this.state
 
         return (
-            <div className="inner-content chord_page">
-                <Helmet title="Chord component" />
+            <div className="inner-content pie_page">
+                <Helmet title="Sunburst components" />
                 {childRoutes.map(childRoute => {
                     return React.cloneElement(childRoute, {
                         component: null,
                         render: () =>
-                            <childRoute.props.component root={libTree} diceRoll={this.diceRoll} />,
+                            <childRoute.props.component
+                                data={data}
+                                diceRoll={this.diceRoll}
+                                onDataUpdate={this.handleDataUpdate}
+                            />,
                     })
                 })}
             </div>
         )
     }
 }
-
-export default ChordPage

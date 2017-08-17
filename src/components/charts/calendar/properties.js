@@ -1,6 +1,14 @@
+/*
+ * This file is part of the nivo project.
+ *
+ * Copyright 2016-present, Raphaël Benitte.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 import React from 'react'
 import { Calendar } from 'nivo'
-import { marginProperties } from '../../componentProperties'
+import { marginProperties } from '../../../lib/componentProperties'
 
 const defaults = Calendar.defaultProps
 

@@ -104,9 +104,7 @@
         width: 100%;
     }
 
-    .nivo_components_item,
-    .nivo_components_item:nth-child(2n),
-    .nivo_components_item:nth-child(3n) {
+    .nivo_components_item:nth-child(1n) {
         width: 100%;
         margin-right: 0;
     }

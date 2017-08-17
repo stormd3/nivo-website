@@ -1,3 +1,11 @@
+/*
+ * This file is part of the nivo project.
+ *
+ * Copyright 2016-present, Raphaël Benitte.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 import React from 'react'
 import dedent from 'dedent-js'
 import {
@@ -5,7 +13,7 @@ import {
     lineCurvePropKeys,
     MarkersItemDefaultProps as markerDefaults,
 } from 'nivo'
-import { marginProperties, axesProperties } from '../../componentProperties'
+import { marginProperties, axesProperties } from '../../../lib/componentProperties'
 
 const curveOptions = []
 lineCurvePropKeys.forEach((curve, i) => {
@@ -114,8 +122,8 @@ export default [
     {
         key: 'colors',
         scopes: '*',
-        description: 'Defines how to compute line color.',
-        type: '{string|Function}',
+        description: 'Defines color range.',
+        type: '{string|Function|Array}',
         required: false,
         default: defaults.colors,
         controlType: 'colors',
@@ -124,7 +132,8 @@ export default [
     {
         key: 'colorBy',
         scopes: '*',
-        description: 'Property to use to determine line color.',
+        description:
+            'Property to use to determine node color. If a function is provided, it will receive current node data and must return a color.',
         required: false,
         default: defaults.colorBy,
         controlType: 'choices',
@@ -288,7 +297,7 @@ export default [
         description: 'Enable/disable transitions. ',
         type: '{boolean}',
         required: false,
-        default: defaults.animate,
+        default: true,
         controlType: 'switch',
         controlGroup: 'Animation',
     },

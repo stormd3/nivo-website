@@ -19,6 +19,7 @@ import {
     generateProgrammingLanguageStats,
     generateSerie,
     randColor,
+    generateCountriesData,
 } from 'nivo-generators'
 import {
     ResponsiveBubble,
@@ -31,6 +32,7 @@ import {
     ResponsiveVoronoi,
     ResponsiveRadar,
     ResponsiveStream,
+    ResponsiveSunburst,
 } from 'nivo'
 
 const colors = redColorRange
@@ -135,6 +137,7 @@ class Home extends Component {
                         enableLabel={false}
                         value="loc"
                         animate={false}
+                        isInteractive={false}
                         colors={colors}
                     />
                     <span className="home_item_label">
@@ -144,9 +147,13 @@ class Home extends Component {
                 <MediaQuery query="(min-width: 1000px)" className="home_item">
                     <Link className="home_item" to="/bar">
                         <ResponsiveBar
-                            data={generateDrinkStats(8)}
+                            data={generateCountriesData(['hot dogs', 'burgers', 'sandwich'], {
+                                size: 11,
+                            })}
+                            indexBy="country"
+                            keys={['hot dogs', 'burgers', 'sandwich']}
                             groupMode="grouped"
-                            margin={{ top: 10, bottom: 15, left: 24, right: 0 }}
+                            margin={{ top: 10, bottom: 15, left: 24, right: 10 }}
                             xPadding={0.2}
                             colors={colors}
                             theme={homeTheme}
@@ -163,13 +170,21 @@ class Home extends Component {
                 <MediaQuery query="(min-width: 1200px)" className="home_item">
                     <Link className="home_item" to="/bar">
                         <ResponsiveBar
-                            data={generateDrinkStats(12)}
+                            data={generateCountriesData(
+                                ['hot dogs', 'burgers', 'sandwich', 'kebab', 'fries', 'donut'],
+                                { size: 9 }
+                            )}
+                            indexBy="country"
+                            keys={['hot dogs', 'burgers', 'sandwich', 'kebab', 'fries', 'donut']}
                             groupMode="stacked"
+                            layout="horizontal"
                             margin={{ top: 10, bottom: 15, left: 24, right: 0 }}
                             xPadding={0.4}
                             colors={colors}
                             theme={homeTheme}
                             enableLabels={false}
+                            enableGridX={true}
+                            enableGridY={false}
                             animate={false}
                             isInteractive={false}
                             {...commonAxes}
@@ -308,17 +323,18 @@ class Home extends Component {
                     </Link>
                 </MediaQuery>
                 <MediaQuery query="(min-width: 1000px)" className="home_item">
-                    <Link className="home_item" to="/bubble">
-                        <ResponsiveBubble
-                            root={generateLibTree()}
+                    <Link className="home_item" to="/sunburst">
+                        <ResponsiveSunburst
+                            data={generateLibTree()}
                             identity="name"
-                            enableLabel={false}
                             value="loc"
                             animate={false}
+                            isInteractive={false}
                             colors={colors}
+                            borderColor="#e25d47"
                         />
                         <span className="home_item_label">
-                            <span>Bubble documentation</span>
+                            <span>Sunburst documentation</span>
                         </span>
                     </Link>
                 </MediaQuery>

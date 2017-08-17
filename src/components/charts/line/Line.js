@@ -1,7 +1,7 @@
 /*
  * This file is part of the nivo project.
  *
- * (c) 2016 Raphaël Benitte
+ * Copyright 2016-present, Raphaël Benitte.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,11 +13,12 @@ import { ResponsiveLine } from 'nivo'
 import ChartHeader from '../../ChartHeader'
 import ChartTabs from '../../ChartTabs'
 import LineControls from './LineControls'
-import generateCode from '../../../generateChartCode'
-import ComponentPropsDocumentation from '../../ComponentPropsDocumentation'
+import generateCode from '../../../lib/generateChartCode'
+import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
 import properties from './properties'
 import config from '../../../config'
 import { settingsMapper } from '../../../lib/settings'
+import nivoTheme from '../../../nivoTheme'
 
 const mapSettings = settingsMapper(
     {
@@ -55,6 +56,7 @@ export default class Line extends Component {
                 orient: 'top',
                 tickSize: 5,
                 tickPadding: 5,
+                tickRotation: 0,
                 legend: '',
                 legendOffset: 36,
             },
@@ -63,6 +65,7 @@ export default class Line extends Component {
                 orient: 'right',
                 tickSize: 5,
                 tickPadding: 5,
+                tickRotation: 0,
                 legend: '',
                 legendOffset: 0,
             },
@@ -71,6 +74,7 @@ export default class Line extends Component {
                 orient: 'bottom',
                 tickSize: 5,
                 tickPadding: 5,
+                tickRotation: 0,
                 legend: 'country code',
                 legendOffset: 36,
                 legendPosition: 'center',
@@ -80,6 +84,7 @@ export default class Line extends Component {
                 orient: 'left',
                 tickSize: 5,
                 tickPadding: 5,
+                tickRotation: 0,
                 legend: 'count',
                 legendOffset: -40,
                 legendPosition: 'center',
@@ -144,7 +149,7 @@ export default class Line extends Component {
                     </MediaQuery>
                     <div className="main-chart main-chart-horizontal">
                         <ChartTabs chartClass="line" code={code} data={data}>
-                            <ResponsiveLine data={data} {...mappedSettings} />
+                            <ResponsiveLine data={data} {...mappedSettings} theme={nivoTheme} />
                         </ChartTabs>
                     </div>
                     <LineControls

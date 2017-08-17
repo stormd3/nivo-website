@@ -1,13 +1,12 @@
 /*
  * This file is part of the nivo project.
  *
- * (c) 2016 Raphaël Benitte
+ * Copyright 2016-present, Raphaël Benitte.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 import React, { Component } from 'react'
-import _ from 'lodash'
 import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
 import { ResponsiveBar } from 'nivo'
@@ -15,21 +14,48 @@ import ChartHeader from '../../ChartHeader'
 import ChartTabs from '../../ChartTabs'
 import BarControls from './BarControls'
 import config from '../../../config'
-import generateCode from '../../../generateChartCode'
-import ComponentPropsDocumentation from '../../ComponentPropsDocumentation'
+import generateCode from '../../../lib/generateChartCode'
+import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
 import properties from './properties'
+import { settingsMapper } from '../../../lib/settings'
+import nivoTheme from '../../../nivoTheme'
+
+const mapSettings = settingsMapper(
+    {
+        colorBy: value => {
+            if (value === `({ id, data }) => data[\`\${id}Color\`]`)
+                return ({ id, data }) => data[`${id}Color`]
+            return value
+        },
+        axisTop: (value, settings) => (settings['enable axisTop'] ? value : undefined),
+        axisRight: (value, settings) => (settings['enable axisRight'] ? value : undefined),
+        axisBottom: (value, settings) => (settings['enable axisBottom'] ? value : undefined),
+        axisLeft: (value, settings) => (settings['enable axisLeft'] ? value : undefined),
+    },
+    {
+        exclude: ['enable axisTop', 'enable axisRight', 'enable axisBottom', 'enable axisLeft'],
+    }
+)
 
 class Bars extends Component {
     state = {
         settings: {
+            // data
+            indexBy: 'country',
+
             margin: {
                 top: 50,
                 right: 60,
                 bottom: 50,
                 left: 60,
             },
+
+            xPadding: 0.2,
+            groupMode: 'stacked',
+            layout: 'vertical',
+
             colors: 'nivo',
-            colorBy: 'serie.id',
+            colorBy: 'id',
 
             // axes
             'enable axisTop': false,
@@ -37,6 +63,7 @@ class Bars extends Component {
                 orient: 'top',
                 tickSize: 5,
                 tickPadding: 5,
+                tickRotation: 0,
                 legend: '',
                 legendOffset: 36,
             },
@@ -45,6 +72,7 @@ class Bars extends Component {
                 orient: 'right',
                 tickSize: 5,
                 tickPadding: 5,
+                tickRotation: 0,
                 legend: '',
                 legendOffset: 0,
             },
@@ -53,7 +81,9 @@ class Bars extends Component {
                 orient: 'bottom',
                 tickSize: 5,
                 tickPadding: 5,
-                legend: 'country code',
+                tickRotation: 0,
+                legend: 'country',
+                legendPosition: 'center',
                 legendOffset: 36,
             },
             'enable axisLeft': true,
@@ -61,12 +91,12 @@ class Bars extends Component {
                 orient: 'left',
                 tickSize: 5,
                 tickPadding: 5,
-                legend: 'count',
+                tickRotation: 0,
+                legend: 'food',
+                legendPosition: 'center',
                 legendOffset: -40,
             },
 
-            xPadding: 0.2,
-            groupMode: 'stacked',
             enableGridX: false,
             enableGridY: true,
             enableLabels: true,
@@ -88,17 +118,10 @@ class Bars extends Component {
     }
 
     render() {
-        const { data, diceRoll } = this.props
+        const { data, keys, diceRoll } = this.props
         const { settings } = this.state
 
-        let colorBy
-        if (settings.colorBy === 'd => d.color') {
-            colorBy = d => d.color
-        } else if (settings.colorBy === 'd => d.serie.color') {
-            colorBy = d => d.serie.color
-        } else {
-            colorBy = settings.colorBy
-        }
+        const mappedSettings = mapSettings(settings)
 
         const header = (
             <ChartHeader
@@ -109,17 +132,8 @@ class Bars extends Component {
         )
 
         const code = generateCode('Bar', {
-            ..._.omit(settings, [
-                'enable axisTop',
-                'enable axisRight',
-                'enable axisBottom',
-                'enable axisLeft',
-            ]),
-            axisTop: settings['enable axisTop'] ? settings.axisTop : undefined,
-            axisRight: settings['enable axisRight'] ? settings.axisRight : undefined,
-            axisBottom: settings['enable axisBottom'] ? settings.axisBottom : undefined,
-            axisLeft: settings['enable axisLeft'] ? settings.axisLeft : undefined,
-            colorBy,
+            keys,
+            ...mappedSettings,
         })
 
         return (
@@ -132,18 +146,9 @@ class Bars extends Component {
                         <ChartTabs chartClass="bar" code={code} data={data}>
                             <ResponsiveBar
                                 data={data}
-                                {...settings}
-                                axisTop={settings['enable axisTop'] ? settings.axisTop : undefined}
-                                axisRight={
-                                    settings['enable axisRight'] ? settings.axisRight : undefined
-                                }
-                                axisBottom={
-                                    settings['enable axisBottom'] ? settings.axisBottom : undefined
-                                }
-                                axisLeft={
-                                    settings['enable axisLeft'] ? settings.axisLeft : undefined
-                                }
-                                colorBy={colorBy}
+                                keys={keys}
+                                {...mappedSettings}
+                                theme={nivoTheme}
                             />
                         </ChartTabs>
                     </div>
@@ -158,7 +163,8 @@ class Bars extends Component {
                         {header}
                     </MediaQuery>
                     <p className="description">
-                        Bar chart with grouping ability, stacked or side by side.
+                        Bar chart with grouping ability, stacked or side by side.<br />
+                        You can also switch to horizontal layout.
                     </p>
                     <p className="description">
                         The responsive alternative of this component is{' '}

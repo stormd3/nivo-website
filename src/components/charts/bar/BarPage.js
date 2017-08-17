@@ -1,9 +1,17 @@
+/*
+ * This file is part of the nivo project.
+ *
+ * Copyright 2016-present, Raphaël Benitte.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
-import { generateDrinkStats } from 'nivo-generators'
-import _ from 'lodash'
+import { generateCountriesData } from 'nivo-generators'
 
-const generateData = () => generateDrinkStats(_.random(8, 16))
+const keys = ['hot dogs', 'burgers', 'sandwich', 'kebab', 'fries', 'donut']
+const generateData = () => generateCountriesData(keys, { size: 7 })
 
 export default class BarsPage extends Component {
     state = {
@@ -31,6 +39,7 @@ export default class BarsPage extends Component {
                         render: () =>
                             <childRoute.props.component
                                 data={data}
+                                keys={keys}
                                 diceRoll={this.diceRoll}
                                 onDataUpdate={this.handleDataUpdate}
                             />,

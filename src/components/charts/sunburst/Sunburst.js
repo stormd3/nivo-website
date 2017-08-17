@@ -10,8 +10,8 @@ import React, { Component } from 'react'
 import MediaQuery from 'react-responsive'
 import ChartHeader from '../../ChartHeader'
 import ChartTabs from '../../ChartTabs'
-import PieControls from './PieControls'
-import { ResponsivePie } from 'nivo'
+import SunburstControls from './SunburstControls'
+import { ResponsiveSunburst } from 'nivo'
 import generateCode from '../../../lib/generateChartCode'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
 import properties from './properties'
@@ -23,52 +23,31 @@ const mapSettings = settingsMapper({
         if (value === 'd => d.color') return d => d.color
         return value
     },
-    radialLabel: value => {
-        if (value === `d => \`\${d.id} (\${d.value})\``) return d => `${d.id} (${d.value})`
-        return value
-    },
-    sliceLabel: value => {
-        if (value === `d => \`\${d.id} (\${d.value})\``) return d => `${d.id} (${d.value})`
-        return value
-    },
 })
 
-export default class Pie extends Component {
+export default class Sunburst extends Component {
     state = {
         settings: {
             margin: {
-                top: 80,
-                right: 80,
-                bottom: 30,
-                left: 80,
+                top: 40,
+                right: 20,
+                bottom: 20,
+                left: 20,
             },
-            innerRadius: 0.5,
-            colors: 'nivo',
-            colorBy: 'id',
-            padAngle: 1,
-            cornerRadius: 3,
+
+            identity: 'name',
+            value: 'loc',
+
+            cornerRadius: 2,
 
             // border
-            borderWidth: 0,
-            borderColor: 'inherit:darker(0.6)',
+            borderWidth: 1,
+            borderColor: 'white',
 
-            // radial labels
-            enableRadialLabels: true,
-            radialLabel: 'id',
-            radialLabelsSkipAngle: 10,
-            radialLabelsTextXOffset: 6,
-            radialLabelsTextColor: 'inherit:darker(1)',
-            radialLabelsLinkOffset: 0,
-            radialLabelsLinkDiagonalLength: 16,
-            radialLabelsLinkHorizontalLength: 24,
-            radialLabelsLinkStrokeWidth: 2,
-            radialLabelsLinkColor: 'inherit',
-
-            // slice labels
-            enableSlicesLabels: true,
-            sliceLabel: 'value',
-            slicesLabelsSkipAngle: 10,
-            slicesLabelsTextColor: 'inherit:darker(1)',
+            // theming
+            colors: 'nivo',
+            colorBy: 'id',
+            childColor: 'inherit',
 
             // motion
             animate: true,
@@ -90,12 +69,12 @@ export default class Pie extends Component {
 
         const mappedSettings = mapSettings(settings)
 
-        const code = generateCode('Pie', mappedSettings)
+        const code = generateCode('Sunburst', mappedSettings)
 
         const header = (
             <ChartHeader
-                chartClass="Pie"
-                tags={['pie', 'basics', 'radial', 'circle']}
+                chartClass="Sunburst"
+                tags={['hierarchy', 'radial', 'circle']}
                 diceRoll={diceRoll}
             />
         )
@@ -107,8 +86,8 @@ export default class Pie extends Component {
                         {header}
                     </MediaQuery>
                     <div className="main-chart">
-                        <ChartTabs chartClass="pie" code={code} data={data}>
-                            <ResponsivePie data={data} {...mappedSettings} theme={nivoTheme} />
+                        <ChartTabs chartClass="sunburst" code={code} data={data}>
+                            <ResponsiveSunburst data={data} {...mappedSettings} theme={nivoTheme} />
                         </ChartTabs>
                     </div>
                 </div>
@@ -116,24 +95,18 @@ export default class Pie extends Component {
                     <MediaQuery query="(min-width: 1000px)">
                         {header}
                     </MediaQuery>
-                    <p>
-                        Generates a pie chart from an array of data, each datum must have an id and
-                        a value property.<br />
-                        Note that margin object does not take radial labels into account,&nbsp; so
-                        you should adjust it to leave enough room for it.
-                    </p>
                     <p className="description">
                         The responsive alternative of this component is&nbsp;
-                        <code>&lt;ResponsivePie /&gt;</code>.
+                        <code>&lt;ResponsiveSunburst /&gt;</code>.
                     </p>
-                    <PieControls
-                        scope="Pie"
+                    <SunburstControls
+                        scope="Sunburst"
                         settings={settings}
                         onChange={this.handleSettingsUpdate}
                     />
                 </div>
                 <div className="grid_item grid_item-full">
-                    <ComponentPropsDocumentation chartClass="Pie" properties={properties} />
+                    <ComponentPropsDocumentation chartClass="Sunburst" properties={properties} />
                 </div>
             </div>
         )

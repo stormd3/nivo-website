@@ -128,6 +128,19 @@
     background-image: url('../assets/nivo-chart-icon-bars-red.png');
 }
 
+.nivo-icon-sunburst {
+    background-image: url('../assets/nivo-chart-icon-sunburst-grey.png');
+}
+
+.nivo-icon-sunburst.red,
+.nivo-icon-sunburst:hover,
+.nivo_components_item:hover .nivo-icon-sunburst,
+.mini-nav_item.active .nivo-icon-sunburst,
+.sidebar_link.active .nivo-icon-sunburst,
+.chart-tabs_menu_item.active .nivo-icon-sunburst {
+    background-image: url('../assets/nivo-chart-icon-sunburst-red.png');
+}
+
 .nivo-icon-stream {
     background-image: url('../assets/nivo-chart-icon-stack-grey.png');
 }

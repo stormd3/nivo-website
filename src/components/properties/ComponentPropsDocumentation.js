@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CollapsibleCard from './CollapsibleCard'
+import CollapsibleCard from '../CollapsibleCard'
 import ComponentPropsTable from './ComponentPropsTable'
 
 export default class ComponentPropsDocumentation extends Component {

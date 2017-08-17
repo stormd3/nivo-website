@@ -86,6 +86,18 @@ export const axesProperties = [
                 max: 20,
             },
         },
+        {
+            key: `axis${axisKey}.tickRotation`,
+            description: `${axisKey} axis tick rotation.`,
+            type: '{number}',
+            controlType: 'range',
+            controlGroup: 'Axes',
+            controlOptions: {
+                unit: 'deg',
+                min: -90,
+                max: 90,
+            },
+        },
         //legendPosition: 'end',
         {
             key: `axis${axisKey}.legendOffset`,
