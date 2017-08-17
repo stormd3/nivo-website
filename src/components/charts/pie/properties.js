@@ -63,7 +63,7 @@ export default [
     {
         key: 'colorBy',
         description:
-            'Property to use to determine node color. If a function is provided, it will receive current node data and must return a color',
+            'Property to use to determine node color. If a function is provided, it will receive current node data and must return a color.',
         type: '{string|Function}',
         required: false,
         default: defaults.colorBy,
@@ -164,7 +164,7 @@ export default [
     {
         key: 'radialLabel',
         description:
-            'Defines how to get label text, can be a string (used to access current node data property) or a function which will receive the actual node data',
+            'Defines how to get label text, can be a string (used to access current node data property) or a function which will receive the actual node data.',
         type: '{string|Function}',
         required: false,
         default: 'id',
@@ -346,6 +346,7 @@ export default [
     },
     {
         key: 'animate',
+        scopes: ['Pie'],
         description: 'Enable/disable transitions.',
         type: '{boolean}',
         required: false,

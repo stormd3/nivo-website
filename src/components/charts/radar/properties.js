@@ -311,6 +311,7 @@ export default [
     },
     {
         key: 'animate',
+        scopes: ['Radar'],
         description: 'Enable/disable transitions.',
         type: '{boolean}',
         required: false,

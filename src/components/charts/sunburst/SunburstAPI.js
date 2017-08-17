@@ -8,43 +8,43 @@
  */
 import React, { Component } from 'react'
 import APIClient from '../../api-client/APIClient'
-import BubbleControls from './BubbleControls'
+import SunburstControls from './SunburstControls'
 
-class BubbleAPI extends Component {
+export default class SunburstAPI extends Component {
     render() {
         return (
             <APIClient
-                componentName="Bubble"
-                apiPath="/charts/bubble"
-                dataProperty="root"
-                controls={BubbleControls}
+                componentName="Sunburst"
+                apiPath="/charts/sunburst"
+                dataProperty="data"
+                controls={SunburstControls}
                 defaultProps={{
                     width: 600,
                     height: 600,
+                    data: JSON.stringify(this.props.data, null, '  '),
+
                     margin: {
                         top: 20,
                         right: 20,
                         bottom: 20,
                         left: 20,
                     },
-                    root: JSON.stringify(this.props.root, null, '  '),
+
                     identity: 'name',
                     value: 'loc',
+
+                    cornerRadius: 2,
+
+                    // border
+                    borderWidth: 1,
+                    borderColor: 'white',
+
+                    // theming
                     colors: 'nivo',
-                    colorBy: 'depth',
-                    padding: 1,
-                    enableLabel: true,
-                    leavesOnly: false,
-                    label: 'name',
-                    labelSkipRadius: 8,
-                    labelTextColor: 'inherit:darker(.8)',
-                    labelTextDY: 4,
-                    borderWidth: 0,
-                    borderColor: 'inherit:darker(.3)',
+                    colorBy: 'id',
+                    childColor: 'inherit',
                 }}
             />
         )
     }
 }
-
-export default BubbleAPI

@@ -21,14 +21,17 @@ import StreamPage from './components/charts/stream/StreamPage'
 import Stream from './components/charts/stream/Stream'
 import PiePage from './components/charts/pie/PiePage'
 import Pie from './components/charts/pie/Pie'
+import PieAPI from './components/charts/pie/PieAPI'
 import RadarPage from './components/charts/radar/RadarPage'
 import Radar from './components/charts/radar/Radar'
+import RadarAPI from './components/charts/radar/RadarAPI'
 import BubblePage from './components/charts/bubble/BubblePage'
 import BubbleReact from './components/charts/bubble/BubbleReact'
 import BubbleAPI from './components/charts/bubble/BubbleAPI'
 import BubblePlaceholders from './components/charts/bubble/BubblePlaceholders'
 import SunburstPage from './components/charts/sunburst/SunburstPage'
 import Sunburst from './components/charts/sunburst/Sunburst'
+import SunburstAPI from './components/charts/sunburst/SunburstAPI'
 import TreeMapPage from './components/charts/treemap/TreeMapPage'
 import TreeMapReact from './components/charts/treemap/TreeMapReact'
 import TreeMapHTML from './components/charts/treemap/TreeMapHTML'
@@ -121,12 +124,12 @@ const SITEMAP = [
                         component: Pie,
                         exact: true,
                     },
-                    //{
-                    //    className: 'api',
-                    //    path:      'api',
-                    //    label:     '<Pie /> HTTP API',
-                    //    component: PiePage,
-                    //},
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: '<Pie /> HTTP API',
+                        component: PieAPI,
+                    },
                 ],
             },
             {
@@ -141,6 +144,12 @@ const SITEMAP = [
                         label: '<Radar />',
                         component: Radar,
                         exact: true,
+                    },
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: '<Radar /> HTTP API',
+                        component: RadarAPI,
                     },
                 ],
             },
@@ -183,6 +192,12 @@ const SITEMAP = [
                         label: '<Sunburst />',
                         component: Sunburst,
                         exact: true,
+                    },
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: '<Sunburst /> HTTP API',
+                        component: SunburstAPI,
                     },
                 ],
             },

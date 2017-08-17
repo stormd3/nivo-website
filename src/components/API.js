@@ -37,26 +37,22 @@ class API extends Component {
                     </p>
                     <div className="nivo_components">
                         <ComponentsItem path="/bar/api" name="<Bar />" className="bar" />
-                        <ComponentsItem path="/line/api" name="<Line />" className="line" />
-                        {/*
-                        <ComponentsItem
-                            path="/pie/api"
-                            name="<Pie />"
-                            className="pie"
-                        />
-                        */}
                         <ComponentsItem path="/bubble/api" name="<Bubble />" className="bubble" />
-                        <ComponentsItem
-                            path="/treemap/api"
-                            name="<TreeMap />"
-                            className="treemap"
-                        />
                         <ComponentsItem
                             path="/calendar/api"
                             name="<Calendar />"
                             className="calendar"
                         />
                         <ComponentsItem path="/chord/api" name="<Chord />" className="chord" />
+                        <ComponentsItem path="/line/api" name="<Line />" className="line" />
+                        <ComponentsItem path="/pie/api" name="<Pie />" className="pie" />
+                        <ComponentsItem path="/radar/api" name="<Radar />" className="radar" />
+                        <ComponentsItem path="/sunburst/api" name="<Sunburst />" className="sunburst" />
+                        <ComponentsItem
+                            path="/treemap/api"
+                            name="<TreeMap />"
+                            className="treemap"
+                        />
                     </div>
                 </div>
             </div>

@@ -17,7 +17,12 @@ class APIPreview extends Component {
         let content
         if (responseStatus === 201 && url) {
             content = (
-                <a href={url} target="_blank" rel="noopener noreferrer">
+                <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ background: 'white' }}
+                >
                     <img src={url} alt="api result" />
                 </a>
             )

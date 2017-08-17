@@ -8,6 +8,6 @@
  */
 
 module.exports = {
-    //nivoApiUrl: 'https://nivo-api.herokuapp.com'
-    nivoApiUrl: 'http://localhost:3000',
+    nivoApiUrl: 'https://nivo-api.herokuapp.com',
+    //nivoApiUrl: 'http://localhost:3030',
 }

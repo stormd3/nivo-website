@@ -26,6 +26,34 @@ const defaultComponents = [
         extras: ['react', 'api'],
     },
     {
+        key: 'bubble',
+        path: '/bubble',
+        name: '<Bubble />',
+        className: 'bubble',
+        extras: ['react', 'svg'],
+    },
+    {
+        key: 'responsive-bubble',
+        path: '/bubble',
+        name: '<ResponsiveBubble />',
+        className: 'bubble',
+        extras: ['react', 'svg'],
+    },
+    {
+        key: 'bubble-placeholders',
+        path: '/bubble/placeholders',
+        name: '<BubblePlaceholders />',
+        className: 'bubble',
+        extras: ['react', 'placeholders'],
+    },
+    {
+        key: 'bubble-api',
+        path: '/bubble/api',
+        name: '<Bubble /> HTTP API',
+        className: 'bubble',
+        extras: ['react', 'api'],
+    },
+    {
         key: 'line',
         path: '/line',
         name: '<Line />',
@@ -74,7 +102,6 @@ const defaultComponents = [
         className: 'pie',
         extras: ['react', 'svg'],
     },
-    /*
     {
         key:       'pie-api',
         path:      '/pie/api',
@@ -82,7 +109,6 @@ const defaultComponents = [
         className: 'pie',
         extras:    ['react', 'api'],
     },
-    */
     {
         key: 'radar',
         path: '/radar',
@@ -98,18 +124,11 @@ const defaultComponents = [
         extras: ['react', 'svg'],
     },
     {
-        key: 'bubble',
-        path: '/bubble',
-        name: '<Bubble />',
-        className: 'bubble',
-        extras: ['react', 'svg'],
-    },
-    {
-        key: 'responsive-bubble',
-        path: '/bubble',
-        name: '<ResponsiveBubble />',
-        className: 'bubble',
-        extras: ['react', 'svg'],
+        key: 'radar-api',
+        path: '/radar/api',
+        name: '<Radar /> HTTP API',
+        className: 'radar',
+        extras: ['react', 'api'],
     },
     {
         key: 'sunburst',
@@ -126,11 +145,11 @@ const defaultComponents = [
         extras: ['react', 'svg'],
     },
     {
-        key: 'bubble-placeholders',
-        path: '/bubble/placeholders',
-        name: '<BubblePlaceholders />',
-        className: 'bubble',
-        extras: ['react', 'placeholders'],
+        key: 'sunburst-api',
+        path: '/sunburst/api',
+        name: '<Sunburst /> HTTP API',
+        className: 'sunburst',
+        extras: ['react', 'api'],
     },
     {
         key: 'treemap',

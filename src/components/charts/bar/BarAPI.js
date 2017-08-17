@@ -10,7 +10,7 @@ import React, { Component } from 'react'
 import APIClient from '../../api-client/APIClient'
 import BarControls from './BarControls'
 
-class BarsAPI extends Component {
+export default class BarsAPI extends Component {
     render() {
         return (
             <APIClient
@@ -19,8 +19,8 @@ class BarsAPI extends Component {
                 dataProperty="data"
                 controls={BarControls}
                 defaultProps={{
-                    width: 600,
-                    height: 400,
+                    width: 1200,
+                    height: 500,
                     margin: {
                         top: 40,
                         right: 50,
@@ -28,10 +28,13 @@ class BarsAPI extends Component {
                         left: 50,
                     },
                     data: JSON.stringify(this.props.data, null, '  '),
+                    keys: this.props.keys,
+                    indexBy: 'country',
                     colors: 'nivo',
-                    colorBy: 'serie.id',
+                    colorBy: 'id',
                     xPadding: 0.2,
                     groupMode: 'stacked',
+                    layout: 'vertical',
                     enableGridX: false,
                     enableGridY: true,
                     enableLabels: true,
@@ -42,5 +45,3 @@ class BarsAPI extends Component {
         )
     }
 }
-
-export default BarsAPI

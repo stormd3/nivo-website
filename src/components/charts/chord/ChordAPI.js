@@ -27,14 +27,14 @@ class ChordAPI extends Component {
                 dataProperty="data"
                 controls={ChordControls}
                 defaultProps={{
-                    width: 300,
-                    height: 300,
+                    width: 800,
+                    height: 800,
                     data: JSON.stringify(matrix, null, '  '),
                     margin: {
-                        top: 0,
-                        right: 0,
-                        bottom: 0,
-                        left: 0,
+                        top: 20,
+                        right: 20,
+                        bottom: 20,
+                        left: 20,
                     },
                     padAngle: 0.02,
                     innerRadiusRatio: 0.96,
