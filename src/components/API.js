@@ -47,7 +47,11 @@ class API extends Component {
                         <ComponentsItem path="/line/api" name="<Line />" className="line" />
                         <ComponentsItem path="/pie/api" name="<Pie />" className="pie" />
                         <ComponentsItem path="/radar/api" name="<Radar />" className="radar" />
-                        <ComponentsItem path="/sunburst/api" name="<Sunburst />" className="sunburst" />
+                        <ComponentsItem
+                            path="/sunburst/api"
+                            name="<Sunburst />"
+                            className="sunburst"
+                        />
                         <ComponentsItem
                             path="/treemap/api"
                             name="<TreeMap />"

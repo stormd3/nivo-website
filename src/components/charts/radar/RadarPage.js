@@ -8,25 +8,13 @@
  */
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
-import { generateSerie, randColor } from 'nivo-generators'
-
-const facets = ['fruity', 'bitter', 'heavy', 'strong', 'sunny']
-const generateData = () =>
-    ['chardonay', 'carmenere', 'syrah'].map(id => ({
-        id,
-        color: randColor(),
-        data: generateSerie(facets.length),
-    }))
+import { generateWinesTastes } from 'nivo-generators'
 
 export default class PiePage extends Component {
-    state = {
-        data: generateData(),
-    }
+    state = generateWinesTastes()
 
     diceRoll = () => {
-        this.setState({
-            data: generateData(),
-        })
+        this.setState(generateWinesTastes())
     }
 
     handleDataUpdate = data => {
@@ -35,7 +23,7 @@ export default class PiePage extends Component {
 
     render() {
         const { childRoutes } = this.props
-        const { data } = this.state
+        const { data, keys } = this.state
 
         return (
             <div className="inner-content radar_page">
@@ -46,7 +34,8 @@ export default class PiePage extends Component {
                         render: () =>
                             <childRoute.props.component
                                 data={data}
-                                facets={facets}
+                                keys={keys}
+                                indexBy="taste"
                                 diceRoll={this.diceRoll}
                                 onDataUpdate={this.handleDataUpdate}
                             />,

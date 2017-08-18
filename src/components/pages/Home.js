@@ -17,9 +17,8 @@ import {
     generateLibTree,
     generateDrinkStats,
     generateProgrammingLanguageStats,
-    generateSerie,
-    randColor,
     generateCountriesData,
+    generateWinesTastes,
 } from 'nivo-generators'
 import {
     ResponsiveBubble,
@@ -42,13 +41,6 @@ const calendarTo = new Date(2016, 1, 1)
 const calendarData = generateDayCounts(calendarFrom, calendarTo)
 const voronoiData = _.range(80).map(() => [Math.random() * 360, Math.random() * 200])
 
-const radarFacets = ['fruity', 'bitter', 'heavy', 'strong', 'sunny']
-const generateRadarData = () =>
-    ['chardonay', 'carmenere', 'syrah'].map(id => ({
-        id,
-        color: randColor(),
-        data: generateSerie(radarFacets.length),
-    }))
 const radarMargin = { top: 20, right: 40, bottom: 10, left: 40 }
 
 const streamDataLayerCount = 5
@@ -271,8 +263,8 @@ class Home extends Component {
                 </Link>
                 <Link className="home_item" to="/radar">
                     <ResponsiveRadar
-                        facets={radarFacets}
-                        data={generateRadarData()}
+                        {...generateWinesTastes()}
+                        indexBy="taste"
                         margin={radarMargin}
                         theme={homeTheme}
                         colors={colors}

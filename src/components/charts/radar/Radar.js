@@ -9,6 +9,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import MediaQuery from 'react-responsive'
+import { Link } from 'react-router-dom'
 import ChartHeader from '../../ChartHeader'
 import ChartTabs from '../../ChartTabs'
 import RadarControls from './RadarControls'
@@ -17,6 +18,7 @@ import generateCode from '../../../lib/generateChartCode'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
 import properties from './properties'
 import { settingsMapper } from '../../../lib/settings'
+import config from '../../../config'
 
 const mapSettings = settingsMapper({
     colorBy: value => {
@@ -24,22 +26,17 @@ const mapSettings = settingsMapper({
         return value
     },
     markersLabel: value => {
-        if (value === `d => \`\${d.facet}: \${d.value}\``) return d => `${d.facet}: ${d.value}`
-        if (value === `d => \`\${d.serie.id}: \${d.value}\``)
-            return d => `${d.serie.id}: ${d.value}`
+        if (value === `d => \`\${d.key}: \${d.value}\``) return d => `${d.key}: ${d.value}`
+        if (value === `d => \`\${d.index}: \${d.value}\``) return d => `${d.index}: ${d.value}`
         return value
     },
 })
 
 export default class Radar extends Component {
     static propTypes = {
-        facets: PropTypes.arrayOf(PropTypes.string).isRequired,
-        data: PropTypes.arrayOf(
-            PropTypes.shape({
-                id: PropTypes.string.isRequired,
-                data: PropTypes.arrayOf(PropTypes.number).isRequired,
-            })
-        ),
+        data: PropTypes.arrayOf(PropTypes.object).isRequired,
+        keys: PropTypes.arrayOf(PropTypes.string).isRequired,
+        indexBy: PropTypes.string.isRequired,
     }
 
     state = {
@@ -73,7 +70,7 @@ export default class Radar extends Component {
             markersLabelYOffset: -12,
 
             colors: 'nivo',
-            colorBy: 'id',
+            colorBy: 'key',
             fillOpacity: 0.1,
 
             animate: true,
@@ -87,20 +84,21 @@ export default class Radar extends Component {
     }
 
     render() {
-        const { data, facets, diceRoll } = this.props
+        const { data, keys, indexBy, diceRoll } = this.props
         const { settings } = this.state
 
         const mappedSettings = mapSettings(settings)
 
         const code = generateCode('Radar', {
-            facets,
+            keys,
+            indexBy,
             ...mappedSettings,
         })
 
         const header = (
             <ChartHeader
                 chartClass="Radar"
-                tags={['radar', 'radial', 'circle']}
+                tags={['radar', 'radial', 'circle', 'isomorphic']}
                 diceRoll={diceRoll}
             />
         )
@@ -113,7 +111,12 @@ export default class Radar extends Component {
                     </MediaQuery>
                     <div className="main-chart">
                         <ChartTabs chartClass="radar" code={code} data={data}>
-                            <ResponsiveRadar facets={facets} data={data} {...mappedSettings} />
+                            <ResponsiveRadar
+                                data={data}
+                                keys={keys}
+                                indexBy={indexBy}
+                                {...mappedSettings}
+                            />
                         </ChartTabs>
                     </div>
                 </div>
@@ -122,15 +125,27 @@ export default class Radar extends Component {
                         {header}
                     </MediaQuery>
                     <p>
-                        Generates a radar chart from an array of data series having an id and an
-                        array of values, it also requires an array of facets, it will compute the
-                        radial shape for each data serie.<br />
+                        Generates a radar chart from an array of data.<br />
                         Note that margin object does not take grid labels into account,&nbsp; so you
                         should adjust it to leave enough room for it.
                     </p>
                     <p className="description">
                         The responsive alternative of this component is&nbsp;
                         <code>&lt;ResponsiveRadar /&gt;</code>.
+                    </p>
+                    <p className="description">
+                        This component is available in the{' '}
+                        <a
+                            href="https://github.com/plouc/nivo-api"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            nivo-api
+                        </a>, see{' '}
+                        <a href={`${config.nivoApiUrl}/samples/radar.svg`} target="_blank">
+                            sample
+                        </a>{' '}
+                        or try it using <Link to="/radar/api">the dedicated API client</Link>.
                     </p>
                     <RadarControls
                         scope="Radar"

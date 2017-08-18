@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  */
 import React from 'react'
+import dedent from 'dedent-js'
 import {
     RadarDefaultProps as defaults,
     RadarMarkers,
@@ -31,11 +32,53 @@ closedCurvePropKeys.forEach((curve, i) => {
 
 export default [
     {
+        key: 'data',
+        scopes: '*',
+        description: (
+            <div>
+                Chart data. If using objects indexBy & keys should be strings, if using array they
+                should be numbers.<br />
+                For example, given this config:
+                <pre className="code code-block">{dedent`
+                [
+                  { language: 'javascript', john: 12, sarah: 32, bob: 27 },
+                  { language: 'golang', john: 25, sarah: 15, bob: 3 },
+                  { language: 'python', john: 5, sarah: 22, bob: 31 },
+                  { language: 'java', john: 19, sarah: 17, bob: 9 }
+                ]
+                keys: ['john', 'sarah', 'bob']
+                indexBy: 'language'
+                `}</pre>
+                We'll have a radar chart representing programing skills for each user by language (3
+                layers and 4 dimensions).
+            </div>
+        ),
+        type: '{Array.<Object|Array>}',
+        required: true,
+    },
+    {
+        key: 'indexBy',
+        scopes: '*',
+        description: 'Key to use to index the data, this key must exist in each data item.',
+        type: '{string|number}',
+        required: false,
+        default: defaults.indexBy,
+    },
+    {
+        key: 'keys',
+        scopes: '*',
+        description:
+            'Keys to use to determine each serie. Those keys should exist in each data item.',
+        type: '{Array.<string|number>}',
+        required: false,
+        default: defaults.keys,
+    },
+    {
         key: 'width',
         scopes: ['api'],
         description: (
             <span>
-                not required if using&nbsp;<code>&lt;ResponsivePie&nbsp;/&gt;</code>.
+                not required if using&nbsp;<code>&lt;ResponsiveRadar&nbsp;/&gt;</code>.
             </span>
         ),
         help: 'Chart width.',
@@ -55,7 +98,7 @@ export default [
         scopes: ['api'],
         description: (
             <span>
-                not required if using&nbsp;<code>&lt;ResponsivePie&nbsp;/&gt;</code>.
+                not required if using&nbsp;<code>&lt;ResponsiveRadar&nbsp;/&gt;</code>.
             </span>
         ),
         help: 'Chart height.',
@@ -97,28 +140,31 @@ export default [
         description: 'Defines how to compute slice color.',
         type: '{string|Function|Array}',
         required: false,
-        default: defaults.colors,
+        default: 'nivo',
         controlType: 'colors',
         controlGroup: 'Base',
     },
     {
         key: 'colorBy',
-        description:
-            'Property to use to determine node color. If a function is provided, it will receive current node data and must return a color.',
+        description: (
+            <span>
+                Property to use to determine node color.<br />
+                If a function is provided, it will receive current node data and must return a
+                color.<br />
+                By default it will use the key of each serie and pick a color from colors according
+                to this key.
+            </span>
+        ),
         type: '{string|Function}',
         required: false,
-        default: defaults.colorBy,
+        default: 'key',
         controlType: 'choices',
         controlGroup: 'Base',
         controlOptions: {
             choices: [
                 {
-                    label: 'id',
-                    value: 'id',
-                },
-                {
-                    label: 'd => d.color',
-                    value: 'd => d.color',
+                    label: 'key',
+                    value: 'key',
                 },
             ],
         },
@@ -285,10 +331,10 @@ export default [
         controlOptions: {
             choices: [
                 'value',
-                'facet',
-                'serie.id',
-                `d => \`\${d.facet}: \${d.value}\``,
-                `d => \`\${d.serie.id}: \${d.value}\``,
+                'index',
+                'key',
+                `d => \`\${d.key}: \${d.value}\``,
+                `d => \`\${d.index}: \${d.value}\``,
             ].map(choice => ({
                 label: choice,
                 value: choice,
@@ -312,10 +358,10 @@ export default [
     {
         key: 'animate',
         scopes: ['Radar'],
-        description: 'Enable/disable transitions.',
+        description: 'Enable/disable transitions using react-motion.',
         type: '{boolean}',
         required: false,
-        default: defaults.animate,
+        default: true,
         controlType: 'switch',
         controlGroup: 'Animation',
     },

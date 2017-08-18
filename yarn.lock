@@ -4291,9 +4291,9 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-nivo-generators@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/nivo-generators/-/nivo-generators-0.3.0.tgz#1238b3a288f46fbf280e4a1f4ccb488cf7d99356"
+nivo-generators@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/nivo-generators/-/nivo-generators-0.6.0.tgz#ff7dfad1b7583947ed0a1699a99408286507149d"
   dependencies:
     d3-time "^1.0.7"
     d3-time-format "^2.0.5"
@@ -4301,9 +4301,9 @@ nivo-generators@^0.3.0:
     lodash.range "^3.2.0"
     lodash.shuffle "^4.2.0"
 
-nivo@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/nivo/-/nivo-0.8.0.tgz#21290437eba261afad2a3ad4419502a95e40b9a4"
+nivo@^0.17.0:
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/nivo/-/nivo-0.17.0.tgz#2da78128aa567a2f4ca2de5d0d7a3628df526ad5"
   dependencies:
     d3-chord "^1.0.4"
     d3-color "^1.0.3"

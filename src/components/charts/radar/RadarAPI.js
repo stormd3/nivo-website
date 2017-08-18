@@ -22,7 +22,8 @@ export default class RadarAPI extends Component {
                     width: 600,
                     height: 600,
                     data: JSON.stringify(this.props.data, null, '  '),
-                    facets: this.props.facets,
+                    keys: this.props.keys,
+                    indexBy: 'taste',
 
                     margin: {
                         top: 70,
@@ -52,8 +53,9 @@ export default class RadarAPI extends Component {
                     markersLabel: 'value',
                     markersLabelYOffset: -12,
 
+                    // theming
                     colors: 'nivo',
-                    colorBy: 'id',
+                    colorBy: 'key',
                     fillOpacity: 0.1,
                 }}
             />

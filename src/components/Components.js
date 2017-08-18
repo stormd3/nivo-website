@@ -103,11 +103,11 @@ const defaultComponents = [
         extras: ['react', 'svg'],
     },
     {
-        key:       'pie-api',
-        path:      '/pie/api',
-        name:      '<Pie /> HTTP API',
+        key: 'pie-api',
+        path: '/pie/api',
+        name: '<Pie /> HTTP API',
         className: 'pie',
-        extras:    ['react', 'api'],
+        extras: ['react', 'api'],
     },
     {
         key: 'radar',
