@@ -25,6 +25,10 @@ const mapSettings = settingsMapper({
         if (value === 'd => d.color') return d => d.color
         return value
     },
+    label: value => {
+        if (value === `d => \`\${d.id}: \${d.value}\``) return d => `${d.id}: ${d.value}`
+        return value
+    },
 })
 
 export default class BubbleReact extends Component {
@@ -43,20 +47,25 @@ export default class BubbleReact extends Component {
             padding: 1,
             enableLabel: true,
             leavesOnly: false,
-            label: 'name',
-            labelSkipRadius: 8,
+
+            // labels
+            label: 'id',
+            labelSkipRadius: 10,
             labelTextColor: 'inherit:darker(.8)',
-            labelTextDY: 4,
+
             borderWidth: 0,
             borderColor: 'inherit:darker(.3)',
 
             // motion
             animate: true,
-            motionStiffness: 120,
-            motionDamping: 10,
+            motionStiffness: 90,
+            motionDamping: 15,
 
             // interactivity
             isInteractive: true,
+
+            // zooming
+            isZoomable: true,
         },
     }
 
@@ -101,14 +110,13 @@ export default class BubbleReact extends Component {
                         />
                     </MediaQuery>
                     <p className="description">
-                        Use React for rendering and react-motion for transitions.
+                        Bubble chart (circle packing) with zooming ability. Use React for rendering
+                        and react-motion for transitions.
                     </p>
                     <p className="description">
-                        This chart offer various implementations, you can render it using{' '}
-                        <Link to="/bubble/d3">pure d3</Link> or{' '}
-                        <Link to="/bubble">let react handles all the rendering</Link> and you can
-                        even <Link to="/bubble/placeholders">render whatever you want</Link> instead
-                        of the boring circles.
+                        This chart offer various implementations, you can even{' '}
+                        <Link to="/bubble/placeholders">render whatever you want</Link> instead of
+                        the boring circles.
                     </p>
                     <BubbleControls
                         scope="Bubble"

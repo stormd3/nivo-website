@@ -22,14 +22,16 @@ import properties from './properties'
 export default class TreeMapHTML extends Component {
     state = {
         settings: {
+            // data
+            identity: 'name',
+            value: 'loc',
+
             margin: {
                 top: 30,
                 right: 10,
                 bottom: 10,
                 left: 10,
             },
-            identity: 'name',
-            value: 'loc',
 
             // labels
             enableLabels: true,
@@ -53,6 +55,8 @@ export default class TreeMapHTML extends Component {
             animate: true,
             motionStiffness: 90,
             motionDamping: 15,
+
+            isInteractive: true,
         },
     }
 

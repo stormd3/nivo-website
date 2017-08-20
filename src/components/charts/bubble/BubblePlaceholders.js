@@ -38,11 +38,14 @@ export default class BubblePlaceholdersPage extends Component {
 
             // motion
             animate: true,
-            motionStiffness: 120,
-            motionDamping: 10,
+            motionStiffness: 90,
+            motionDamping: 15,
 
             // interactivity
             isInteractive: true,
+
+            // zooming
+            isZoomable: true,
         },
     }
 
@@ -78,6 +81,7 @@ export default class BubblePlaceholdersPage extends Component {
                                         return (
                                             <div
                                                 key={node.key}
+                                                onClick={node.zoom}
                                                 style={{
                                                     position: 'absolute',
                                                     top: node.style.y - node.style.r,
@@ -105,14 +109,13 @@ export default class BubblePlaceholdersPage extends Component {
                         />
                     </MediaQuery>
                     <p className="description">
-                        Take total control over Bubble component (kittens compliant).
+                        Take total control over Bubble component (kittens compliant). This
+                        implementation also offer zooming ability, each node you receive will have a
+                        zoom function, just call it to zoom on the node it's bound to.
                     </p>
                     <p className="description">
-                        This chart offer various implementations, you can render it using{' '}
-                        <Link to="/bubble/d3">pure d3</Link> or{' '}
-                        <Link to="/bubble">let react handles all the rendering</Link> and you can
-                        even <Link to="/bubble/placeholders">render whatever you want</Link> instead
-                        of the boring circles.
+                        This chart offer various implementations, you can also render it in{' '}
+                        <Link to="/bubble">SVG</Link>.
                     </p>
 
                     <BubbleControls

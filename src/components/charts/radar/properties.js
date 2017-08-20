@@ -356,6 +356,16 @@ export default [
         },
     },
     {
+        key: 'isInteractive',
+        scopes: ['Radar'],
+        description: 'Enable/disable interactivity.',
+        type: '{boolean}',
+        required: false,
+        default: defaults.isInteractive,
+        controlType: 'switch',
+        controlGroup: 'Interactivity',
+    },
+    {
         key: 'animate',
         scopes: ['Radar'],
         description: 'Enable/disable transitions using react-motion.',

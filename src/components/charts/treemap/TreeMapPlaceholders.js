@@ -24,6 +24,11 @@ const placeholdersProperties = properties.filter(
 export default class TreeMapPlaceholders extends Component {
     state = {
         settings: {
+            identity: 'name',
+            value: 'loc',
+
+            namespace: 'html',
+
             margin: {
                 top: 30,
                 right: 10,
@@ -65,13 +70,7 @@ export default class TreeMapPlaceholders extends Component {
                     </MediaQuery>
                     <div className="main-chart">
                         <ChartTabs chartClass="treemap" code={code} data={root}>
-                            <ResponsiveTreeMapPlaceholders
-                                root={_.cloneDeep(root)}
-                                identity="name"
-                                value="loc"
-                                namespace="html"
-                                {...settings}
-                            >
+                            <ResponsiveTreeMapPlaceholders root={_.cloneDeep(root)} {...settings}>
                                 {nodes =>
                                     nodes.map((node, i) => {
                                         return (

@@ -8,26 +8,9 @@
  */
 import React from 'react'
 import { marginProperties } from '../../../lib/componentProperties'
-import { TreeMap } from 'nivo'
+import { TreeMapDefaultProps } from 'nivo'
 
-const defaults = TreeMap.defaultProps
-
-/*
-[
-    'valueAccessor',
-    'function',
-    true,
-    <code>d => d.size</code>,
-    '',
-],
-[
-    'labelFn',
-    'function',
-    true,
-    <code>d => d.name</code>,
-    '',
-],
-*/
+const defaults = TreeMapDefaultProps
 
 export default [
     {
@@ -36,6 +19,22 @@ export default [
         description: 'The hierarchical data object.',
         type: '{Object}',
         required: true,
+    },
+    {
+        key: 'identity',
+        scope: '*',
+        description: 'The key or function to use to retrieve nodes identity.',
+        type: '{string|Function}',
+        required: false,
+        default: defaults.identity,
+    },
+    {
+        key: 'value',
+        scope: '*',
+        description: 'The key or function to use to retrieve nodes value.',
+        type: '{string|Function}',
+        required: false,
+        default: 'value',
     },
     {
         key: 'width',
@@ -105,7 +104,7 @@ export default [
         description: 'Defines how to compute node color.',
         type: '{string|Function|Array}',
         required: false,
-        default: defaults.colors,
+        default: 'nivo',
         controlType: 'colors',
         controlGroup: 'Base',
     },
@@ -113,10 +112,10 @@ export default [
         key: 'colorBy',
         scopes: '*',
         description:
-            'Property to use to determine node color. If a function is provided, it will receive current node data and must return a color',
+            'Property to use to determine node color. If a function is provided, it will receive current node data and must return a color.',
         type: '{string|Function}',
         required: false,
-        //default: defaults.colorBy,
+        default: 'depth',
         controlType: 'choices',
         controlGroup: 'Base',
         controlOptions: {
@@ -137,12 +136,37 @@ export default [
         },
     },
     {
+        key: 'borderWidth',
+        scopes: ['TreeMap', 'TreeMapHTML', 'api'],
+        description: 'Control node border width.',
+        type: '{number}',
+        required: false,
+        default: defaults.borderWidth,
+        controlType: 'range',
+        controlGroup: 'Base',
+        controlOptions: {
+            unit: 'px',
+            min: 0,
+            max: 10,
+        },
+    },
+    {
+        key: 'borderColor',
+        scopes: ['TreeMap', 'TreeMapHTML', 'api'],
+        description: 'Method to compute border color.',
+        type: '{string|Function}',
+        required: false,
+        default: defaults.borderColor,
+        controlType: 'color',
+        controlGroup: 'Base',
+    },
+    {
         key: 'leavesOnly',
         scopes: '*',
         description: 'Only render leaf nodes (no children).',
         type: '{boolean}',
         required: false,
-        default: false,
+        default: defaults.leavesOnly,
         controlType: 'switch',
         controlGroup: 'Base',
     },
@@ -153,7 +177,7 @@ export default [
         description: 'Padding between parent and child node.',
         type: '{number}',
         required: false,
-        //default
+        default: defaults.innerPadding,
         controlType: 'range',
         controlGroup: 'Padding',
         controlOptions: {
@@ -168,7 +192,7 @@ export default [
         description: 'Padding between parent and child node.',
         type: '{number}',
         required: false,
-        //default
+        default: defaults.outerPadding,
         controlType: 'range',
         controlGroup: 'Padding',
         controlOptions: {
@@ -241,29 +265,14 @@ export default [
         controlGroup: 'Labels',
     },
     {
-        key: 'borderWidth',
-        scopes: ['TreeMap', 'TreeMapHTML', 'api'],
-        description: 'Control node border width.',
-        type: '{number}',
+        key: 'isInteractive',
+        scopes: ['TreeMap', 'TreeMapHTML'],
+        description: 'Enable/disable interactivity.',
+        type: '{boolean}',
         required: false,
-        //default: defaults.borderWidth,
-        controlType: 'range',
-        controlGroup: 'Border',
-        controlOptions: {
-            unit: 'px',
-            min: 0,
-            max: 10,
-        },
-    },
-    {
-        key: 'borderColor',
-        scopes: ['TreeMap', 'TreeMapHTML', 'api'],
-        description: 'Method to compute border color.',
-        type: '{string|Function}',
-        required: false,
-        //default: defaults.borderColor,
-        controlType: 'color',
-        controlGroup: 'Border',
+        default: defaults.isInteractive,
+        controlType: 'switch',
+        controlGroup: 'Interactivity',
     },
     {
         key: 'animate',

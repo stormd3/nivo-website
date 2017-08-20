@@ -35,7 +35,7 @@ class BubbleAPI extends Component {
                     padding: 1,
                     enableLabel: true,
                     leavesOnly: false,
-                    label: 'name',
+                    label: 'id',
                     labelSkipRadius: 8,
                     labelTextColor: 'inherit:darker(.8)',
                     labelTextDY: 4,

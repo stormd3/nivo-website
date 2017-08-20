@@ -17,10 +17,14 @@ import generateCode from '../../../lib/generateChartCode'
 import config from '../../../config'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
 import properties from './properties'
+import nivoTheme from '../../../nivoTheme'
 
 class TreeMapReact extends Component {
     state = {
         settings: {
+            identity: 'name',
+            value: 'loc',
+
             margin: {
                 top: 30,
                 right: 10,
@@ -51,6 +55,8 @@ class TreeMapReact extends Component {
             animate: true,
             motionStiffness: 90,
             motionDamping: 15,
+
+            isInteractive: true,
         },
     }
 
@@ -94,12 +100,11 @@ class TreeMapReact extends Component {
                         <ChartTabs chartClass="treemap" code={code} data={root}>
                             <ResponsiveTreeMap
                                 root={root}
-                                identity="name"
-                                value="loc"
                                 {...settings}
                                 label={label}
                                 labelFormat={labelFormat}
                                 colorBy={colorBy}
+                                theme={nivoTheme}
                             />
                         </ChartTabs>
                     </div>

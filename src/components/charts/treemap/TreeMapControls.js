@@ -13,7 +13,7 @@ import { getPropertiesGroupsControls } from '../../../lib/componentProperties'
 import properties from './properties'
 
 const groupsByScope = {
-    TreeMap: getPropertiesGroupsControls(properties, 'Radar'),
+    TreeMap: getPropertiesGroupsControls(properties, 'TreeMap'),
     TreeMapHTML: getPropertiesGroupsControls(properties, 'TreeMapHTML'),
     TreeMapPlaceholders: getPropertiesGroupsControls(properties, 'TreeMapPlaceholders'),
     api: getPropertiesGroupsControls(properties, 'api'),

@@ -68,6 +68,13 @@ const defaultComponents = [
         extras: ['react', 'svg'],
     },
     {
+        key: 'line-api',
+        path: '/line/api',
+        name: '<Line /> HTTP API',
+        className: 'line',
+        extras: ['react', 'api'],
+    },
+    {
         key: 'stream',
         path: '/stream',
         name: '<Stream />',
@@ -80,13 +87,6 @@ const defaultComponents = [
         name: '<ResponsiveStream />',
         className: 'stream',
         extras: ['react', 'svg'],
-    },
-    {
-        key: 'line-api',
-        path: '/line/api',
-        name: '<Line /> HTTP API',
-        className: 'line',
-        extras: ['react', 'api'],
     },
     {
         key: 'pie',

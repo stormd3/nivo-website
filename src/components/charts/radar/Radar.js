@@ -19,6 +19,7 @@ import ComponentPropsDocumentation from '../../properties/ComponentPropsDocument
 import properties from './properties'
 import { settingsMapper } from '../../../lib/settings'
 import config from '../../../config'
+import nivoTheme from '../../../nivoTheme'
 
 const mapSettings = settingsMapper({
     colorBy: value => {
@@ -76,6 +77,8 @@ export default class Radar extends Component {
             animate: true,
             motionStiffness: 90,
             motionDamping: 15,
+
+            isInteractive: true,
         },
     }
 
@@ -116,6 +119,7 @@ export default class Radar extends Component {
                                 keys={keys}
                                 indexBy={indexBy}
                                 {...mappedSettings}
+                                theme={nivoTheme}
                             />
                         </ChartTabs>
                     </div>

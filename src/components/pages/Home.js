@@ -273,6 +273,7 @@ class Home extends Component {
                         markersBorderWidth={1}
                         markersBorderColor="#e25d47"
                         animate={false}
+                        isInteractive={false}
                     />
                     <span className="home_item_label">
                         <span>Radar documentation</span>
@@ -303,6 +304,7 @@ class Home extends Component {
                             leavesOnly={true}
                             innerPadding={1}
                             animate={false}
+                            isInteractive={false}
                             label="loc"
                             labelFormat=".0s"
                             enableLabels={true}
