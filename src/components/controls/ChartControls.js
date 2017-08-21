@@ -31,8 +31,12 @@ export default class ChartControls extends Component {
         mapValues: {},
     }
 
-    state = {
-        openedGroup: 'Base',
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            openedGroup: props.group || 'Base',
+        }
     }
 
     mapValue = (key, value) => {

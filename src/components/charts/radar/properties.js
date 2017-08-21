@@ -10,13 +10,13 @@ import React from 'react'
 import dedent from 'dedent-js'
 import {
     RadarDefaultProps as defaults,
-    RadarMarkers,
+    RadarDots,
     closedCurvePropKeys,
-    MarkersItemDefaultProps as markerDefaults,
+    DotsItemDefaultProps as dotDefaults,
 } from 'nivo'
 import { marginProperties } from '../../../lib/componentProperties'
 
-const markersDefaults = RadarMarkers.defaultProps
+const dotsDefaults = RadarDots.defaultProps
 
 const curveOptions = []
 closedCurvePropKeys.forEach((curve, i) => {
@@ -252,23 +252,30 @@ export default [
         },
     },
     {
-        key: 'enableMarkers',
+        key: 'enableDots',
         scopes: '*',
-        description: 'Enable/disable markers.',
+        description: 'Enable/disable dots.',
         type: '{boolean}',
         required: false,
-        default: defaults.enableMarkers,
+        default: defaults.enableDots,
         controlType: 'switch',
-        controlGroup: 'Markers',
+        controlGroup: 'Dots',
     },
     {
-        key: 'markersSize',
-        description: 'Size of the markers (px).',
+        key: 'dotSymbol',
+        description:
+            'Overrides default dot circle. The function will receive `size`, `color`, `borderWidth` and `borderColor` props and must return a valid SVG element.',
+        type: '{Function}',
+        required: false,
+    },
+    {
+        key: 'dotSize',
+        description: 'Size of the dots (px).',
         type: '{number}',
         required: false,
-        default: markersDefaults.size,
+        default: dotsDefaults.size,
         controlType: 'range',
-        controlGroup: 'Markers',
+        controlGroup: 'Dots',
         controlOptions: {
             unit: 'px',
             min: 2,
@@ -276,23 +283,23 @@ export default [
         },
     },
     {
-        key: 'markersColor',
+        key: 'dotColor',
         scopes: '*',
-        description: 'Method to compute markers color.',
+        description: 'Method to compute dots color.',
         type: '{string|Function}',
         required: false,
-        default: markersDefaults.color,
+        default: dotsDefaults.color,
         controlType: 'color',
-        controlGroup: 'Markers',
+        controlGroup: 'Dots',
     },
     {
-        key: 'markersBorderWidth',
-        description: 'Width of the markers border (px).',
+        key: 'dotBorderWidth',
+        description: 'Width of the dots border (px).',
         type: '{number}',
         required: false,
-        default: markersDefaults.borderWidth,
+        default: dotsDefaults.borderWidth,
         controlType: 'range',
-        controlGroup: 'Markers',
+        controlGroup: 'Dots',
         controlOptions: {
             unit: 'px',
             min: 0,
@@ -300,34 +307,34 @@ export default [
         },
     },
     {
-        key: 'markersBorderColor',
+        key: 'dotBorderColor',
         scopes: '*',
-        description: 'Method to compute markers border color.',
+        description: 'Method to compute dots border color.',
         type: '{string|Function}',
         required: false,
-        default: markersDefaults.borderColor,
+        default: dotsDefaults.borderColor,
         controlType: 'color',
-        controlGroup: 'Markers',
+        controlGroup: 'Dots',
     },
     {
-        key: 'enableMarkersLabel',
+        key: 'enableDotLabel',
         scopes: '*',
-        description: 'Enable/disable markers label.',
+        description: 'Enable/disable dots label.',
         type: '{boolean}',
         required: false,
-        default: markersDefaults.enableLabel,
+        default: dotsDefaults.enableLabel,
         controlType: 'switch',
-        controlGroup: 'Markers',
+        controlGroup: 'Dots',
     },
     {
-        key: 'markersLabel',
+        key: 'dotLabel',
         description:
-            'Property to use to determine marker label. If a function is provided, it will receive current value and serie and must return a label.',
+            'Property to use to determine dot label. If a function is provided, it will receive current value and serie and must return a label.',
         type: '{string}',
         required: false,
-        default: markersDefaults.label,
+        default: dotsDefaults.label,
         controlType: 'choices',
-        controlGroup: 'Markers',
+        controlGroup: 'Dots',
         controlOptions: {
             choices: [
                 'value',
@@ -342,13 +349,13 @@ export default [
         },
     },
     {
-        key: 'markersLabelYOffset',
-        description: 'Label Y offset from marker shape (px).',
+        key: 'dotLabelYOffset',
+        description: 'Label Y offset from dot shape (px).',
         type: '{number}',
         required: false,
-        default: markerDefaults.labelYOffset,
+        default: dotDefaults.labelYOffset,
         controlType: 'range',
-        controlGroup: 'Markers',
+        controlGroup: 'Dots',
         controlOptions: {
             unit: 'px',
             min: -24,

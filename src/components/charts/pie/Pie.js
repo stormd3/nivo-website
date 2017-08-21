@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  */
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
 import ChartHeader from '../../ChartHeader'
 import ChartTabs from '../../ChartTabs'
@@ -17,6 +18,7 @@ import ComponentPropsDocumentation from '../../properties/ComponentPropsDocument
 import properties from './properties'
 import { settingsMapper } from '../../../lib/settings'
 import nivoTheme from '../../../nivoTheme'
+import config from '../../../config'
 
 const mapSettings = settingsMapper({
     colorBy: value => {
@@ -125,6 +127,32 @@ export default class Pie extends Component {
                     <p className="description">
                         The responsive alternative of this component is&nbsp;
                         <code>&lt;ResponsivePie /&gt;</code>.
+                    </p>
+                    <p className="description">
+                        This component is available in the{' '}
+                        <a
+                            href="https://github.com/plouc/nivo-api"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            nivo-api
+                        </a>, see{' '}
+                        <a
+                            href={`${config.nivoApiUrl}/samples/pie.svg`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            sample
+                        </a>{' '}
+                        or <Link to="/pie/api">try it using the API client</Link>. You can also see
+                        more example usages in{' '}
+                        <a
+                            href={`${config.storybookUrl}?selectedKind=Pie&selectedStory=default`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            the storybook
+                        </a>.
                     </p>
                     <PieControls
                         scope="Pie"

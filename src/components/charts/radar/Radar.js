@@ -60,15 +60,15 @@ export default class Radar extends Component {
             gridShape: 'circular',
             gridLabelOffset: 36,
 
-            // markers
-            enableMarkers: true,
-            markersSize: 8,
-            markersColor: 'inherit',
-            markersBorderWidth: 0,
-            markersBorderColor: '#fff',
-            enableMarkersLabel: true,
-            markersLabel: 'value',
-            markersLabelYOffset: -12,
+            // dots
+            enableDots: true,
+            dotSize: 8,
+            dotColor: 'inherit',
+            dotBorderWidth: 0,
+            dotBorderColor: '#fff',
+            enableDotLabel: true,
+            dotLabel: 'value',
+            dotLabelYOffset: -12,
 
             colors: 'nivo',
             colorBy: 'key',
@@ -146,10 +146,22 @@ export default class Radar extends Component {
                         >
                             nivo-api
                         </a>, see{' '}
-                        <a href={`${config.nivoApiUrl}/samples/radar.svg`} target="_blank">
+                        <a
+                            href={`${config.nivoApiUrl}/samples/radar.svg`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             sample
                         </a>{' '}
-                        or try it using <Link to="/radar/api">the dedicated API client</Link>.
+                        or <Link to="/radar/api">try it using the API client</Link>. You can also
+                        see more example usages in{' '}
+                        <a
+                            href={`${config.storybookUrl}?selectedKind=Radar&selectedStory=default`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            the storybook
+                        </a>.
                     </p>
                     <RadarControls
                         scope="Radar"

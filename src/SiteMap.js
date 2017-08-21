@@ -6,7 +6,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 import React from 'react'
 import _ from 'lodash'
 import { Route } from 'react-router-dom'
@@ -29,6 +28,8 @@ import BubblePage from './components/charts/bubble/BubblePage'
 import BubbleReact from './components/charts/bubble/BubbleReact'
 import BubbleAPI from './components/charts/bubble/BubbleAPI'
 import BubblePlaceholders from './components/charts/bubble/BubblePlaceholders'
+import SankeyPage from './components/charts/sankey/SankeyPage'
+import Sankey from './components/charts/sankey/Sankey'
 import SunburstPage from './components/charts/sunburst/SunburstPage'
 import Sunburst from './components/charts/sunburst/Sunburst'
 import SunburstAPI from './components/charts/sunburst/SunburstAPI'
@@ -177,6 +178,21 @@ const SITEMAP = [
                         path: '/api',
                         label: '<Bubble /> HTTP API',
                         component: BubbleAPI,
+                    },
+                ],
+            },
+            {
+                className: 'sankey',
+                path: '/sankey',
+                label: 'Sankey',
+                component: SankeyPage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: '<Sankey />',
+                        component: Sankey,
+                        exact: true,
                     },
                 ],
             },

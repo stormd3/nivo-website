@@ -19,6 +19,7 @@ import {
     generateProgrammingLanguageStats,
     generateCountriesData,
     generateWinesTastes,
+    generateSankeyData,
 } from 'nivo-generators'
 import {
     ResponsiveBubble,
@@ -30,6 +31,7 @@ import {
     ResponsiveCalendar,
     ResponsiveVoronoi,
     ResponsiveRadar,
+    ResponsiveSankey,
     ResponsiveStream,
     ResponsiveSunburst,
 } from 'nivo'
@@ -114,9 +116,9 @@ class Home extends Component {
                         animate={false}
                         isInteractive={false}
                         {...commonAxes}
-                        markersSize={7}
-                        markersBorderWidth={1}
-                        markersBorderColor="#e25d47"
+                        dotSize={7}
+                        dotBorderWidth={1}
+                        dotBorderColor="#e25d47"
                     />
                     <span className="home_item_label">
                         <span>Line documentation</span>
@@ -269,9 +271,9 @@ class Home extends Component {
                         theme={homeTheme}
                         colors={colors}
                         curve="catmullRomClosed"
-                        markersSize={7}
-                        markersBorderWidth={1}
-                        markersBorderColor="#e25d47"
+                        dotSize={7}
+                        dotBorderWidth={1}
+                        dotBorderColor="#e25d47"
                         animate={false}
                         isInteractive={false}
                     />
@@ -333,27 +335,22 @@ class Home extends Component {
                     </Link>
                 </MediaQuery>
                 <MediaQuery query="(min-width: 1000px)" className="home_item">
-                    <Link className="home_item" to="/line">
-                        <ResponsiveLine
-                            margin={{
-                                top: 10,
-                                bottom: 15,
-                                left: 24,
-                                right: 10,
-                            }}
-                            data={generateDrinkStats(8)}
+                    <Link className="home_item" to="/sankey">
+                        <ResponsiveSankey
+                            margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+                            data={generateSankeyData({ nodeCount: 11, maxIterations: 2 })}
                             theme={homeTheme}
                             colors={colors}
-                            {...commonAxes}
-                            stacked={true}
                             animate={false}
                             isInteractive={false}
-                            markersSize={7}
-                            markersBorderWidth={1}
-                            markersBorderColor="#e25d47"
+                            nodeOpacity={1}
+                            nodeWidth={6}
+                            nodePadding={12}
+                            nodeBorderColor="inherit:darker(0.2)"
+                            linkOpacity={0.35}
                         />
                         <span className="home_item_label">
-                            <span>Line documentation</span>
+                            <span>Sankey documentation</span>
                         </span>
                     </Link>
                 </MediaQuery>

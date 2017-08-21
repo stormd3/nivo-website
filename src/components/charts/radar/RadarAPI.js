@@ -43,15 +43,15 @@ export default class RadarAPI extends Component {
                     gridShape: 'circular',
                     gridLabelOffset: 36,
 
-                    // markers
-                    enableMarkers: true,
-                    markersSize: 8,
-                    markersColor: 'inherit',
-                    markersBorderWidth: 0,
-                    markersBorderColor: '#fff',
-                    enableMarkersLabel: true,
-                    markersLabel: 'value',
-                    markersLabelYOffset: -12,
+                    // dots
+                    enableDots: true,
+                    dotSize: 8,
+                    dotColor: 'inherit',
+                    dotBorderWidth: 0,
+                    dotBorderColor: '#fff',
+                    enableDotLabel: true,
+                    dotLabel: 'value',
+                    dotLabelYOffset: -12,
 
                     // theming
                     colors: 'nivo',

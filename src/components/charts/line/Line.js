@@ -26,7 +26,7 @@ const mapSettings = settingsMapper(
             if (value === 'd => d.color') return d => d.color
             return value
         },
-        markersLabel: value => {
+        dotLabel: value => {
             if (value === `d => \`\${d.x}: \${d.y}\``) return d => `${d.x}: ${d.y}`
             return value
         },
@@ -98,15 +98,15 @@ export default class Line extends Component {
             colors: 'nivo',
             colorBy: 'id',
 
-            // markers
-            enableMarkers: true,
-            markersSize: 12,
-            markersColor: 'inherit:darker(.3)',
-            markersBorderWidth: 2,
-            markersBorderColor: '#fff',
-            enableMarkersLabel: true,
-            markersLabel: 'y',
-            markersLabelYOffset: -12,
+            // dots
+            enableDots: true,
+            dotSize: 10,
+            dotColor: 'inherit:darker(.3)',
+            dotBorderWidth: 2,
+            dotBorderColor: '#fff',
+            enableDotLabel: true,
+            dotLabel: 'y',
+            dotLabelYOffset: -12,
 
             // motion
             animate: true,
@@ -182,13 +182,21 @@ export default class Line extends Component {
                             nivo-api
                         </a>, see{' '}
                         <a
-                            href={`${config.nivoApiUrl}/samples/line`}
+                            href={`${config.nivoApiUrl}/samples/line.svg`}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             sample
                         </a>{' '}
-                        or <Link to="/line/api">try it using the API client</Link>.
+                        or <Link to="/line/api">try it using the API client</Link>. You can also see
+                        more example usages in{' '}
+                        <a
+                            href={`${config.storybookUrl}?selectedKind=Line&selectedStory=default`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            the storybook
+                        </a>.
                     </p>
                 </div>
                 <div className="grid_item grid_item-full">

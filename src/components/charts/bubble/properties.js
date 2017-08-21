@@ -12,36 +12,27 @@ import { bubbleDefaultProps as defaults } from 'nivo'
 import { marginProperties } from '../../../lib/componentProperties'
 
 /*
-[
-    'label',
-    'string',
-    true,
-    <code className="code-string">"name"</code>,
-    '',
-],
-[
-    'namespace',
-    'string',
-    true,
-    <code className="code-string">"html"</code>,
-    <span>
-        must be one of{' '}
-        <code className="code-string">
-            "html"
-        </code>{' '}
-        or{' '}
-        <code className="code-string">"svg"</code>,<br />when{' '}
-        <code className="code-string">
-            "html"
-        </code>{' '}
-        used, the surrounding elements will be{' '}
-        <code>&lt;div/&gt;</code> tags,<br />for{' '}
-        <code className="code-string">"svg"</code>,
-        you'll have a <code>&lt;g/&gt;</code> tag
-        wrapped inside an <code>&lt;svg/&gt;</code>{' '}
-        tag.
-    </span>,
-],
+'namespace',
+'string',
+true,
+<code className="code-string">"html"</code>,
+<span>
+    must be one of{' '}
+    <code className="code-string">
+        "html"
+    </code>{' '}
+    or{' '}
+    <code className="code-string">"svg"</code>,<br />when{' '}
+    <code className="code-string">
+        "html"
+    </code>{' '}
+    used, the surrounding elements will be{' '}
+    <code>&lt;div/&gt;</code> tags,<br />for{' '}
+    <code className="code-string">"svg"</code>,
+    you'll have a <code>&lt;g/&gt;</code> tag
+    wrapped inside an <code>&lt;svg/&gt;</code>{' '}
+    tag.
+</span>,
  */
 
 export default [

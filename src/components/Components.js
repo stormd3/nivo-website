@@ -131,6 +131,20 @@ const defaultComponents = [
         extras: ['react', 'api'],
     },
     {
+        key: 'sankey',
+        path: '/sankey',
+        name: '<Sankey />',
+        className: 'sankey',
+        extras: ['react', 'svg'],
+    },
+    {
+        key: 'responsive-sankey',
+        path: '/sankey',
+        name: '<ResponsiveSankey />',
+        className: 'sankey',
+        extras: ['react', 'svg'],
+    },
+    {
         key: 'sunburst',
         path: '/sunburst',
         name: '<Sunburst />',

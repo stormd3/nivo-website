@@ -42,7 +42,11 @@ class VoronoiReact extends Component {
         const code = generateCode('Voronoi', settings)
 
         const header = (
-            <ChartHeader chartClass="Voronoi" tags={['voronoi', 'nivo-api']} diceRoll={diceRoll} />
+            <ChartHeader
+                chartClass="Voronoi"
+                tags={['voronoi', 'experimental']}
+                diceRoll={diceRoll}
+            />
         )
 
         return (

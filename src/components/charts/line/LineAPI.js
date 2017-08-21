@@ -64,15 +64,12 @@ class LineAPI extends Component {
                     colors: 'nivo',
                     colorBy: 'id',
 
-                    // markers
-                    enableMarkers: true,
-                    markersSize: 14,
-                    markersColor: 'inherit:darker(.5)',
-                    markersBorderWidth: 3,
-                    markersBorderColor: '#fff',
-
-                    // motion
-                    animate: false,
+                    // dots
+                    enableDots: true,
+                    dotSize: 14,
+                    dotColor: 'inherit:darker(.5)',
+                    dotBorderWidth: 3,
+                    dotBorderColor: '#fff',
                 }}
             />
         )

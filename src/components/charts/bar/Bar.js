@@ -179,10 +179,22 @@ class Bars extends Component {
                         >
                             nivo-api
                         </a>, see{' '}
-                        <a href={`${config.nivoApiUrl}/samples/bar`} target="_blank">
+                        <a
+                            href={`${config.nivoApiUrl}/samples/bar.svg`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             sample
                         </a>{' '}
-                        or <Link to="/bar/api">try it using the API client</Link>.
+                        or <Link to="/bar/api">try it using the API client</Link>. You can also see
+                        more example usages in{' '}
+                        <a
+                            href={`${config.storybookUrl}?selectedKind=Bar&selectedStory=stacked`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            the storybook
+                        </a>.
                     </p>
                 </div>
                 <div className="grid_item grid_item-full">
