@@ -41,17 +41,11 @@ const colors = [
 ]
 
 class ColorsControl extends Component {
-    constructor(props) {
-        super(props)
-
-        this.handleColorsChange = this.handleColorsChange.bind(this)
-    }
-
     shouldComponentUpdate(nextProps) {
         return nextProps.value !== this.props.value
     }
 
-    handleColorsChange(value) {
+    handleColorsChange = value => {
         const { onChange } = this.props
         onChange(value.value)
     }
@@ -82,16 +76,14 @@ class ColorsControl extends Component {
         return (
             <div className="control control-colors">
                 <label className="control_label">
-                    colors:&nbsp;<code className="code code-string">"{value}"</code>
+                    colors:&nbsp;<code className="code code-string">'{value}'</code>
                 </label>
                 <Select
-                    options={colors.map(({ id, colors }) => {
-                        return {
-                            label: id,
-                            value: id,
-                            colors,
-                        }
-                    })}
+                    options={colors.map(({ id, colors }) => ({
+                        label: id,
+                        value: id,
+                        colors,
+                    }))}
                     optionRenderer={this.renderOption}
                     valueRenderer={this.renderValue}
                     onChange={this.handleColorsChange}

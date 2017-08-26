@@ -1,284 +1,415 @@
-.nivo-icon {
-    display: block;
+/* glue: 0.13 hash: 6727c300ce */
+.sprite-icons-voronoi-red,
+.sprite-icons-voronoi-grey,
+.sprite-icons-treemap-red,
+.sprite-icons-treemap-grey,
+.sprite-icons-sunburst-red,
+.sprite-icons-sunburst-grey,
+.sprite-icons-stream-red,
+.sprite-icons-stream-grey,
+.sprite-icons-sankey-red,
+.sprite-icons-sankey-grey,
+.sprite-icons-react-red,
+.sprite-icons-react-grey,
+.sprite-icons-radar-red,
+.sprite-icons-radar-grey,
+.sprite-icons-placeholders-red,
+.sprite-icons-placeholders-grey,
+.sprite-icons-pie-red,
+.sprite-icons-pie-grey,
+.sprite-icons-nivo-logo,
+.sprite-icons-nav-back-red,
+.sprite-icons-nav-back-grey,
+.sprite-icons-line-red,
+.sprite-icons-line-grey,
+.sprite-icons-html-red,
+.sprite-icons-html-grey,
+.sprite-icons-heatmap-red,
+.sprite-icons-heatmap-grey,
+.sprite-icons-data-red,
+.sprite-icons-data-grey,
+.sprite-icons-colors-red,
+.sprite-icons-colors-grey,
+.sprite-icons-code-red,
+.sprite-icons-code-grey,
+.sprite-icons-chord-red,
+.sprite-icons-chord-grey,
+.sprite-icons-calendar-red,
+.sprite-icons-calendar-grey,
+.sprite-icons-bubble-red,
+.sprite-icons-bubble-grey,
+.sprite-icons-bar-red,
+.sprite-icons-bar-grey,
+.sprite-icons-api-red,
+.sprite-icons-api-grey {
+    background-image: url('../assets/icons.png');
+    background-repeat: no-repeat;
+}
+
+.sprite-icons-voronoi-red {
+    background-position: -4px -4px;
     width: 52px;
     height: 52px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
 }
 
-.nivo-icon-nivo {
-    background-image: url('../assets/nivo-logo-circle.png');
+.sprite-icons-voronoi-grey {
+    background-position: -64px -4px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-back {
-    background-image: url('../assets/nivo-mini-nav-back-grey.png');
+.sprite-icons-treemap-red {
+    background-position: -4px -64px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-back.red,
-.nivo-icon-back:hover,
-.nivo_components_item:hover .nivo-icon-back,
-.mini-nav_item.active .nivo-icon-back,
-.sidebar_link.active .nivo-icon-back,
-.chart-tabs_menu_item.active .nivo-icon-back {
-    background-image: url('../assets/nivo-mini-nav-back-red.png');
+.sprite-icons-treemap-grey {
+    background-position: -64px -64px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-react {
-    background-image: url('../assets/react-logo-grey.png');
+.sprite-icons-sunburst-red {
+    background-position: -124px -4px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-react.red,
-.nivo-icon-react:hover,
-.nivo_components_item:hover .nivo-icon-react,
-.mini-nav_item.active .nivo-icon-react,
-.sidebar_link.active .nivo-icon-react,
-.chart-tabs_menu_item.active .nivo-icon-react {
-    background-image: url('../assets/react-logo-red.png');
+.sprite-icons-sunburst-grey {
+    background-position: -124px -64px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-code {
-    background-image: url('../assets/nivo-chart-icon-bubble-placeholders-grey.png');
+.sprite-icons-stream-red {
+    background-position: -4px -124px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-code.red,
-.nivo-icon-code:hover,
-.nivo_components_item:hover .nivo-icon-code,
-.mini-nav_item.active .nivo-icon-code,
-.sidebar_link.active .nivo-icon-code,
-.chart-tabs_menu_item.active .nivo-icon-code {
-    background-image: url('../assets/nivo-chart-icon-bubble-placeholders-red.png');
+.sprite-icons-stream-grey {
+    background-position: -64px -124px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-data {
-    background-image: url('../assets/nivo-api-grey.png');
+.sprite-icons-sankey-red {
+    background-position: -124px -124px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-data.red,
-.nivo-icon-data:hover,
-.nivo_components_item:hover .nivo-icon-data,
-.mini-nav_item.active .nivo-icon-data,
-.sidebar_link.active .nivo-icon-data,
-.chart-tabs_menu_item.active .nivo-icon-data {
-    background-image: url('../assets/nivo-api-red.png');
+.sprite-icons-sankey-grey {
+    background-position: -184px -4px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-api {
-    background-image: url('../assets/nivo-api-grey.png');
+.sprite-icons-react-red {
+    background-position: -184px -64px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-api.red,
-.nivo-icon-api:hover,
-.nivo_components_item:hover .nivo-icon-api,
-.mini-nav_item.active .nivo-icon-api,
-.sidebar_link.active .nivo-icon-api,
-.chart-tabs_menu_item.active .nivo-icon-api {
-    background-image: url('../assets/nivo-api-red.png');
+.sprite-icons-react-grey {
+    background-position: -184px -124px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-svg {
-    background-image: url('../assets/nivo-svg-grey.png');
+.sprite-icons-radar-red {
+    background-position: -4px -184px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-svg.red,
-.nivo-icon-svg:hover,
-.nivo_components_item:hover .nivo-icon-svg,
-.mini-nav_item.active .nivo-icon-svg,
-.sidebar_link.active .nivo-icon-svg,
-.chart-tabs_menu_item.active .nivo-icon-svg {
-    background-image: url('../assets/nivo-svg-red.png');
+.sprite-icons-radar-grey {
+    background-position: -64px -184px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-html {
-    background-image: url('../assets/nivo-html-grey.png');
+.sprite-icons-placeholders-red {
+    background-position: -124px -184px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-html.red,
-.nivo-icon-html:hover,
-.nivo_components_item:hover .nivo-icon-html,
-.mini-nav_item.active .nivo-icon-html,
-.sidebar_link.active .nivo-icon-html,
-.chart-tabs_menu_item.active .nivo-icon-html {
-    background-image: url('../assets/nivo-html-red.png');
+.sprite-icons-placeholders-grey {
+    background-position: -184px -184px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-placeholders {
-    background-image: url('../assets/nivo-chart-icon-bubble-placeholders-grey.png');
+.sprite-icons-pie-red {
+    background-position: -244px -4px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-placeholders.red,
-.nivo-icon-placeholders:hover,
-.nivo_components_item:hover .nivo-icon-placeholders,
-.mini-nav_item.active .nivo-icon-placeholders,
-.sidebar_link.active .nivo-icon-placeholders,
-.chart-tabs_menu_item.active .nivo-icon-placeholders {
-    background-image: url('../assets/nivo-chart-icon-bubble-placeholders-red.png');
+.sprite-icons-pie-grey {
+    background-position: -244px -64px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-bar {
-    background-image: url('../assets/nivo-chart-icon-bars-grey.png');
+.sprite-icons-nivo-logo {
+    background-position: -244px -124px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-bar.red,
-.nivo-icon-bar:hover,
-.nivo_components_item:hover .nivo-icon-bar,
-.mini-nav_item.active .nivo-icon-bar,
-.sidebar_link.active .nivo-icon-bar,
-.chart-tabs_menu_item.active .nivo-icon-bar {
-    background-image: url('../assets/nivo-chart-icon-bars-red.png');
+.sprite-icons-nav-back-red {
+    background-position: -244px -184px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-sankey {
-    background-image: url('../assets/nivo-chart-icon-sankey-grey.png');
+.sprite-icons-nav-back-grey {
+    background-position: -4px -244px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-sankey.red,
-.nivo-icon-sankey:hover,
-.nivo_components_item:hover .nivo-icon-sankey,
-.mini-nav_item.active .nivo-icon-sankey,
-.sidebar_link.active .nivo-icon-sankey,
-.chart-tabs_menu_item.active .nivo-icon-sankey {
-    background-image: url('../assets/nivo-chart-icon-sankey-red.png');
+.sprite-icons-line-red {
+    background-position: -64px -244px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-sunburst {
-    background-image: url('../assets/nivo-chart-icon-sunburst-grey.png');
+.sprite-icons-line-grey {
+    background-position: -124px -244px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-sunburst.red,
-.nivo-icon-sunburst:hover,
-.nivo_components_item:hover .nivo-icon-sunburst,
-.mini-nav_item.active .nivo-icon-sunburst,
-.sidebar_link.active .nivo-icon-sunburst,
-.chart-tabs_menu_item.active .nivo-icon-sunburst {
-    background-image: url('../assets/nivo-chart-icon-sunburst-red.png');
+.sprite-icons-html-red {
+    background-position: -184px -244px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-stream {
-    background-image: url('../assets/nivo-chart-icon-stack-grey.png');
+.sprite-icons-html-grey {
+    background-position: -244px -244px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-stream.red,
-.nivo-icon-stream:hover,
-.nivo_components_item:hover .nivo-icon-stream,
-.mini-nav_item.active .nivo-icon-stream,
-.sidebar_link.active .nivo-icon-stream,
-.chart-tabs_menu_item.active .nivo-icon-stream {
-    background-image: url('../assets/nivo-chart-icon-stack-red.png');
+.sprite-icons-heatmap-red {
+    background-position: -304px -4px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-radar {
-    background-image: url('../assets/nivo-chart-icon-radar-grey.png');
+.sprite-icons-heatmap-grey {
+    background-position: -304px -64px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-radar.red,
-.nivo-icon-radar:hover,
-.nivo_components_item:hover .nivo-icon-radar,
-.mini-nav_item.active .nivo-icon-radar,
-.sidebar_link.active .nivo-icon-radar,
-.chart-tabs_menu_item.active .nivo-icon-radar {
-    background-image: url('../assets/nivo-chart-icon-radar-red.png');
+.sprite-icons-data-red {
+    background-position: -304px -124px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-line {
-    background-image: url('../assets/nivo-chart-icon-line-grey.png');
+.sprite-icons-data-grey {
+    background-position: -304px -184px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-line.red,
-.nivo-icon-line:hover,
-.nivo_components_item:hover .nivo-icon-line,
-.mini-nav_item.active .nivo-icon-line,
-.sidebar_link.active .nivo-icon-line,
-.chart-tabs_menu_item.active .nivo-icon-line {
-    background-image: url('../assets/nivo-chart-icon-line-red.png');
+.sprite-icons-colors-red {
+    background-position: -304px -244px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-pie {
-    background-image: url('../assets/nivo-chart-icon-pie-grey.png');
+.sprite-icons-colors-grey {
+    background-position: -4px -304px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-pie.red,
-.nivo-icon-pie:hover,
-.nivo_components_item:hover .nivo-icon-pie,
-.mini-nav_item.active .nivo-icon-pie,
-.sidebar_link.active .nivo-icon-pie,
-.chart-tabs_menu_item.active .nivo-icon-pie {
-    background-image: url('../assets/nivo-chart-icon-pie-red.png');
+.sprite-icons-code-red {
+    background-position: -64px -304px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-bubble {
-    background-image: url('../assets/nivo-chart-icon-bubble-grey.png');
+.sprite-icons-code-grey {
+    background-position: -124px -304px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-bubble.red,
-.nivo-icon-bubble:hover,
-.nivo_components_item:hover .nivo-icon-bubble,
-.mini-nav_item.active .nivo-icon-bubble,
-.sidebar_link.active .nivo-icon-bubble,
-.chart-tabs_menu_item.active .nivo-icon-bubble {
-    background-image: url('../assets/nivo-chart-icon-bubble-red.png');
+.sprite-icons-chord-red {
+    background-position: -184px -304px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-treemap {
-    background-image: url('../assets/nivo-chart-icon-treemap-grey.png');
+.sprite-icons-chord-grey {
+    background-position: -244px -304px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-treemap.red,
-.nivo-icon-treemap:hover,
-.nivo_components_item:hover .nivo-icon-treemap,
-.mini-nav_item.active .nivo-icon-treemap,
-.chart-tabs_menu_item.active .nivo-icon-treemap {
-    background-image: url('../assets/nivo-chart-icon-treemap-red.png');
+.sprite-icons-calendar-red {
+    background-position: -304px -304px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-calendar {
-    background-image: url('../assets/nivo-chart-icon-calendar-grey.png');
+.sprite-icons-calendar-grey {
+    background-position: -364px -4px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-calendar.red,
-.nivo-icon-calendar:hover,
-.nivo_components_item:hover .nivo-icon-calendar,
-.mini-nav_item.active .nivo-icon-calendar,
-.sidebar_link.active .nivo-icon-calendar,
-.chart-tabs_menu_item.active .nivo-icon-calendar {
-    background-image: url('../assets/nivo-chart-icon-calendar-red.png');
+.sprite-icons-bubble-red {
+    background-position: -364px -64px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-chord {
-    background-image: url('../assets/nivo-chart-icon-chord-grey.png');
+.sprite-icons-bubble-grey {
+    background-position: -364px -124px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-chord.red,
-.nivo-icon-chord:hover,
-.nivo_components_item:hover .nivo-icon-chord,
-.mini-nav_item.active .nivo-icon-chord,
-.sidebar_link.active .nivo-icon-chord,
-.chart-tabs_menu_item.active .nivo-icon-chord {
-    background-image: url('../assets/nivo-chart-icon-chord-red.png');
+.sprite-icons-bar-red {
+    background-position: -364px -184px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-voronoi {
-    background-image: url('../assets/nivo-icon-voronoi-grey.png');
+.sprite-icons-bar-grey {
+    background-position: -364px -244px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-voronoi.red,
-.nivo-icon-voronoi:hover,
-.nivo_components_item:hover .nivo-icon-voronoi,
-.mini-nav_item.active .nivo-icon-voronoi,
-.sidebar_link.active .nivo-icon-voronoi,
-.chart-tabs_menu_item.active .nivo-icon-voronoi {
-    background-image: url('../assets/nivo-icon-voronoi-red.png');
+.sprite-icons-api-red {
+    background-position: -364px -304px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-colors {
-    background-image: url('../assets/nivo-colors-icon-grey.png');
+.sprite-icons-api-grey {
+    background-position: -4px -364px;
+    width: 52px;
+    height: 52px;
 }
 
-.nivo-icon-colors.red,
-.nivo-icon-colors:hover,
-.nivo_components_item:hover .nivo-icon-colors,
-.mini-nav_item.active .nivo-icon-colors,
-.sidebar_link.active .nivo-icon-colors,
-.chart-tabs_menu_item.active .nivo-icon-colors {
-    background-image: url('../assets/nivo-colors-icon.png');
+@media screen and (-webkit-min-device-pixel-ratio: 1.0),
+    screen and (min--moz-device-pixel-ratio: 1.0),
+    screen and (-o-min-device-pixel-ratio: 100/100),
+    screen and (min-device-pixel-ratio: 1.0),
+    screen and (min-resolution: 1.0dppx) {
+    .sprite-icons-voronoi-red,
+    .sprite-icons-voronoi-grey,
+    .sprite-icons-treemap-red,
+    .sprite-icons-treemap-grey,
+    .sprite-icons-sunburst-red,
+    .sprite-icons-sunburst-grey,
+    .sprite-icons-stream-red,
+    .sprite-icons-stream-grey,
+    .sprite-icons-sankey-red,
+    .sprite-icons-sankey-grey,
+    .sprite-icons-react-red,
+    .sprite-icons-react-grey,
+    .sprite-icons-radar-red,
+    .sprite-icons-radar-grey,
+    .sprite-icons-placeholders-red,
+    .sprite-icons-placeholders-grey,
+    .sprite-icons-pie-red,
+    .sprite-icons-pie-grey,
+    .sprite-icons-nivo-logo,
+    .sprite-icons-nav-back-red,
+    .sprite-icons-nav-back-grey,
+    .sprite-icons-line-red,
+    .sprite-icons-line-grey,
+    .sprite-icons-html-red,
+    .sprite-icons-html-grey,
+    .sprite-icons-heatmap-red,
+    .sprite-icons-heatmap-grey,
+    .sprite-icons-data-red,
+    .sprite-icons-data-grey,
+    .sprite-icons-colors-red,
+    .sprite-icons-colors-grey,
+    .sprite-icons-code-red,
+    .sprite-icons-code-grey,
+    .sprite-icons-chord-red,
+    .sprite-icons-chord-grey,
+    .sprite-icons-calendar-red,
+    .sprite-icons-calendar-grey,
+    .sprite-icons-bubble-red,
+    .sprite-icons-bubble-grey,
+    .sprite-icons-bar-red,
+    .sprite-icons-bar-grey,
+    .sprite-icons-api-red,
+    .sprite-icons-api-grey {
+        background-image: url('../assets/icons.png');
+        -webkit-background-size: 420px 420px;
+        -moz-background-size: 420px 420px;
+        background-size: 420px 420px;
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2.0),
+    screen and (min--moz-device-pixel-ratio: 2.0),
+    screen and (-o-min-device-pixel-ratio: 200/100),
+    screen and (min-device-pixel-ratio: 2.0),
+    screen and (min-resolution: 2.0dppx) {
+    .sprite-icons-voronoi-red,
+    .sprite-icons-voronoi-grey,
+    .sprite-icons-treemap-red,
+    .sprite-icons-treemap-grey,
+    .sprite-icons-sunburst-red,
+    .sprite-icons-sunburst-grey,
+    .sprite-icons-stream-red,
+    .sprite-icons-stream-grey,
+    .sprite-icons-sankey-red,
+    .sprite-icons-sankey-grey,
+    .sprite-icons-react-red,
+    .sprite-icons-react-grey,
+    .sprite-icons-radar-red,
+    .sprite-icons-radar-grey,
+    .sprite-icons-placeholders-red,
+    .sprite-icons-placeholders-grey,
+    .sprite-icons-pie-red,
+    .sprite-icons-pie-grey,
+    .sprite-icons-nivo-logo,
+    .sprite-icons-nav-back-red,
+    .sprite-icons-nav-back-grey,
+    .sprite-icons-line-red,
+    .sprite-icons-line-grey,
+    .sprite-icons-html-red,
+    .sprite-icons-html-grey,
+    .sprite-icons-heatmap-red,
+    .sprite-icons-heatmap-grey,
+    .sprite-icons-data-red,
+    .sprite-icons-data-grey,
+    .sprite-icons-colors-red,
+    .sprite-icons-colors-grey,
+    .sprite-icons-code-red,
+    .sprite-icons-code-grey,
+    .sprite-icons-chord-red,
+    .sprite-icons-chord-grey,
+    .sprite-icons-calendar-red,
+    .sprite-icons-calendar-grey,
+    .sprite-icons-bubble-red,
+    .sprite-icons-bubble-grey,
+    .sprite-icons-bar-red,
+    .sprite-icons-bar-grey,
+    .sprite-icons-api-red,
+    .sprite-icons-api-grey {
+        background-image: url('../assets/icons@2x.png');
+        -webkit-background-size: 420px 420px;
+        -moz-background-size: 420px 420px;
+        background-size: 420px 420px;
+    }
 }

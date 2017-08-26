@@ -10,7 +10,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { TransitionMotion, spring } from 'react-motion'
-import _ from 'lodash'
 import MiniNavLink from './MiniNavLink'
 import { getSectionItems } from '../../SiteMap'
 
@@ -99,9 +98,7 @@ class MiniNav extends Component {
         let childrenItems = []
 
         if (location) {
-            const parent = _.find(miniNavItems, ({ path }) => {
-                return location.pathname.startsWith(path)
-            })
+            const parent = miniNavItems.find(({ path }) => location.pathname.startsWith(path))
             if (parent && parent.children) {
                 hasChildren = true
                 currentParent = parent
@@ -109,7 +106,7 @@ class MiniNav extends Component {
         }
 
         let parentItems = miniNavItems.map(item => {
-            const itemProps = _.assign({}, item)
+            const itemProps = Object.assign({}, item)
             if (item === currentParent) {
                 itemProps.onClick = this.openChildren
             }
@@ -140,7 +137,7 @@ class MiniNav extends Component {
         return (
             <aside className="mini-nav">
                 <Link className="mini-nav_item mini-nav_item-nivo" to="/">
-                    <span className="nivo-icon nivo-icon-nivo" />
+                    <span className="mini-nav_icon sprite-icons-nivo-logo" />
                 </Link>
                 <TransitionMotion
                     willEnter={this.willEnter}
@@ -184,10 +181,10 @@ class MiniNav extends Component {
                                     <span
                                         key="back"
                                         onClick={this.closeChildren}
-                                        className="mini-nav_item mini-nav_item-back"
+                                        className="mini-nav_item"
                                         style={style}
                                     >
-                                        <span className="nivo-icon nivo-icon-back" />
+                                        <span className="mini-nav_icon sprite-icons-nav-back-red" />
                                     </span>
                                 )
                             })}

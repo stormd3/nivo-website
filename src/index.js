@@ -16,7 +16,9 @@ import Nav from './components/nav/Nav'
 import MiniNav from './components/nav/MiniNav'
 import Home from './components/pages/Home'
 import Header from './components/Header'
+//import MobileNav from './components/nav/MobileNav'
 import { getRoutes } from './SiteMap'
+import registerServiceWorker from './registerServiceWorker'
 
 class App extends Component {
     constructor(props) {
@@ -45,6 +47,7 @@ class App extends Component {
                 <Helmet titleTemplate="%s | nivo" />
                 <Header onNavToggle={this.handleNavToggle} />
                 <MiniNav location={location} />
+                {/*<MobileNav />*/}
                 {nav && <Nav onNavClose={this.handleNavClose} />}
                 <div className="content">
                     <Switch>
@@ -67,3 +70,5 @@ render(
     </Router>,
     document.getElementById('root')
 )
+
+registerServiceWorker()

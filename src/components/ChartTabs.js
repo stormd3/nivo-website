@@ -7,22 +7,26 @@
  * file that was distributed with this source code.
  */
 import React, { Component } from 'react'
-import classNames from 'classnames'
 
 const tabs = ['chart', 'code', 'data']
 
 export default class ChartTabs extends Component {
     state = {
         tab: 'chart',
+        hoverTab: null,
     }
 
     handleTabToggle = tab => {
         this.setState({ tab })
     }
 
+    handleTabHover = hoverTab => {
+        this.setState({ hoverTab })
+    }
+
     render() {
         const { chartClass, data, code, children } = this.props
-        const { tab: currentTab } = this.state
+        const { tab: currentTab, hoverTab } = this.state
 
         let content
         if (currentTab === 'chart') {
@@ -45,24 +49,39 @@ export default class ChartTabs extends Component {
 
         return (
             <div className="chart-tabs">
-                <div className="chart-tabs_menu">
-                    {tabs.map(tab => {
-                        const icon = tab === 'chart' ? chartClass : tab
+                <div className="chart-tabs__menu">
+                    <span
+                        className={`chart-tabs__menu__helper chart-tabs__menu__helper--${currentTab}`}
+                    >
+                        {hoverTab}
+                    </span>
+                    <div className="chart-tabs__menu__wrapper">
+                        {tabs.map(tab => {
+                            const icon = tab === 'chart' ? chartClass : tab
+                            const iconColor =
+                                tab === currentTab || hoverTab === tab ? 'red' : 'grey'
 
-                        return (
-                            <span
-                                key={tab}
-                                onClick={e => {
-                                    this.handleTabToggle(tab)
-                                }}
-                                className={classNames('chart-tabs_menu_item', {
-                                    active: tab === currentTab,
-                                })}
-                            >
-                                <span className={`nivo-icon nivo-icon-${icon}`} />
-                            </span>
-                        )
-                    })}
+                            return (
+                                <span
+                                    key={tab}
+                                    className="chart-tabs__menu__item"
+                                    onClick={() => {
+                                        this.handleTabToggle(tab)
+                                    }}
+                                    onMouseEnter={() => {
+                                        this.handleTabHover(tab)
+                                    }}
+                                    onMouseLeave={() => {
+                                        this.handleTabHover(null)
+                                    }}
+                                >
+                                    <span
+                                        className={`chart-tabs__menu__item__icon sprite-icons-${icon}-${iconColor}`}
+                                    />
+                                </span>
+                            )
+                        })}
+                    </div>
                 </div>
                 {content}
             </div>

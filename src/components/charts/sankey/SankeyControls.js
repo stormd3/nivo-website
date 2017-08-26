@@ -36,7 +36,6 @@ export default class SankeyControls extends PureComponent {
                 settings={settings}
                 onChange={onChange}
                 groups={groups}
-                group="Nodes"
             />
         )
     }

@@ -50,6 +50,12 @@ export default class Line extends Component {
                 left: 60,
             },
 
+            minY: 'auto',
+            maxY: 'auto',
+
+            stacked: true,
+            curve: 'linear',
+
             // axes
             'enable axisTop': false,
             axisTop: {
@@ -89,12 +95,11 @@ export default class Line extends Component {
                 legendOffset: -40,
                 legendPosition: 'center',
             },
+
+            // grid
             enableGridX: true,
             enableGridY: true,
 
-            stacked: true,
-
-            curve: 'linear',
             colors: 'nivo',
             colorBy: 'id',
 
@@ -136,7 +141,7 @@ export default class Line extends Component {
         const header = (
             <ChartHeader
                 chartClass="Line"
-                tags={['line', 'basics', 'isomorphic', 'nivo-api']}
+                tags={['basic', 'isomorphic', 'api']}
                 diceRoll={diceRoll}
             />
         )

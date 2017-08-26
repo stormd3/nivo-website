@@ -259,7 +259,6 @@
     float: left;
     border-radius: 2px;
     border: 1px solid #cacaca;
-    font-family: 'Helvetica Neue', Helvetica, sans-serif;
 }
 .react-colorpicker-panel-params-hex {
     width: 52px;
@@ -299,8 +298,10 @@
     cursor: pointer;
 }
 .react-colorpicker {
+    /*
     font-family: Arial, "Hiragino Sans GB", "Microsoft Yahei", "Microsoft Sans Serif",
         "WenQuanYi Micro Hei", sans-serif;
+    */
 }
 .react-colorpicker-picker {
     position: absolute;

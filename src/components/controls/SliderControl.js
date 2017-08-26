@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import pick from 'lodash/pick'
 
 export default class SliderControl extends Component {
     static propTypes = {
@@ -37,7 +37,7 @@ export default class SliderControl extends Component {
                     type="range"
                     value={value}
                     onChange={onChange}
-                    {..._.pick(this.props, ['min', 'max', 'step'])}
+                    {...pick(this.props, ['min', 'max', 'step'])}
                 />
                 <div className="control-help">
                     {help}

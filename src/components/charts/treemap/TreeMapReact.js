@@ -26,7 +26,7 @@ class TreeMapReact extends Component {
             value: 'loc',
 
             margin: {
-                top: 30,
+                top: 10,
                 right: 10,
                 bottom: 10,
                 left: 10,
@@ -85,7 +85,7 @@ class TreeMapReact extends Component {
         const header = (
             <ChartHeader
                 chartClass="TreeMap"
-                tags={['treemap', 'hierarchy', 'isomorphic']}
+                tags={['hierarchy', 'svg', 'isomorphic', 'api']}
                 diceRoll={diceRoll}
             />
         )

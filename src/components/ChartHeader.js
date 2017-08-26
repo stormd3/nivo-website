@@ -12,7 +12,7 @@ class ChartHeader extends Component {
         return (
             <div className="chart_header">
                 <h1 className="page_header">
-                    &lt;{chartClass} /&gt;
+                    {chartClass}
                 </h1>
                 <div className="component_meta">
                     {tags.map(tag =>
@@ -23,7 +23,7 @@ class ChartHeader extends Component {
                 </div>
                 {diceRoll &&
                     <span className="dice-roll no-select" onClick={diceRoll}>
-                        roll the dices
+                        roll the dice
                     </span>}
             </div>
         )

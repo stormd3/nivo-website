@@ -41,7 +41,7 @@ export default class Pie extends Component {
             margin: {
                 top: 80,
                 right: 80,
-                bottom: 30,
+                bottom: 80,
                 left: 80,
             },
             innerRadius: 0.5,
@@ -97,7 +97,7 @@ export default class Pie extends Component {
         const header = (
             <ChartHeader
                 chartClass="Pie"
-                tags={['pie', 'basics', 'radial', 'circle']}
+                tags={['basic', 'radial', 'circle', 'isomorphic', 'api']}
                 diceRoll={diceRoll}
             />
         )

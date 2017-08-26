@@ -10,6 +10,19 @@
     background: var(--mini-nav-background-color);
 }
 
+.mini-nav a {
+    border-bottom: none;
+}
+
+.mini-nav_icon {
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 20px;
+    transform: scale(0.76);
+    transform-origin: top left;
+}
+
 .mini-nav_item {
     cursor: pointer;
     display: block;
@@ -46,12 +59,6 @@
 
 .mini-nav_item:hover .mini-nav_item_label {
     display: block;
-}
-
-.mini-nav_item .nivo-icon {
-    background-size: calc(var(--mini-nav-item-size) * 0.7) calc(var(--mini-nav-item-size) * 0.7);
-    background-position: center center;
-    background-repeat: no-repeat;
 }
 
 .mini-nav_item_label {

@@ -8,7 +8,7 @@
  */
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
-import { random } from 'lodash'
+import random from 'lodash/random'
 import { generateSankeyData } from 'nivo-generators'
 
 const generateData = () => generateSankeyData({ nodeCount: 11, maxIterations: 2 })

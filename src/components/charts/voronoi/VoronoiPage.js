@@ -8,13 +8,9 @@
  */
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
-import _ from 'lodash'
+import range from 'lodash/range'
 
-const generateSites = () => {
-    return _.range(100).map(() => {
-        return [Math.random() * 500, Math.random() * 500]
-    })
-}
+const generateSites = () => range(100).map(() => [Math.random() * 500, Math.random() * 500])
 
 class VoronoiPage extends Component {
     state = {

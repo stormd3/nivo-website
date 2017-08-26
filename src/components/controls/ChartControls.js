@@ -8,12 +8,18 @@
  */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import get from 'lodash/get'
+import set from 'lodash/set'
+import merge from 'lodash/merge'
+import snakeCase from 'lodash/snakeCase'
+import pick from 'lodash/pick'
 import classNames from 'classnames'
 import CollapsibleCard from '../CollapsibleCard'
 import SliderControl from './SliderControl'
 import SwitchControl from './SwitchControl'
+import SwitchableSliderControl from './SwitchableSliderControl'
 import ColorsControl from './ColorsControl'
+import QuantizeColorsControl from './QuantizeColorsControl'
 import ColorControl from './ColorControl'
 import TextControl from './TextControl'
 import Select from 'react-select'
@@ -41,7 +47,7 @@ export default class ChartControls extends Component {
 
     mapValue = (key, value) => {
         const { settings, mapValues } = this.props
-        const mapper = _.get(mapValues, key)
+        const mapper = get(mapValues, key)
         if (mapper === undefined) return value
         return mapper(value, settings)
     }
@@ -52,33 +58,33 @@ export default class ChartControls extends Component {
 
     handleSwitchUpdate = key => e => {
         const { onChange, settings } = this.props
-        onChange(_.merge({}, settings, _.set({}, key, e.target.checked)))
+        onChange(merge({}, settings, set({}, key, e.target.checked)))
     }
 
     handleRangeUpdate = key => e => {
         const { onChange, settings } = this.props
-        onChange(_.merge({}, settings, _.set({}, key, Number(e.target.value))))
+        onChange(merge({}, settings, set({}, key, Number(e.target.value))))
     }
 
     handleTextUpdate = key => e => {
         const { onChange, settings } = this.props
-        onChange(_.merge({}, settings, _.set({}, key, e.target.value)))
+        onChange(merge({}, settings, set({}, key, e.target.value)))
     }
 
     handleDirectUpdate = key => value => {
         const { onChange, settings } = this.props
-        onChange(_.merge({}, settings, _.set({}, key, value)))
+        onChange(merge({}, settings, set({}, key, value)))
     }
 
     handleSelectUpdate = key => value => {
         const { onChange, settings } = this.props
-        onChange(_.merge({}, settings, _.set({}, key, value.value)))
+        onChange(merge({}, settings, set({}, key, value.value)))
     }
 
     renderControl(groupName, config) {
         const { ns, settings } = this.props
 
-        const id = `${ns}-${_.snakeCase(groupName)}-${config.name}`
+        const id = `${ns}-${snakeCase(groupName)}-${config.name}`
 
         switch (config.type) {
             case 'choices':
@@ -86,13 +92,13 @@ export default class ChartControls extends Component {
                     <div className="chart-controls_item" key={config.name}>
                         <label className="control_label" htmlFor={id}>
                             {config.name}:&nbsp;<code className="code code-string">
-                                "{_.get(settings, config.name)}"
+                                '{get(settings, config.name)}'
                             </code>
                         </label>
                         <Select
                             id={id}
                             name={id}
-                            value={_.get(settings, config.name)}
+                            value={get(settings, config.name)}
                             options={config.choices}
                             clearable={false}
                             onChange={this.handleSelectUpdate(config.name)}
@@ -106,11 +112,11 @@ export default class ChartControls extends Component {
             case 'range':
                 return (
                     <SliderControl
-                        {..._.pick(config, ['min', 'max', 'unit', 'step', 'help'])}
+                        {...pick(config, ['min', 'max', 'unit', 'step', 'help'])}
                         key={config.name}
                         id={id}
                         label={config.name}
-                        value={_.get(settings, config.name)}
+                        value={get(settings, config.name)}
                         onChange={this.handleRangeUpdate(config.name)}
                     />
                 )
@@ -121,9 +127,29 @@ export default class ChartControls extends Component {
                         key={config.name}
                         id={id}
                         label={config.name}
-                        value={_.get(settings, config.name)}
+                        value={get(settings, config.name)}
                         onChange={this.handleSwitchUpdate(config.name)}
                         help={config.help}
+                    />
+                )
+
+            case 'switchableRange':
+                return (
+                    <SwitchableSliderControl
+                        {...pick(config, [
+                            'min',
+                            'max',
+                            'defaultValue',
+                            'disabledValue',
+                            'unit',
+                            'step',
+                            'help',
+                        ])}
+                        key={config.name}
+                        id={id}
+                        label={config.name}
+                        value={get(settings, config.name)}
+                        onChange={this.handleDirectUpdate(config.name)}
                     />
                 )
 
@@ -133,7 +159,7 @@ export default class ChartControls extends Component {
                         key={config.name}
                         id={id}
                         label={config.name}
-                        value={_.get(settings, config.name)}
+                        value={get(settings, config.name)}
                         onChange={this.handleTextUpdate(config.name)}
                         help={config.help}
                     />
@@ -143,8 +169,19 @@ export default class ChartControls extends Component {
                 return (
                     <div className="chart-controls_item" key={config.name}>
                         <ColorsControl
-                            value={_.get(settings, config.name)}
+                            value={get(settings, config.name)}
                             onChange={this.handleDirectUpdate(config.name)}
+                        />
+                    </div>
+                )
+
+            case 'quantizeColors':
+                return (
+                    <div className="chart-controls_item" key={config.name}>
+                        <QuantizeColorsControl
+                            value={get(settings, config.name)}
+                            onChange={this.handleDirectUpdate(config.name)}
+                            help={config.help}
                         />
                     </div>
                 )
@@ -155,7 +192,7 @@ export default class ChartControls extends Component {
                         <ColorControl
                             label={config.name}
                             help={config.help}
-                            value={_.get(settings, config.name)}
+                            value={get(settings, config.name)}
                             onChange={this.handleDirectUpdate(config.name)}
                         />
                     </div>

@@ -59,8 +59,8 @@
 
 .control_label {
     display: block;
-    white-space: nowrap;
-    margin-bottom: 3px;
+    /*white-space: nowrap;*/
+    margin-bottom: 7px;
 }
 
 .chart-controls_item select {
@@ -70,7 +70,7 @@
 .control-help {
     font-size: 12px;
     color: #777;
-    margin: 5px 0;
+    margin: 7px 0;
     line-height: 16px;
 }
 

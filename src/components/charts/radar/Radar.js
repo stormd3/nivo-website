@@ -129,9 +129,9 @@ export default class Radar extends Component {
                         {header}
                     </MediaQuery>
                     <p>
-                        Generates a radar chart from an array of data.<br />
-                        Note that margin object does not take grid labels into account,&nbsp; so you
-                        should adjust it to leave enough room for it.
+                        Generates a radar chart from an array of data. Note that margin object does
+                        not take grid labels into account, so you should adjust it to leave enough
+                        room for it.
                     </p>
                     <p className="description">
                         The responsive alternative of this component is&nbsp;

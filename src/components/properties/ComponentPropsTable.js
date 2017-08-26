@@ -1,10 +1,15 @@
 import React, { PureComponent } from 'react'
-import _ from 'lodash'
+import isPlainObject from 'lodash/isPlainObject'
+import isArray from 'lodash/isArray'
+import isString from 'lodash/isString'
+import isNumber from 'lodash/isNumber'
+import isBoolean from 'lodash/isBoolean'
+import isFunction from 'lodash/isFunction'
 
 const defaultValue = value => {
-    if (_.isPlainObject(value)) {
+    if (isPlainObject(value)) {
         return `${JSON.stringify(value)}`
-    } else if (_.isArray(value)) {
+    } else if (isArray(value)) {
         const elements = value.reduce((acc, v, i) => {
             acc.push(React.cloneElement(defaultValue(v), { key: i }))
             if (i + 1 < value.length) {
@@ -18,25 +23,25 @@ const defaultValue = value => {
                 [{elements}]
             </span>
         )
-    } else if (_.isString(value)) {
+    } else if (isString(value)) {
         return (
             <code className="code-string">
                 '{value}'
             </code>
         )
-    } else if (_.isNumber(value)) {
+    } else if (isNumber(value)) {
         return (
             <code className="code-number">
                 {value}
             </code>
         )
-    } else if (_.isBoolean(value)) {
+    } else if (isBoolean(value)) {
         return (
             <code className="code-boolean">
                 {value ? 'true' : 'false'}
             </code>
         )
-    } else if (_.isFunction(value)) {
+    } else if (isFunction(value)) {
         return `{${value.toString()}}`
     }
 

@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 import React, { Component } from 'react'
-import _ from 'lodash'
+import cloneDeep from 'lodash/cloneDeep'
 import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
 import { ResponsiveTreeMapHTML } from 'nivo'
@@ -27,7 +27,7 @@ export default class TreeMapHTML extends Component {
             value: 'loc',
 
             margin: {
-                top: 30,
+                top: 10,
                 right: 10,
                 bottom: 10,
                 left: 10,
@@ -85,7 +85,7 @@ export default class TreeMapHTML extends Component {
         const header = (
             <ChartHeader
                 chartClass="TreeMapHTML"
-                tags={['treemap', 'hierarchy', 'isomorphic']}
+                tags={['hierarchy', 'html', 'isomorphic']}
                 diceRoll={diceRoll}
             />
         )
@@ -99,7 +99,7 @@ export default class TreeMapHTML extends Component {
                     <div className="main-chart">
                         <ChartTabs chartClass="treemap" code={code} data={root}>
                             <ResponsiveTreeMapHTML
-                                root={_.cloneDeep(root)}
+                                root={cloneDeep(root)}
                                 {...settings}
                                 label={label}
                                 labelFormat={labelFormat}

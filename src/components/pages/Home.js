@@ -11,7 +11,8 @@ import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
 import Helmet from 'react-helmet'
 import { redColorRange } from '../../colors'
-import _ from 'lodash'
+import range from 'lodash/range'
+import random from 'lodash/random'
 import {
     generateDayCounts,
     generateLibTree,
@@ -41,15 +42,15 @@ const colors = redColorRange
 const calendarFrom = new Date(2015, 1, 1)
 const calendarTo = new Date(2016, 1, 1)
 const calendarData = generateDayCounts(calendarFrom, calendarTo)
-const voronoiData = _.range(80).map(() => [Math.random() * 360, Math.random() * 200])
+const voronoiData = range(80).map(() => [Math.random() * 360, Math.random() * 200])
 
 const radarMargin = { top: 20, right: 40, bottom: 10, left: 40 }
 
 const streamDataLayerCount = 5
 const generateStreamData = () =>
-    _.range(16).map(() =>
-        _.range(streamDataLayerCount).reduce((acc, i) => {
-            acc[i] = _.random(10, 200)
+    range(16).map(() =>
+        range(streamDataLayerCount).reduce((acc, i) => {
+            acc[i] = random(10, 200)
             return acc
         }, {})
     )
@@ -64,6 +65,11 @@ const homeTheme = {
         stroke: '#c6432d',
         strokeWidth: 1,
         strokeDasharray: '1,3',
+    },
+    sankey: {
+        label: {
+            fontSize: '9px',
+        },
     },
 }
 
@@ -200,7 +206,7 @@ class Home extends Component {
                 <Link className="home_item" to="/stream">
                     <ResponsiveStream
                         data={generateStreamData()}
-                        keys={_.range(streamDataLayerCount)}
+                        keys={range(streamDataLayerCount)}
                         margin={{ top: 10, bottom: 15, left: 24, right: 10 }}
                         theme={homeTheme}
                         colors={colors}
@@ -344,10 +350,12 @@ class Home extends Component {
                             animate={false}
                             isInteractive={false}
                             nodeOpacity={1}
-                            nodeWidth={6}
+                            nodeWidth={4}
                             nodePadding={12}
-                            nodeBorderColor="inherit:darker(0.2)"
-                            linkOpacity={0.35}
+                            nodeBorderWidth={0}
+                            linkOpacity={0.2}
+                            linkContract={1}
+                            labelTextColor="inherit"
                         />
                         <span className="home_item_label">
                             <span>Sankey documentation</span>

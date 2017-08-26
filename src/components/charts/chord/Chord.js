@@ -58,7 +58,7 @@ class Bars extends Component {
 
         const code = generateCode('Chord', settings)
 
-        const header = <ChartHeader chartClass="Chord" tags={['chord', 'nivo-api']} />
+        const header = <ChartHeader chartClass="Chord" tags={['relational', 'isomorphic', 'api']} />
 
         return (
             <div className="page_content grid">

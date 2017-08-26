@@ -1,16 +1,17 @@
-import _ from 'lodash'
+import upperFirst from 'lodash/upperFirst'
+import uniq from 'lodash/uniq'
 
 export const marginProperties = ['top', 'right', 'bottom', 'left'].map(marginType => ({
     key: `margin.${marginType}`,
     scopes: '*',
-    description: `${_.upperFirst(marginType)} margin.`,
+    description: `${upperFirst(marginType)} margin (px).`,
     type: '{number}',
     controlType: 'range',
     controlGroup: 'Margin',
     controlOptions: {
         unit: 'px',
         min: 0,
-        max: 160,
+        max: 320,
     },
 }))
 
@@ -32,7 +33,7 @@ export const axesProperties = [
         orientations: ['left', 'right'],
     },
 ].reduce((properties, { position }) => {
-    const axisKey = _.upperFirst(position)
+    const axisKey = upperFirst(position)
 
     return [
         ...properties,
@@ -135,7 +136,7 @@ export const getPropertiesGroupControls = (properties, group, scope) => {
 export const getPropertiesGroupsControls = (properties, scope) => {
     const scopeFilter = filterPropertiesByScope(scope)
 
-    const groups = _.uniq(
+    const groups = uniq(
         properties
             .filter(property => property.controlGroup !== undefined && scopeFilter(property))
             .map(property => property.controlGroup)

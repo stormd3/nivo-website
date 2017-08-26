@@ -1,5 +1,7 @@
 export default {
     tooltip: {
-        fontSize: '13px',
+        container: {
+            fontSize: '13px',
+        },
     },
 }

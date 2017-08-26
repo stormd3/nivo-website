@@ -70,6 +70,7 @@
 
 .nivo_components_item_name {
     flex-grow: 1;
+    font-size: 14px;
 }
 
 .nivo_components_item .extras {
@@ -92,22 +93,23 @@
 }
 
 .component_meta {
-    /*margin 0 $content-margin 25px 0*/
+    margin-bottom: 5px;
 }
 
 .component_meta_tag {
     display: inline-block;
     position: relative;
-    background: #e98473;
+    background: rgba(233, 132, 115, 0.71);
     color: var(--main-background-color);
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1em;
-    padding: 5px 8px 5px 18px;
-    border-radius: 2px;
+    padding: 6px 11px;
+    border-radius: 1px;
     margin-right: 7px;
-    margin-bottom: 5px;
+    margin-bottom: 7px;
 }
 
+/*
 .component_meta_tag:before {
     content: '';
     display: block;
@@ -119,3 +121,4 @@
     border-radius: 3px;
     background: var(--main-background-color);
 }
+*/

@@ -6,30 +6,50 @@
     overflow-y: auto;
 }
 
-.chart-tabs_menu {
+.chart-tabs__menu {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 0;
+    right: 0;
     z-index: 20;
-    display: flex;
 }
 
-.chart-tabs_menu_item {
-    cursor: pointer;
+.chart-tabs__menu__helper {
+    position: absolute;
+    right: 156px;
+    font-size: 14px;
+    line-height: 46px;
+    color: #eee;
+}
+
+.chart-tabs__menu__helper--chart {
+    color: #777;
+}
+
+.chart-tabs__menu__wrapper {
     background-color: #fff;
-    border-radius: 50%;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, .35);
-    width: 34px;
-    height: 34px;
-    margin-left: 9px;
+    border-radius: 1px;
+    border-bottom: 1px solid #eee;
+    border-left: 1px solid #eee;
+    height: 47px;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    width: 138px;
 }
 
-.chart-tabs_menu_item .nivo-icon {
-    width: 24px;
-    height: 24px;
+.chart-tabs__menu__item {
+    cursor: pointer;
+    width: 46px;
+    height: 46px;
+    display: block;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.chart-tabs__menu__item__icon {
+    display: block;
+    transform: scale(0.44);
+    transform-origin: top left;
+    background-color: #fff;
+    margin: 12px 0 0 12px;
 }
 
 .chart_header {
@@ -57,127 +77,21 @@
 .main-chart {
     background: var(--card-background-color);
     width: 100%;
-    height: 420px;
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+    height: 460px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
 }
 
 .main-chart-horizontal {
-    height: 320px;
-}
-
-/*
-
-
-.nivo_treemap_node
-  border-radius 2px
-  font-size 11px
-  line-height 14px
-
-.home .nivo_treemap_node
-  font-size 10px
-*/
-.nivo_tick_line {
-    stroke: #555 !important;
-}
-.nivo_tick_text {
-    fill: #555 !important;
-    font-size: 11px;
-}
-
-.home .nivo_tick_line {
-    stroke: #c6432d !important;
-}
-.home .nivo_tick_text {
-    fill: #c6432d !important;
-    font-size: 9px;
-}
-.home .nivo_grid_line {
-    stroke: #d6513e !important;
+    height: 360px;
 }
 
 svg text {
     fill: var(--chart-meta-color);
     font-size: 12px;
-    font-family: 'Space Mono', monospace;
+    font-family: 'Roboto Mono', monospace;
 }
-/*
-.nivo_bar_legend text
-  font-size 10px
-  fill #555
 
-.nivo_calendar_year_legend,
-.nivo_calendar_month_legend
-  fill #555
-  font-size 11px
-  font-weight bold
-
-.nivo_calendar_month_legend
-  font-size 9px
-  text-transform uppercase
-
-  .home &
-    text-transform lowercase
-
-.nivo_tree
-  text
-    font-size 10px
-
-.home
-  .nivo_tree
-    text
-      font-size 8px
-
-.bubble_page svg text
-  font-weight 600
-
-.nivo_radial-stack_area
-  opacity 0.9
-
-.nivo_radial-stack_radius-axis
-  .domain,
-  .tick line
-      stroke-width 1
-      stroke #333
-
-  text
-    fill #333
-
-
-.nivo_radial-axis_tick line,
-.nivo_radial-axis_circle
-  stroke $accent-color
-  stroke-dasharray 1,3
-
-.nivo_stack_slicer_line
-  stroke-dasharray 2,4
-
-.nivo_radial-axis_tick
-  rect
-    fill #fff !important
-  text
-    fill $accent-color !important
-    font-size 11px
-    font-weight bold
-
-.nivo_pie_outline
-  fill none
-
-.domain
-  fill none
-
-.chart__shape__area
-  fill rgba(245, 126, 88, 0.25)
-
-.chart__shape__line
-  fill none
-  stroke $accent-color
-  stroke-width 2
-
-polyline
-  stroke $main-text-color
-  stroke-width 1
-*/
 .tick line {
     stroke-width: .5;
     stroke: var(--chart-meta-color);

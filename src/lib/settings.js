@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import omit from 'lodash/omit'
 
 export const settingsMapper = (mapping, { exclude = [] } = {}) => settings => {
     const overrides = {}
@@ -9,5 +9,5 @@ export const settingsMapper = (mapping, { exclude = [] } = {}) => settings => {
         }
     })
 
-    return Object.assign({}, _.omit(settings, exclude), overrides)
+    return Object.assign({}, omit(settings, exclude), overrides)
 }

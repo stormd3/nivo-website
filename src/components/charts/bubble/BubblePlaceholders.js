@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 import React, { Component } from 'react'
-import _ from 'lodash'
+import cloneDeep from 'lodash/cloneDeep'
 import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
 import { ResponsiveBubblePlaceholders } from 'nivo'
@@ -65,14 +65,14 @@ export default class BubblePlaceholdersPage extends Component {
                     <MediaQuery query="(max-width: 1000px)">
                         <ChartHeader
                             chartClass="BubblePlaceholders"
-                            tags={['bubble', 'hierarchy', 'placeholders', 'isomorphic']}
+                            tags={['hierarchy', 'placeholders', 'isomorphic']}
                             diceRoll={diceRoll}
                         />
                     </MediaQuery>
                     <div className="main-chart">
                         <ChartTabs chartClass="bubble" code={code} data={root}>
                             <ResponsiveBubblePlaceholders
-                                root={_.cloneDeep(root)}
+                                root={cloneDeep(root)}
                                 {...settings}
                                 theme={nivoTheme}
                             >

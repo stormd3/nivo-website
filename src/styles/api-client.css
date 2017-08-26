@@ -15,7 +15,6 @@
     font-size: 14px;
     min-height: 120px;
     padding: 7px 12px;
-    font-family: Consolas, monospace;
     background: var(--code-background-color);
     color: #ddd;
     border-width: 0;

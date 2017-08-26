@@ -8,7 +8,7 @@ class ComponentsItem extends Component {
         return (
             <Link to={path} className="nivo_components_item">
                 <div className="nivo_components_item_header">
-                    <span className={`nivo-icon red nivo-icon-${className}`} />
+                    <span className={`nivo-icon red sprite-icons-${className}-red`} />
                     <span className="nivo_components_item_name">
                         {name}
                     </span>

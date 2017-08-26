@@ -21,10 +21,12 @@ export default class APIClient extends Component {
         componentName: PropTypes.string.isRequired,
         apiPath: PropTypes.string.isRequired,
         dataProperty: PropTypes.string.isRequired,
+        propsMapper: PropTypes.func.isRequired,
     }
 
     static defaultProps = {
         dataProperty: 'data',
+        propsMapper: props => props,
     }
 
     constructor(props) {
@@ -54,7 +56,7 @@ export default class APIClient extends Component {
     }
 
     handleSubmit = () => {
-        const { apiPath } = this.props
+        const { apiPath, propsMapper } = this.props
         const { props } = this.state
 
         this.setState({
@@ -69,7 +71,7 @@ export default class APIClient extends Component {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(props),
+            body: JSON.stringify(propsMapper(props)),
         })
             .then(res => {
                 this.setState({
@@ -92,8 +94,7 @@ export default class APIClient extends Component {
     }
 
     render() {
-        const { componentName, apiPath, controls, dataProperty } = this.props
-
+        const { componentName, apiPath, controls, dataProperty, propsMapper } = this.props
         const { props, loading, responseStatus, response } = this.state
 
         const dataBlock = (
@@ -113,10 +114,10 @@ export default class APIClient extends Component {
                         <div className="grid_item grid_item-full">
                             <div className="chart_header">
                                 <h1 className="page_header">
-                                    &lt;{componentName} /&gt; HTTP API
+                                    {componentName} HTTP API
                                 </h1>
                                 <code>
-                                    {apiPath}
+                                    POST {apiPath}
                                 </code>
                             </div>
                         </div>
@@ -144,7 +145,7 @@ export default class APIClient extends Component {
                             <CollapsibleCard title="Body" expandedByDefault={true}>
                                 <div className="code-snippet">
                                     <pre>
-                                        {JSON.stringify(props, null, '  ')}
+                                        {JSON.stringify(propsMapper(props), null, '  ')}
                                     </pre>
                                 </div>
                             </CollapsibleCard>

@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 import React, { Component } from 'react'
-import _ from 'lodash'
+import cloneDeep from 'lodash/cloneDeep'
 import MediaQuery from 'react-responsive'
 import { ResponsiveTreeMapPlaceholders } from 'nivo'
 import ChartHeader from '../../ChartHeader'
@@ -30,7 +30,7 @@ export default class TreeMapPlaceholders extends Component {
             namespace: 'html',
 
             margin: {
-                top: 30,
+                top: 10,
                 right: 10,
                 bottom: 10,
                 left: 10,
@@ -57,7 +57,7 @@ export default class TreeMapPlaceholders extends Component {
         const header = (
             <ChartHeader
                 chartClass="TreeMapPlaceholders"
-                tags={['treemap', 'hierarchy', 'placeholders', 'isomorphic']}
+                tags={['hierarchy', 'placeholders', 'isomorphic']}
                 diceRoll={diceRoll}
             />
         )
@@ -70,7 +70,7 @@ export default class TreeMapPlaceholders extends Component {
                     </MediaQuery>
                     <div className="main-chart">
                         <ChartTabs chartClass="treemap" code={code} data={root}>
-                            <ResponsiveTreeMapPlaceholders root={_.cloneDeep(root)} {...settings}>
+                            <ResponsiveTreeMapPlaceholders root={cloneDeep(root)} {...settings}>
                                 {nodes =>
                                     nodes.map((node, i) => {
                                         return (

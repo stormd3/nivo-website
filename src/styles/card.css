@@ -45,7 +45,7 @@
     position: absolute;
     top: 16px;
     left: 15px;
-    font-weight: bold;
+    font-weight: 400;
     text-align: center;
     color: var(--accent-color);
     width: 14px;

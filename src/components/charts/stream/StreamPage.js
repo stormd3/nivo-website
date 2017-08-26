@@ -8,7 +8,8 @@
  */
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
-import { range, random } from 'lodash'
+import range from 'lodash/range'
+import random from 'lodash/random'
 
 const keys = ['Raoul', 'Josiane', 'Marcel', 'René', 'Paul', 'Jacques']
 const generateData = () =>

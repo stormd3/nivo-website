@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  */
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
 import { ResponsiveSankey } from 'nivo'
 import ChartHeader from '../../ChartHeader'
@@ -15,33 +16,50 @@ import SankeyControls from './SankeyControls'
 import generateCode from '../../../lib/generateChartCode'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
 import properties from './properties'
+import config from '../../../config'
+import nivoTheme from '../../../nivoTheme'
 
 class Bars extends Component {
     state = {
         settings: {
             margin: {
-                top: 20,
-                right: 20,
-                bottom: 20,
-                left: 20,
+                top: 40,
+                right: 60,
+                bottom: 40,
+                left: 60,
             },
 
+            align: 'justify',
             colors: 'd320b',
 
             // nodes
-            nodeOpacity: 0.85,
-            nodeWidth: 6,
-            nodePadding: 12,
+            nodeOpacity: 0.75,
+            nodeHoverOpacity: 1,
+            nodeWidth: 18,
+            nodePaddingX: 4,
+            nodePaddingY: 12,
             nodeBorderWidth: 0,
             nodeBorderColor: 'inherit:darker(0.4)',
 
             // links
-            linkOpacity: 0.2,
+            linkOpacity: 0.15,
+            linkHoverOpacity: 0.4,
+            linkContract: 0,
+
+            // labels
+            enableLabels: true,
+            labelPosition: 'outside',
+            labelOrientation: 'vertical',
+            labelPadding: 16,
+            labelTextColor: 'inherit:darker(0.8)',
 
             // motion
             animate: true,
             motionStiffness: 120,
             motionDamping: 11,
+
+            // interactivity
+            isInteractive: true,
         },
     }
 
@@ -58,7 +76,7 @@ class Bars extends Component {
         const header = (
             <ChartHeader
                 chartClass="Sankey"
-                tags={['sankey', 'relational']}
+                tags={['relational', 'flow', 'api']}
                 diceRoll={randomizeLinkValues}
             />
         )
@@ -71,7 +89,7 @@ class Bars extends Component {
                     </MediaQuery>
                     <div className="main-chart" style={{ height: '500px' }}>
                         <ChartTabs chartClass="sankey" code={code} data={data}>
-                            <ResponsiveSankey data={data} {...settings} />
+                            <ResponsiveSankey data={data} {...settings} theme={nivoTheme} />
                         </ChartTabs>
                     </div>
                     <SankeyControls
@@ -108,9 +126,35 @@ class Bars extends Component {
                         For example, something like <code>A —> A</code> or{' '}
                         <code>A —> B —> C —> A</code> will crash.
                     </p>
+                    <p className="description">
+                        This component is available in the{' '}
+                        <a
+                            href="https://github.com/plouc/nivo-api"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            nivo-api
+                        </a>, see{' '}
+                        <a
+                            href={`${config.nivoApiUrl}/samples/sankey.svg`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            sample
+                        </a>{' '}
+                        or <Link to="/sankey/api">try it using the API client</Link>. You can also
+                        see more example usages in{' '}
+                        <a
+                            href={`${config.storybookUrl}?selectedKind=Sankey&selectedStory=default`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            the storybook
+                        </a>.
+                    </p>
                 </div>
                 <div className="grid_item grid_item-full">
-                    <ComponentPropsDocumentation chartClass="Chord" properties={properties} />
+                    <ComponentPropsDocumentation chartClass="Sankey" properties={properties} />
                 </div>
             </div>
         )

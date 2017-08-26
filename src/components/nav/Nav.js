@@ -32,7 +32,11 @@ class Nav extends Component {
                                 className="sidebar_link"
                                 activeClassName="active"
                             >
-                                <span className={`nivo-icon nivo-icon-${item.className}`} />
+                                <span className="sidebar-icon_wrapper">
+                                    <span
+                                        className={`sidebar-icon sprite-icons-${item.className}-grey`}
+                                    />
+                                </span>
                                 <span>
                                     {item.label}
                                 </span>
@@ -49,9 +53,11 @@ class Nav extends Component {
                                         className="sidebar_link sidebar_link-sub"
                                         activeClassName="active"
                                     >
-                                        <span
-                                            className={`nivo-icon nivo-icon-${child.className}`}
-                                        />
+                                        <span className="sidebar-icon_wrapper-sub">
+                                            <span
+                                                className={`sidebar-icon-sub sprite-icons-${child.className}-grey`}
+                                            />
+                                        </span>
                                         <span>
                                             {child.label}
                                         </span>
@@ -71,7 +77,11 @@ class Nav extends Component {
                             className="sidebar_link"
                             activeClassName="active"
                         >
-                            <span className={`nivo-icon nivo-icon-${item.className}`} />
+                            <span className="sidebar-icon_wrapper">
+                                <span
+                                    className={`sidebar-icon sprite-icons-${item.className}-grey`}
+                                />
+                            </span>
                             <span>
                                 {item.label}
                             </span>

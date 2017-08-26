@@ -121,7 +121,7 @@ export default class Stream extends Component {
         const code = generateCode('Stream', mappedSettings)
 
         const header = (
-            <ChartHeader chartClass="Stream" tags={['stream', 'isomorphic']} diceRoll={diceRoll} />
+            <ChartHeader chartClass="Stream" tags={['stacked', 'isomorphic']} diceRoll={diceRoll} />
         )
 
         return (

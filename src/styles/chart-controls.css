@@ -1,21 +1,27 @@
 .chart-controls_menu {
     display: flex;
-    padding: 5px 15px 0 15px;
+    padding-top: 1px;
     background: var(--main-background-color);
     overflow-x: auto;
+    font-size: 15px;
 }
 
 .chart-controls_menu_item {
     cursor: pointer;
-    margin-right: 10px;
-    padding: 9px 15px;
-    color: #999;
+    margin-right: 1px;
+    padding: 9px 20px;
+    color: #aaa;
     white-space: pre;
-    border-radius: 3px 3px 0 0;
+    border-radius: 0;
+}
+
+.chart-controls_menu_item:hover {
+    color: var(--main-text-color);
 }
 
 .chart-controls_menu_item.active {
     color: var(--main-text-color);
+    border-bottom-color: #fff;
     background: #fff;
 }
 

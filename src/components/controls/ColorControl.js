@@ -84,7 +84,7 @@ class ColorControl extends Component {
         return (
             <div className="control control-color">
                 <label className="control_label">
-                    {label}:&nbsp;<code className="code code-string">"{value}"</code>
+                    {label}: <code className="code code-string">'{value}'</code>
                 </label>
                 <div>
                     <Select

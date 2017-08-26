@@ -7,12 +7,14 @@
  * file that was distributed with this source code.
  */
 import React from 'react'
-import _ from 'lodash'
 import { Route } from 'react-router-dom'
 
 import BarPage from './components/charts/bar/BarPage'
 import Bar from './components/charts/bar/Bar'
 import BarAPI from './components/charts/bar/BarAPI'
+import HeatMapPage from './components/charts/heatmap/HeatMapPage'
+import HeatMap from './components/charts/heatmap/HeatMap'
+import HeatMapAPI from './components/charts/heatmap/HeatMapAPI'
 import LinePage from './components/charts/line/LinePage'
 import Line from './components/charts/line/Line'
 import LineAPI from './components/charts/line/LineAPI'
@@ -30,6 +32,7 @@ import BubbleAPI from './components/charts/bubble/BubbleAPI'
 import BubblePlaceholders from './components/charts/bubble/BubblePlaceholders'
 import SankeyPage from './components/charts/sankey/SankeyPage'
 import Sankey from './components/charts/sankey/Sankey'
+import SankeyAPI from './components/charts/sankey/SankeyAPI'
 import SunburstPage from './components/charts/sunburst/SunburstPage'
 import Sunburst from './components/charts/sunburst/Sunburst'
 import SunburstAPI from './components/charts/sunburst/SunburstAPI'
@@ -134,23 +137,44 @@ const SITEMAP = [
                 ],
             },
             {
-                className: 'radar',
-                path: '/radar',
-                label: 'Radar',
-                component: RadarPage,
+                className: 'sunburst',
+                path: '/sunburst',
+                label: 'Sunburst',
+                component: SunburstPage,
                 children: [
                     {
                         className: 'react',
                         path: '/',
-                        label: '<Radar />',
-                        component: Radar,
+                        label: '<Sunburst />',
+                        component: Sunburst,
                         exact: true,
                     },
                     {
                         className: 'api',
                         path: '/api',
-                        label: '<Radar /> HTTP API',
-                        component: RadarAPI,
+                        label: '<Sunburst /> HTTP API',
+                        component: SunburstAPI,
+                    },
+                ],
+            },
+            {
+                className: 'chord',
+                path: '/chord',
+                label: 'Chord',
+                component: ChordPage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: '<Chord />',
+                        component: Chord,
+                        exact: true,
+                    },
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: '<Chord /> HTTP API',
+                        component: ChordAPI,
                     },
                 ],
             },
@@ -182,38 +206,23 @@ const SITEMAP = [
                 ],
             },
             {
-                className: 'sankey',
-                path: '/sankey',
-                label: 'Sankey',
-                component: SankeyPage,
+                className: 'radar',
+                path: '/radar',
+                label: 'Radar',
+                component: RadarPage,
                 children: [
                     {
                         className: 'react',
                         path: '/',
-                        label: '<Sankey />',
-                        component: Sankey,
-                        exact: true,
-                    },
-                ],
-            },
-            {
-                className: 'sunburst',
-                path: '/sunburst',
-                label: 'Sunburst',
-                component: SunburstPage,
-                children: [
-                    {
-                        className: 'react',
-                        path: '/',
-                        label: '<Sunburst />',
-                        component: Sunburst,
+                        label: '<Radar />',
+                        component: Radar,
                         exact: true,
                     },
                     {
                         className: 'api',
                         path: '/api',
-                        label: '<Sunburst /> HTTP API',
-                        component: SunburstAPI,
+                        label: '<Radar /> HTTP API',
+                        component: RadarAPI,
                     },
                 ],
             },
@@ -251,6 +260,27 @@ const SITEMAP = [
                 ],
             },
             {
+                className: 'heatmap',
+                path: '/heatmap',
+                label: 'HeatMap',
+                component: HeatMapPage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: '<HeatMap />',
+                        component: HeatMap,
+                        exact: true,
+                    },
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: '<HeatMap /> HTTP API',
+                        component: HeatMapAPI,
+                    },
+                ],
+            },
+            {
                 className: 'calendar',
                 path: '/calendar',
                 label: 'Calendar',
@@ -272,23 +302,23 @@ const SITEMAP = [
                 ],
             },
             {
-                className: 'chord',
-                path: '/chord',
-                label: 'Chord',
-                component: ChordPage,
+                className: 'sankey',
+                path: '/sankey',
+                label: 'Sankey',
+                component: SankeyPage,
                 children: [
                     {
                         className: 'react',
                         path: '/',
-                        label: '<Chord />',
-                        component: Chord,
+                        label: '<Sankey />',
+                        component: Sankey,
                         exact: true,
                     },
                     {
                         className: 'api',
                         path: '/api',
-                        label: '<Chord /> HTTP API',
-                        component: ChordAPI,
+                        label: '<Sankey /> HTTP API',
+                        component: SankeyAPI,
                     },
                 ],
             },
@@ -346,7 +376,7 @@ const SITEMAP = [
 ]
 
 export const getSectionItems = sectionLabel => {
-    const section = _.find(SITEMAP, { label: sectionLabel })
+    const section = SITEMAP.find(({ label }) => label === sectionLabel)
 
     return section.children
 }

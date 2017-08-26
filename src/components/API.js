@@ -44,9 +44,15 @@ class API extends Component {
                             className="calendar"
                         />
                         <ComponentsItem path="/chord/api" name="<Chord />" className="chord" />
+                        <ComponentsItem
+                            path="/heatmap/api"
+                            name="<HeatMap />"
+                            className="heatmap"
+                        />
                         <ComponentsItem path="/line/api" name="<Line />" className="line" />
                         <ComponentsItem path="/pie/api" name="<Pie />" className="pie" />
                         <ComponentsItem path="/radar/api" name="<Radar />" className="radar" />
+                        <ComponentsItem path="/sankey/api" name="<Sankey />" className="sankey" />
                         <ComponentsItem
                             path="/sunburst/api"
                             name="<Sunburst />"

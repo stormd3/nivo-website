@@ -37,7 +37,7 @@ const mapSettings = settingsMapper(
     }
 )
 
-class Bars extends Component {
+export default class Bar extends Component {
     state = {
         settings: {
             // data
@@ -126,7 +126,7 @@ class Bars extends Component {
         const header = (
             <ChartHeader
                 chartClass="Bar"
-                tags={['bars', 'basics', 'isomorphic']}
+                tags={['basic', 'isomorphic', 'api']}
                 diceRoll={diceRoll}
             />
         )
@@ -163,8 +163,8 @@ class Bars extends Component {
                         {header}
                     </MediaQuery>
                     <p className="description">
-                        Bar chart with grouping ability, stacked or side by side.<br />
-                        You can also switch to horizontal layout.
+                        Bar chart with grouping ability, stacked or side by side. You can also
+                        switch to horizontal layout.
                     </p>
                     <p className="description">
                         The responsive alternative of this component is{' '}
@@ -198,11 +198,9 @@ class Bars extends Component {
                     </p>
                 </div>
                 <div className="grid_item grid_item-full">
-                    <ComponentPropsDocumentation chartClass="bar" properties={properties} />
+                    <ComponentPropsDocumentation chartClass="Bar" properties={properties} />
                 </div>
             </div>
         )
     }
 }
-
-export default Bars
