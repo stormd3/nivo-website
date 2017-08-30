@@ -19,6 +19,7 @@ import ComponentPropsDocumentation from '../../properties/ComponentPropsDocument
 import properties from './properties'
 import { settingsMapper } from '../../../lib/settings'
 import nivoTheme from '../../../nivoTheme'
+import { generateLightDataSet as generateData } from './generators'
 
 const mapSettings = settingsMapper(
     {
@@ -39,6 +40,7 @@ const mapSettings = settingsMapper(
 
 export default class Bar extends Component {
     state = {
+        ...generateData(),
         settings: {
             // data
             indexBy: 'country',
@@ -113,13 +115,16 @@ export default class Bar extends Component {
         },
     }
 
+    diceRoll = () => {
+        this.setState(generateData())
+    }
+
     handleSettingsUpdate = settings => {
         this.setState({ settings })
     }
 
     render() {
-        const { data, keys, diceRoll } = this.props
-        const { settings } = this.state
+        const { data, keys, settings } = this.state
 
         const mappedSettings = mapSettings(settings)
 
@@ -127,7 +132,7 @@ export default class Bar extends Component {
             <ChartHeader
                 chartClass="Bar"
                 tags={['basic', 'isomorphic', 'api']}
-                diceRoll={diceRoll}
+                diceRoll={this.diceRoll}
             />
         )
 

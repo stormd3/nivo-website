@@ -1,4 +1,4 @@
-/* glue: 0.13 hash: 6727c300ce */
+/* glue: 0.13 hash: 22f580e01f */
 .sprite-icons-voronoi-red,
 .sprite-icons-voronoi-grey,
 .sprite-icons-treemap-red,
@@ -34,6 +34,8 @@
 .sprite-icons-code-grey,
 .sprite-icons-chord-red,
 .sprite-icons-chord-grey,
+.sprite-icons-canvas-red,
+.sprite-icons-canvas-grey,
 .sprite-icons-calendar-red,
 .sprite-icons-calendar-grey,
 .sprite-icons-bubble-red,
@@ -256,50 +258,62 @@
     height: 52px;
 }
 
-.sprite-icons-calendar-red {
+.sprite-icons-canvas-red {
     background-position: -304px -304px;
     width: 52px;
     height: 52px;
 }
 
-.sprite-icons-calendar-grey {
+.sprite-icons-canvas-grey {
     background-position: -364px -4px;
     width: 52px;
     height: 52px;
 }
 
-.sprite-icons-bubble-red {
+.sprite-icons-calendar-red {
     background-position: -364px -64px;
     width: 52px;
     height: 52px;
 }
 
-.sprite-icons-bubble-grey {
+.sprite-icons-calendar-grey {
     background-position: -364px -124px;
     width: 52px;
     height: 52px;
 }
 
-.sprite-icons-bar-red {
+.sprite-icons-bubble-red {
     background-position: -364px -184px;
     width: 52px;
     height: 52px;
 }
 
-.sprite-icons-bar-grey {
+.sprite-icons-bubble-grey {
     background-position: -364px -244px;
     width: 52px;
     height: 52px;
 }
 
-.sprite-icons-api-red {
+.sprite-icons-bar-red {
     background-position: -364px -304px;
     width: 52px;
     height: 52px;
 }
 
-.sprite-icons-api-grey {
+.sprite-icons-bar-grey {
     background-position: -4px -364px;
+    width: 52px;
+    height: 52px;
+}
+
+.sprite-icons-api-red {
+    background-position: -64px -364px;
+    width: 52px;
+    height: 52px;
+}
+
+.sprite-icons-api-grey {
+    background-position: -124px -364px;
     width: 52px;
     height: 52px;
 }
@@ -344,6 +358,8 @@
     .sprite-icons-code-grey,
     .sprite-icons-chord-red,
     .sprite-icons-chord-grey,
+    .sprite-icons-canvas-red,
+    .sprite-icons-canvas-grey,
     .sprite-icons-calendar-red,
     .sprite-icons-calendar-grey,
     .sprite-icons-bubble-red,
@@ -399,6 +415,8 @@
     .sprite-icons-code-grey,
     .sprite-icons-chord-red,
     .sprite-icons-chord-grey,
+    .sprite-icons-canvas-red,
+    .sprite-icons-canvas-grey,
     .sprite-icons-calendar-red,
     .sprite-icons-calendar-grey,
     .sprite-icons-bubble-red,

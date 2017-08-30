@@ -7,10 +7,18 @@
  * file that was distributed with this source code.
  */
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 const tabs = ['chart', 'code', 'data']
 
 export default class ChartTabs extends Component {
+    static propTypes = {
+        chartClass: PropTypes.string.isRequired,
+        data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+        code: PropTypes.string.isRequired,
+        nodeCount: PropTypes.number,
+    }
+
     state = {
         tab: 'chart',
         hoverTab: null,
@@ -25,7 +33,7 @@ export default class ChartTabs extends Component {
     }
 
     render() {
-        const { chartClass, data, code, children } = this.props
+        const { chartClass, data, code, children, nodeCount } = this.props
         const { tab: currentTab, hoverTab } = this.state
 
         let content
@@ -84,6 +92,11 @@ export default class ChartTabs extends Component {
                     </div>
                 </div>
                 {content}
+                {currentTab === 'chart' &&
+                    nodeCount !== undefined &&
+                    <span className="chart-tabs__node-count">
+                        <strong>{nodeCount}</strong>&nbsp;nodes
+                    </span>}
             </div>
         )
     }

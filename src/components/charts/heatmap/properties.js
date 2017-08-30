@@ -78,6 +78,20 @@ export default [
         },
     },
     {
+        key: 'pixelRatio',
+        scopes: ['HeatMapCanvas'],
+        description: `Adjust pixel ratio, useful for HiDPI screens.`,
+        required: false,
+        default: 'Depends on device',
+        type: `{number}`,
+        controlType: 'range',
+        controlGroup: 'Base',
+        controlOptions: {
+            min: 1,
+            max: 2,
+        },
+    },
+    {
         key: 'minValue',
         scopes: '*',
         description: `Minimum value. If 'auto', will pick the lowest value in the provided data set. Should be overriden if your data set does not contain desired lower bound value.`,
@@ -211,23 +225,6 @@ export default [
             step: 0.05,
         },
     },
-    /*
-    {
-        key: 'cellHoverOpacity',
-        scopes: ['HeatMap'],
-        description: 'Cell opacity on hover (0~1).',
-        required: false,
-        default: defaults.cellHoverOpacity,
-        type: '{number}',
-        controlType: 'range',
-        controlGroup: 'Cells',
-        controlOptions: {
-            min: 0,
-            max: 1,
-            step: 0.05,
-        },
-    },
-    */
     {
         key: 'cellBorderWidth',
         scopes: '*',
@@ -311,13 +308,68 @@ export default [
     ...axesProperties,
     {
         key: 'isInteractive',
-        scopes: ['HeatMap'],
+        scopes: ['HeatMap', 'HeatMapCanvas'],
         description: 'Enable/disable interactivity.',
         type: '{boolean}',
         required: false,
         default: defaults.isInteractive,
         controlType: 'switch',
         controlGroup: 'Interactivity',
+    },
+    {
+        key: 'hoverTarget',
+        scopes: ['HeatMap', 'HeatMapCanvas'],
+        description: (
+            <div>
+                Defines hover behavior:<br />
+                - <strong>cell</strong>: highlight the current cell<br />
+                - <strong>row</strong>: highlight the current cell's row<br />
+                - <strong>column</strong>: highlight the current cell's column<br />
+                - <strong>rowColumn</strong>: highlight the current cell's row & column<br />
+            </div>
+        ),
+        help: 'Defines hover behavior.',
+        required: false,
+        default: defaults.hoverTarget,
+        type: '{number}',
+        controlType: 'choices',
+        controlGroup: 'Interactivity',
+        controlOptions: {
+            choices: ['cell', 'row', 'column', 'rowColumn'].map(key => ({
+                label: key,
+                value: key,
+            })),
+        },
+    },
+    {
+        key: 'cellHoverOpacity',
+        scopes: ['HeatMap', 'HeatMapCanvas'],
+        description: 'Cell opacity on hover (0~1).',
+        required: false,
+        default: defaults.cellHoverOpacity,
+        type: '{number}',
+        controlType: 'range',
+        controlGroup: 'Interactivity',
+        controlOptions: {
+            min: 0,
+            max: 1,
+            step: 0.05,
+        },
+    },
+    {
+        key: 'cellHoverOthersOpacity',
+        scopes: ['HeatMap', 'HeatMapCanvas'],
+        description: 'Cell opacity when not hovered (0~1).',
+        required: false,
+        default: defaults.cellHoverOthersOpacity,
+        type: '{number}',
+        controlType: 'range',
+        controlGroup: 'Interactivity',
+        controlOptions: {
+            min: 0,
+            max: 1,
+            step: 0.05,
+        },
     },
     {
         key: 'animate',

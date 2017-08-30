@@ -18,7 +18,7 @@
     "d3-time-format": "^2.0.5",
     "dedent-js": "^1.0.1",
     "lodash": "^4.17.4",
-    "nivo": "0.22.1",
+    "nivo": "0.23.2",
     "nivo-generators": "^0.8.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",

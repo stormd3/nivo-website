@@ -9,7 +9,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
-import { ResponsiveHeatMap } from 'nivo'
+import { ResponsiveHeatMapCanvas } from 'nivo'
 import isFunction from 'lodash/isFunction'
 import ChartHeader from '../../ChartHeader'
 import ChartTabs from '../../ChartTabs'
@@ -19,51 +19,10 @@ import ComponentPropsDocumentation from '../../properties/ComponentPropsDocument
 import properties from './properties'
 import nivoTheme from '../../../nivoTheme'
 import { settingsMapper } from '../../../lib/settings'
-import config from '../../../config'
-import { generateLightDataSet } from './generators'
-
-const CustomCell = ({
-    value,
-    x,
-    y,
-    width,
-    height,
-    color,
-    opacity,
-    borderWidth,
-    borderColor,
-    textColor,
-}) =>
-    <g transform={`translate(${x}, ${y})`}>
-        <path
-            transform={`rotate(${value < 50 ? 180 : 0})`}
-            fill={color}
-            fillOpacity={opacity}
-            strokeWidth={borderWidth}
-            stroke={borderColor}
-            d={`
-                M0 -${Math.round(height / 2)}
-                L${Math.round(width / 2)} ${Math.round(height / 2)}
-                L-${Math.round(width / 2)} ${Math.round(height / 2)}
-                L0 -${Math.round(height / 2)}
-            `}
-        />
-        <text
-            alignmentBaseline="central"
-            textAnchor="middle"
-            style={{ fill: textColor }}
-            dy={value < 50 ? -6 : 6}
-        >
-            {value}
-        </text>
-    </g>
+import { generateHeavyDataSet } from './generators'
 
 const mapSettings = settingsMapper(
     {
-        cellShape: value => {
-            if (value === `Custom(props) => (…)`) return CustomCell
-            return value
-        },
         axisTop: (value, settings) => (settings['enable axisTop'] ? value : null),
         axisRight: (value, settings) => (settings['enable axisRight'] ? value : null),
         axisBottom: (value, settings) => (settings['enable axisBottom'] ? value : null),
@@ -76,23 +35,24 @@ const mapSettings = settingsMapper(
 
 export default class HeatMap extends Component {
     state = {
-        ...generateLightDataSet(),
+        ...generateHeavyDataSet(),
         settings: {
             indexBy: 'country',
 
             margin: {
                 top: 100,
                 right: 60,
-                bottom: 30,
+                bottom: 100,
                 left: 60,
             },
 
+            pixelRatio: window && window.devicePixelRatio ? window.devicePixelRatio : 1,
             minValue: 'auto',
             maxValue: 'auto',
-            forceSquare: true,
-            sizeVariation: 0.4,
-            padding: 2,
-            colors: 'nivo',
+            forceSquare: false,
+            sizeVariation: 0,
+            padding: 0,
+            colors: 'BrBG',
 
             // axes
             'enable axisTop': true,
@@ -100,11 +60,11 @@ export default class HeatMap extends Component {
                 orient: 'top',
                 tickSize: 5,
                 tickPadding: 5,
-                tickRotation: -55,
+                tickRotation: -90,
                 legend: '',
                 legendOffset: 36,
             },
-            'enable axisRight': false,
+            'enable axisRight': true,
             axisRight: {
                 orient: 'right',
                 tickSize: 5,
@@ -114,12 +74,12 @@ export default class HeatMap extends Component {
                 legendPosition: 'center',
                 legendOffset: 0,
             },
-            'enable axisBottom': false,
+            'enable axisBottom': true,
             axisBottom: {
                 orient: 'bottom',
                 tickSize: 5,
                 tickPadding: 5,
-                tickRotation: 0,
+                tickRotation: -90,
                 legend: 'country',
                 legendPosition: 'center',
                 legendOffset: 36,
@@ -139,7 +99,7 @@ export default class HeatMap extends Component {
             enableGridY: true,
 
             // cells
-            cellShape: 'circle',
+            cellShape: 'rect',
             cellOpacity: 1,
             cellBorderWidth: 0,
             cellBorderColor: 'inherit:darker(0.4)',
@@ -150,23 +110,23 @@ export default class HeatMap extends Component {
 
             // motion
             animate: true,
-            motionStiffness: 90,
-            motionDamping: 15,
+            motionStiffness: 120,
+            motionDamping: 9,
 
             // interactivity
             isInteractive: true,
             hoverTarget: 'rowColumn',
             cellHoverOpacity: 1,
-            cellHoverOthersOpacity: 0.25,
+            cellHoverOthersOpacity: 0.5,
         },
-    }
-
-    diceRoll = () => {
-        this.setState({ ...generateLightDataSet() })
     }
 
     handleSettingsUpdate = settings => {
         this.setState({ settings })
+    }
+
+    diceRoll = () => {
+        this.setState({ ...generateHeavyDataSet() })
     }
 
     render() {
@@ -184,7 +144,11 @@ export default class HeatMap extends Component {
         )
 
         const header = (
-            <ChartHeader chartClass="HeatMap" tags={['heatmap', 'svg']} diceRoll={this.diceRoll} />
+            <ChartHeader
+                chartClass="HeatMapCanvas"
+                tags={['heatmap', 'canvas', 'experimental']}
+                diceRoll={this.diceRoll}
+            />
         )
 
         return (
@@ -194,8 +158,13 @@ export default class HeatMap extends Component {
                         {header}
                     </MediaQuery>
                     <div className="main-chart" style={{ height: '500px' }}>
-                        <ChartTabs chartClass="heatmap" code={code} data={data}>
-                            <ResponsiveHeatMap
+                        <ChartTabs
+                            chartClass="heatmap"
+                            code={code}
+                            data={data}
+                            nodeCount={data.length * keys.length}
+                        >
+                            <ResponsiveHeatMapCanvas
                                 data={data}
                                 keys={keys}
                                 {...mappedSettings}
@@ -204,7 +173,7 @@ export default class HeatMap extends Component {
                         </ChartTabs>
                     </div>
                     <HeatMapControls
-                        scope="HeatMap"
+                        scope="HeatMapCanvas"
                         settings={settings}
                         onChange={this.handleSettingsUpdate}
                     />
@@ -214,39 +183,14 @@ export default class HeatMap extends Component {
                         {header}
                     </MediaQuery>
                     <p className="description">
-                        An heat map matrix, you can chose between various colors scales or pass
-                        yours, you also have the ability to change the cell shape for rectangle or
-                        circle and even use a custom rendering function.
+                        A variation around the <Link to="/heatmap">HeatMap</Link> component. Well
+                        suited for large data sets as it does not impact DOM tree depth and does not
+                        involve React diffing stuff (not that useful when using canvas), however
+                        you'll lose the isomorphic ability and transitions (for now).
                     </p>
                     <p className="description">
                         The responsive alternative of this component is{' '}
-                        <code>&lt;ResponsiveHeatMap /&gt;</code>.
-                    </p>
-                    <p className="description">
-                        This component is available in the{' '}
-                        <a
-                            href="https://github.com/plouc/nivo-api"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            nivo-api
-                        </a>, see{' '}
-                        <a
-                            href={`${config.nivoApiUrl}/samples/heatmap.svg`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            sample
-                        </a>{' '}
-                        or <Link to="/heatmap/api">try it using the API client</Link>. You can also
-                        see more example usages in{' '}
-                        <a
-                            href={`${config.storybookUrl}?selectedKind=HeatMap&selectedStory=default`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            the storybook
-                        </a>.
+                        <code>&lt;ResponsiveHeatMapCanvas /&gt;</code>.
                     </p>
                 </div>
                 <div className="grid_item grid_item-full">

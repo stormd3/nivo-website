@@ -23,8 +23,7 @@ const propsMapper = settingsMapper(
     }
 )
 
-
-const LineAPI = ({ data }) => (
+const LineAPI = ({ data }) =>
     <APIClient
         componentName="Line"
         apiPath="/charts/line"
@@ -107,6 +106,5 @@ const LineAPI = ({ data }) => (
             dotLabelYOffset: -12,
         }}
     />
-)
 
 export default LineAPI

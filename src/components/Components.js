@@ -19,6 +19,20 @@ const defaultComponents = [
         extras: ['react', 'svg'],
     },
     {
+        key: 'bar-canvas',
+        path: '/bar/canvas',
+        name: '<BarCanvas />',
+        className: 'bar',
+        extras: ['react', 'canvas'],
+    },
+    {
+        key: 'responsive-bar-canvas',
+        path: '/bar/canvas',
+        name: '<ResponsiveBarCanvas />',
+        className: 'bar',
+        extras: ['react', 'canvas'],
+    },
+    {
         key: 'bar-api',
         path: '/bar/api',
         name: '<Bar /> HTTP API',
@@ -108,6 +122,20 @@ const defaultComponents = [
         name: '<ResponsiveHeatMap />',
         className: 'heatmap',
         extras: ['react', 'svg'],
+    },
+    {
+        key: 'heatmap-canvas',
+        path: '/heatmap/canvas',
+        name: '<HeatMapCanvas />',
+        className: 'heatmap',
+        extras: ['react', 'canvas'],
+    },
+    {
+        key: 'responsive-heatmap-canvas',
+        path: '/heatmap/canvas',
+        name: '<ResponsiveHeatMapCanvas />',
+        className: 'heatmap',
+        extras: ['react', 'canvas'],
     },
     {
         key: 'heatmap-api',

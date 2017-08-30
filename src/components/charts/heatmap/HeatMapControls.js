@@ -14,6 +14,7 @@ import properties from './properties'
 
 const groupsByScope = {
     HeatMap: getPropertiesGroupsControls(properties, 'HeatMap'),
+    HeatMapCanvas: getPropertiesGroupsControls(properties, 'HeatMapCanvas'),
     api: getPropertiesGroupsControls(properties, 'api'),
 }
 

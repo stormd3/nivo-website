@@ -11,9 +11,11 @@ import { Route } from 'react-router-dom'
 
 import BarPage from './components/charts/bar/BarPage'
 import Bar from './components/charts/bar/Bar'
+import BarCanvas from './components/charts/bar/BarCanvas'
 import BarAPI from './components/charts/bar/BarAPI'
 import HeatMapPage from './components/charts/heatmap/HeatMapPage'
 import HeatMap from './components/charts/heatmap/HeatMap'
+import HeatMapCanvas from './components/charts/heatmap/HeatMapCanvas'
 import HeatMapAPI from './components/charts/heatmap/HeatMapAPI'
 import LinePage from './components/charts/line/LinePage'
 import Line from './components/charts/line/Line'
@@ -70,6 +72,12 @@ const SITEMAP = [
                         label: '<Bar />',
                         component: Bar,
                         exact: true,
+                    },
+                    {
+                        className: 'canvas',
+                        path: '/canvas',
+                        label: '<BarCanvas />',
+                        component: BarCanvas,
                     },
                     {
                         className: 'api',
@@ -271,6 +279,12 @@ const SITEMAP = [
                         label: '<HeatMap />',
                         component: HeatMap,
                         exact: true,
+                    },
+                    {
+                        className: 'canvas',
+                        path: '/canvas',
+                        label: '<HeatMapCanvas />',
+                        component: HeatMapCanvas,
                     },
                     {
                         className: 'api',

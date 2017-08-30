@@ -6,6 +6,18 @@
     overflow-y: auto;
 }
 
+.chart-tabs__node-count {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+    border-right: 1px solid #eee;
+    font-size: 13px;
+    padding: 5px 11px;
+}
+
 .chart-tabs__menu {
     position: absolute;
     top: 0;
@@ -27,7 +39,6 @@
 
 .chart-tabs__menu__wrapper {
     background-color: #fff;
-    border-radius: 1px;
     border-bottom: 1px solid #eee;
     border-left: 1px solid #eee;
     height: 47px;

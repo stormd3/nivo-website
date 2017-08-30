@@ -4347,9 +4347,9 @@ nivo-generators@^0.8.0:
     lodash.range "^3.2.0"
     lodash.shuffle "^4.2.0"
 
-nivo@0.22.1:
-  version "0.22.1"
-  resolved "https://registry.yarnpkg.com/nivo/-/nivo-0.22.1.tgz#93f7cd9de9a9aa54e1d9eb44dae9e3ae7581c8df"
+nivo@0.23.2:
+  version "0.23.2"
+  resolved "https://registry.yarnpkg.com/nivo/-/nivo-0.23.2.tgz#1573e4c36f2ee61b0ec2ad5355b53be41a2c7b1a"
   dependencies:
     d3-chord "^1.0.4"
     d3-color "^1.0.3"

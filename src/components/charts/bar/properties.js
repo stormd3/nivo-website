@@ -7,10 +7,8 @@
  * file that was distributed with this source code.
  */
 import React from 'react'
-import { Bar } from 'nivo'
+import { BarDefaultProps as defaults } from 'nivo'
 import { marginProperties, axesProperties } from '../../../lib/componentProperties'
-
-const defaults = Bar.defaultProps
 
 export default [
     {
@@ -75,6 +73,20 @@ export default [
             min: 100,
             max: 1000,
             step: 5,
+        },
+    },
+    {
+        key: 'pixelRatio',
+        scopes: ['BarCanvas'],
+        description: `Adjust pixel ratio, useful for HiDPI screens.`,
+        required: false,
+        default: 'Depends on device',
+        type: `{number}`,
+        controlType: 'range',
+        controlGroup: 'Base',
+        controlOptions: {
+            min: 1,
+            max: 2,
         },
     },
     {
@@ -214,7 +226,7 @@ export default [
     },
     {
         key: 'isInteractive',
-        scopes: ['Bar'],
+        scopes: ['Bar', 'BarCanvas'],
         description: 'Enable/disable interactivity.',
         type: '{boolean}',
         required: false,

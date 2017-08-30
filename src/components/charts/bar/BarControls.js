@@ -14,6 +14,7 @@ import properties from './properties'
 
 const groupsByScope = {
     Bar: getPropertiesGroupsControls(properties, 'Bar'),
+    BarCanvas: getPropertiesGroupsControls(properties, 'BarCanvas'),
     api: getPropertiesGroupsControls(properties, 'api'),
 }
 

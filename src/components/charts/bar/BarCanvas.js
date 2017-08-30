@@ -7,26 +7,24 @@
  * file that was distributed with this source code.
  */
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
-import { ResponsiveStream } from 'nivo'
+import { ResponsiveBarCanvas } from 'nivo'
 import ChartHeader from '../../ChartHeader'
 import ChartTabs from '../../ChartTabs'
-import StreamControls from './StreamControls'
+import BarControls from './BarControls'
 import generateCode from '../../../lib/generateChartCode'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
 import properties from './properties'
 import { settingsMapper } from '../../../lib/settings'
 import nivoTheme from '../../../nivoTheme'
-import { generateLightDataSet } from './generators'
+import { generateHeavyDataSet as generateData } from './generators'
 
 const mapSettings = settingsMapper(
     {
         colorBy: value => {
-            if (value === 'd => d.color') return d => d.color
-            return value
-        },
-        markersLabel: value => {
-            if (value === `d => \`\${d.x}: \${d.y}\``) return d => `${d.x}: ${d.y}`
+            if (value === `({ id, data }) => data[\`\${id}Color\`]`)
+                return ({ id, data }) => data[`${id}Color`]
             return value
         },
         axisTop: (value, settings) => (settings['enable axisTop'] ? value : undefined),
@@ -39,10 +37,13 @@ const mapSettings = settingsMapper(
     }
 )
 
-export default class Stream extends Component {
+export default class BarCanvas extends Component {
     state = {
-        ...generateLightDataSet(),
+        ...generateData(),
         settings: {
+            // data
+            indexBy: 'country',
+
             margin: {
                 top: 50,
                 right: 60,
@@ -50,8 +51,16 @@ export default class Stream extends Component {
                 left: 60,
             },
 
+            pixelRatio: window && window.devicePixelRatio ? window.devicePixelRatio : 1,
+            xPadding: 0.15,
+            groupMode: 'stacked',
+            layout: 'horizontal',
+
+            colors: 'd320b',
+            colorBy: 'id',
+
             // axes
-            'enable axisTop': false,
+            'enable axisTop': true,
             axisTop: {
                 orient: 'top',
                 tickSize: 5,
@@ -75,27 +84,26 @@ export default class Stream extends Component {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: '',
+                legend: 'country',
+                legendPosition: 'center',
                 legendOffset: 36,
             },
-            'enable axisLeft': false,
+            'enable axisLeft': true,
             axisLeft: {
                 orient: 'left',
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: '',
+                legend: 'food',
+                legendPosition: 'center',
                 legendOffset: -40,
             },
-            enableGridX: true,
-            enableGridY: false,
 
-            curve: 'catmullRom',
-            offsetType: 'wiggle',
-            order: 'none',
-
-            colors: 'nivo',
-            fillOpacity: 0.85,
+            enableGridX: false,
+            enableGridY: true,
+            enableLabels: true,
+            labelsTextColor: 'inherit:darker(1.6)',
+            labelsLinkColor: 'inherit',
 
             // motion
             animate: true,
@@ -104,18 +112,15 @@ export default class Stream extends Component {
 
             // interactivity
             isInteractive: true,
-
-            // stack tooltip
-            enableStackTooltip: true,
         },
+    }
+
+    diceRoll = () => {
+        this.setState(generateData())
     }
 
     handleSettingsUpdate = settings => {
         this.setState({ settings })
-    }
-
-    diceRoll = () => {
-        this.setState({ ...generateLightDataSet() })
     }
 
     render() {
@@ -123,15 +128,18 @@ export default class Stream extends Component {
 
         const mappedSettings = mapSettings(settings)
 
-        const code = generateCode('Stream', mappedSettings)
-
         const header = (
             <ChartHeader
-                chartClass="Stream"
-                tags={['stacked', 'isomorphic']}
+                chartClass="BarCanvas"
+                tags={['bar', 'canvas', 'experimental']}
                 diceRoll={this.diceRoll}
             />
         )
+
+        const code = generateCode('BarCanvas', {
+            keys,
+            ...mappedSettings,
+        })
 
         return (
             <div className="page_content grid">
@@ -140,8 +148,13 @@ export default class Stream extends Component {
                         {header}
                     </MediaQuery>
                     <div className="main-chart main-chart-horizontal">
-                        <ChartTabs chartClass="stream" code={code} data={data}>
-                            <ResponsiveStream
+                        <ChartTabs
+                            chartClass="bar"
+                            code={code}
+                            data={data}
+                            nodeCount={data.length * keys.length}
+                        >
+                            <ResponsiveBarCanvas
                                 data={data}
                                 keys={keys}
                                 {...mappedSettings}
@@ -149,8 +162,8 @@ export default class Stream extends Component {
                             />
                         </ChartTabs>
                     </div>
-                    <StreamControls
-                        scope="Stream"
+                    <BarControls
+                        scope="BarCanvas"
                         settings={settings}
                         onChange={this.handleSettingsUpdate}
                     />
@@ -159,14 +172,19 @@ export default class Stream extends Component {
                     <MediaQuery query="(min-width: 1000px)">
                         {header}
                     </MediaQuery>
-                    <p className="description">Stream chart.</p>
+                    <p className="description">
+                        A variation around the <Link to="/bar">Bar</Link> component. Well suited for
+                        large data sets as it does not impact DOM tree depth and does not involve
+                        React diffing stuff (not that useful when using canvas), however you'll lose
+                        the isomorphic ability and transitions (for now).
+                    </p>
                     <p className="description">
                         The responsive alternative of this component is{' '}
-                        <code>&lt;ResponsiveStream /&gt;</code>.
+                        <code>&lt;ResponsiveBarCanvas /&gt;</code>.
                     </p>
                 </div>
                 <div className="grid_item grid_item-full">
-                    <ComponentPropsDocumentation chartClass="Stream" properties={properties} />
+                    <ComponentPropsDocumentation chartClass="Bar" properties={properties} />
                 </div>
             </div>
         )

@@ -6,10 +6,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-import React from 'react'
+import React, { Component } from 'react'
 import APIClient from '../../api-client/APIClient'
 import { settingsMapper } from '../../../lib/settings'
 import HeatMapControls from './HeatMapControls'
+import { generateLightDataSet } from './generators'
 
 const propsMapper = settingsMapper(
     {
@@ -23,93 +24,98 @@ const propsMapper = settingsMapper(
     }
 )
 
-const HeatMapAPI = ({
-    data,
-    keys,
-}) => (
-    <APIClient
-        componentName="HeatMap"
-        apiPath="/charts/heatmap"
-        dataProperty="data"
-        controls={HeatMapControls}
-        propsMapper={propsMapper}
-        defaultProps={{
-            width: 800,
-            height: 600,
-            data: JSON.stringify(data, null, '  '),
-            keys,
-            indexBy: 'country',
+export default class HeatMapAPI extends Component {
+    state = {
+        ...generateLightDataSet(),
+    }
 
-            margin: {
-                top: 100,
-                right: 60,
-                bottom: 30,
-                left: 60,
-            },
+    render() {
+        const { data, keys } = this.state
 
-            minValue: 'auto',
-            maxValue: 'auto',
-            forceSquare: true,
-            sizeVariation: 0.4,
-            padding: 2,
-            colors: 'nivo',
+        return (
+            <APIClient
+                componentName="HeatMap"
+                apiPath="/charts/heatmap"
+                dataProperty="data"
+                controls={HeatMapControls}
+                propsMapper={propsMapper}
+                defaultProps={{
+                    width: 800,
+                    height: 600,
+                    data: JSON.stringify(data, null, '  '),
+                    keys,
+                    indexBy: 'country',
 
-            // axes
-            // axes
-            'enable axisTop': true,
-            axisTop: {
-                orient: 'top',
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: -55,
-                legend: '',
-                legendOffset: 36,
-            },
-            'enable axisRight': false,
-            axisRight: {
-                orient: 'right',
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: 'country',
-                legendPosition: 'center',
-                legendOffset: 0,
-            },
-            'enable axisBottom': false,
-            axisBottom: {
-                orient: 'bottom',
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: 'country',
-                legendPosition: 'center',
-                legendOffset: 36,
-            },
-            'enable axisLeft': true,
-            axisLeft: {
-                orient: 'left',
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: 'country',
-                legendPosition: 'center',
-                legendOffset: -40,
-            },
+                    margin: {
+                        top: 100,
+                        right: 60,
+                        bottom: 30,
+                        left: 60,
+                    },
 
-            enableGridX: false,
-            enableGridY: true,
+                    minValue: 'auto',
+                    maxValue: 'auto',
+                    forceSquare: true,
+                    sizeVariation: 0.4,
+                    padding: 2,
+                    colors: 'nivo',
 
-            // cells
-            cellShape: 'circle',
-            cellOpacity: 1,
-            cellBorderWidth: 0,
-            cellBorderColor: 'inherit:darker(0.4)',
+                    // axes
+                    // axes
+                    'enable axisTop': true,
+                    axisTop: {
+                        orient: 'top',
+                        tickSize: 5,
+                        tickPadding: 5,
+                        tickRotation: -55,
+                        legend: '',
+                        legendOffset: 36,
+                    },
+                    'enable axisRight': false,
+                    axisRight: {
+                        orient: 'right',
+                        tickSize: 5,
+                        tickPadding: 5,
+                        tickRotation: 0,
+                        legend: 'country',
+                        legendPosition: 'center',
+                        legendOffset: 0,
+                    },
+                    'enable axisBottom': false,
+                    axisBottom: {
+                        orient: 'bottom',
+                        tickSize: 5,
+                        tickPadding: 5,
+                        tickRotation: 0,
+                        legend: 'country',
+                        legendPosition: 'center',
+                        legendOffset: 36,
+                    },
+                    'enable axisLeft': true,
+                    axisLeft: {
+                        orient: 'left',
+                        tickSize: 5,
+                        tickPadding: 5,
+                        tickRotation: 0,
+                        legend: 'country',
+                        legendPosition: 'center',
+                        legendOffset: -40,
+                    },
 
-            // labels
-            enableLabels: true,
-            labelTextColor: 'inherit:darker(1.4)',
-        }}
-    />
-)
+                    enableGridX: false,
+                    enableGridY: true,
 
-export default HeatMapAPI
+                    // cells
+                    cellShape: 'circle',
+                    cellOpacity: 1,
+                    cellBorderWidth: 0,
+                    cellBorderColor: 'inherit:darker(0.4)',
+
+                    // labels
+                    enableLabels: true,
+                    labelTextColor: 'inherit:darker(1.4)',
+                }}
+            />
+        )
+    }
+}
