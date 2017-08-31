@@ -67,7 +67,7 @@ class Bars extends Component {
                         {header}
                     </MediaQuery>
                     <div className="main-chart">
-                        <ChartTabs chartClass="chord" code={code} data={data}>
+                        <ChartTabs chartClass="chord" code={code} data={matrix}>
                             <ResponsiveChord data={matrix} {...settings} />
                         </ChartTabs>
                     </div>
