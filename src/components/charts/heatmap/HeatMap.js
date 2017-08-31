@@ -155,7 +155,7 @@ export default class HeatMap extends Component {
 
             // interactivity
             isInteractive: true,
-            hoverTarget: 'rowColumn',
+            hoverTarget: 'cell',
             cellHoverOpacity: 1,
             cellHoverOthersOpacity: 0.25,
         },
