@@ -45,6 +45,13 @@ class ChordAPI extends Component {
                     arcBorderWidth: 1,
                     colors: 'nivo',
                     colorBy: 'depth',
+
+                    // labels
+                    enableLabels: true,
+                    label: 'id',
+                    labelOffset: 12,
+                    labelRotation: -90,
+                    labelTextColor: 'inherit:darker(1)',
                 }}
             />
         )

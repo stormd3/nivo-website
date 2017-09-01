@@ -112,7 +112,7 @@ export default class Chord extends Component {
                         {header}
                     </MediaQuery>
                     <div className="main-chart" style={{ height: '600px' }}>
-                        <ChartTabs chartClass="chord" code={code} data={matrix} nodeCount={MATRIX_SIZE * MATRIX_SIZE + MATRIX_SIZE}>
+                        <ChartTabs chartClass="chord" code={code} data={matrix}>
                             <ResponsiveChord
                                 matrix={matrix}
                                 keys={keys}
