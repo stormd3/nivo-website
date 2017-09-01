@@ -14,6 +14,7 @@ import properties from './properties'
 
 const groupsByScope = {
     Chord: getPropertiesGroupsControls(properties, 'Chord'),
+    ChordCanvas: getPropertiesGroupsControls(properties, 'ChordCanvas'),
     api: getPropertiesGroupsControls(properties, 'api'),
 }
 

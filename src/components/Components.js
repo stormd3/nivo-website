@@ -103,6 +103,20 @@ const defaultComponents = [
         extras: ['react', 'svg'],
     },
     {
+        key: 'chord-canvas',
+        path: '/chord/canvas',
+        name: '<ChordCanvas />',
+        className: 'chord',
+        extras: ['react', 'canvas'],
+    },
+    {
+        key: 'responsive-chord-canvas',
+        path: '/chord/canvas',
+        name: '<ResponsiveChordCanvas />',
+        className: 'chord',
+        extras: ['react', 'canvas'],
+    },
+    {
         key: 'chord-api',
         path: '/chord/api',
         name: '<Chord /> HTTP API',

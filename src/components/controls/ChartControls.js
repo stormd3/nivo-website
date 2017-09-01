@@ -29,6 +29,7 @@ export default class ChartControls extends Component {
         settings: PropTypes.object.isRequired,
         onChange: PropTypes.func.isRequired,
         groups: PropTypes.array.isRequired,
+        group: PropTypes.string,
         ns: PropTypes.string.isRequired,
         mapValues: PropTypes.object.isRequired,
     }

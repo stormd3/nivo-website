@@ -8,29 +8,18 @@
  */
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
-import { generateLibTree } from 'nivo-generators'
 
 class ChordPage extends Component {
-    state = {
-        libTree: generateLibTree(),
-    }
-
-    handleDiceRoll = () => {
-        this.setState({ libTree: generateLibTree() })
-    }
-
     render() {
         const { childRoutes } = this.props
-        const { libTree } = this.state
 
         return (
             <div className="inner-content chord_page">
-                <Helmet title="Chord component" />
+                <Helmet title="Chord components" />
                 {childRoutes.map(childRoute => {
                     return React.cloneElement(childRoute, {
                         component: null,
-                        render: () =>
-                            <childRoute.props.component root={libTree} diceRoll={this.diceRoll} />,
+                        render: () => <childRoute.props.component />,
                     })
                 })}
             </div>

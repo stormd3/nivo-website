@@ -9,7 +9,7 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Nivo from 'nivo'
+import { defaultCategoricalColors } from 'nivo'
 import Select from 'react-select'
 import ColorsControlItem from './ColorsControlItem'
 import { schemeCategory10, schemeCategory20, schemeCategory20b, schemeCategory20c } from 'd3-scale'
@@ -25,7 +25,7 @@ import {
 } from 'd3-scale-chromatic'
 
 const colors = [
-    { id: 'nivo', colors: Nivo.colors.nivoCategoricalColors().range() },
+    { id: 'nivo', colors: defaultCategoricalColors().range() },
     { id: 'd310', colors: schemeCategory10 },
     { id: 'd320', colors: schemeCategory20 },
     { id: 'd320b', colors: schemeCategory20b },

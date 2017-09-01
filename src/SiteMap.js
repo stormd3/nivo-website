@@ -48,6 +48,7 @@ import Calendar from './components/charts/calendar/Calendar'
 import CalendarAPI from './components/charts/calendar/CalendarAPI'
 import ChordPage from './components/charts/chord/ChordPage'
 import Chord from './components/charts/chord/Chord'
+import ChordCanvas from './components/charts/chord/ChordCanvas'
 import ChordAPI from './components/charts/chord/ChordAPI'
 import VoronoiPage from './components/charts/voronoi/VoronoiPage'
 import Voronoi from './components/charts/voronoi/Voronoi'
@@ -177,6 +178,12 @@ const SITEMAP = [
                         label: '<Chord />',
                         component: Chord,
                         exact: true,
+                    },
+                    {
+                        className: 'canvas',
+                        path: '/canvas',
+                        label: '<ChordCanvas />',
+                        component: ChordCanvas,
                     },
                     {
                         className: 'api',

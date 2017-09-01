@@ -4,4 +4,7 @@ export default {
             fontSize: '13px',
         },
     },
+    labels: {
+        textColor: '#555',
+    },
 }

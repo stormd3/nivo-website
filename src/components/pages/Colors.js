@@ -11,7 +11,7 @@ import {
     schemeSet2,
     schemeSet3,
 } from 'd3-scale-chromatic'
-import Nivo from 'nivo'
+import { defaultCategoricalColors } from 'nivo'
 
 class Colors extends Component {
     render() {
@@ -115,7 +115,7 @@ class Colors extends Component {
                                             looks familiar isn't it, obviously it's the categorical
                                             colors used on this doc.
                                         </p>
-                                        {Nivo.colors.nivoCategoricalColors().range().map(color =>
+                                        {defaultCategoricalColors().range().map(color =>
                                             <span
                                                 style={{
                                                     display: 'inline-block',

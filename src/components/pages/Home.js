@@ -21,6 +21,7 @@ import {
     generateCountriesData,
     generateWinesTastes,
     generateSankeyData,
+    generateChordData,
 } from 'nivo-generators'
 import {
     ResponsiveBubble,
@@ -71,6 +72,9 @@ const homeTheme = {
             fontSize: '9px',
         },
     },
+    labels: {
+        textColor: '#c6432d',
+    },
 }
 
 const commonAxes = {
@@ -95,15 +99,9 @@ class Home extends Component {
                             colors={colors}
                             padAngle={0.04}
                             innerRadiusRatio={0.94}
-                            data={[
-                                [11975, 5871, 8916, 2868, 1967, 2987, 4300],
-                                [1951, 10048, 2060, 6171, 1967, 2987, 4300],
-                                [8010, 16145, 8090, 8045, 1967, 2987, 4300],
-                                [1013, 990, 940, 6907, 2306, 1200, 900],
-                                [1013, 990, 940, 6907, 800, 3400, 1200],
-                                [1013, 990, 940, 6907, 1967, 2987, 4300],
-                                [1013, 990, 940, 6907, 3000, 3456, 876],
-                            ]}
+                            {...generateChordData({ size: 7 })}
+                            enableLabels={false}
+                            isInteractive={false}
                             animate={false}
                         />
                         <span className="home_item_label">
@@ -368,14 +366,10 @@ class Home extends Component {
                             colors={colors}
                             padAngle={0.04}
                             innerRadiusRatio={0.94}
-                            data={[
-                                [11975, 5871, 8916, 2868, 1967],
-                                [1951, 10048, 2060, 6171, 1967],
-                                [8010, 16145, 8090, 8045, 1967],
-                                [1013, 990, 940, 6907, 2306],
-                                [1013, 990, 940, 6907, 800],
-                            ]}
+                            {...generateChordData({ size: 5 })}
+                            enableLabels={false}
                             animate={false}
+                            isInteractive={false}
                         />
                         <span className="home_item_label">
                             <span>Chord documentation</span>

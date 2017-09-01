@@ -9,12 +9,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
-import { ResponsiveChord } from 'nivo'
+import { ResponsiveChordCanvas } from 'nivo'
 import ChartHeader from '../../ChartHeader'
 import ChartTabs from '../../ChartTabs'
 import ChordControls from './ChordControls'
 import generateCode from '../../../lib/generateChartCode'
-import config from '../../../config'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
 import properties from './properties'
 import nivoTheme from '../../../nivoTheme'
@@ -28,9 +27,9 @@ const mapSettings = settingsMapper({
     },
 })
 
-const MATRIX_SIZE = 5
+const MATRIX_SIZE = 38
 
-export default class Chord extends Component {
+export default class ChordCanvas extends Component {
     state = {
         ...generateChordData({ size: MATRIX_SIZE }),
         settings: {
@@ -41,9 +40,11 @@ export default class Chord extends Component {
                 left: 80,
             },
 
-            padAngle: 0.02,
-            innerRadiusRatio: 0.96,
-            innerRadiusOffset: 0.02,
+            pixelRatio: window && window.devicePixelRatio ? window.devicePixelRatio : 1,
+
+            padAngle: 0.006,
+            innerRadiusRatio: 0.86,
+            innerRadiusOffset: 0,
 
             // arcs
             arcOpacity: 1,
@@ -56,18 +57,18 @@ export default class Chord extends Component {
             // labels
             enableLabels: true,
             label: 'id',
-            labelOffset: 12,
+            labelOffset: 9,
             labelRotation: -90,
             labelTextColor: 'inherit:darker(1)',
 
-            colors: 'nivo',
+            colors: 'd320b',
 
             // interactivity
             isInteractive: true,
             arcHoverOpacity: 1,
-            arcHoverOthersOpacity: 0.25,
+            arcHoverOthersOpacity: 0.4,
             ribbonHoverOpacity: 0.75,
-            ribbonHoverOthersOpacity: 0.25,
+            ribbonHoverOthersOpacity: 0,
 
             // motion
             animate: true,
@@ -90,7 +91,7 @@ export default class Chord extends Component {
         const mappedSettings = mapSettings(settings)
 
         const code = generateCode(
-            'Chord',
+            'ChordCanvas',
             { keys, ...mappedSettings },
             {
                 dataKey: 'matrix',
@@ -99,8 +100,8 @@ export default class Chord extends Component {
 
         const header = (
             <ChartHeader
-                chartClass="Chord"
-                tags={['relational', 'isomorphic', 'api']}
+                chartClass="ChordCanvas"
+                tags={['relational', 'canvas', 'experimental']}
                 diceRoll={this.diceRoll}
             />
         )
@@ -113,7 +114,7 @@ export default class Chord extends Component {
                     </MediaQuery>
                     <div className="main-chart" style={{ height: '600px' }}>
                         <ChartTabs chartClass="chord" code={code} data={matrix} nodeCount={MATRIX_SIZE * MATRIX_SIZE + MATRIX_SIZE}>
-                            <ResponsiveChord
+                            <ResponsiveChordCanvas
                                 matrix={matrix}
                                 keys={keys}
                                 {...mappedSettings}
@@ -122,7 +123,7 @@ export default class Chord extends Component {
                         </ChartTabs>
                     </div>
                     <ChordControls
-                        scope="Chord"
+                        scope="ChordCanvas"
                         settings={settings}
                         onChange={this.handleSettingsUpdate}
                     />
@@ -132,44 +133,18 @@ export default class Chord extends Component {
                         {header}
                     </MediaQuery>
                     <p className="description">
-                        Chord diagram, uses{' '}
-                        <a
-                            href="https://github.com/d3/d3-chord"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            d3-chord
-                        </a>, see{' '}
-                        <a
-                            href="http://bl.ocks.org/mbostock/4062006"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            this block
-                        </a>. The responsive alternative of this component is{' '}
-                        <code>&lt;ResponsiveChord /&gt;</code>.
+                        A variation around the <Link to="/chord">Chord</Link> component. Well
+                        suited for large data sets as it does not impact DOM tree depth and does not
+                        involve React diffing stuff (not that useful when using canvas), however
+                        you'll lose the isomorphic ability and transitions (for now).
                     </p>
                     <p className="description">
-                        This component is available in the{' '}
-                        <a
-                            href="https://github.com/plouc/nivo-api"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            nivo-api
-                        </a>, see{' '}
-                        <a
-                            href={`${config.nivoApiUrl}/samples/chord`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            sample
-                        </a>{' '}
-                        or <Link to="/chord/api">try it using the API client</Link>.
+                        The responsive alternative of this component is{' '}
+                        <code>&lt;ResponsiveChordCanvas /&gt;</code>.
                     </p>
                 </div>
                 <div className="grid_item grid_item-full">
-                    <ComponentPropsDocumentation chartClass="Chord" properties={properties} />
+                    <ComponentPropsDocumentation chartClass="ChordCanvas" properties={properties} />
                 </div>
             </div>
         )

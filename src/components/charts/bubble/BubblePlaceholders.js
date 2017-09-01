@@ -39,7 +39,7 @@ export default class BubblePlaceholdersPage extends Component {
             // motion
             animate: true,
             motionStiffness: 90,
-            motionDamping: 15,
+            motionDamping: 12,
 
             // interactivity
             isInteractive: true,

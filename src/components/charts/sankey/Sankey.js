@@ -19,7 +19,7 @@ import properties from './properties'
 import config from '../../../config'
 import nivoTheme from '../../../nivoTheme'
 
-class Bars extends Component {
+export default class Sankey extends Component {
     state = {
         settings: {
             margin: {
@@ -160,5 +160,3 @@ class Bars extends Component {
         )
     }
 }
-
-export default Bars

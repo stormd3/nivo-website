@@ -4032,10 +4032,6 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
-lodash-es@^4.17.4:
-  version "4.17.4"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.4.tgz#dcc1d7552e150a0640073ba9cb31d70f032950e7"
-
 lodash._getnative@^3.0.0:
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
@@ -4337,9 +4333,9 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-nivo-generators@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/nivo-generators/-/nivo-generators-0.8.0.tgz#204f56a595cd970cb20871f800614f8600a0b9d4"
+nivo-generators@0.9.3:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/nivo-generators/-/nivo-generators-0.9.3.tgz#6fb1f3452d5fa9a25ac812d5915f6ff3735d5ac7"
   dependencies:
     d3-time "^1.0.7"
     d3-time-format "^2.0.5"
@@ -4347,9 +4343,9 @@ nivo-generators@^0.8.0:
     lodash.range "^3.2.0"
     lodash.shuffle "^4.2.0"
 
-nivo@0.23.4:
-  version "0.23.4"
-  resolved "https://registry.yarnpkg.com/nivo/-/nivo-0.23.4.tgz#07959404d5682dfafa42a6deddf62cd8f5bd4d00"
+nivo@0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/nivo/-/nivo-0.24.0.tgz#c4b6459e419e573f1daef7c1beb7170273d9e91f"
   dependencies:
     d3-chord "^1.0.4"
     d3-color "^1.0.3"
@@ -4364,7 +4360,6 @@ nivo@0.23.4:
     d3-time-format "^2.0.5"
     d3-voronoi "^1.1.2"
     lodash "^4.17.4"
-    lodash-es "^4.17.4"
     prop-types "^15.5.10"
     react-measure "^2.0.2"
     react-motion "^0.5.0"
