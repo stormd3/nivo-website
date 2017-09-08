@@ -15,30 +15,10 @@ import ChartTabs from '../../ChartTabs'
 import LineControls from './LineControls'
 import generateCode from '../../../lib/generateChartCode'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
+import properties from './props'
 import config from '../../../config'
-import { settingsMapper } from '../../../lib/settings'
 import nivoTheme from '../../../nivoTheme'
-
-const mapSettings = settingsMapper(
-    {
-        colorBy: value => {
-            if (value === 'd => d.color') return d => d.color
-            return value
-        },
-        dotLabel: value => {
-            if (value === `d => \`\${d.x}: \${d.y}\``) return d => `${d.x}: ${d.y}`
-            return value
-        },
-        axisTop: (value, settings) => (settings['enable axisTop'] ? value : undefined),
-        axisRight: (value, settings) => (settings['enable axisRight'] ? value : undefined),
-        axisBottom: (value, settings) => (settings['enable axisBottom'] ? value : undefined),
-        axisLeft: (value, settings) => (settings['enable axisLeft'] ? value : undefined),
-    },
-    {
-        exclude: ['enable axisTop', 'enable axisRight', 'enable axisBottom', 'enable axisLeft'],
-    }
-)
+import propsMapper from './propsMapper'
 
 export default class Line extends Component {
     state = {
@@ -106,9 +86,9 @@ export default class Line extends Component {
             // dots
             enableDots: true,
             dotSize: 10,
-            dotColor: 'inherit:darker(.3)',
+            dotColor: { type: 'inherit:darker', gamma: 0.3 },
             dotBorderWidth: 2,
-            dotBorderColor: '#fff',
+            dotBorderColor: { type: 'custom', color: '#ffffff' },
             enableDotLabel: true,
             dotLabel: 'y',
             dotLabelYOffset: -12,
@@ -134,7 +114,7 @@ export default class Line extends Component {
         const { data, diceRoll } = this.props
         const { settings } = this.state
 
-        const mappedSettings = mapSettings(settings)
+        const mappedSettings = propsMapper(settings)
 
         const code = generateCode('Line', mappedSettings)
 

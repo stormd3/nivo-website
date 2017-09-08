@@ -9,8 +9,9 @@
 import React, { Component } from 'react'
 import APIClient from '../../api-client/APIClient'
 import TreeMapControls from './TreeMapControls'
+import propsMapper from './propsMapper'
 
-class TreeMapAPI extends Component {
+export default class TreeMapAPI extends Component {
     render() {
         return (
             <APIClient
@@ -18,6 +19,7 @@ class TreeMapAPI extends Component {
                 apiPath="/charts/treemap"
                 dataProperty="root"
                 controls={TreeMapControls}
+                propsMapper={propsMapper}
                 defaultProps={{
                     root: JSON.stringify(this.props.root, null, '  '),
                     tile: 'squarify',
@@ -33,14 +35,23 @@ class TreeMapAPI extends Component {
                     labelSkipSize: 0,
                     label: 'loc',
                     labelFormat: '.0s',
-                    labelTextColor: 'inherit:darker(.6)',
+                    labelTextColor: {
+                        type: 'inherit:darker',
+                        gamma: 0.6,
+                    },
                     orientLabels: true,
 
                     innerPadding: 3,
                     outerPadding: 3,
+
                     colors: 'nivo',
+                    colorBy: 'depth',
+
                     borderWidth: 1,
-                    borderColor: 'inherit:darker(.3)',
+                    borderColor: {
+                        type: 'inherit:darker',
+                        gamma: 0.3,
+                    },
                     identity: 'name',
                     value: 'loc',
                 }}
@@ -48,5 +59,3 @@ class TreeMapAPI extends Component {
         )
     }
 }
-
-export default TreeMapAPI

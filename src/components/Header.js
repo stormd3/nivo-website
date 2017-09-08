@@ -24,6 +24,13 @@ export default class Header extends Component {
                         </Link>
                     )}
                     <a
+                        href="http://nivo.rocks/storybook/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        storybook
+                    </a>
+                    <a
                         href="https://github.com/plouc/nivo"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -31,11 +38,11 @@ export default class Header extends Component {
                         GitHub
                     </a>
                     <a
-                        href="http://nivo.rocks/storybook/"
+                        href="https://twitter.com/benitteraphael"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        storybook
+                        Twitter
                     </a>
                 </nav>
             </header>

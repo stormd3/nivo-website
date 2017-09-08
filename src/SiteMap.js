@@ -29,7 +29,7 @@ import RadarPage from './components/charts/radar/RadarPage'
 import Radar from './components/charts/radar/Radar'
 import RadarAPI from './components/charts/radar/RadarAPI'
 import BubblePage from './components/charts/bubble/BubblePage'
-import BubbleReact from './components/charts/bubble/BubbleReact'
+import Bubble from './components/charts/bubble/Bubble'
 import BubbleAPI from './components/charts/bubble/BubbleAPI'
 import BubblePlaceholders from './components/charts/bubble/BubblePlaceholders'
 import SankeyPage from './components/charts/sankey/SankeyPage'
@@ -54,12 +54,11 @@ import VoronoiPage from './components/charts/voronoi/VoronoiPage'
 import Voronoi from './components/charts/voronoi/Voronoi'
 import Colors from './components/pages/Colors'
 import About from './components/pages/About'
-import Components from './components/Components'
-import API from './components/API'
+import Components from './components/components/Components'
 
 const SITEMAP = [
     {
-        label: 'Charts',
+        label: 'Components',
         children: [
             {
                 className: 'bar',
@@ -70,126 +69,24 @@ const SITEMAP = [
                     {
                         className: 'react',
                         path: '/',
-                        label: '<Bar />',
+                        label: 'Bar',
                         component: Bar,
                         exact: true,
+                        tags: ['svg'],
                     },
                     {
                         className: 'canvas',
                         path: '/canvas',
-                        label: '<BarCanvas />',
+                        label: 'BarCanvas',
                         component: BarCanvas,
+                        tags: ['canvas'],
                     },
                     {
                         className: 'api',
                         path: '/api',
-                        label: '<Bar /> HTTP API',
+                        label: 'Bar API',
                         component: BarAPI,
-                    },
-                ],
-            },
-            {
-                className: 'line',
-                path: '/line',
-                label: 'Line',
-                component: LinePage,
-                children: [
-                    {
-                        className: 'react',
-                        path: '/',
-                        label: '<Line />',
-                        component: Line,
-                        exact: true,
-                    },
-                    {
-                        className: 'api',
-                        path: '/api',
-                        label: '<Line /> HTTP API',
-                        component: LineAPI,
-                    },
-                ],
-            },
-            {
-                className: 'stream',
-                path: '/stream',
-                label: 'Stream',
-                component: StreamPage,
-                children: [
-                    {
-                        className: 'react',
-                        path: '/',
-                        label: '<Stream />',
-                        component: Stream,
-                        exact: true,
-                    },
-                ],
-            },
-            {
-                className: 'pie',
-                path: '/pie',
-                label: 'Pie',
-                component: PiePage,
-                children: [
-                    {
-                        className: 'react',
-                        path: '/',
-                        label: '<Pie />',
-                        component: Pie,
-                        exact: true,
-                    },
-                    {
-                        className: 'api',
-                        path: '/api',
-                        label: '<Pie /> HTTP API',
-                        component: PieAPI,
-                    },
-                ],
-            },
-            {
-                className: 'sunburst',
-                path: '/sunburst',
-                label: 'Sunburst',
-                component: SunburstPage,
-                children: [
-                    {
-                        className: 'react',
-                        path: '/',
-                        label: '<Sunburst />',
-                        component: Sunburst,
-                        exact: true,
-                    },
-                    {
-                        className: 'api',
-                        path: '/api',
-                        label: '<Sunburst /> HTTP API',
-                        component: SunburstAPI,
-                    },
-                ],
-            },
-            {
-                className: 'chord',
-                path: '/chord',
-                label: 'Chord',
-                component: ChordPage,
-                children: [
-                    {
-                        className: 'react',
-                        path: '/',
-                        label: '<Chord />',
-                        component: Chord,
-                        exact: true,
-                    },
-                    {
-                        className: 'canvas',
-                        path: '/canvas',
-                        label: '<ChordCanvas />',
-                        component: ChordCanvas,
-                    },
-                    {
-                        className: 'api',
-                        path: '/api',
-                        label: '<Chord /> HTTP API',
-                        component: ChordAPI,
+                        tags: ['api'],
                     },
                 ],
             },
@@ -202,102 +99,24 @@ const SITEMAP = [
                     {
                         className: 'react',
                         path: '/',
-                        label: '<Bubble />',
-                        component: BubbleReact,
+                        label: 'Bubble',
+                        component: Bubble,
                         exact: true,
+                        tags: ['svg'],
                     },
                     {
                         className: 'placeholders',
                         path: '/placeholders',
-                        label: '<BubblePlaceholders />',
+                        label: 'BubblePlaceholders',
                         component: BubblePlaceholders,
+                        tags: ['placeholders'],
                     },
                     {
                         className: 'api',
                         path: '/api',
-                        label: '<Bubble /> HTTP API',
+                        label: 'Bubble API',
                         component: BubbleAPI,
-                    },
-                ],
-            },
-            {
-                className: 'radar',
-                path: '/radar',
-                label: 'Radar',
-                component: RadarPage,
-                children: [
-                    {
-                        className: 'react',
-                        path: '/',
-                        label: '<Radar />',
-                        component: Radar,
-                        exact: true,
-                    },
-                    {
-                        className: 'api',
-                        path: '/api',
-                        label: '<Radar /> HTTP API',
-                        component: RadarAPI,
-                    },
-                ],
-            },
-            {
-                className: 'treemap',
-                path: '/treemap',
-                label: 'TreeMap',
-                component: TreeMapPage,
-                children: [
-                    {
-                        className: 'react',
-                        path: '/',
-                        label: '<TreeMap />',
-                        component: TreeMapReact,
-                        exact: true,
-                    },
-                    {
-                        className: 'html',
-                        path: '/html',
-                        label: '<TreeMapHTML />',
-                        component: TreeMapHTML,
-                    },
-                    {
-                        className: 'placeholders',
-                        path: '/placeholders',
-                        label: '<TreeMapPlaceholders />',
-                        component: TreeMapPlaceholders,
-                    },
-                    {
-                        className: 'api',
-                        path: '/api',
-                        label: '<TreeMap /> HTTP API',
-                        component: TreeMapAPI,
-                    },
-                ],
-            },
-            {
-                className: 'heatmap',
-                path: '/heatmap',
-                label: 'HeatMap',
-                component: HeatMapPage,
-                children: [
-                    {
-                        className: 'react',
-                        path: '/',
-                        label: '<HeatMap />',
-                        component: HeatMap,
-                        exact: true,
-                    },
-                    {
-                        className: 'canvas',
-                        path: '/canvas',
-                        label: '<HeatMapCanvas />',
-                        component: HeatMapCanvas,
-                    },
-                    {
-                        className: 'api',
-                        path: '/api',
-                        label: '<HeatMap /> HTTP API',
-                        component: HeatMapAPI,
+                        tags: ['api'],
                     },
                 ],
             },
@@ -310,15 +129,146 @@ const SITEMAP = [
                     {
                         className: 'react',
                         path: '/',
-                        label: '<Calendar />',
+                        label: 'Calendar',
                         component: Calendar,
                         exact: true,
+                        tags: ['svg'],
                     },
                     {
                         className: 'api',
                         path: '/api',
-                        label: '<Calendar /> HTTP API',
+                        label: 'Calendar API',
                         component: CalendarAPI,
+                        tags: ['api'],
+                    },
+                ],
+            },
+            {
+                className: 'chord',
+                path: '/chord',
+                label: 'Chord',
+                component: ChordPage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: 'Chord',
+                        component: Chord,
+                        exact: true,
+                        tags: ['svg'],
+                    },
+                    {
+                        className: 'canvas',
+                        path: '/canvas',
+                        label: 'ChordCanvas',
+                        component: ChordCanvas,
+                        tags: ['canvas'],
+                    },
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: 'Chord API',
+                        component: ChordAPI,
+                        tags: ['api'],
+                    },
+                ],
+            },
+            {
+                className: 'heatmap',
+                path: '/heatmap',
+                label: 'HeatMap',
+                component: HeatMapPage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: 'HeatMap',
+                        component: HeatMap,
+                        exact: true,
+                        tags: ['svg'],
+                    },
+                    {
+                        className: 'canvas',
+                        path: '/canvas',
+                        label: 'HeatMapCanvas',
+                        component: HeatMapCanvas,
+                        tags: ['canvas'],
+                    },
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: 'HeatMap API',
+                        component: HeatMapAPI,
+                        tags: ['api'],
+                    },
+                ],
+            },
+            {
+                className: 'line',
+                path: '/line',
+                label: 'Line',
+                component: LinePage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: 'Line',
+                        component: Line,
+                        exact: true,
+                        tags: ['svg'],
+                    },
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: 'Line API',
+                        component: LineAPI,
+                        tags: ['api'],
+                    },
+                ],
+            },
+            {
+                className: 'pie',
+                path: '/pie',
+                label: 'Pie',
+                component: PiePage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: 'Pie',
+                        component: Pie,
+                        exact: true,
+                        tags: ['svg'],
+                    },
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: 'Pie API',
+                        component: PieAPI,
+                        tags: ['api'],
+                    },
+                ],
+            },
+            {
+                className: 'radar',
+                path: '/radar',
+                label: 'Radar',
+                component: RadarPage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: 'Radar',
+                        component: Radar,
+                        exact: true,
+                        tags: ['svg'],
+                    },
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: 'Radar API',
+                        component: RadarAPI,
+                        tags: ['api'],
                     },
                 ],
             },
@@ -331,15 +281,93 @@ const SITEMAP = [
                     {
                         className: 'react',
                         path: '/',
-                        label: '<Sankey />',
+                        label: 'Sankey',
                         component: Sankey,
                         exact: true,
+                        tags: ['svg'],
                     },
                     {
                         className: 'api',
                         path: '/api',
-                        label: '<Sankey /> HTTP API',
+                        label: 'Sankey API',
                         component: SankeyAPI,
+                        tags: ['api'],
+                    },
+                ],
+            },
+            {
+                className: 'stream',
+                path: '/stream',
+                label: 'Stream',
+                component: StreamPage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: 'Stream',
+                        component: Stream,
+                        exact: true,
+                        tags: ['svg'],
+                    },
+                ],
+            },
+            {
+                className: 'sunburst',
+                path: '/sunburst',
+                label: 'Sunburst',
+                component: SunburstPage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: 'Sunburst',
+                        component: Sunburst,
+                        exact: true,
+                        tags: ['svg'],
+                    },
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: 'Sunburst API',
+                        component: SunburstAPI,
+                        tags: ['api'],
+                    },
+                ],
+            },
+            {
+                className: 'treemap',
+                path: '/treemap',
+                label: 'TreeMap',
+                component: TreeMapPage,
+                children: [
+                    {
+                        className: 'react',
+                        path: '/',
+                        label: 'TreeMap',
+                        component: TreeMapReact,
+                        exact: true,
+                        tags: ['svg'],
+                    },
+                    {
+                        className: 'html',
+                        path: '/html',
+                        label: 'TreeMapHTML',
+                        component: TreeMapHTML,
+                        tags: ['html'],
+                    },
+                    {
+                        className: 'placeholders',
+                        path: '/placeholders',
+                        label: 'TreeMapPlaceholders',
+                        component: TreeMapPlaceholders,
+                        tags: ['placeholders'],
+                    },
+                    {
+                        className: 'api',
+                        path: '/api',
+                        label: 'TreeMap API',
+                        component: TreeMapAPI,
+                        tags: ['api'],
                     },
                 ],
             },
@@ -352,9 +380,10 @@ const SITEMAP = [
                     {
                         className: 'react',
                         path: '/',
-                        label: '<Voronoi />',
+                        label: 'Voronoi',
                         component: Voronoi,
                         isIndex: true,
+                        tags: ['svg'],
                     },
                 ],
             },
@@ -362,6 +391,7 @@ const SITEMAP = [
     },
     {
         label: 'Guides',
+        // those items must not be nested
         children: [
             {
                 className: 'colors',
@@ -369,10 +399,17 @@ const SITEMAP = [
                 label: 'Colors',
                 component: Colors,
             },
+            {
+                className: 'labels',
+                path: '/guides/labels',
+                label: 'Labels',
+                component: Colors,
+            },
         ],
     },
     {
         label: 'misc',
+        // those items must not be nested
         children: [
             {
                 className: 'about',
@@ -386,11 +423,41 @@ const SITEMAP = [
                 label: 'Components',
                 component: Components,
             },
+        ],
+    },
+    {
+        label: 'extras',
+        // those items must not be nested
+        children: [
             {
-                className: 'api-client',
-                path: '/api',
-                label: 'API',
-                component: API,
+                className: 'about',
+                path: '/about',
+                label: 'About',
+                component: About,
+            },
+            {
+                className: 'storybook',
+                path: 'http://nivo.rocks/storybook/',
+                label: 'Storybook',
+                component: About,
+            },
+            {
+                className: 'nivo',
+                path: 'https://github.com/plouc/nivo',
+                label: 'nivo repository',
+                component: About,
+            },
+            {
+                className: 'nivo-api',
+                path: 'https://github.com/plouc/nivo-api',
+                label: 'nivo-api repository',
+                component: About,
+            },
+            {
+                className: 'nivo-website',
+                path: 'https://github.com/plouc/nivo-website',
+                label: 'nivo-website repository',
+                component: About,
             },
         ],
     },

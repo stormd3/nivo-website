@@ -16,63 +16,11 @@ import ChartTabs from '../../ChartTabs'
 import HeatMapControls from './HeatMapControls'
 import generateCode from '../../../lib/generateChartCode'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
+import properties from './props'
 import nivoTheme from '../../../nivoTheme'
-import { settingsMapper } from '../../../lib/settings'
 import config from '../../../config'
 import { generateLightDataSet } from './generators'
-
-const CustomCell = ({
-    value,
-    x,
-    y,
-    width,
-    height,
-    color,
-    opacity,
-    borderWidth,
-    borderColor,
-    textColor,
-}) =>
-    <g transform={`translate(${x}, ${y})`}>
-        <path
-            transform={`rotate(${value < 50 ? 180 : 0})`}
-            fill={color}
-            fillOpacity={opacity}
-            strokeWidth={borderWidth}
-            stroke={borderColor}
-            d={`
-                M0 -${Math.round(height / 2)}
-                L${Math.round(width / 2)} ${Math.round(height / 2)}
-                L-${Math.round(width / 2)} ${Math.round(height / 2)}
-                L0 -${Math.round(height / 2)}
-            `}
-        />
-        <text
-            alignmentBaseline="central"
-            textAnchor="middle"
-            style={{ fill: textColor }}
-            dy={value < 50 ? -6 : 6}
-        >
-            {value}
-        </text>
-    </g>
-
-const mapSettings = settingsMapper(
-    {
-        cellShape: value => {
-            if (value === `Custom(props) => (…)`) return CustomCell
-            return value
-        },
-        axisTop: (value, settings) => (settings['enable axisTop'] ? value : null),
-        axisRight: (value, settings) => (settings['enable axisRight'] ? value : null),
-        axisBottom: (value, settings) => (settings['enable axisBottom'] ? value : null),
-        axisLeft: (value, settings) => (settings['enable axisLeft'] ? value : null),
-    },
-    {
-        exclude: ['enable axisTop', 'enable axisRight', 'enable axisBottom', 'enable axisLeft'],
-    }
-)
+import propsMapper from './propsMapper'
 
 export default class HeatMap extends Component {
     state = {
@@ -142,11 +90,17 @@ export default class HeatMap extends Component {
             cellShape: 'circle',
             cellOpacity: 1,
             cellBorderWidth: 0,
-            cellBorderColor: 'inherit:darker(0.4)',
+            cellBorderColor: {
+                type: 'inherit:darker',
+                gamma: 0.4,
+            },
 
             // labels
             enableLabels: true,
-            labelTextColor: 'inherit:darker(1.4)',
+            labelTextColor: {
+                type: 'inherit:darker',
+                gamma: 1.4,
+            },
 
             // motion
             animate: true,
@@ -172,7 +126,7 @@ export default class HeatMap extends Component {
     render() {
         const { data, keys, settings } = this.state
 
-        const mappedSettings = mapSettings(settings)
+        const mappedSettings = propsMapper(settings)
 
         const code = generateCode(
             'HeatMap',

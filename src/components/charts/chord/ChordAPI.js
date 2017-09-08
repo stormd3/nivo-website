@@ -9,6 +9,7 @@
 import React, { Component } from 'react'
 import APIClient from '../../api-client/APIClient'
 import ChordControls from './ChordControls'
+import propsMapper from './propsMapper'
 
 const matrix = [
     [11975, 5871, 8916, 2868, 1967],
@@ -26,6 +27,7 @@ class ChordAPI extends Component {
                 apiPath="/charts/chord"
                 dataProperty="data"
                 controls={ChordControls}
+                propsMapper={propsMapper}
                 defaultProps={{
                     width: 800,
                     height: 800,
@@ -51,7 +53,10 @@ class ChordAPI extends Component {
                     label: 'id',
                     labelOffset: 12,
                     labelRotation: -90,
-                    labelTextColor: 'inherit:darker(1)',
+                    labelTextColor: {
+                        type: 'inherit:darker',
+                        gamma: 1,
+                    },
                 }}
             />
         )

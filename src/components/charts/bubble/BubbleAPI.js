@@ -9,6 +9,7 @@
 import React, { Component } from 'react'
 import APIClient from '../../api-client/APIClient'
 import BubbleControls from './BubbleControls'
+import propsMapper from './propsMapper'
 
 class BubbleAPI extends Component {
     render() {
@@ -18,6 +19,7 @@ class BubbleAPI extends Component {
                 apiPath="/charts/bubble"
                 dataProperty="root"
                 controls={BubbleControls}
+                propsMapper={propsMapper}
                 defaultProps={{
                     width: 600,
                     height: 600,
@@ -37,10 +39,16 @@ class BubbleAPI extends Component {
                     leavesOnly: false,
                     label: 'id',
                     labelSkipRadius: 8,
-                    labelTextColor: 'inherit:darker(.8)',
+                    labelTextColor: {
+                        type: 'inherit:darker',
+                        gamma: 0.8,
+                    },
                     labelTextDY: 4,
                     borderWidth: 0,
-                    borderColor: 'inherit:darker(.3)',
+                    borderColor: {
+                        type: 'inherit:darker',
+                        gamma: 0.3,
+                    },
                 }}
             />
         )

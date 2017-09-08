@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  */
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {
     StreamDefaultProps as defaults,
     areaCurvePropKeys,
@@ -28,7 +29,11 @@ areaCurvePropKeys.forEach((curve, i) => {
 })
 
 export default [
-    // ['data', 'array', true, '', <div>The chart data.</div>],
+    /*##################################################################################################################
+
+        Base
+
+    ##################################################################################################################*/
     {
         key: 'width',
         scopes: ['api'],
@@ -121,6 +126,11 @@ export default [
             })),
         },
     },
+    /*##################################################################################################################
+
+        Styling
+
+    ##################################################################################################################*/
     {
         key: 'colors',
         scopes: '*',
@@ -129,7 +139,7 @@ export default [
         required: false,
         default: defaults.colors,
         controlType: 'colors',
-        controlGroup: 'Base',
+        controlGroup: 'Style',
     },
     {
         key: 'fillOpacity',
@@ -138,15 +148,54 @@ export default [
         required: false,
         default: defaults.fillOpacity,
         controlType: 'range',
-        controlGroup: 'Base',
+        controlGroup: 'Style',
         controlOptions: {
             min: 0,
             max: 1,
             step: 0.05,
         },
     },
+    {
+        key: 'borderWidth',
+        scopes: ['Stream', 'api'],
+        description: 'Width of layer border.',
+        type: '{number}',
+        required: false,
+        default: defaults.borderWidth,
+        controlType: 'range',
+        controlGroup: 'Style',
+        controlOptions: {
+            unit: 'px',
+            min: 0,
+            max: 10,
+        },
+    },
+    {
+        key: 'borderColor',
+        scopes: ['Stream', 'api'],
+        description: (
+            <span>
+                how to compute border color,{' '}
+                <Link to="/guides/colors">see dedicated documentation</Link>.
+            </span>
+        ),
+        help: 'Method to compute layer border color.',
+        type: '{string|Function}',
+        required: false,
+        default: defaults.borderColor,
+        controlType: 'color',
+        controlGroup: 'Style',
+        controlOptions: {
+            withCustomColor: true,
+        },
+    },
     ...marginProperties,
     ...axesProperties,
+    /*##################################################################################################################
+
+        Grid
+
+    ##################################################################################################################*/
     {
         key: 'enableGridX',
         scopes: '*',
@@ -167,6 +216,11 @@ export default [
         controlType: 'switch',
         controlGroup: 'Grid',
     },
+    /*##################################################################################################################
+
+        Interactivity
+
+    ##################################################################################################################*/
     {
         key: 'isInteractive',
         scopes: ['Stream'],
@@ -187,6 +241,11 @@ export default [
         controlType: 'switch',
         controlGroup: 'Interactivity',
     },
+    /*##################################################################################################################
+
+        Motion
+
+    ##################################################################################################################*/
     {
         key: 'animate',
         scopes: ['Stream'],
@@ -195,6 +254,33 @@ export default [
         required: false,
         default: defaults.animate,
         controlType: 'switch',
-        controlGroup: 'Animation',
+        controlGroup: 'Motion',
+    },
+    {
+        key: 'motionStiffness',
+        scopes: ['Stream'],
+        description: 'Motion stiffness.',
+        type: '{number}',
+        required: false,
+        controlType: 'range',
+        controlGroup: 'Motion',
+        controlOptions: {
+            min: 0,
+            max: 300,
+            step: 5,
+        },
+    },
+    {
+        key: 'motionDamping',
+        scopes: ['Stream'],
+        description: 'Motion damping.',
+        type: '{number}',
+        required: false,
+        controlType: 'range',
+        controlGroup: 'Motion',
+        controlOptions: {
+            min: 0,
+            max: 40,
+        },
     },
 ]

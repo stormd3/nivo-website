@@ -9,6 +9,7 @@
 import React, { Component } from 'react'
 import APIClient from '../../api-client/APIClient'
 import RadarControls from './RadarControls'
+import propsMapper from './propsMapper'
 
 export default class RadarAPI extends Component {
     render() {
@@ -18,6 +19,7 @@ export default class RadarAPI extends Component {
                 apiPath="/charts/radar"
                 dataProperty="data"
                 controls={RadarControls}
+                propsMapper={propsMapper}
                 defaultProps={{
                     width: 600,
                     height: 600,
@@ -36,7 +38,7 @@ export default class RadarAPI extends Component {
 
                     // border
                     borderWidth: 2,
-                    borderColor: 'inherit',
+                    borderColor: { type: 'inherit' },
 
                     // axes & grid
                     gridLevels: 5,
@@ -46,9 +48,9 @@ export default class RadarAPI extends Component {
                     // dots
                     enableDots: true,
                     dotSize: 8,
-                    dotColor: 'inherit',
+                    dotColor: { type: 'inherit' },
                     dotBorderWidth: 0,
-                    dotBorderColor: '#fff',
+                    dotBorderColor: { type: 'custom', color: '#fff' },
                     enableDotLabel: true,
                     dotLabel: 'value',
                     dotLabelYOffset: -12,

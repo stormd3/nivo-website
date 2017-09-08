@@ -30,7 +30,7 @@ const generate = (name, props, { dataKey = 'data', children = [] } = {}) => {
 
         let value
         if (isPlainObject(_value)) {
-            value = `{${indent(JSON.stringify(_value, null, 4))}`
+            value = `{${indent(JSON.stringify(_value, null, 4))}}`
         } else if (isArray(_value)) {
             value = `{[${_value.join(', ')}}]`
         } else if (isString(_value)) {

@@ -16,22 +16,10 @@ import RadarControls from './RadarControls'
 import { ResponsiveRadar } from 'nivo'
 import generateCode from '../../../lib/generateChartCode'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
-import { settingsMapper } from '../../../lib/settings'
+import properties from './props'
 import config from '../../../config'
 import nivoTheme from '../../../nivoTheme'
-
-const mapSettings = settingsMapper({
-    colorBy: value => {
-        if (value === 'd => d.color') return d => d.color
-        return value
-    },
-    markersLabel: value => {
-        if (value === `d => \`\${d.key}: \${d.value}\``) return d => `${d.key}: ${d.value}`
-        if (value === `d => \`\${d.index}: \${d.value}\``) return d => `${d.index}: ${d.value}`
-        return value
-    },
-})
+import propsMapper from './propsMapper'
 
 export default class Radar extends Component {
     static propTypes = {
@@ -53,7 +41,7 @@ export default class Radar extends Component {
 
             // border
             borderWidth: 2,
-            borderColor: 'inherit',
+            borderColor: { type: 'inherit' },
 
             // axes & grid
             gridLevels: 5,
@@ -63,9 +51,9 @@ export default class Radar extends Component {
             // dots
             enableDots: true,
             dotSize: 8,
-            dotColor: 'inherit',
+            dotColor: { type: 'inherit' },
             dotBorderWidth: 0,
-            dotBorderColor: '#fff',
+            dotBorderColor: { type: 'custom', color: '#ffffff' },
             enableDotLabel: true,
             dotLabel: 'value',
             dotLabelYOffset: -12,
@@ -90,7 +78,7 @@ export default class Radar extends Component {
         const { data, keys, indexBy, diceRoll } = this.props
         const { settings } = this.state
 
-        const mappedSettings = mapSettings(settings)
+        const mappedSettings = propsMapper(settings)
 
         const code = generateCode('Radar', {
             keys,

@@ -15,25 +15,10 @@ import PieControls from './PieControls'
 import { ResponsivePie } from 'nivo'
 import generateCode from '../../../lib/generateChartCode'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
-import { settingsMapper } from '../../../lib/settings'
+import properties from './props'
 import nivoTheme from '../../../nivoTheme'
 import config from '../../../config'
-
-const mapSettings = settingsMapper({
-    colorBy: value => {
-        if (value === 'd => d.color') return d => d.color
-        return value
-    },
-    radialLabel: value => {
-        if (value === `d => \`\${d.id} (\${d.value})\``) return d => `${d.id} (${d.value})`
-        return value
-    },
-    sliceLabel: value => {
-        if (value === `d => \`\${d.id} (\${d.value})\``) return d => `${d.id} (${d.value})`
-        return value
-    },
-})
+import propsMapper from './propsMapper'
 
 export default class Pie extends Component {
     state = {
@@ -52,25 +37,25 @@ export default class Pie extends Component {
 
             // border
             borderWidth: 0,
-            borderColor: 'inherit:darker(0.6)',
+            borderColor: { type: 'inherit:darker', gamma: 0.6 },
 
             // radial labels
             enableRadialLabels: true,
             radialLabel: 'id',
             radialLabelsSkipAngle: 10,
             radialLabelsTextXOffset: 6,
-            radialLabelsTextColor: 'inherit:darker(1)',
+            radialLabelsTextColor: { type: 'inherit:darker', gamma: 1 },
             radialLabelsLinkOffset: 0,
             radialLabelsLinkDiagonalLength: 16,
             radialLabelsLinkHorizontalLength: 24,
             radialLabelsLinkStrokeWidth: 2,
-            radialLabelsLinkColor: 'inherit',
+            radialLabelsLinkColor: { type: 'inherit' },
 
             // slice labels
             enableSlicesLabels: true,
             sliceLabel: 'value',
             slicesLabelsSkipAngle: 10,
-            slicesLabelsTextColor: 'inherit:darker(1)',
+            slicesLabelsTextColor: { type: 'inherit:darker', gamma: 1 },
 
             // motion
             animate: true,
@@ -90,7 +75,7 @@ export default class Pie extends Component {
         const { data, diceRoll } = this.props
         const { settings } = this.state
 
-        const mappedSettings = mapSettings(settings)
+        const mappedSettings = propsMapper(settings)
 
         const code = generateCode('Pie', mappedSettings)
 

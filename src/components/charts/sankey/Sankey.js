@@ -15,9 +15,10 @@ import ChartTabs from '../../ChartTabs'
 import SankeyControls from './SankeyControls'
 import generateCode from '../../../lib/generateChartCode'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
+import properties from './props'
 import config from '../../../config'
 import nivoTheme from '../../../nivoTheme'
+import propsMapper from './propsMapper'
 
 export default class Sankey extends Component {
     state = {
@@ -39,11 +40,15 @@ export default class Sankey extends Component {
             nodePaddingX: 4,
             nodePaddingY: 12,
             nodeBorderWidth: 0,
-            nodeBorderColor: 'inherit:darker(0.4)',
+            nodeBorderColor: {
+                type: 'inherit:darker',
+                gamma: 0.4,
+            },
 
             // links
-            linkOpacity: 0.15,
-            linkHoverOpacity: 0.4,
+            linkOpacity: 0.2,
+            linkHoverOpacity: 0.6,
+            linkHoverOthersOpacity: 0.1,
             linkContract: 0,
 
             // labels
@@ -51,7 +56,10 @@ export default class Sankey extends Component {
             labelPosition: 'outside',
             labelOrientation: 'vertical',
             labelPadding: 16,
-            labelTextColor: 'inherit:darker(0.8)',
+            labelTextColor: {
+                type: 'inherit:darker',
+                gamma: 0.8,
+            },
 
             // motion
             animate: true,
@@ -71,7 +79,9 @@ export default class Sankey extends Component {
         const { data, randomizeLinkValues } = this.props
         const { settings } = this.state
 
-        const code = generateCode('Sankey', settings)
+        const mappedSettings = propsMapper(settings)
+
+        const code = generateCode('Sankey', mappedSettings)
 
         const header = (
             <ChartHeader
@@ -89,7 +99,7 @@ export default class Sankey extends Component {
                     </MediaQuery>
                     <div className="main-chart" style={{ height: '500px' }}>
                         <ChartTabs chartClass="sankey" code={code} data={data}>
-                            <ResponsiveSankey data={data} {...settings} theme={nivoTheme} />
+                            <ResponsiveSankey data={data} {...mappedSettings} theme={nivoTheme} />
                         </ChartTabs>
                     </div>
                     <SankeyControls

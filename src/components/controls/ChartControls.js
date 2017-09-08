@@ -192,9 +192,14 @@ export default class ChartControls extends Component {
                     <div className="chart-controls_item" key={config.name}>
                         <ColorControl
                             label={config.name}
-                            help={config.help}
                             value={get(settings, config.name)}
                             onChange={this.handleDirectUpdate(config.name)}
+                            {...pick(config, [
+                                'withTheme',
+                                'withCustomColor',
+                                'defaultCustomColor',
+                                'help',
+                            ])}
                         />
                     </div>
                 )

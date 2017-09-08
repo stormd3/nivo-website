@@ -10,7 +10,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import ChartControls from '../../controls/ChartControls'
 import { getPropertiesGroupsControls } from '../../../lib/componentProperties'
-import properties from './properties'
+import properties from './props'
 
 const groupsByScope = {
     Stream: getPropertiesGroupsControls(properties, 'Stream'),

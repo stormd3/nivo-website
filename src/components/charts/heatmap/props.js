@@ -37,6 +37,11 @@ export default [
         required: false,
         default: defaults.keys,
     },
+    /*##################################################################################################################
+
+        Base
+
+    ##################################################################################################################*/
     {
         key: 'width',
         scopes: ['api'],
@@ -124,16 +129,6 @@ export default [
         },
     },
     {
-        key: 'colors',
-        scopes: '*',
-        description: 'Defines color range.',
-        type: '{string|Function|Array}',
-        required: false,
-        default: 'nivo',
-        controlType: 'quantizeColors',
-        controlGroup: 'Base',
-    },
-    {
         key: 'forceSquare',
         scopes: '*',
         description: 'Force square cells (width = height).',
@@ -172,6 +167,11 @@ export default [
             max: 36,
         },
     },
+    /*##################################################################################################################
+
+        Style
+
+    ##################################################################################################################*/
     {
         key: 'cellShape',
         scopes: '*',
@@ -202,13 +202,23 @@ export default [
         required: false,
         default: defaults.cellShape,
         controlType: 'choices',
-        controlGroup: 'Cells',
+        controlGroup: 'Style',
         controlOptions: {
             choices: ['rect', 'circle', 'Custom(props) => (…)'].map(key => ({
                 label: key,
                 value: key,
             })),
         },
+    },
+    {
+        key: 'colors',
+        scopes: '*',
+        description: 'Defines color range.',
+        type: '{string|Function|Array}',
+        required: false,
+        default: 'nivo',
+        controlType: 'quantizeColors',
+        controlGroup: 'Style',
     },
     {
         key: 'cellOpacity',
@@ -218,7 +228,7 @@ export default [
         default: defaults.cellOpacity,
         type: '{number}',
         controlType: 'range',
-        controlGroup: 'Cells',
+        controlGroup: 'Style',
         controlOptions: {
             min: 0,
             max: 1,
@@ -233,7 +243,7 @@ export default [
         default: defaults.cellBorderWidth,
         type: '{number}',
         controlType: 'range',
-        controlGroup: 'Cells',
+        controlGroup: 'Style',
         controlOptions: {
             unit: 'px',
             min: 0,
@@ -254,8 +264,16 @@ export default [
         required: false,
         default: defaults.cellBorderColor,
         controlType: 'color',
-        controlGroup: 'Cells',
+        controlGroup: 'Style',
+        controlOptions: {
+            withCustomColor: true,
+        },
     },
+    /*##################################################################################################################
+
+        Labels
+
+    ##################################################################################################################*/
     /*
     {
         key: 'enableLabels',
@@ -283,6 +301,9 @@ export default [
         default: defaults.labelTextColor,
         controlType: 'color',
         controlGroup: 'Labels',
+        controlOptions: {
+            withCustomColor: true,
+        },
     },
     ...marginProperties,
     {
@@ -306,6 +327,11 @@ export default [
         controlGroup: 'Grid',
     },
     ...axesProperties,
+    /*##################################################################################################################
+
+        Interactivity
+
+    ##################################################################################################################*/
     {
         key: 'isInteractive',
         scopes: ['HeatMap', 'HeatMapCanvas'],
@@ -371,6 +397,11 @@ export default [
             step: 0.05,
         },
     },
+    /*##################################################################################################################
+
+        Motion
+
+    ##################################################################################################################*/
     {
         key: 'animate',
         scopes: ['HeatMap'],
@@ -379,6 +410,6 @@ export default [
         required: false,
         default: true,
         controlType: 'switch',
-        controlGroup: 'Animation',
+        controlGroup: 'Motion',
     },
 ]

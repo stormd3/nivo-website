@@ -159,6 +159,9 @@ export default [
         default: defaults.borderColor,
         controlType: 'color',
         controlGroup: 'Base',
+        controlOptions: {
+            withCustomColor: true,
+        },
     },
     {
         key: 'leavesOnly',
@@ -260,9 +263,11 @@ export default [
         description: 'Method to compute label text color.',
         type: '{string|Function}',
         required: false,
-        //default,
         controlType: 'color',
         controlGroup: 'Labels',
+        controlOptions: {
+            withCustomColor: true,
+        },
     },
     {
         key: 'isInteractive',
@@ -282,6 +287,6 @@ export default [
         required: false,
         default: true,
         controlType: 'switch',
-        controlGroup: 'Animation',
+        controlGroup: 'Motion',
     },
 ]

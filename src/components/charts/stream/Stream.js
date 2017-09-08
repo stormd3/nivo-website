@@ -14,30 +14,10 @@ import ChartTabs from '../../ChartTabs'
 import StreamControls from './StreamControls'
 import generateCode from '../../../lib/generateChartCode'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
-import { settingsMapper } from '../../../lib/settings'
+import properties from './props'
 import nivoTheme from '../../../nivoTheme'
 import { generateLightDataSet } from './generators'
-
-const mapSettings = settingsMapper(
-    {
-        colorBy: value => {
-            if (value === 'd => d.color') return d => d.color
-            return value
-        },
-        markersLabel: value => {
-            if (value === `d => \`\${d.x}: \${d.y}\``) return d => `${d.x}: ${d.y}`
-            return value
-        },
-        axisTop: (value, settings) => (settings['enable axisTop'] ? value : undefined),
-        axisRight: (value, settings) => (settings['enable axisRight'] ? value : undefined),
-        axisBottom: (value, settings) => (settings['enable axisBottom'] ? value : undefined),
-        axisLeft: (value, settings) => (settings['enable axisLeft'] ? value : undefined),
-    },
-    {
-        exclude: ['enable axisTop', 'enable axisRight', 'enable axisBottom', 'enable axisLeft'],
-    }
-)
+import propsMapper from './propsMapper'
 
 export default class Stream extends Component {
     state = {
@@ -96,6 +76,11 @@ export default class Stream extends Component {
 
             colors: 'nivo',
             fillOpacity: 0.85,
+            borderWidth: 0,
+            borderColor: {
+                type: 'inherit:darker',
+                gamma: 1.2,
+            },
 
             // motion
             animate: true,
@@ -121,7 +106,7 @@ export default class Stream extends Component {
     render() {
         const { data, keys, settings } = this.state
 
-        const mappedSettings = mapSettings(settings)
+        const mappedSettings = propsMapper(settings)
 
         const code = generateCode('Stream', mappedSettings)
 

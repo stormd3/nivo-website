@@ -11,7 +11,7 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { getSectionItems } from '../../SiteMap'
 
-const chartsItems = getSectionItems('Charts')
+const componentsItems = getSectionItems('Components')
 const guidesItems = getSectionItems('Guides')
 
 class Nav extends Component {
@@ -22,8 +22,8 @@ class Nav extends Component {
             <div>
                 <div className="overlay" onClick={onNavClose} />
                 <aside className="sidebar">
-                    <h3>Charts</h3>
-                    {chartsItems.map(item => {
+                    <h3>Components</h3>
+                    {componentsItems.map(item => {
                         const links = [
                             <NavLink
                                 key={item.path}

@@ -8,21 +8,9 @@
  */
 import React, { Component } from 'react'
 import APIClient from '../../api-client/APIClient'
-import { settingsMapper } from '../../../lib/settings'
 import BarControls from './BarControls'
 import { generateLightDataSet } from './generators'
-
-const propsMapper = settingsMapper(
-    {
-        axisTop: (value, settings) => (settings['enable axisTop'] ? value : null),
-        axisRight: (value, settings) => (settings['enable axisRight'] ? value : null),
-        axisBottom: (value, settings) => (settings['enable axisBottom'] ? value : null),
-        axisLeft: (value, settings) => (settings['enable axisLeft'] ? value : null),
-    },
-    {
-        exclude: ['enable axisTop', 'enable axisRight', 'enable axisBottom', 'enable axisLeft'],
-    }
-)
+import propsMapper from './propsMapper'
 
 export default class BarAPI extends Component {
     state = {
@@ -51,13 +39,20 @@ export default class BarAPI extends Component {
                     data: JSON.stringify(data, null, '  '),
                     keys: keys,
                     indexBy: 'country',
+
                     colors: 'nivo',
                     colorBy: 'id',
-                    xPadding: 0.2,
+                    borderRadius: 0,
+
+                    padding: 0.2,
+                    innerPadding: 0,
+                    minValue: 'auto',
+                    maxValue: 'auto',
+
                     groupMode: 'stacked',
                     layout: 'vertical',
+                    reverse: false,
 
-                    // axes
                     // axes
                     'enable axisTop': false,
                     axisTop: {
@@ -103,9 +98,13 @@ export default class BarAPI extends Component {
                     enableGridY: true,
 
                     // labels
-                    enableLabels: true,
-                    labelsTextColor: 'inherit:darker(1.6)',
-                    labelsLinkColor: 'inherit',
+                    enableLabel: true,
+                    labelSkipWidth: 12,
+                    labelSkipHeight: 12,
+                    labelTextColor: {
+                        type: 'inherit:darker',
+                        gamma: 1.6,
+                    },
                 }}
             />
         )

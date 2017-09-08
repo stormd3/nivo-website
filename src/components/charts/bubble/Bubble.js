@@ -16,23 +16,12 @@ import ChartTabs from '../../ChartTabs'
 import generateCode from '../../../lib/generateChartCode'
 import BubbleControls from './BubbleControls'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
-import { settingsMapper } from '../../../lib/settings'
+import properties from './props'
 import config from '../../../config'
 import nivoTheme from '../../../nivoTheme'
+import propsMapper from './propsMapper'
 
-const mapSettings = settingsMapper({
-    colorBy: value => {
-        if (value === 'd => d.color') return d => d.color
-        return value
-    },
-    label: value => {
-        if (value === `d => \`\${d.id}: \${d.value}\``) return d => `${d.id}: ${d.value}`
-        return value
-    },
-})
-
-export default class BubbleReact extends Component {
+export default class Bubble extends Component {
     state = {
         settings: {
             margin: {
@@ -52,10 +41,16 @@ export default class BubbleReact extends Component {
             // labels
             label: 'id',
             labelSkipRadius: 10,
-            labelTextColor: 'inherit:darker(.8)',
+            labelTextColor: {
+                type: 'inherit:darker',
+                gamma: 0.8,
+            },
 
             borderWidth: 0,
-            borderColor: 'inherit:darker(.3)',
+            borderColor: {
+                type: 'inherit:darker',
+                gamma: 0.3,
+            },
 
             // motion
             animate: true,
@@ -78,7 +73,7 @@ export default class BubbleReact extends Component {
         const { root, diceRoll } = this.props
         const { settings } = this.state
 
-        const mappedSettings = mapSettings(settings)
+        const mappedSettings = propsMapper(settings)
 
         const code = generateCode('Bubble', mappedSettings)
 

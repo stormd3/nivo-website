@@ -9,6 +9,7 @@
 import React, { Component } from 'react'
 import APIClient from '../../api-client/APIClient'
 import PieControls from './PieControls'
+import propsMapper from './propsMapper'
 
 export default class PieAPI extends Component {
     render() {
@@ -18,6 +19,7 @@ export default class PieAPI extends Component {
                 apiPath="/charts/pie"
                 dataProperty="data"
                 controls={PieControls}
+                propsMapper={propsMapper}
                 defaultProps={{
                     width: 800,
                     height: 800,
@@ -35,25 +37,25 @@ export default class PieAPI extends Component {
 
                     // border
                     borderWidth: 0,
-                    borderColor: 'inherit:darker(0.6)',
+                    borderColor: { type: 'inherit:darker', gamma: 0.6 },
 
                     // radial labels
                     enableRadialLabels: true,
                     radialLabel: 'id',
                     radialLabelsSkipAngle: 10,
                     radialLabelsTextXOffset: 6,
-                    radialLabelsTextColor: 'inherit:darker(1)',
+                    radialLabelsTextColor: { type: 'inherit:darker', gamma: 1 },
                     radialLabelsLinkOffset: 0,
                     radialLabelsLinkDiagonalLength: 16,
                     radialLabelsLinkHorizontalLength: 24,
                     radialLabelsLinkStrokeWidth: 2,
-                    radialLabelsLinkColor: 'inherit',
+                    radialLabelsLinkColor: { type: 'inherit' },
 
                     // slice labels
                     enableSlicesLabels: true,
                     sliceLabel: 'value',
                     slicesLabelsSkipAngle: 10,
-                    slicesLabelsTextColor: 'inherit:darker(1)',
+                    slicesLabelsTextColor: { type: 'inherit:darker', gamma: 1 },
 
                     // theming
                     colors: 'nivo',

@@ -14,16 +14,9 @@ import SunburstControls from './SunburstControls'
 import { ResponsiveSunburst } from 'nivo'
 import generateCode from '../../../lib/generateChartCode'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
-import { settingsMapper } from '../../../lib/settings'
+import properties from './props'
 import nivoTheme from '../../../nivoTheme'
-
-const mapSettings = settingsMapper({
-    colorBy: value => {
-        if (value === 'd => d.color') return d => d.color
-        return value
-    },
-})
+import propsMapper from './propsMapper'
 
 export default class Sunburst extends Component {
     state = {
@@ -47,7 +40,9 @@ export default class Sunburst extends Component {
             // theming
             colors: 'nivo',
             colorBy: 'id',
-            childColor: 'inherit',
+            childColor: {
+                type: 'inherit',
+            },
 
             // motion
             animate: true,
@@ -67,7 +62,7 @@ export default class Sunburst extends Component {
         const { data, diceRoll } = this.props
         const { settings } = this.state
 
-        const mappedSettings = mapSettings(settings)
+        const mappedSettings = propsMapper(settings)
 
         const code = generateCode('Sunburst', mappedSettings)
 

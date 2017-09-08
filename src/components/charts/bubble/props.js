@@ -118,49 +118,6 @@ export default [
         controlGroup: 'Base',
     },
     {
-        key: 'colors',
-        scopes: '*',
-        description: (
-            <span>
-                colors used to colorize the circles,{' '}
-                <Link to="/guides/colors">see dedicated documentation</Link>.
-            </span>
-        ),
-        help: 'Defines how to compute node color.',
-        type: '{string|Function|Array}',
-        required: false,
-        default: 'nivo',
-        controlType: 'colors',
-        controlGroup: 'Base',
-    },
-    {
-        key: 'colorBy',
-        scopes: '*',
-        description:
-            'Property to use to determine node color. If a function is provided, it will receive current node data and must return a color',
-        type: '{string|Function}',
-        required: false,
-        default: 'depth',
-        controlType: 'choices',
-        controlGroup: 'Base',
-        controlOptions: {
-            choices: [
-                {
-                    label: 'depth',
-                    value: 'depth',
-                },
-                {
-                    label: 'name',
-                    value: 'name',
-                },
-                {
-                    label: 'd => d.color',
-                    value: 'd => d.color',
-                },
-            ],
-        },
-    },
-    {
         key: 'padding',
         scopes: '*',
         description: (
@@ -189,7 +146,54 @@ export default [
             max: 32,
         },
     },
-    ...marginProperties,
+    /*##################################################################################################################
+
+        Style
+
+    ##################################################################################################################*/
+    {
+        key: 'colors',
+        scopes: '*',
+        description: (
+            <span>
+                colors used to colorize the circles,{' '}
+                <Link to="/guides/colors">see dedicated documentation</Link>.
+            </span>
+        ),
+        help: 'Defines how to compute node color.',
+        type: '{string|Function|Array}',
+        required: false,
+        default: 'nivo',
+        controlType: 'colors',
+        controlGroup: 'Style',
+    },
+    {
+        key: 'colorBy',
+        scopes: '*',
+        description:
+            'Property to use to determine node color. If a function is provided, it will receive current node data and must return a color',
+        type: '{string|Function}',
+        required: false,
+        default: 'depth',
+        controlType: 'choices',
+        controlGroup: 'Style',
+        controlOptions: {
+            choices: [
+                {
+                    label: 'depth',
+                    value: 'depth',
+                },
+                {
+                    label: 'name',
+                    value: 'name',
+                },
+                {
+                    label: 'd => d.color',
+                    value: 'd => d.color',
+                },
+            ],
+        },
+    },
     {
         key: 'borderWidth',
         scopes: ['Bubble', 'api'],
@@ -198,7 +202,7 @@ export default [
         required: false,
         default: defaults.borderWidth,
         controlType: 'range',
-        controlGroup: 'Border',
+        controlGroup: 'Style',
         controlOptions: {
             unit: 'px',
             min: 0,
@@ -219,8 +223,12 @@ export default [
         required: false,
         default: defaults.borderColor,
         controlType: 'color',
-        controlGroup: 'Border',
+        controlGroup: 'Style',
+        controlOptions: {
+            withCustomColor: true,
+        },
     },
+    ...marginProperties,
     {
         key: 'enableLabel',
         scopes: ['Bubble', 'api'],
@@ -279,6 +287,9 @@ export default [
         default: defaults.labelTextColor,
         controlType: 'color',
         controlGroup: 'Labels',
+        controlOptions: {
+            withCustomColor: true,
+        },
     },
     {
         key: 'labelSkipRadius',
@@ -315,6 +326,11 @@ export default [
         controlType: 'switch',
         controlGroup: 'Interactivity',
     },
+    /*##################################################################################################################
+
+        Motion
+
+    ##################################################################################################################*/
     {
         key: 'animate',
         scopes: ['Bubble', 'BubblePlaceholders'],
@@ -323,6 +339,6 @@ export default [
         required: false,
         default: true,
         controlType: 'switch',
-        controlGroup: 'Animation',
+        controlGroup: 'Motion',
     },
 ]

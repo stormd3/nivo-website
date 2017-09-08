@@ -16,7 +16,7 @@ import ChartTabs from '../../ChartTabs'
 import generateCode from '../../../lib/generateChartCode'
 import BubbleControls from './BubbleControls'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
+import properties from './props'
 import nivoTheme from '../../../nivoTheme'
 
 export default class BubblePlaceholdersPage extends Component {
@@ -77,25 +77,23 @@ export default class BubblePlaceholdersPage extends Component {
                                 theme={nivoTheme}
                             >
                                 {nodes =>
-                                    nodes.map(node => {
-                                        return (
-                                            <div
-                                                key={node.key}
-                                                onClick={node.zoom}
-                                                style={{
-                                                    position: 'absolute',
-                                                    top: node.style.y - node.style.r,
-                                                    left: node.style.x - node.style.r,
-                                                    width: node.style.r * 2,
-                                                    height: node.style.r * 2,
-                                                    borderRadius: node.style.r,
-                                                    border: `2px solid ${node.style.color}`,
-                                                    backgroundSize: 'contain',
-                                                    backgroundImage: `url(http://placekitten.com/240/240)`,
-                                                }}
-                                            />
-                                        )
-                                    })}
+                                    nodes.map(node =>
+                                        <div
+                                            key={node.key}
+                                            onClick={node.onClick}
+                                            style={{
+                                                position: 'absolute',
+                                                top: node.style.y - node.style.r,
+                                                left: node.style.x - node.style.r,
+                                                width: node.style.r * 2,
+                                                height: node.style.r * 2,
+                                                borderRadius: node.style.r,
+                                                border: `2px solid ${node.style.color}`,
+                                                backgroundSize: 'contain',
+                                                backgroundImage: `url(http://placekitten.com/240/240)`,
+                                            }}
+                                        />
+                                    )}
                             </ResponsiveBubblePlaceholders>
                         </ChartTabs>
                     </div>

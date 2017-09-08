@@ -9,6 +9,7 @@
 import React, { Component } from 'react'
 import APIClient from '../../api-client/APIClient'
 import SankeyControls from './SankeyControls'
+import propsMapper from './propsMapper'
 
 export default class SankeyAPI extends Component {
     render() {
@@ -18,6 +19,7 @@ export default class SankeyAPI extends Component {
                 apiPath="/charts/sankey"
                 dataProperty="data"
                 controls={SankeyControls}
+                propsMapper={propsMapper}
                 defaultProps={{
                     width: 1200,
                     height: 800,
@@ -38,7 +40,10 @@ export default class SankeyAPI extends Component {
                     nodePaddingX: 4,
                     nodePaddingY: 12,
                     nodeBorderWidth: 0,
-                    nodeBorderColor: 'inherit:darker(0.4)',
+                    nodeBorderColor: {
+                        type: 'inherit:darker',
+                        gamma: 0.4,
+                    },
 
                     // links
                     linkOpacity: 0.15,
@@ -49,7 +54,10 @@ export default class SankeyAPI extends Component {
                     labelPosition: 'inside',
                     labelOrientation: 'vertical',
                     labelPadding: 16,
-                    labelTextColor: 'inherit:darker(0.8)',
+                    labelTextColor: {
+                        type: 'inherit:darker',
+                        gamma: 0.8,
+                    },
                 }}
             />
         )

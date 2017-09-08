@@ -1,7 +1,7 @@
 /*
  * This file is part of the nivo project.
  *
- * (c) 2016 Raphaël Benitte
+ * (c) 2016-present Raphaël Benitte
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,7 +17,7 @@ import Nav from './components/nav/Nav'
 import MiniNav from './components/nav/MiniNav'
 import Home from './components/pages/Home'
 import Header from './components/Header'
-//import MobileNav from './components/nav/MobileNav'
+//import MobileNav from './components/nav/mobile/MobileNav'
 import { getRoutes } from './SiteMap'
 import registerServiceWorker from './registerServiceWorker'
 

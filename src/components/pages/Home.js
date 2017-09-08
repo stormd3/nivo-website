@@ -152,7 +152,7 @@ class Home extends Component {
                             keys={['hot dogs', 'burgers', 'sandwich']}
                             groupMode="grouped"
                             margin={{ top: 10, bottom: 15, left: 24, right: 10 }}
-                            xPadding={0.2}
+                            padding={0.2}
                             colors={colors}
                             theme={homeTheme}
                             enableLabels={false}
@@ -177,7 +177,7 @@ class Home extends Component {
                             groupMode="stacked"
                             layout="horizontal"
                             margin={{ top: 10, bottom: 15, left: 24, right: 0 }}
-                            xPadding={0.4}
+                            padding={0.4}
                             colors={colors}
                             theme={homeTheme}
                             enableLabels={false}

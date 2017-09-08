@@ -16,8 +16,23 @@ import TreeMapControls from './TreeMapControls'
 import generateCode from '../../../lib/generateChartCode'
 import config from '../../../config'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
+import properties from './props'
 import nivoTheme from '../../../nivoTheme'
+import { settingsMapper, mapInheritedColor } from '../../../lib/settings'
+
+const mapSettings = settingsMapper({
+    colorBy: value => {
+        if (value === 'd => d.color') return d => d.color
+        return value
+    },
+    label: value => {
+        if (value === `d => \`\${d.name} (\${d.loc})\``) return d => `${d.name} (${d.loc})`
+        return value
+    },
+    labelFormat: (value, settings) => (settings.label === 'loc' ? value : undefined),
+    borderColor: mapInheritedColor,
+    labelTextColor: mapInheritedColor,
+})
 
 class TreeMapReact extends Component {
     state = {
@@ -40,14 +55,20 @@ class TreeMapReact extends Component {
             // border
             borderWidth: 1,
             borderStyle: 'solid',
-            borderColor: 'inherit:darker(.3)',
+            borderColor: {
+                type: 'inherit:darker',
+                gamma: 0.3,
+            },
 
             // labels
             enableLabels: true,
             label: 'loc',
             labelFormat: '.0s',
             labelSkipSize: 0,
-            labelTextColor: 'inherit:darker(.6)',
+            labelTextColor: {
+                type: 'inherit:darker',
+                gamma: 0.6,
+            },
 
             colors: 'nivo',
             colorBy: 'depth',
@@ -68,19 +89,9 @@ class TreeMapReact extends Component {
         const { root, diceRoll } = this.props
         const { settings } = this.state
 
-        const colorBy = settings.colorBy === 'd => d.color' ? d => d.color : settings.colorBy
-        const label =
-            settings.label === `d => \`\${d.name} (\${d.loc})\``
-                ? d => `${d.name} (${d.loc})`
-                : settings.label
-        const labelFormat = label === 'loc' ? settings.labelFormat : undefined
+        const mappedSettings = mapSettings(settings)
 
-        const code = generateCode('TreeMap', {
-            ...settings,
-            label,
-            labelFormat,
-            colorBy,
-        })
+        const code = generateCode('TreeMap', mappedSettings)
 
         const header = (
             <ChartHeader
@@ -98,14 +109,7 @@ class TreeMapReact extends Component {
                     </MediaQuery>
                     <div className="main-chart">
                         <ChartTabs chartClass="treemap" code={code} data={root}>
-                            <ResponsiveTreeMap
-                                root={root}
-                                {...settings}
-                                label={label}
-                                labelFormat={labelFormat}
-                                colorBy={colorBy}
-                                theme={nivoTheme}
-                            />
+                            <ResponsiveTreeMap root={root} {...mappedSettings} theme={nivoTheme} />
                         </ChartTabs>
                     </div>
                 </div>

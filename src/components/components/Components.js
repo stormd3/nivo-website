@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import Helmet from 'react-helmet'
 import ComponentsItem from './ComponentsItem'
+import ComponentsSearch from './ComponentsSearch'
 
 const defaultComponents = [
     {
@@ -341,11 +342,11 @@ class Components extends Component {
         components: defaultComponents,
     }
 
-    handleSearch = e => {
+    handleSearch = term => {
         const { history } = this.props
         history.replace({
             pathname: '/components',
-            query: { term: e.target.value },
+            query: { term },
         })
     }
 
@@ -367,14 +368,14 @@ class Components extends Component {
                 <div className="page_content">
                     <Helmet title="Components" />
                     <div className="chart_header">
-                        <h1 className="page_header">Components/APIs</h1>
-                    </div>
-                    <div className="nivo_components_search">
-                        <input
-                            type="text"
+                        <h1 className="page_header">Components</h1>
+                        <ComponentsSearch
+                            term={term || ''}
                             onChange={this.handleSearch}
-                            placeholder={'Search components by term, e.g. "chord"'}
-                            value={term || ''}
+                            style={{
+                                minWidth: 500,
+                                marginTop: 15,
+                            }}
                         />
                     </div>
                     <div className="nivo_components">

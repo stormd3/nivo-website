@@ -60,11 +60,11 @@ const dishes = [
 ]
 
 export const generateLightDataSet = () => ({
-    data: generateCountriesData(dishes.slice(0, 6), { size: 7 }),
+    data: generateCountriesData(dishes.slice(0, 6), { size: 7, max: 200 }),
     keys: dishes.slice(0, 6),
 })
 
 export const generateHeavyDataSet = () => ({
-    data: generateCountriesData(dishes, { size: 21 }),
+    data: generateCountriesData(dishes, { size: 21, max: 200 }),
     keys: dishes,
 })

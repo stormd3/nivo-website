@@ -151,6 +151,9 @@ export default [
         default: defaults.borderColor,
         controlType: 'color',
         controlGroup: 'Border',
+        controlOptions: {
+            withCustomColor: true,
+        },
     },
     {
         key: 'enableRadialLabels',
@@ -275,6 +278,9 @@ export default [
         default: defaults.radialLabelsTextColor,
         controlType: 'color',
         controlGroup: 'Radial labels',
+        controlOptions: {
+            withCustomColor: true,
+        },
     },
     {
         key: 'radialLabelsLinkColor',
@@ -284,6 +290,9 @@ export default [
         default: defaults.radialLabelsLinkColor,
         controlType: 'color',
         controlGroup: 'Radial labels',
+        controlOptions: {
+            withCustomColor: true,
+        },
     },
     {
         key: 'enableSlicesLabels',
@@ -333,6 +342,9 @@ export default [
         default: 'theme',
         controlType: 'color',
         controlGroup: 'Slices labels',
+        controlOptions: {
+            withCustomColor: true,
+        },
     },
     {
         key: 'isInteractive',
@@ -344,6 +356,11 @@ export default [
         controlType: 'switch',
         controlGroup: 'Interactivity',
     },
+    /*##################################################################################################################
+
+        Motion
+
+    ##################################################################################################################*/
     {
         key: 'animate',
         scopes: ['Pie'],
@@ -352,6 +369,33 @@ export default [
         required: false,
         default: defaults.animate,
         controlType: 'switch',
-        controlGroup: 'Animation',
+        controlGroup: 'Motion',
+    },
+    {
+        key: 'motionStiffness',
+        scopes: ['Pie'],
+        description: 'Motion stiffness.',
+        type: '{number}',
+        required: false,
+        controlType: 'range',
+        controlGroup: 'Motion',
+        controlOptions: {
+            min: 0,
+            max: 300,
+            step: 5,
+        },
+    },
+    {
+        key: 'motionDamping',
+        scopes: ['Pie'],
+        description: 'Motion damping.',
+        type: '{number}',
+        required: false,
+        controlType: 'range',
+        controlGroup: 'Motion',
+        controlOptions: {
+            min: 0,
+            max: 40,
+        },
     },
 ]

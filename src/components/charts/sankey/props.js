@@ -233,6 +233,9 @@ export default [
         default: defaults.nodeBorderColor,
         controlType: 'color',
         controlGroup: 'Nodes',
+        controlOptions: {
+            withCustomColor: true,
+        },
     },
     {
         key: 'linkOpacity',
@@ -335,6 +338,9 @@ export default [
         default: defaults.labelTextColor,
         controlType: 'color',
         controlGroup: 'Labels',
+        controlOptions: {
+            withCustomColor: true,
+        },
     },
     {
         key: 'labelOrientation',
@@ -363,14 +369,46 @@ export default [
         controlType: 'switch',
         controlGroup: 'Interactivity',
     },
+    /*##################################################################################################################
+
+        Motion
+
+    ##################################################################################################################*/
     {
         key: 'animate',
         scopes: ['Sankey'],
         description: 'Enable/disable transitions.',
         type: '{boolean}',
         required: false,
-        default: true,
+        default: defaults.animate,
         controlType: 'switch',
-        controlGroup: 'Animation',
+        controlGroup: 'Motion',
+    },
+    {
+        key: 'motionStiffness',
+        scopes: ['Sankey'],
+        description: 'Motion stiffness.',
+        type: '{number}',
+        required: false,
+        controlType: 'range',
+        controlGroup: 'Motion',
+        controlOptions: {
+            min: 0,
+            max: 300,
+            step: 5,
+        },
+    },
+    {
+        key: 'motionDamping',
+        scopes: ['Sankey'],
+        description: 'Motion damping.',
+        type: '{number}',
+        required: false,
+        controlType: 'range',
+        controlGroup: 'Motion',
+        controlOptions: {
+            min: 0,
+            max: 40,
+        },
     },
 ]

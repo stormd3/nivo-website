@@ -15,7 +15,8 @@ import ChartTabs from '../../ChartTabs'
 import TreeMapControls from './TreeMapControls'
 import generateCode from '../../../lib/generateChartCode'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
+import properties from './props'
+import propsMapper from './propsMapper'
 
 const placeholdersProperties = properties.filter(
     ({ controlGroup }) => !['Labels', 'Border'].includes(controlGroup)
@@ -39,7 +40,10 @@ export default class TreeMapPlaceholders extends Component {
             leavesOnly: false,
             innerPadding: 3,
             outerPadding: 3,
+
             colors: 'nivo',
+            colorBy: 'depth',
+
             animate: true,
         },
     }
@@ -52,7 +56,9 @@ export default class TreeMapPlaceholders extends Component {
         const { root, diceRoll } = this.props
         const { settings } = this.state
 
-        const code = generateCode('TreeMapPlaceholders', settings)
+        const mappedSettings = propsMapper(settings)
+
+        const code = generateCode('TreeMapPlaceholders', mappedSettings)
 
         const header = (
             <ChartHeader
@@ -70,7 +76,10 @@ export default class TreeMapPlaceholders extends Component {
                     </MediaQuery>
                     <div className="main-chart">
                         <ChartTabs chartClass="treemap" code={code} data={root}>
-                            <ResponsiveTreeMapPlaceholders root={cloneDeep(root)} {...settings}>
+                            <ResponsiveTreeMapPlaceholders
+                                root={cloneDeep(root)}
+                                {...mappedSettings}
+                            >
                                 {nodes =>
                                     nodes.map((node, i) => {
                                         return (

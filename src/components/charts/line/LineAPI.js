@@ -8,20 +8,8 @@
  */
 import React from 'react'
 import APIClient from '../../api-client/APIClient'
-import { settingsMapper } from '../../../lib/settings'
 import LineControls from './LineControls'
-
-const propsMapper = settingsMapper(
-    {
-        axisTop: (value, settings) => (settings['enable axisTop'] ? value : null),
-        axisRight: (value, settings) => (settings['enable axisRight'] ? value : null),
-        axisBottom: (value, settings) => (settings['enable axisBottom'] ? value : null),
-        axisLeft: (value, settings) => (settings['enable axisLeft'] ? value : null),
-    },
-    {
-        exclude: ['enable axisTop', 'enable axisRight', 'enable axisBottom', 'enable axisLeft'],
-    }
-)
+import propsMapper from './propsMapper'
 
 const LineAPI = ({ data }) =>
     <APIClient
@@ -98,9 +86,9 @@ const LineAPI = ({ data }) =>
             // dots
             enableDots: true,
             dotSize: 14,
-            dotColor: 'inherit:darker(.5)',
+            dotColor: { type: 'inherit:darker', gamma: 0.5 },
             dotBorderWidth: 3,
-            dotBorderColor: '#fff',
+            dotBorderColor: { type: 'custom', color: '#ffffff' },
             enableDotLabel: false,
             dotLabel: 'y',
             dotLabelYOffset: -12,

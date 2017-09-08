@@ -50,6 +50,11 @@ export default [
         required: true,
         type: '{Array.<string>}',
     },
+    /*##################################################################################################################
+
+        Base
+
+    ##################################################################################################################*/
     {
         key: 'width',
         scopes: ['api'],
@@ -120,17 +125,6 @@ export default [
         },
     },
     {
-        key: 'colors',
-        scopes: '*',
-        description: 'Defines how to compute arc/ribbon color.',
-        type: '{string|Function|Array}',
-        required: false,
-        default: defaults.colors,
-        controlType: 'colors',
-        controlGroup: 'Base',
-    },
-    ...marginProperties,
-    {
         key: 'innerRadiusRatio',
         scopes: '*',
         description: 'Inner radius ratio.',
@@ -138,7 +132,7 @@ export default [
         default: defaults.innerRadiusRatio,
         type: '{number}',
         controlType: 'range',
-        controlGroup: 'Radius',
+        controlGroup: 'Base',
         controlOptions: {
             min: 0,
             max: 1,
@@ -153,12 +147,27 @@ export default [
         default: defaults.innerRadiusOffset,
         type: '{number}',
         controlType: 'range',
-        controlGroup: 'Radius',
+        controlGroup: 'Base',
         controlOptions: {
             min: 0,
             max: 1,
             step: 0.01,
         },
+    },
+    /*##################################################################################################################
+
+        Style
+
+    ##################################################################################################################*/
+    {
+        key: 'colors',
+        scopes: '*',
+        description: 'Defines how to compute arc/ribbon color.',
+        type: '{string|Function|Array}',
+        required: false,
+        default: defaults.colors,
+        controlType: 'colors',
+        controlGroup: 'Style',
     },
     {
         key: 'arcOpacity',
@@ -168,7 +177,7 @@ export default [
         default: defaults.arcOpacity,
         type: '{number}',
         controlType: 'range',
-        controlGroup: 'Arcs',
+        controlGroup: 'Style',
         controlOptions: {
             min: 0,
             max: 1,
@@ -183,7 +192,7 @@ export default [
         default: defaults.arcBorderWidth,
         type: '{number}',
         controlType: 'range',
-        controlGroup: 'Arcs',
+        controlGroup: 'Style',
         controlOptions: {
             unit: 'px',
             min: 0,
@@ -198,7 +207,7 @@ export default [
         default: defaults.ribbonOpacity,
         type: '{number}',
         controlType: 'range',
-        controlGroup: 'Ribbons',
+        controlGroup: 'Style',
         controlOptions: {
             min: 0,
             max: 1,
@@ -213,7 +222,7 @@ export default [
         default: defaults.ribbonBorderWidth,
         type: '{number}',
         controlType: 'range',
-        controlGroup: 'Ribbons',
+        controlGroup: 'Style',
         controlOptions: {
             unit: 'px',
             min: 0,
@@ -221,6 +230,12 @@ export default [
             step: 1,
         },
     },
+    ...marginProperties,
+    /*##################################################################################################################
+
+        Labels
+
+    ##################################################################################################################*/
     {
         key: 'enableLabels',
         scopes: '*',
@@ -293,7 +308,15 @@ export default [
         default: defaults.labelTextColor,
         controlType: 'color',
         controlGroup: 'Labels',
+        controlOptions: {
+            withCustomColor: true,
+        },
     },
+    /*##################################################################################################################
+
+        Interactivity
+
+    ##################################################################################################################*/
     {
         key: 'isInteractive',
         scopes: ['Chord', 'ChordCanvas'],
@@ -364,6 +387,11 @@ export default [
             step: 0.05,
         },
     },
+    /*##################################################################################################################
+
+        Motion
+
+    ##################################################################################################################*/
     {
         key: 'animate',
         scopes: ['Chord'],
@@ -372,6 +400,33 @@ export default [
         required: false,
         default: true,
         controlType: 'switch',
-        controlGroup: 'Animation',
+        controlGroup: 'Motion',
+    },
+    {
+        key: 'motionStiffness',
+        scopes: ['Chord'],
+        description: 'Motion stiffness.',
+        type: '{number}',
+        required: false,
+        controlType: 'range',
+        controlGroup: 'Motion',
+        controlOptions: {
+            min: 0,
+            max: 300,
+            step: 5,
+        },
+    },
+    {
+        key: 'motionDamping',
+        scopes: ['Chord'],
+        description: 'Motion damping.',
+        type: '{number}',
+        required: false,
+        controlType: 'range',
+        controlGroup: 'Motion',
+        controlOptions: {
+            min: 0,
+            max: 40,
+        },
     },
 ]

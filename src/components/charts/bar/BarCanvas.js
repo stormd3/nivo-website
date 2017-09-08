@@ -15,27 +15,10 @@ import ChartTabs from '../../ChartTabs'
 import BarControls from './BarControls'
 import generateCode from '../../../lib/generateChartCode'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
-import { settingsMapper } from '../../../lib/settings'
+import properties from './props'
 import nivoTheme from '../../../nivoTheme'
 import { generateHeavyDataSet as generateData } from './generators'
-
-const mapSettings = settingsMapper(
-    {
-        colorBy: value => {
-            if (value === `({ id, data }) => data[\`\${id}Color\`]`)
-                return ({ id, data }) => data[`${id}Color`]
-            return value
-        },
-        axisTop: (value, settings) => (settings['enable axisTop'] ? value : undefined),
-        axisRight: (value, settings) => (settings['enable axisRight'] ? value : undefined),
-        axisBottom: (value, settings) => (settings['enable axisBottom'] ? value : undefined),
-        axisLeft: (value, settings) => (settings['enable axisLeft'] ? value : undefined),
-    },
-    {
-        exclude: ['enable axisTop', 'enable axisRight', 'enable axisBottom', 'enable axisLeft'],
-    }
-)
+import propsMapper from './propsMapper'
 
 export default class BarCanvas extends Component {
     state = {
@@ -52,9 +35,15 @@ export default class BarCanvas extends Component {
             },
 
             pixelRatio: window && window.devicePixelRatio ? window.devicePixelRatio : 1,
-            xPadding: 0.15,
+
+            padding: 0.15,
+            innerPadding: 0,
+            minValue: 'auto',
+            maxValue: 'auto',
+
             groupMode: 'stacked',
             layout: 'horizontal',
+            reverse: false,
 
             colors: 'd320b',
             colorBy: 'id',
@@ -101,9 +90,15 @@ export default class BarCanvas extends Component {
 
             enableGridX: false,
             enableGridY: true,
-            enableLabels: true,
-            labelsTextColor: 'inherit:darker(1.6)',
-            labelsLinkColor: 'inherit',
+
+            // labels
+            enableLabel: true,
+            labelSkipWidth: 12,
+            labelSkipHeight: 12,
+            labelTextColor: {
+                type: 'inherit:darker',
+                gamma: 1.6,
+            },
 
             // motion
             animate: true,
@@ -126,7 +121,7 @@ export default class BarCanvas extends Component {
     render() {
         const { data, keys, settings } = this.state
 
-        const mappedSettings = mapSettings(settings)
+        const mappedSettings = propsMapper(settings)
 
         const header = (
             <ChartHeader
@@ -175,8 +170,8 @@ export default class BarCanvas extends Component {
                     <p className="description">
                         A variation around the <Link to="/bar">Bar</Link> component. Well suited for
                         large data sets as it does not impact DOM tree depth and does not involve
-                        React diffing stuff (not that useful when using canvas), however you'll lose
-                        the isomorphic ability and transitions (for now).
+                        React diffing stuff for children (not that useful when using canvas),
+                        however you'll lose the isomorphic ability and transitions (for now).
                     </p>
                     <p className="description">
                         The responsive alternative of this component is{' '}

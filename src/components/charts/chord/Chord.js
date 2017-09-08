@@ -16,17 +16,10 @@ import ChordControls from './ChordControls'
 import generateCode from '../../../lib/generateChartCode'
 import config from '../../../config'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
+import properties from './props'
 import nivoTheme from '../../../nivoTheme'
 import { generateChordData } from 'nivo-generators'
-import { settingsMapper } from '../../../lib/settings'
-
-const mapSettings = settingsMapper({
-    label: value => {
-        if (value === `d => \`\${d.id} [\${d.value}]\``) return d => `${d.id} [${d.value}]`
-        return value
-    },
-})
+import propsMapper from './propsMapper'
 
 const MATRIX_SIZE = 5
 
@@ -58,7 +51,10 @@ export default class Chord extends Component {
             label: 'id',
             labelOffset: 12,
             labelRotation: -90,
-            labelTextColor: 'inherit:darker(1)',
+            labelTextColor: {
+                type: 'inherit:darker',
+                gamma: 1,
+            },
 
             colors: 'nivo',
 
@@ -87,7 +83,7 @@ export default class Chord extends Component {
     render() {
         const { settings, matrix, keys } = this.state
 
-        const mappedSettings = mapSettings(settings)
+        const mappedSettings = propsMapper(settings)
 
         const code = generateCode(
             'Chord',

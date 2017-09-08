@@ -16,27 +16,10 @@ import BarControls from './BarControls'
 import config from '../../../config'
 import generateCode from '../../../lib/generateChartCode'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
-import { settingsMapper } from '../../../lib/settings'
+import properties from './props'
 import nivoTheme from '../../../nivoTheme'
 import { generateLightDataSet as generateData } from './generators'
-
-const mapSettings = settingsMapper(
-    {
-        colorBy: value => {
-            if (value === `({ id, data }) => data[\`\${id}Color\`]`)
-                return ({ id, data }) => data[`${id}Color`]
-            return value
-        },
-        axisTop: (value, settings) => (settings['enable axisTop'] ? value : undefined),
-        axisRight: (value, settings) => (settings['enable axisRight'] ? value : undefined),
-        axisBottom: (value, settings) => (settings['enable axisBottom'] ? value : undefined),
-        axisLeft: (value, settings) => (settings['enable axisLeft'] ? value : undefined),
-    },
-    {
-        exclude: ['enable axisTop', 'enable axisRight', 'enable axisBottom', 'enable axisLeft'],
-    }
-)
+import propsMapper from './propsMapper'
 
 export default class Bar extends Component {
     state = {
@@ -52,12 +35,18 @@ export default class Bar extends Component {
                 left: 60,
             },
 
-            xPadding: 0.2,
+            padding: 0.2,
+            innerPadding: 0,
+            minValue: 'auto',
+            maxValue: 'auto',
+
             groupMode: 'stacked',
             layout: 'vertical',
+            reverse: false,
 
             colors: 'nivo',
             colorBy: 'id',
+            borderRadius: 0,
 
             // axes
             'enable axisTop': false,
@@ -101,9 +90,14 @@ export default class Bar extends Component {
 
             enableGridX: false,
             enableGridY: true,
-            enableLabels: true,
-            labelsTextColor: 'inherit:darker(1.6)',
-            labelsLinkColor: 'inherit',
+
+            enableLabel: true,
+            labelSkipWidth: 12,
+            labelSkipHeight: 12,
+            labelTextColor: {
+                type: 'inherit:darker',
+                gamma: 1.6,
+            },
 
             // motion
             animate: true,
@@ -123,10 +117,14 @@ export default class Bar extends Component {
         this.setState({ settings })
     }
 
+    handleNodeClick = (node, event) => {
+        alert(`${node.id}: ${node.value}\nclicked at x: ${event.clientX}, y: ${event.clientY}`)
+    }
+
     render() {
         const { data, keys, settings } = this.state
 
-        const mappedSettings = mapSettings(settings)
+        const mappedSettings = propsMapper(settings)
 
         const header = (
             <ChartHeader
@@ -154,6 +152,7 @@ export default class Bar extends Component {
                                 keys={keys}
                                 {...mappedSettings}
                                 theme={nivoTheme}
+                                onClick={this.handleNodeClick}
                             />
                         </ChartTabs>
                     </div>
@@ -168,8 +167,21 @@ export default class Bar extends Component {
                         {header}
                     </MediaQuery>
                     <p className="description">
-                        Bar chart with grouping ability, stacked or side by side. You can also
-                        switch to horizontal layout.
+                        Bar chart which can display multiple data series, stacked or side by side.
+                        Also supports both vertical and horizontal layout, with negative values
+                        descending below the x axis (or y axis if using horizontal layout).
+                    </p>
+                    <p className="description">
+                        The bar item component can be customized to render any valid SVG element, it
+                        will receive current bar style, data and event handlers, the storybook
+                        offers an{' '}
+                        <a
+                            href={`${config.storybookUrl}?selectedKind=Bar&selectedStory=custom%20bar%20item`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            example
+                        </a>.
                     </p>
                     <p className="description">
                         The responsive alternative of this component is{' '}

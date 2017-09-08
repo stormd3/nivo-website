@@ -8,21 +8,9 @@
  */
 import React, { Component } from 'react'
 import APIClient from '../../api-client/APIClient'
-import { settingsMapper } from '../../../lib/settings'
 import HeatMapControls from './HeatMapControls'
 import { generateLightDataSet } from './generators'
-
-const propsMapper = settingsMapper(
-    {
-        axisTop: (value, settings) => (settings['enable axisTop'] ? value : null),
-        axisRight: (value, settings) => (settings['enable axisRight'] ? value : null),
-        axisBottom: (value, settings) => (settings['enable axisBottom'] ? value : null),
-        axisLeft: (value, settings) => (settings['enable axisLeft'] ? value : null),
-    },
-    {
-        exclude: ['enable axisTop', 'enable axisRight', 'enable axisBottom', 'enable axisLeft'],
-    }
-)
+import propsMapper from './propsMapper'
 
 export default class HeatMapAPI extends Component {
     state = {
@@ -109,11 +97,17 @@ export default class HeatMapAPI extends Component {
                     cellShape: 'circle',
                     cellOpacity: 1,
                     cellBorderWidth: 0,
-                    cellBorderColor: 'inherit:darker(0.4)',
+                    cellBorderColor: {
+                        type: 'inherit:darker',
+                        gamma: 0.4,
+                    },
 
                     // labels
                     enableLabels: true,
-                    labelTextColor: 'inherit:darker(1.4)',
+                    labelTextColor: {
+                        type: 'inherit:darker',
+                        gamma: 1.4,
+                    },
                 }}
             />
         )

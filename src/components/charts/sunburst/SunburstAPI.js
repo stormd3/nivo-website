@@ -9,6 +9,7 @@
 import React, { Component } from 'react'
 import APIClient from '../../api-client/APIClient'
 import SunburstControls from './SunburstControls'
+import propsMapper from './propsMapper'
 
 export default class SunburstAPI extends Component {
     render() {
@@ -18,6 +19,7 @@ export default class SunburstAPI extends Component {
                 apiPath="/charts/sunburst"
                 dataProperty="data"
                 controls={SunburstControls}
+                propsMapper={propsMapper}
                 defaultProps={{
                     width: 600,
                     height: 600,
@@ -42,7 +44,9 @@ export default class SunburstAPI extends Component {
                     // theming
                     colors: 'nivo',
                     colorBy: 'id',
-                    childColor: 'inherit',
+                    childColor: {
+                        type: 'inherit',
+                    },
                 }}
             />
         )

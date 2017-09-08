@@ -6,106 +6,84 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
+import { mapInheritedColor } from '../../lib/settings'
 
-const getModifierGamma = directive => {
-    let gamma = 1
-
-    const inheritMatches = directive.match(/inherit:(darker|brighter)\(([0-9.]+)\)/)
-    if (inheritMatches) {
-        gamma = parseFloat(inheritMatches[2])
-    }
-
-    return gamma
-}
+const hasGammaModifier = type => ['inherit:darker', 'inherit:brighter'].includes(type)
 
 class ColorControl extends Component {
-    shouldComponentUpdate(nextProps) {
-        return nextProps.value !== this.props.value
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            color: props.value.color || props.defaultCustomColor,
+            gamma: props.value.gamma !== undefined ? props.value.gamma : props.defaultGammaValue,
+        }
     }
 
-    handleColorChange = _value => {
-        let value
-        let directive = _value.value
-
-        if (
-            directive.indexOf('inherit:darker') === 0 ||
-            directive.indexOf('inherit:brighter') === 0
-        ) {
-            const gamma = this.refs.gamma ? this.refs.gamma.value : 1
-            value = `${directive}(${gamma})`
-        } else {
-            value = directive
-        }
-
-        console.log(value)
-
+    handleTypeChange = ({ value: type }) => {
         const { onChange } = this.props
-        onChange(value)
+        if (type === 'custom') {
+            onChange({ type, color: this.state.color })
+        } else if (hasGammaModifier(type)) {
+            onChange({ type, gamma: this.state.gamma })
+        } else {
+            onChange({ type })
+        }
+    }
+
+    handleCustomColorChange = e => {
+        const color = e.target.value
+
+        this.setState({ color })
+        this.props.onChange({ type: 'custom', color })
     }
 
     handleGammaChange = e => {
-        const { value: directive } = this.props
-        const gamma = Number(e.target.value)
+        const { onChange, value: { type } } = this.props
+        const gamma = e.target.value
 
-        let value
-        if (directive.indexOf('inherit:darker') === 0) {
-            value = `inherit:darker(${gamma})`
-        } else if (directive.indexOf('inherit:brighter') === 0) {
-            value = `inherit:brighter(${gamma})`
-        } else {
-            value = directive
-        }
-
-        const { onChange } = this.props
-        onChange(value)
+        this.setState({ gamma })
+        onChange({ type, gamma })
     }
 
     render() {
-        const { value, label, help } = this.props
+        const { value: { type, ...config }, label, help, withTheme, withCustomColor } = this.props
+        const { gamma, color } = this.state
 
-        let requireAmount = false
-        let selectValue = value
-        let gamma = 1
+        const options = [
+            { value: 'inherit', label: 'inherit' },
+            { value: 'inherit:darker', label: 'inherit:darker' },
+            { value: 'inherit:brighter', label: 'inherit:brighter' },
+        ]
 
-        if (value.indexOf('inherit:darker') === 0) {
-            selectValue = 'inherit:darker'
-            requireAmount = true
-            gamma = getModifierGamma(value)
-        } else if (value.indexOf('inherit:brighter') === 0) {
-            selectValue = 'inherit:brighter'
-            requireAmount = true
-            gamma = getModifierGamma(value)
-        }
+        if (withTheme) options.unshift({ value: 'theme', label: 'theme' })
+        if (withCustomColor) options.unshift({ value: 'custom', label: 'custom' })
 
         return (
             <div className="control control-color">
                 <label className="control_label">
-                    {label}: <code className="code code-string">'{value}'</code>
+                    {label}:{' '}
+                    <code className="code code-string">
+                        '{mapInheritedColor({ type, ...config })}'
+                    </code>
                 </label>
                 <div>
                     <Select
-                        options={[
-                            { value: 'theme', label: 'theme' },
-                            { value: 'inherit', label: 'inherit' },
-                            {
-                                value: 'inherit:darker',
-                                label: 'inherit:darker',
-                            },
-                            {
-                                value: 'inherit:brighter',
-                                label: 'inherit:brighter',
-                            },
-                        ]}
-                        onChange={this.handleColorChange}
-                        value={selectValue}
+                        options={options}
+                        onChange={this.handleTypeChange}
+                        value={type}
                         clearable={false}
                     />
                 </div>
-                {requireAmount &&
+                {type === 'custom' &&
+                    <div>
+                        <div className="control-help">Color</div>
+                        <input type="color" onChange={this.handleCustomColorChange} value={color} />
+                    </div>}
+                {hasGammaModifier(type) &&
                     <div>
                         <div className="control-help">Adjust gamma.</div>
                         <input
@@ -130,11 +108,23 @@ ColorControl.propTypes = {
     label: PropTypes.string.isRequired,
     help: PropTypes.node.isRequired,
     onChange: PropTypes.func.isRequired,
+    defaultGammaValue: PropTypes.number.isRequired,
+    withTheme: PropTypes.bool.isRequired,
+    withCustomColor: PropTypes.bool.isRequired,
+    defaultCustomColor: PropTypes.string.isRequired,
+    value: PropTypes.shape({
+        type: PropTypes.oneOf(['inherit', 'inherit:darker', 'inherit:brighter', 'theme', 'custom'])
+            .isRequired,
+    }).isRequired,
 }
 
 ColorControl.defaultProps = {
     label: 'color',
     help: 'Color directive.',
+    defaultGammaValue: 1.2,
+    withTheme: false,
+    withCustomColor: false,
+    defaultCustomColor: '#000000',
 }
 
 export default ColorControl

@@ -14,10 +14,13 @@
 @import "charts.css";
 @import "controls.css";
 @import "chart-controls.css";
+@import "components/ComponentsFilters.css";
+@import "components/ComponentsGrid.css";
+@import "components/ComponentsSearch.css";
 @import "color-picker.css";
 @import "api-client.css";
 @import "components.css";
-@import "mobile-tabs.css";
+@import "mobile-nav.css";
 @import "mq.css";
 
 svg {

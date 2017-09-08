@@ -15,17 +15,10 @@ import ChartTabs from '../../ChartTabs'
 import ChordControls from './ChordControls'
 import generateCode from '../../../lib/generateChartCode'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
+import properties from './props'
 import nivoTheme from '../../../nivoTheme'
 import { generateChordData } from 'nivo-generators'
-import { settingsMapper } from '../../../lib/settings'
-
-const mapSettings = settingsMapper({
-    label: value => {
-        if (value === `d => \`\${d.id} [\${d.value}]\``) return d => `${d.id} [${d.value}]`
-        return value
-    },
-})
+import propsMapper from './propsMapper'
 
 const MATRIX_SIZE = 38
 
@@ -59,7 +52,10 @@ export default class ChordCanvas extends Component {
             label: 'id',
             labelOffset: 9,
             labelRotation: -90,
-            labelTextColor: 'inherit:darker(1)',
+            labelTextColor: {
+                type: 'inherit:darker',
+                gamma: 1,
+            },
 
             colors: 'd320b',
 
@@ -88,7 +84,7 @@ export default class ChordCanvas extends Component {
     render() {
         const { settings, matrix, keys } = this.state
 
-        const mappedSettings = mapSettings(settings)
+        const mappedSettings = propsMapper(settings)
 
         const code = generateCode(
             'ChordCanvas',
@@ -113,7 +109,12 @@ export default class ChordCanvas extends Component {
                         {header}
                     </MediaQuery>
                     <div className="main-chart" style={{ height: '600px' }}>
-                        <ChartTabs chartClass="chord" code={code} data={matrix} nodeCount={MATRIX_SIZE * MATRIX_SIZE + MATRIX_SIZE}>
+                        <ChartTabs
+                            chartClass="chord"
+                            code={code}
+                            data={matrix}
+                            nodeCount={MATRIX_SIZE * MATRIX_SIZE + MATRIX_SIZE}
+                        >
                             <ResponsiveChordCanvas
                                 matrix={matrix}
                                 keys={keys}
@@ -133,8 +134,8 @@ export default class ChordCanvas extends Component {
                         {header}
                     </MediaQuery>
                     <p className="description">
-                        A variation around the <Link to="/chord">Chord</Link> component. Well
-                        suited for large data sets as it does not impact DOM tree depth and does not
+                        A variation around the <Link to="/chord">Chord</Link> component. Well suited
+                        for large data sets as it does not impact DOM tree depth and does not
                         involve React diffing stuff (not that useful when using canvas), however
                         you'll lose the isomorphic ability and transitions (for now).
                     </p>

@@ -17,7 +17,8 @@ import generateCode from '../../../lib/generateChartCode'
 import ChartTabs from '../../ChartTabs'
 import config from '../../../config'
 import ComponentPropsDocumentation from '../../properties/ComponentPropsDocumentation'
-import properties from './properties'
+import properties from './props'
+import propsMapper from './propsMapper'
 
 export default class TreeMapHTML extends Component {
     state = {
@@ -38,7 +39,10 @@ export default class TreeMapHTML extends Component {
             label: 'loc',
             labelFormat: '.0s',
             labelSkipSize: 0,
-            labelTextColor: 'inherit:darker(.6)',
+            labelTextColor: {
+                type: 'inherit:darker',
+                gamma: 0.6,
+            },
             orientLabels: true,
 
             tile: 'squarify',
@@ -50,7 +54,10 @@ export default class TreeMapHTML extends Component {
             colorBy: 'depth',
             borderWidth: 1,
             borderStyle: 'solid',
-            borderColor: 'inherit:darker(.3)',
+            borderColor: {
+                type: 'inherit:darker',
+                gamma: 0.3,
+            },
 
             animate: true,
             motionStiffness: 90,
@@ -68,19 +75,9 @@ export default class TreeMapHTML extends Component {
         const { root, diceRoll } = this.props
         const { settings } = this.state
 
-        const colorBy = settings.colorBy === 'd => d.color' ? d => d.color : settings.colorBy
-        const label =
-            settings.label === `d => \`\${d.name} (\${d.loc})\``
-                ? d => `${d.name} (${d.loc})`
-                : settings.label
-        const labelFormat = label === 'loc' ? settings.labelFormat : undefined
+        const mappedSettings = propsMapper(settings)
 
-        const code = generateCode('TreeMapHTML', {
-            ...settings,
-            label,
-            labelFormat,
-            colorBy,
-        })
+        const code = generateCode('TreeMapHTML', mappedSettings)
 
         const header = (
             <ChartHeader
@@ -98,13 +95,7 @@ export default class TreeMapHTML extends Component {
                     </MediaQuery>
                     <div className="main-chart">
                         <ChartTabs chartClass="treemap" code={code} data={root}>
-                            <ResponsiveTreeMapHTML
-                                root={cloneDeep(root)}
-                                {...settings}
-                                label={label}
-                                labelFormat={labelFormat}
-                                colorBy={colorBy}
-                            />
+                            <ResponsiveTreeMapHTML root={cloneDeep(root)} {...mappedSettings} />
                         </ChartTabs>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 /*
  * This file is part of the nivo project.
  *
- * (c) 2016 Raphaël Benitte
+ * (c) 2016-present Raphaël Benitte
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,7 +13,7 @@ import { TransitionMotion, spring } from 'react-motion'
 import MiniNavLink from './MiniNavLink'
 import { getSectionItems } from '../../SiteMap'
 
-const miniNavItems = getSectionItems('Charts').map((item, i) => {
+const miniNavItems = getSectionItems('Components').map((item, i) => {
     item.index = i
     item.absIndex = i
     let children = []

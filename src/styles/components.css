@@ -3,24 +3,6 @@
     flex-wrap: wrap;
 }
 
-.nivo_components_search {
-    width: 100%;
-    margin-bottom: 30px;
-}
-
-.nivo_components_search input {
-    width: 100%;
-    padding: 15px;
-    border-radius: 2px;
-    border: 1px solid #ccc;
-    font-size: inherit;
-}
-
-.nivo_components_search input:focus {
-    outline: 0;
-    border-color: var(--accent-color);
-}
-
 .nivo_components_item {
     margin-bottom: 20px;
     text-decoration: none;
