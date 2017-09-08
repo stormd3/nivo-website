@@ -41,13 +41,21 @@ export default class Chord extends Component {
             // arcs
             arcOpacity: 1,
             arcBorderWidth: 1,
+            arcBorderColor: {
+                type: 'inherit:darker',
+                gamma: 0.4,
+            },
 
             // ribbons
             ribbonOpacity: 0.5,
             ribbonBorderWidth: 1,
+            ribbonBorderColor: {
+                type: 'inherit:darker',
+                gamma: 0.4,
+            },
 
             // labels
-            enableLabels: true,
+            enableLabel: true,
             label: 'id',
             labelOffset: 12,
             labelRotation: -90,

@@ -200,6 +200,19 @@ export default [
         },
     },
     {
+        key: 'arcBorderColor',
+        scopes: '*',
+        description: 'Arcs border color.',
+        required: false,
+        default: defaults.arcBorderColor,
+        type: '{string|Function}',
+        controlType: 'color',
+        controlGroup: 'Style',
+        controlOptions: {
+            withCustomColor: true,
+        },
+    },
+    {
         key: 'ribbonOpacity',
         scopes: '*',
         description: 'Ribbons opacity.',
@@ -230,6 +243,19 @@ export default [
             step: 1,
         },
     },
+    {
+        key: 'ribbonBorderColor',
+        scopes: '*',
+        description: 'Ribbons border color.',
+        required: false,
+        default: defaults.ribbonBorderColor,
+        type: '{string|Function}',
+        controlType: 'color',
+        controlGroup: 'Style',
+        controlOptions: {
+            withCustomColor: true,
+        },
+    },
     ...marginProperties,
     /*##################################################################################################################
 
@@ -237,12 +263,12 @@ export default [
 
     ##################################################################################################################*/
     {
-        key: 'enableLabels',
+        key: 'enableLabel',
         scopes: '*',
         description: 'Enable/disable labels.',
         type: '{boolean}',
         required: false,
-        default: defaults.enableLabels,
+        default: defaults.enableLabel,
         controlType: 'switch',
         controlGroup: 'Labels',
     },

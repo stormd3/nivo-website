@@ -14,4 +14,6 @@ export default settingsMapper({
         return value
     },
     labelTextColor: mapInheritedColor,
+    arcBorderColor: mapInheritedColor,
+    ribbonBorderColor: mapInheritedColor,
 })

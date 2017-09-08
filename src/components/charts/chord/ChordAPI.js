@@ -41,15 +41,26 @@ class ChordAPI extends Component {
                     padAngle: 0.02,
                     innerRadiusRatio: 0.96,
                     innerRadiusOffset: 0.01,
-                    ribbonOpacity: 0.5,
-                    ribbonBorderWidth: 1,
+
                     arcOpacity: 1,
                     arcBorderWidth: 1,
+                    arcBorderColor: {
+                        type: 'inherit:darker',
+                        gamma: 0.4,
+                    },
+
+                    ribbonOpacity: 0.5,
+                    ribbonBorderWidth: 1,
+                    ribbonBorderColor: {
+                        type: 'inherit:darker',
+                        gamma: 0.4,
+                    },
+
                     colors: 'nivo',
                     colorBy: 'depth',
 
                     // labels
-                    enableLabels: true,
+                    enableLabel: true,
                     label: 'id',
                     labelOffset: 12,
                     labelRotation: -90,
