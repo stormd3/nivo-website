@@ -52,7 +52,9 @@ import ChordCanvas from './components/charts/chord/ChordCanvas'
 import ChordAPI from './components/charts/chord/ChordAPI'
 import VoronoiPage from './components/charts/voronoi/VoronoiPage'
 import Voronoi from './components/charts/voronoi/Voronoi'
-import Colors from './components/pages/Colors'
+import Colors from './components/guides/Colors'
+import Gradients from './components/guides/Gradients'
+import Patterns from './components/guides/Patterns'
 import About from './components/pages/About'
 import Components from './components/components/Components'
 
@@ -398,12 +400,21 @@ const SITEMAP = [
                 path: '/guides/colors',
                 label: 'Colors',
                 component: Colors,
+                description: 'Understanding nivo color related properties.',
             },
             {
-                className: 'labels',
-                path: '/guides/labels',
-                label: 'Labels',
-                component: Colors,
+                className: 'gradients',
+                path: '/guides/gradients',
+                label: 'Gradients',
+                component: Gradients,
+                description: 'Using gradients to fill your charts.',
+            },
+            {
+                className: 'patterns',
+                path: '/guides/patterns',
+                label: 'Patterns',
+                component: Patterns,
+                description: 'Using patterns to fill your charts.',
             },
         ],
     },
@@ -412,16 +423,20 @@ const SITEMAP = [
         // those items must not be nested
         children: [
             {
-                className: 'about',
-                path: '/about',
-                label: 'About',
-                component: About,
-            },
-            {
                 className: 'components',
                 path: '/components',
                 label: 'Components',
                 component: Components,
+            },
+            {
+                className: 'guides',
+                label: 'Guides',
+            },
+            {
+                className: 'about',
+                path: '/about',
+                label: 'About',
+                component: About,
             },
         ],
     },
@@ -503,3 +518,8 @@ export const getRoutes = () => {
 
     return routes
 }
+
+export const guideItems = getSectionItems('Guides')
+export const miscItems = getSectionItems('misc')
+
+miscItems.find(({ label }) => label === 'Guides').children = guideItems

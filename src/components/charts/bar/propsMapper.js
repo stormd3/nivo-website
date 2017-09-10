@@ -19,6 +19,7 @@ export default settingsMapper(
         axisRight: mapAxis('right'),
         axisBottom: mapAxis('bottom'),
         axisLeft: mapAxis('left'),
+        borderColor: mapInheritedColor,
         labelTextColor: mapInheritedColor,
     },
     {

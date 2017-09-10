@@ -9,7 +9,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
-import { ResponsiveBar } from 'nivo'
+import { ResponsiveBar, patternDotsDef, patternSquaresDef } from 'nivo'
 import ChartHeader from '../../ChartHeader'
 import ChartTabs from '../../ChartTabs'
 import BarControls from './BarControls'
@@ -46,7 +46,32 @@ export default class Bar extends Component {
 
             colors: 'nivo',
             colorBy: 'id',
+            defs: [
+                patternDotsDef('dots', {
+                    background: 'inherit',
+                    color: '#38bcb2',
+                    size: 4,
+                    padding: 2,
+                    stagger: true,
+                }),
+                patternSquaresDef('squares', {
+                    background: 'inherit',
+                    color: '#eed312',
+                    size: 6,
+                    padding: 2,
+                    stagger: true,
+                }),
+            ],
+            fill: [
+                { match: { id: 'fries' }, id: 'dots' },
+                { match: { id: 'sandwich' }, id: 'squares' },
+            ],
             borderRadius: 0,
+            borderWidth: 0,
+            borderColor: {
+                type: 'inherit:darker',
+                gamma: 1.6,
+            },
 
             // axes
             'enable axisTop': false,
@@ -185,7 +210,7 @@ export default class Bar extends Component {
                     </p>
                     <p className="description">
                         The responsive alternative of this component is{' '}
-                        <code>&lt;ResponsiveBar /&gt;</code>.
+                        <code>&lt;ResponsiveBar/&gt;</code>.
                     </p>
                     <p className="description">
                         This component is available in the{' '}

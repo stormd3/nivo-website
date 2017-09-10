@@ -105,41 +105,43 @@ export default class Bubble extends Component {
                             diceRoll={diceRoll}
                         />
                     </MediaQuery>
-                    <p className="description">
-                        Bubble chart (circle packing) with zooming ability. Use React for rendering
-                        and react-motion for transitions.
-                    </p>
-                    <p className="description">
-                        This chart offer various implementations, you can even{' '}
-                        <Link to="/bubble/placeholders">render whatever you want</Link> instead of
-                        the boring circles.
-                    </p>
-                    <p className="description">
-                        This component is available in the{' '}
-                        <a
-                            href="https://github.com/plouc/nivo-api"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            nivo-api
-                        </a>, see{' '}
-                        <a
-                            href={`${config.nivoApiUrl}/samples/bubble.svg`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            sample
-                        </a>{' '}
-                        or <Link to="/bubble/api">try it using the API client</Link>. You can also
-                        see more example usages in{' '}
-                        <a
-                            href={`${config.storybookUrl}?selectedKind=Bubble&selectedStory=default`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            the storybook
-                        </a>.
-                    </p>
+                    <div className="chart-description">
+                        <p className="description">
+                            Bubble chart (circle packing) with zooming ability. Use React for
+                            rendering and react-motion for transitions.
+                        </p>
+                        <p className="description">
+                            This chart offer various implementations, you can even{' '}
+                            <Link to="/bubble/placeholders">render whatever you want</Link> instead
+                            of the boring circles.
+                        </p>
+                        <p className="description">
+                            This component is available in the{' '}
+                            <a
+                                href="https://github.com/plouc/nivo-api"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                nivo-api
+                            </a>, see{' '}
+                            <a
+                                href={`${config.nivoApiUrl}/samples/bubble.svg`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                sample
+                            </a>{' '}
+                            or <Link to="/bubble/api">try it using the API client</Link>. You can
+                            also see more example usages in{' '}
+                            <a
+                                href={`${config.storybookUrl}?selectedKind=Bubble&selectedStory=default`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                the storybook
+                            </a>.
+                        </p>
+                    </div>
                     <BubbleControls
                         scope="Bubble"
                         settings={settings}

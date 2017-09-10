@@ -106,16 +106,17 @@ export default class BubblePlaceholdersPage extends Component {
                             diceRoll={diceRoll}
                         />
                     </MediaQuery>
-                    <p className="description">
-                        Take total control over Bubble component (kittens compliant). This
-                        implementation also offer zooming ability, each node you receive will have a
-                        zoom function, just call it to zoom on the node it's bound to.
-                    </p>
-                    <p className="description">
-                        This chart offer various implementations, you can also render it in{' '}
-                        <Link to="/bubble">SVG</Link>.
-                    </p>
-
+                    <div className="chart-description">
+                        <p className="description">
+                            Take total control over Bubble component (kittens compliant). This
+                            implementation also offer zooming ability, each node you receive will
+                            have a zoom function, just call it to zoom on the node it's bound to.
+                        </p>
+                        <p className="description">
+                            This chart offer various implementations, you can also render it in{' '}
+                            <Link to="/bubble">SVG</Link>.
+                        </p>
+                    </div>
                     <BubbleControls
                         scope="BubblePlaceholders"
                         settings={settings}

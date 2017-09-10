@@ -100,9 +100,11 @@ class Home extends Component {
                             padAngle={0.04}
                             innerRadiusRatio={0.94}
                             {...generateChordData({ size: 7 })}
-                            enableLabels={false}
+                            enableLabel={false}
                             isInteractive={false}
                             animate={false}
+                            arcBorderWidth={0}
+                            ribbonBorderWidth={0}
                         />
                         <span className="home_item_label">
                             <span>Chord documentation</span>
@@ -367,9 +369,11 @@ class Home extends Component {
                             padAngle={0.04}
                             innerRadiusRatio={0.94}
                             {...generateChordData({ size: 5 })}
-                            enableLabels={false}
+                            enableLabel={false}
                             animate={false}
                             isInteractive={false}
+                            arcBorderWidth={0}
+                            ribbonBorderWidth={0}
                         />
                         <span className="home_item_label">
                             <span>Chord documentation</span>

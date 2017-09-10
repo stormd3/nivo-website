@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  */
 import React, { Component } from 'react'
+import omit from 'lodash/omit'
 import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
 import ChartHeader from '../../ChartHeader'
@@ -19,52 +20,11 @@ import properties from './props'
 import nivoTheme from '../../../nivoTheme'
 import config from '../../../config'
 import propsMapper from './propsMapper'
+import defaultProps from './defaultProps'
 
 export default class Pie extends Component {
     state = {
-        settings: {
-            margin: {
-                top: 80,
-                right: 80,
-                bottom: 80,
-                left: 80,
-            },
-            innerRadius: 0.5,
-            colors: 'nivo',
-            colorBy: 'id',
-            padAngle: 1,
-            cornerRadius: 3,
-
-            // border
-            borderWidth: 0,
-            borderColor: { type: 'inherit:darker', gamma: 0.6 },
-
-            // radial labels
-            enableRadialLabels: true,
-            radialLabel: 'id',
-            radialLabelsSkipAngle: 10,
-            radialLabelsTextXOffset: 6,
-            radialLabelsTextColor: { type: 'inherit:darker', gamma: 1 },
-            radialLabelsLinkOffset: 0,
-            radialLabelsLinkDiagonalLength: 16,
-            radialLabelsLinkHorizontalLength: 24,
-            radialLabelsLinkStrokeWidth: 2,
-            radialLabelsLinkColor: { type: 'inherit' },
-
-            // slice labels
-            enableSlicesLabels: true,
-            sliceLabel: 'value',
-            slicesLabelsSkipAngle: 10,
-            slicesLabelsTextColor: { type: 'inherit:darker', gamma: 1 },
-
-            // motion
-            animate: true,
-            motionStiffness: 90,
-            motionDamping: 15,
-
-            // isInteractive
-            isInteractive: true,
-        },
+        settings: omit(defaultProps, ['width', 'height']),
     }
 
     handleSettingsUpdate = settings => {

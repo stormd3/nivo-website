@@ -52,37 +52,6 @@ export default [
         },
     },
     {
-        key: 'colors',
-        description: 'Defines color range.',
-        type: '{string|Function|Array}',
-        required: false,
-        default: defaults.colors,
-        controlType: 'colors',
-        controlGroup: 'Base',
-    },
-    {
-        key: 'colorBy',
-        description:
-            'Property to use to determine node color. If a function is provided, it will receive current node data and must return a color.',
-        type: '{string|Function}',
-        required: false,
-        default: defaults.colorBy,
-        controlType: 'choices',
-        controlGroup: 'Base',
-        controlOptions: {
-            choices: [
-                {
-                    label: 'id',
-                    value: 'id',
-                },
-                {
-                    label: 'd => d.color',
-                    value: 'd => d.color',
-                },
-            ],
-        },
-    },
-    {
         key: 'innerRadius',
         description: `Donut chart if greater than 0 (animated). Value should be between 0~1 as it's a ratio from original radius.`,
         type: '{number}',
@@ -127,7 +96,42 @@ export default [
             step: 1,
         },
     },
-    ...marginProperties,
+    /*##################################################################################################################
+
+        Styling
+
+    ##################################################################################################################*/
+    {
+        key: 'colors',
+        description: 'Defines color range.',
+        type: '{string|Function|Array}',
+        required: false,
+        default: defaults.colors,
+        controlType: 'colors',
+        controlGroup: 'Style',
+    },
+    {
+        key: 'colorBy',
+        description:
+            'Property to use to determine node color. If a function is provided, it will receive current node data and must return a color.',
+        type: '{string|Function}',
+        required: false,
+        default: defaults.colorBy,
+        controlType: 'choices',
+        controlGroup: 'Style',
+        controlOptions: {
+            choices: [
+                {
+                    label: 'id',
+                    value: 'id',
+                },
+                {
+                    label: 'd => d.color',
+                    value: 'd => d.color',
+                },
+            ],
+        },
+    },
     {
         key: 'borderWidth',
         description: 'Slices border width.',
@@ -135,7 +139,7 @@ export default [
         required: false,
         default: defaults.borderWidth,
         controlType: 'range',
-        controlGroup: 'Border',
+        controlGroup: 'Style',
         controlOptions: {
             unit: 'px',
             min: 0,
@@ -150,11 +154,12 @@ export default [
         required: false,
         default: defaults.borderColor,
         controlType: 'color',
-        controlGroup: 'Border',
+        controlGroup: 'Style',
         controlOptions: {
             withCustomColor: true,
         },
     },
+    ...marginProperties,
     {
         key: 'enableRadialLabels',
         description: 'Enable/disable radial labels.',

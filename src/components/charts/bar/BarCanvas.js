@@ -47,6 +47,11 @@ export default class BarCanvas extends Component {
 
             colors: 'd320b',
             colorBy: 'id',
+            borderWidth: 0,
+            borderColor: {
+                type: 'inherit:darker',
+                gamma: 1.6,
+            },
 
             // axes
             'enable axisTop': true,
@@ -175,7 +180,7 @@ export default class BarCanvas extends Component {
                     </p>
                     <p className="description">
                         The responsive alternative of this component is{' '}
-                        <code>&lt;ResponsiveBarCanvas /&gt;</code>.
+                        <code>&lt;ResponsiveBarCanvas/&gt;</code>.
                     </p>
                 </div>
                 <div className="grid_item grid_item-full">

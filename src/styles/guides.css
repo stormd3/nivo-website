@@ -1,0 +1,49 @@
+.guide__header {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+}
+
+.guide-description {
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+
+.guide__examples {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.guide__examples__item {
+    width: 31%;
+    height: 200px;
+    border: 2px solid #333;
+    background: var(--main-background-color);
+}
+
+.guide__examples__legend {
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+    margin-top: 10px;
+    color: #777;
+}
+
+.guide__code {
+    background: white;
+    padding: 15px 25px;
+    font-size: 16px;
+    line-height: 26px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    margin: 30px 0 50px;
+}
+
+.guide__code__comment {
+    color: #999;
+}

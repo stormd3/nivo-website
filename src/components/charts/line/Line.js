@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  */
 import React, { Component } from 'react'
+import omit from 'lodash/omit'
 import { Link } from 'react-router-dom'
 import MediaQuery from 'react-responsive'
 import { ResponsiveLine } from 'nivo'
@@ -18,92 +19,12 @@ import ComponentPropsDocumentation from '../../properties/ComponentPropsDocument
 import properties from './props'
 import config from '../../../config'
 import nivoTheme from '../../../nivoTheme'
+import defaultProps from './defaultProps'
 import propsMapper from './propsMapper'
 
 export default class Line extends Component {
     state = {
-        settings: {
-            margin: {
-                top: 50,
-                right: 60,
-                bottom: 50,
-                left: 60,
-            },
-
-            minY: 'auto',
-            maxY: 'auto',
-
-            stacked: true,
-            curve: 'linear',
-
-            // axes
-            'enable axisTop': false,
-            axisTop: {
-                orient: 'top',
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: '',
-                legendOffset: 36,
-            },
-            'enable axisRight': false,
-            axisRight: {
-                orient: 'right',
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: '',
-                legendOffset: 0,
-            },
-            'enable axisBottom': true,
-            axisBottom: {
-                orient: 'bottom',
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: 'country code',
-                legendOffset: 36,
-                legendPosition: 'center',
-            },
-            'enable axisLeft': true,
-            axisLeft: {
-                orient: 'left',
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: 'count',
-                legendOffset: -40,
-                legendPosition: 'center',
-            },
-
-            // grid
-            enableGridX: true,
-            enableGridY: true,
-
-            colors: 'nivo',
-            colorBy: 'id',
-
-            // dots
-            enableDots: true,
-            dotSize: 10,
-            dotColor: { type: 'inherit:darker', gamma: 0.3 },
-            dotBorderWidth: 2,
-            dotBorderColor: { type: 'custom', color: '#ffffff' },
-            enableDotLabel: true,
-            dotLabel: 'y',
-            dotLabelYOffset: -12,
-
-            // motion
-            animate: true,
-            motionStiffness: 90,
-            motionDamping: 15,
-
-            // interactivity
-            isInteractive: true,
-
-            // stack tooltip
-            enableStackTooltip: true,
-        },
+        settings: omit(defaultProps, ['width', 'height']),
     }
 
     handleSettingsUpdate = settings => {

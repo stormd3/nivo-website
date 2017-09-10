@@ -120,38 +120,6 @@ export default [
         },
     },
     {
-        key: 'colors',
-        scopes: '*',
-        description: 'Defines color range.',
-        type: '{string|Function|Array}',
-        required: false,
-        default: defaults.colors,
-        controlType: 'colors',
-        controlGroup: 'Base',
-    },
-    {
-        key: 'colorBy',
-        scopes: '*',
-        description:
-            'Property to use to determine node color. If a function is provided, it will receive current node data and must return a color.',
-        required: false,
-        default: defaults.colorBy,
-        controlType: 'choices',
-        controlGroup: 'Base',
-        controlOptions: {
-            choices: [
-                {
-                    label: 'id',
-                    value: 'id',
-                },
-                {
-                    label: 'd => d.color',
-                    value: 'd => d.color',
-                },
-            ],
-        },
-    },
-    {
         key: 'minY',
         scopes: '*',
         description: 'Minimum y value.',
@@ -181,6 +149,58 @@ export default [
             defaultValue: 300,
             min: 10,
             max: 400,
+        },
+    },
+    /*##################################################################################################################
+
+        Style
+
+    ##################################################################################################################*/
+    {
+        key: 'colors',
+        scopes: '*',
+        description: 'Defines color range.',
+        type: '{string|Function|Array}',
+        required: false,
+        default: defaults.colors,
+        controlType: 'colors',
+        controlGroup: 'Style',
+    },
+    {
+        key: 'colorBy',
+        scopes: '*',
+        description:
+            'Property to use to determine node color. If a function is provided, it will receive current node data and must return a color.',
+        required: false,
+        default: defaults.colorBy,
+        controlType: 'choices',
+        controlGroup: 'Style',
+        controlOptions: {
+            choices: [
+                {
+                    label: 'id',
+                    value: 'id',
+                },
+                {
+                    label: 'd => d.color',
+                    value: 'd => d.color',
+                },
+            ],
+        },
+    },
+    {
+        key: 'lineWidth',
+        scopes: '*',
+        description: 'Line width (px).',
+        type: '{number}',
+        required: false,
+        default: defaults.lineWidth,
+        controlType: 'range',
+        controlGroup: 'Style',
+        controlOptions: {
+            unit: 'px',
+            min: 1,
+            max: 16,
         },
     },
     ...marginProperties,

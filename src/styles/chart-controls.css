@@ -2,6 +2,7 @@
     display: flex;
     padding-top: 1px;
     background: var(--main-background-color);
+    background: #f0f3f4;
     overflow-x: auto;
     font-size: 15px;
 }

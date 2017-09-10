@@ -17,82 +17,13 @@ import ComponentPropsDocumentation from '../../properties/ComponentPropsDocument
 import properties from './props'
 import nivoTheme from '../../../nivoTheme'
 import { generateLightDataSet } from './generators'
+import defaultProps from './defaultProps'
 import propsMapper from './propsMapper'
 
 export default class Stream extends Component {
     state = {
         ...generateLightDataSet(),
-        settings: {
-            margin: {
-                top: 50,
-                right: 60,
-                bottom: 50,
-                left: 60,
-            },
-
-            // axes
-            'enable axisTop': false,
-            axisTop: {
-                orient: 'top',
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: '',
-                legendOffset: 36,
-            },
-            'enable axisRight': false,
-            axisRight: {
-                orient: 'right',
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: '',
-                legendOffset: 0,
-            },
-            'enable axisBottom': true,
-            axisBottom: {
-                orient: 'bottom',
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: '',
-                legendOffset: 36,
-            },
-            'enable axisLeft': false,
-            axisLeft: {
-                orient: 'left',
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: '',
-                legendOffset: -40,
-            },
-            enableGridX: true,
-            enableGridY: false,
-
-            curve: 'catmullRom',
-            offsetType: 'wiggle',
-            order: 'none',
-
-            colors: 'nivo',
-            fillOpacity: 0.85,
-            borderWidth: 0,
-            borderColor: {
-                type: 'inherit:darker',
-                gamma: 1.2,
-            },
-
-            // motion
-            animate: true,
-            motionStiffness: 90,
-            motionDamping: 15,
-
-            // interactivity
-            isInteractive: true,
-
-            // stack tooltip
-            enableStackTooltip: true,
-        },
+        settings: defaultProps,
     }
 
     handleSettingsUpdate = settings => {

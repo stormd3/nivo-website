@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import UpIcon from 'react-icons/lib/md/keyboard-arrow-up'
+import DownIcon from 'react-icons/lib/md/keyboard-arrow-down'
 
 export default class CollapsibleCard extends Component {
     static propTypes = {
@@ -29,11 +31,11 @@ export default class CollapsibleCard extends Component {
 
         return (
             <div className={`card ${expanded ? '_is-expanded' : ''}`}>
-                <div className="card_header" onClick={this.handleToggleClick}>
+                <div className="card__header no-select" onClick={this.handleToggleClick}>
                     <h3>
                         {title}
                     </h3>
-                    <span className="card_toggle" />
+                    {expanded ? <UpIcon /> : <DownIcon />}
                 </div>
                 {expanded &&
                     <div className="card_body">

@@ -43,6 +43,11 @@ export default class BarAPI extends Component {
                     colors: 'nivo',
                     colorBy: 'id',
                     borderRadius: 0,
+                    borderWidth: 0,
+                    borderColor: {
+                        type: 'inherit:darker',
+                        gamma: 1.6,
+                    },
 
                     padding: 0.2,
                     innerPadding: 0,

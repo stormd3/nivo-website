@@ -21,6 +21,8 @@
 @import "api-client.css";
 @import "components.css";
 @import "mobile-nav.css";
+@import "react-select.css";
+@import "guides.css";
 @import "mq.css";
 
 svg {
@@ -43,6 +45,8 @@ body {
     font-family: 'Open Sans', sans-serif;
     width: 100%;
     height: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 *,
 *:before,
@@ -52,8 +56,7 @@ body {
 
 a {
     color: var(--links-color);
-    text-decoration: none;
-    border-bottom: 1px solid var(--links-color);
+    text-decoration: underline;
 }
 a code {
     color: var(--links-color);
@@ -75,7 +78,7 @@ h1 {
     font-size: 32px;
     margin: 0 0 20px 0;
     padding: 0;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 h2,
@@ -105,18 +108,31 @@ p:first-child {
 }
 
 .dice-roll {
-    display: block;
-    padding: 5px 12px;
-    border-radius: 1px;
+    position: absolute;
+    right: 0;
+    bottom: -38px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 28px;
     background: #fff;
     color: var(--accent-color);
     cursor: pointer;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, .12);
-    font-weight: 600;
-    font-size: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
+    font-size: 36px;
 }
 .dice-roll:hover {
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .1);
+}
+.dice-roll span {
+    display: block;
+    width: 52px;
+    height: 52px;
+}
+.dice-roll circle {
+    stroke: none;
 }
 
 .unit {
@@ -197,4 +213,61 @@ code,
 .intro {
     margin: 0;
     content-margin: 30px 0;
+}
+
+.pattern-examples {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.pattern-examples > div {
+    width: 48%;
+}
+
+.pattern-examples__item {
+    display: flex;
+    margin-bottom: 30px;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.pattern-examples__item svg {
+    border: 2px solid #000;
+}
+
+.pattern-examples__item pre {
+    flex: 1;
+    font-size: 13px;
+    margin: 0 0 0 30px;
+    line-height: 22px;
+}
+
+.text-content {
+    font-size: 18px;
+    line-height: 1.64em;
+    font-weight: 400;
+}
+
+.text-content strong,
+.text-content a {
+    font-weight: 600;
+}
+
+.text-content h2 {
+    font-size: 24px;
+}
+
+.chart-description {
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+.banner {
+    background: white;
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+.banner--full-width {
 }

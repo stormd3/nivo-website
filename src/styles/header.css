@@ -21,27 +21,63 @@ header {
     justify-content: flex-start;
 }
 
-header nav {
+.HeaderNav {
     position: absolute;
     top: 0;
-    right: 80px;
+    right: 50px;
     height: var(--header-height);
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-header a {
+.HeaderNav__Item {
     color: var(--main-background-color);
     text-decoration: none;
     margin-left: 20px;
     text-transform: uppercase;
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: 1px;
     border-bottom: none;
+    display: flex;
+    align-items: center;
+    position:relative;
+    cursor: pointer;
+    padding: 6px 0;
 }
 
-header a.active {
+.HeaderNav__Item__Sub {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -15px;
+    background: #FFF;
+    z-index: 1000;
+    border-radius: 2px;
+    padding: 10px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.HeaderNav__Item:hover .HeaderNav__Item__Sub {
+    display: block;
+}
+
+.HeaderNav__Item__Sub__Item {
+    display: block;
+    padding: 6px 15px;
+    line-height: 1em;
+    text-decoration: none;
+}
+
+.HeaderNav__Item__Sub__Item:hover {
+    background: var(--main-background-color);
+}
+
+.HeaderNav__Item svg {
+    font-size: 22px;
+}
+
+.HeaderNav__Item.active {
     background: var(--main-background-color);
 }

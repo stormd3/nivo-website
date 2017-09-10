@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import DiceRollIcon from 'react-icons/lib/md/refresh'
 
 class ChartHeader extends Component {
     shouldComponentUpdate() {
@@ -23,7 +24,7 @@ class ChartHeader extends Component {
                 </div>
                 {diceRoll &&
                     <span className="dice-roll no-select" onClick={diceRoll}>
-                        roll the dice
+                        <DiceRollIcon />
                     </span>}
             </div>
         )
