@@ -52,9 +52,9 @@ import ChordCanvas from './components/charts/chord/ChordCanvas'
 import ChordAPI from './components/charts/chord/ChordAPI'
 import VoronoiPage from './components/charts/voronoi/VoronoiPage'
 import Voronoi from './components/charts/voronoi/Voronoi'
-import Colors from './components/guides/Colors'
-import Gradients from './components/guides/Gradients'
-import Patterns from './components/guides/Patterns'
+import Colors from './components/guides/colors/Colors'
+import Gradients from './components/guides/gradients/Gradients'
+import Patterns from './components/guides/patterns/Patterns'
 import About from './components/pages/About'
 import Components from './components/components/Components'
 
@@ -454,25 +454,21 @@ const SITEMAP = [
                 className: 'storybook',
                 path: 'http://nivo.rocks/storybook/',
                 label: 'Storybook',
-                component: About,
             },
             {
                 className: 'nivo',
                 path: 'https://github.com/plouc/nivo',
                 label: 'nivo repository',
-                component: About,
             },
             {
                 className: 'nivo-api',
                 path: 'https://github.com/plouc/nivo-api',
                 label: 'nivo-api repository',
-                component: About,
             },
             {
                 className: 'nivo-website',
                 path: 'https://github.com/plouc/nivo-website',
                 label: 'nivo-website repository',
-                component: About,
             },
         ],
     },
@@ -486,6 +482,7 @@ export const getSectionItems = sectionLabel => {
 
 export const getRoutes = () => {
     const routes = []
+    const routePaths = []
 
     SITEMAP.forEach(item => {
         if (item.children && item.children.length > 0) {
@@ -505,6 +502,14 @@ export const getRoutes = () => {
                     })
                 }
 
+                if (
+                    !sectionItem.path ||
+                    !sectionItem.component ||
+                    routePaths.includes(sectionItem.path)
+                )
+                    return
+
+                routePaths.push(sectionItem.path)
                 routes.push(
                     <Route
                         key={sectionItem.path}

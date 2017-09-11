@@ -17,7 +17,7 @@ class About extends Component {
             <div className="inner-content">
                 <div className="page_content">
                     <Helmet title="About" />
-                    <div className="chart_header">
+                    <div className="guide__header">
                         <h1 className="page_header">About</h1>
                     </div>
                     <div className="text-content guide-description">
@@ -39,7 +39,7 @@ class About extends Component {
                         <h2>Features</h2>
                         <ul>
                             <li>
-                                supports{' '}
+                                Supports{' '}
                                 <a
                                     href="https://github.com/d3/d3/blob/master/CHANGES.md"
                                     target="_blank"
@@ -55,13 +55,12 @@ class About extends Component {
                                         query: { term: 'responsive' },
                                     }}
                                 >
-                                    responsive charts
-                                </Link>{' '}
-                                (<code>&lt;Responsive* /&gt;</code> components)
+                                    Responsive charts
+                                </Link>
                             </li>
-                            <li>highly customizable</li>
+                            <li>Highly customizable</li>
                             <li>
-                                motion/transitions, powered by{' '}
+                                Motion/transitions, powered by{' '}
                                 <a
                                     href="https://github.com/chenglou/react-motion"
                                     target="_blank"
@@ -70,9 +69,9 @@ class About extends Component {
                                     react-motion
                                 </a>
                             </li>
-                            <li>component playground</li>
-                            <li>exhaustive documentation</li>
-                            <li>isomorphic rendering</li>
+                            <li>Component playground</li>
+                            <li>Exhaustive documentation</li>
+                            <li>Isomorphic rendering</li>
                             <li>
                                 <Link
                                     to={{
@@ -91,8 +90,7 @@ class About extends Component {
                                     }}
                                 >
                                     HTML charts
-                                </Link>{' '}
-                                (for a restricted subset of components)
+                                </Link>
                             </li>
                             <li>
                                 <Link
@@ -102,8 +100,7 @@ class About extends Component {
                                     }}
                                 >
                                     Canvas charts
-                                </Link>{' '}
-                                (for a restricted subset of components)
+                                </Link>
                             </li>
                             <li>
                                 <Link
@@ -122,7 +119,7 @@ class About extends Component {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    server side rendering API
+                                    Server side rendering API
                                 </a>
                             </li>
                             <li>

@@ -23,6 +23,7 @@
 @import "mobile-nav.css";
 @import "react-select.css";
 @import "guides.css";
+@import "tabs.css";
 @import "mq.css";
 
 svg {
@@ -215,34 +216,6 @@ code,
     content-margin: 30px 0;
 }
 
-.pattern-examples {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.pattern-examples > div {
-    width: 48%;
-}
-
-.pattern-examples__item {
-    display: flex;
-    margin-bottom: 30px;
-    align-items: flex-start;
-    padding: 20px;
-}
-
-.pattern-examples__item svg {
-    border: 2px solid #000;
-}
-
-.pattern-examples__item pre {
-    flex: 1;
-    font-size: 13px;
-    margin: 0 0 0 30px;
-    line-height: 22px;
-}
-
 .text-content {
     font-size: 18px;
     line-height: 1.64em;
@@ -267,7 +240,4 @@ code,
     background: white;
     margin-bottom: 40px;
     padding: 20px;
-}
-
-.banner--full-width {
 }

@@ -24,11 +24,15 @@ export default class Header extends Component {
                                 <span className="HeaderNav__Item" key={item.className}>
                                     {item.label}
                                     <span className="HeaderNav__Item__Sub">
-                                        {item.children.map(child => (
-                                            <Link className="HeaderNav__Item__Sub__Item" key={child.className} to={child.path}>
+                                        {item.children.map(child =>
+                                            <Link
+                                                className="HeaderNav__Item__Sub__Item"
+                                                key={child.className}
+                                                to={child.path}
+                                            >
                                                 {child.label}
                                             </Link>
-                                        ))}
+                                        )}
                                     </span>
                                 </span>
                             )

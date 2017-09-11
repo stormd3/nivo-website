@@ -219,15 +219,15 @@ export default class ChartControls extends Component {
 
         return (
             <CollapsibleCard title="Settings" expandedByDefault={true}>
-                <div className="chart-controls_menu">
+                <div className="tabs__menu">
                     {groups.map(group => {
                         return (
                             <div
                                 key={group.name}
-                                className={classNames('chart-controls_menu_item', {
-                                    active: openedGroup === group.name,
+                                className={classNames('tabs__menu__item', {
+                                    '_is-active': openedGroup === group.name,
                                 })}
-                                onClick={e => {
+                                onClick={() => {
                                     this.handleGroupToggle(group.name)
                                 }}
                             >
