@@ -34,7 +34,8 @@ export default class ComponentsFilters extends Component {
                 {filters.map(filter =>
                     <span
                         key={filter}
-                        className={`ComponentsFilters__item${filter === currentFilter
+                        className={`ComponentsFilters__item${currentFilter &&
+                        filter.toLowerCase() === currentFilter.toLowerCase()
                             ? ' ComponentsFilters__item--active'
                             : ''}`}
                         onClick={() => {

@@ -8,32 +8,14 @@
  */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
-import { getSectionItems } from '../../SiteMap'
-
-const allItems = getSectionItems('Components').reduce((acc, item) => {
-    if (item.children) {
-        item.children.forEach(child => {
-            acc.push({
-                key: `${item.className}.${child.className}`,
-                path: `${item.path}${child.path}`,
-                label: child.label,
-                className: item.className,
-                type: child.className,
-                tags: child.tags || [],
-            })
-        })
-    }
-
-    return acc
-}, [])
+import ComponentsGridItem from './ComponentsGridItem'
 
 const getFilterFunction = (term, filter) => {
     let predicates = []
-    if (term.length > 0) {
+    if (term && term.length > 0) {
         predicates.push(({ label }) => label.toLowerCase().includes(term.toLowerCase()))
     }
-    if (filter !== null) {
+    if (filter) {
         predicates.push(({ tags }) =>
             tags.map(tag => tag.toLowerCase()).includes(filter.toLowerCase())
         )
@@ -45,7 +27,7 @@ const getFilterFunction = (term, filter) => {
 export default class ComponentsGrid extends Component {
     static propTypes = {
         filter: PropTypes.string,
-        term: PropTypes.string.isRequired,
+        term: PropTypes.string,
         onClick: PropTypes.func,
     }
 
@@ -54,33 +36,37 @@ export default class ComponentsGrid extends Component {
     }
 
     render() {
-        const { term, filter, onClick } = this.props
+        const { components, term, filter, onClick } = this.props
 
-        let items = allItems
-        if (term.length > 0 || filter !== null) {
+        let items = components
+        if (term || filter) {
             const filterFunction = getFilterFunction(term, filter)
-            items = allItems.filter(filterFunction)
+            items = components.filter(filterFunction)
+        }
+
+        if (items.length === 0) {
+            return (
+                <div className="components__grid__empty">
+                    <span className="components__grid__empty__icon">
+                        {`¯\\_(ツ)_/¯`}
+                    </span>
+                    <div>no result, sorry…</div>
+                </div>
+            )
         }
 
         return (
-            <div className="ComponentsGrid">
-                {items.map(item => {
-                    return (
-                        <Link
-                            to={item.path}
-                            key={item.key}
-                            className="ComponentsGrid__item"
-                            onClick={onClick}
-                        >
-                            <span className="ComponentsGrid__item__icon">
-                                <span className={`sprite-icons-${item.className}-red`} />
-                            </span>
-                            <span className="ComponentsGrid__item__label">
-                                {item.label}
-                            </span>
-                        </Link>
-                    )
-                })}
+            <div className="components__grid">
+                {items.map(item =>
+                    <ComponentsGridItem
+                        key={item.key}
+                        path={item.path}
+                        name={item.label}
+                        className={item.className}
+                        tags={item.tags}
+                        onClick={onClick}
+                    />
+                )}
             </div>
         )
     }

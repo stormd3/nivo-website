@@ -49,8 +49,10 @@ export default class ChartTabs extends Component {
             )
         } else if (currentTab === 'data') {
             content = (
-                <div className="json-data_json">
-                    <textarea value={JSON.stringify(data, null, '  ')} />
+                <div className="json-data_json code-snippet">
+                    <pre>
+                        {JSON.stringify(data, null, '  ')}
+                    </pre>
                 </div>
             )
         }

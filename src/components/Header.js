@@ -39,13 +39,17 @@ export default class Header extends Component {
                         }
 
                         return (
-                            <Link className="HeaderNav__Item" key={item.className} to={item.path}>
+                            <Link
+                                className={`HeaderNav__Item HeaderNav__Item--${item.className}`}
+                                key={item.className}
+                                to={item.path}
+                            >
                                 {item.label}
                             </Link>
                         )
                     })}
                     <a
-                        className="HeaderNav__Item"
+                        className="HeaderNav__Item HeaderNav__Item--storybook"
                         href="http://nivo.rocks/storybook/"
                         target="_blank"
                         rel="noopener noreferrer"

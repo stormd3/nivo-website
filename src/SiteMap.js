@@ -30,6 +30,7 @@ import Radar from './components/charts/radar/Radar'
 import RadarAPI from './components/charts/radar/RadarAPI'
 import BubblePage from './components/charts/bubble/BubblePage'
 import Bubble from './components/charts/bubble/Bubble'
+import BubbleCanvas from './components/charts/bubble/BubbleCanvas'
 import BubbleAPI from './components/charts/bubble/BubbleAPI'
 import BubblePlaceholders from './components/charts/bubble/BubblePlaceholders'
 import SankeyPage from './components/charts/sankey/SankeyPage'
@@ -74,7 +75,7 @@ const SITEMAP = [
                         label: 'Bar',
                         component: Bar,
                         exact: true,
-                        tags: ['svg'],
+                        tags: ['svg', 'isomorphic'],
                     },
                     {
                         className: 'canvas',
@@ -104,21 +105,29 @@ const SITEMAP = [
                         label: 'Bubble',
                         component: Bubble,
                         exact: true,
-                        tags: ['svg'],
+                        tags: ['svg', 'hierarchy', 'isomorphic'],
+                    },
+                    {
+                        className: 'canvas',
+                        path: '/canvas',
+                        label: 'BubbleCanvas',
+                        component: BubbleCanvas,
+                        exact: true,
+                        tags: ['canvas', 'hierarchy'],
                     },
                     {
                         className: 'placeholders',
                         path: '/placeholders',
                         label: 'BubblePlaceholders',
                         component: BubblePlaceholders,
-                        tags: ['placeholders'],
+                        tags: ['placeholders', 'hierarchy', 'isomorphic'],
                     },
                     {
                         className: 'api',
                         path: '/api',
                         label: 'Bubble API',
                         component: BubbleAPI,
-                        tags: ['api'],
+                        tags: ['api', 'hierarchy'],
                     },
                 ],
             },
@@ -134,7 +143,7 @@ const SITEMAP = [
                         label: 'Calendar',
                         component: Calendar,
                         exact: true,
-                        tags: ['svg'],
+                        tags: ['svg', 'isomorphic'],
                     },
                     {
                         className: 'api',
@@ -157,21 +166,21 @@ const SITEMAP = [
                         label: 'Chord',
                         component: Chord,
                         exact: true,
-                        tags: ['svg'],
+                        tags: ['svg', 'relational', 'isomorphic'],
                     },
                     {
                         className: 'canvas',
                         path: '/canvas',
                         label: 'ChordCanvas',
                         component: ChordCanvas,
-                        tags: ['canvas'],
+                        tags: ['canvas', 'relational'],
                     },
                     {
                         className: 'api',
                         path: '/api',
                         label: 'Chord API',
                         component: ChordAPI,
-                        tags: ['api'],
+                        tags: ['api', 'relational'],
                     },
                 ],
             },
@@ -187,21 +196,21 @@ const SITEMAP = [
                         label: 'HeatMap',
                         component: HeatMap,
                         exact: true,
-                        tags: ['svg'],
+                        tags: ['svg', 'isomorphic', 'quantize'],
                     },
                     {
                         className: 'canvas',
                         path: '/canvas',
                         label: 'HeatMapCanvas',
                         component: HeatMapCanvas,
-                        tags: ['canvas'],
+                        tags: ['canvas', 'quantize'],
                     },
                     {
                         className: 'api',
                         path: '/api',
                         label: 'HeatMap API',
                         component: HeatMapAPI,
-                        tags: ['api'],
+                        tags: ['api', 'quantize'],
                     },
                 ],
             },
@@ -217,7 +226,7 @@ const SITEMAP = [
                         label: 'Line',
                         component: Line,
                         exact: true,
-                        tags: ['svg'],
+                        tags: ['svg', 'isomorphic'],
                     },
                     {
                         className: 'api',
@@ -240,7 +249,7 @@ const SITEMAP = [
                         label: 'Pie',
                         component: Pie,
                         exact: true,
-                        tags: ['svg'],
+                        tags: ['svg', 'isomorphic'],
                     },
                     {
                         className: 'api',
@@ -263,7 +272,7 @@ const SITEMAP = [
                         label: 'Radar',
                         component: Radar,
                         exact: true,
-                        tags: ['svg'],
+                        tags: ['svg', 'isomorphic'],
                     },
                     {
                         className: 'api',
@@ -286,14 +295,14 @@ const SITEMAP = [
                         label: 'Sankey',
                         component: Sankey,
                         exact: true,
-                        tags: ['svg'],
+                        tags: ['svg', 'relational', 'isomorphic'],
                     },
                     {
                         className: 'api',
                         path: '/api',
                         label: 'Sankey API',
                         component: SankeyAPI,
-                        tags: ['api'],
+                        tags: ['api', 'relational'],
                     },
                 ],
             },
@@ -309,7 +318,7 @@ const SITEMAP = [
                         label: 'Stream',
                         component: Stream,
                         exact: true,
-                        tags: ['svg'],
+                        tags: ['svg', 'isomorphic'],
                     },
                 ],
             },
@@ -325,14 +334,14 @@ const SITEMAP = [
                         label: 'Sunburst',
                         component: Sunburst,
                         exact: true,
-                        tags: ['svg'],
+                        tags: ['svg', 'hierarchy', 'isomorphic'],
                     },
                     {
                         className: 'api',
                         path: '/api',
                         label: 'Sunburst API',
                         component: SunburstAPI,
-                        tags: ['api'],
+                        tags: ['api', 'hierarchy'],
                     },
                 ],
             },
@@ -348,28 +357,28 @@ const SITEMAP = [
                         label: 'TreeMap',
                         component: TreeMapReact,
                         exact: true,
-                        tags: ['svg'],
+                        tags: ['svg', 'hierarchy', 'isomorphic'],
                     },
                     {
                         className: 'html',
                         path: '/html',
                         label: 'TreeMapHTML',
                         component: TreeMapHTML,
-                        tags: ['html'],
+                        tags: ['html', 'hierarchy', 'isomorphic'],
                     },
                     {
                         className: 'placeholders',
                         path: '/placeholders',
                         label: 'TreeMapPlaceholders',
                         component: TreeMapPlaceholders,
-                        tags: ['placeholders'],
+                        tags: ['placeholders', 'hierarchy', 'isomorphic'],
                     },
                     {
                         className: 'api',
                         path: '/api',
                         label: 'TreeMap API',
                         component: TreeMapAPI,
-                        tags: ['api'],
+                        tags: ['api', 'hierarchy'],
                     },
                 ],
             },
@@ -385,7 +394,7 @@ const SITEMAP = [
                         label: 'Voronoi',
                         component: Voronoi,
                         isIndex: true,
-                        tags: ['svg'],
+                        tags: ['svg', 'isomorphic'],
                     },
                 ],
             },
@@ -423,10 +432,11 @@ const SITEMAP = [
         // those items must not be nested
         children: [
             {
+                // component injected at the end of this file
+                // because of cyclic dependency
                 className: 'components',
                 path: '/components',
                 label: 'Components',
-                component: Components,
             },
             {
                 className: 'guides',
@@ -527,4 +537,35 @@ export const getRoutes = () => {
 export const guideItems = getSectionItems('Guides')
 export const miscItems = getSectionItems('misc')
 
+const allComponents = getSectionItems('Components').reduce((acc, item) => {
+    if (item.children) {
+        item.children.forEach(child => {
+            const entry = {
+                key: `${item.className}.${child.className}`,
+                path: `${item.path}${child.path}`,
+                label: child.label,
+                className: item.className,
+                type: child.className,
+                tags: child.tags || [],
+            }
+            acc.push(entry)
+
+            if (child.className !== 'api') {
+                acc.push(
+                    Object.assign({}, entry, {
+                        key: `${entry.key}.responsive`,
+                        label: `Responsive${child.label}`,
+                        tags: [...entry.tags, 'responsive'],
+                    })
+                )
+            }
+        })
+    }
+
+    return acc
+}, [])
+
 miscItems.find(({ label }) => label === 'Guides').children = guideItems
+miscItems.find(({ label }) => label === 'Components').component = props => {
+    return React.createElement(Components, { ...props, components: allComponents })
+}

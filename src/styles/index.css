@@ -109,31 +109,22 @@ p:first-child {
 }
 
 .dice-roll {
-    position: absolute;
-    right: 0;
-    bottom: -38px;
-    width: 56px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 28px;
+    display: block;
+    padding: 8px 10px;
+    line-height: 1em;
+    border-radius: 2px;
     background: #fff;
     color: var(--accent-color);
     cursor: pointer;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
-    font-size: 36px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .12);
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 4px;
+    margin-left: 20px;
 }
 .dice-roll:hover {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .1);
-}
-.dice-roll span {
-    display: block;
-    width: 52px;
-    height: 52px;
-}
-.dice-roll circle {
-    stroke: none;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    color: var(--accent-color-darker);
 }
 
 .unit {

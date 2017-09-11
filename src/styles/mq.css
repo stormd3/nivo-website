@@ -39,14 +39,8 @@
         width: 100%;
     }
 
-    .nivo_components_item,
-    .nivo_components_item:nth-child(3n) {
+    .components__grid__item {
         width: 49%;
-        margin-right: 2%;
-    }
-
-    .nivo_components_item:nth-child(2n) {
-        margin-right: 0;
     }
 
     .guide__description {
@@ -55,6 +49,10 @@
 
     .guide__illustrations__item {
         height: 160px;
+    }
+
+    .chart__title {
+        justify-content: space-between;
     }
 }
 
@@ -112,9 +110,27 @@
         width: 100%;
     }
 
-    .nivo_components_item:nth-child(1n) {
+    .components__grid {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    }
+
+    .components__grid__item {
         width: 100%;
-        margin-right: 0;
+        margin: 0;
+        border-width: 0;
+        border-top-width: 1px;
+        border-color: #eee;
+        box-shadow: none;
+    }
+
+    .components__grid__item:focus,
+    .components__grid__item:hover {
+        background-color: var(--main-background-color);
+        border-color: #eee;
+    }
+
+    .components__grid__item:first-child {
+        border-top-width: 0;
     }
 
     .main-chart {
@@ -151,6 +167,30 @@
 
     .fill-sample__code {
         margin-left: 0;
+    }
+
+    .components__sub-header {
+        flex-direction: column;
+    }
+
+    .ComponentsSearch {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .ComponentsFilters {
+        width: 100%;
+    }
+
+    .HeaderNav {
+        right: 15px;
+    }
+    .HeaderNav__Item--storybook {
+        display: none;
+    }
+
+    .chart__title {
+        justify-content: space-between;
     }
 }
 

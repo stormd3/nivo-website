@@ -1,9 +1,6 @@
 .ComponentsSearch {
     position: relative;
-    /*
-    background: var(--accent-color);
-    padding: 0 20px 12px;
-    */
+    width: 40%;
 }
 
 .ComponentsSearch__input {
@@ -11,34 +8,29 @@
     padding: 0 44px;
     height: 42px;
     line-height: 38px;
-    /*border: 2px solid var(--accent-color);*/
-    border: none;
+    border: 1px solid #ddd;
     font-size: inherit;
     border-radius: 21px;
     background: rgba(255, 255, 255, 0.5);
     cursor: pointer;
-    color: var(--accent-color-darker);
 }
 
 .ComponentsSearch__input:focus {
     outline: 0;
-    /*border-color: var(--accent-color-darker);*/
-    background: rgba(255, 255, 255, 0.85);
+    border-color: var(--accent-color);
+    background: white;
     cursor: auto;
     color: var(--main-text-color);
 }
 
 .ComponentsSearch__input::-webkit-input-placeholder {
-    opacity: 0.85;
-    color: var(--accent-color);
+    color: #999;
 }
 .ComponentsSearch__input:-ms-input-placeholder {
-    opacity: 0.85;
-    color: var(--accent-color);
+    color: #999;
 }
 .ComponentsSearch__input::-moz-placeholder {
-    opacity: 0.85;
-    color: var(--accent-color);
+    color: #999;
 }
 
 .ComponentsSearch__icon {

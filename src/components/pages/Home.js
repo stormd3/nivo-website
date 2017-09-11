@@ -157,7 +157,7 @@ class Home extends Component {
                             padding={0.2}
                             colors={colors}
                             theme={homeTheme}
-                            enableLabels={false}
+                            enableLabel={false}
                             animate={false}
                             isInteractive={false}
                             {...commonAxes}
@@ -182,7 +182,7 @@ class Home extends Component {
                             padding={0.4}
                             colors={colors}
                             theme={homeTheme}
-                            enableLabels={false}
+                            enableLabel={false}
                             enableGridX={true}
                             enableGridY={false}
                             animate={false}

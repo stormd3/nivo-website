@@ -62,7 +62,7 @@ const GradientsIllustrations = () =>
                     ]}
                     fill={[{ match: '*', id: 'example1' }]}
                     borderWidth={1}
-                    borderColor="inherit:darker(0.4)"
+                    borderColor="inherit:darker(0.2)"
                     isInteractive={false}
                     animate={false}
                 />

@@ -10,28 +10,30 @@ import React, { Component } from 'react'
 import APIClient from '../../api-client/APIClient'
 import ChordControls from './ChordControls'
 import propsMapper from './propsMapper'
+import { generateChordData } from 'nivo-generators'
 
-const matrix = [
-    [11975, 5871, 8916, 2868, 1967],
-    [1951, 10048, 2060, 6171, 1967],
-    [8010, 16145, 8090, 8045, 1967],
-    [1013, 990, 940, 6907, 2306],
-    [1013, 990, 940, 6907, 800],
-]
+const MATRIX_SIZE = 5
 
 class ChordAPI extends Component {
+    state = {
+        ...generateChordData({ size: MATRIX_SIZE }),
+    }
+
     render() {
+        const { matrix, keys } = this.state
+
         return (
             <APIClient
                 componentName="Chord"
                 apiPath="/charts/chord"
-                dataProperty="data"
+                dataProperty="matrix"
                 controls={ChordControls}
                 propsMapper={propsMapper}
                 defaultProps={{
                     width: 800,
                     height: 800,
-                    data: JSON.stringify(matrix, null, '  '),
+                    matrix: JSON.stringify(matrix, null, '  '),
+                    keys,
                     margin: {
                         top: 20,
                         right: 20,

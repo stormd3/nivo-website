@@ -15,8 +15,8 @@ const ColorsIllustrations = () =>
                     axisLeft={null}
                     axisBottom={null}
                     enableGridX={false}
-                    colors="set3"
-                    borderWidth={2}
+                    colors="nivo"
+                    borderWidth={0}
                     borderColor="#333"
                     isInteractive={false}
                     animate={false}
@@ -35,7 +35,7 @@ const ColorsIllustrations = () =>
                     enableLabel={false}
                     colors="paired"
                     colorBy="index"
-                    borderWidth={2}
+                    borderWidth={0}
                     borderColor="#333"
                     isInteractive={false}
                     animate={false}
@@ -46,14 +46,14 @@ const ColorsIllustrations = () =>
                     margin={{ top: -2, right: -2, bottom: -2, left: -2 }}
                     root={{
                         country: 'root',
-                        children: generateCountriesData(['value'], { size: 12 }),
+                        children: generateCountriesData(['value'], { size: 18 }),
                     }}
                     colors="d320b"
                     identity="country"
                     value="value"
                     leavesOnly={true}
                     colorBy="country"
-                    borderWidth={2}
+                    borderWidth={0}
                     borderColor="#333"
                     isInteractive={false}
                     animate={false}

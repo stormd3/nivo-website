@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import DiceRollIcon from 'react-icons/lib/md/refresh'
 
 class ChartHeader extends Component {
     shouldComponentUpdate() {
@@ -12,8 +11,12 @@ class ChartHeader extends Component {
 
         return (
             <div className="chart_header">
-                <h1 className="page_header">
+                <h1 className="chart__title">
                     {chartClass}
+                    {diceRoll &&
+                        <span className="dice-roll no-select" onClick={diceRoll}>
+                            roll the dice
+                        </span>}
                 </h1>
                 <div className="component_meta">
                     {tags.map(tag =>
@@ -22,10 +25,6 @@ class ChartHeader extends Component {
                         </span>
                     )}
                 </div>
-                {diceRoll &&
-                    <span className="dice-roll no-select" onClick={diceRoll}>
-                        <DiceRollIcon />
-                    </span>}
             </div>
         )
     }
