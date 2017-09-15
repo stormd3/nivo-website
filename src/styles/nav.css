@@ -1,15 +1,15 @@
 .overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1050;
+    z-index: 40;
     background: rgba(0, 0, 0, .5);
 }
 
 .sidebar {
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -17,7 +17,7 @@
     background: #fff;
     overflow-x: hidden;
     overflow-y: auto;
-    z-index: 1100;
+    z-index: 50;
     box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2);
 }
 

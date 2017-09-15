@@ -8,14 +8,8 @@
 }
 
 .content {
-    position: absolute;
-    top: var(--header-height);
-    right: 0;
-    bottom: 0;
-    left: var(--mini-nav-width);
-    overflow-x: hidden;
-    overflow-y: auto;
-    z-index: 0;
+    margin-top: var(--header-height);
+    margin-left: var(--mini-nav-width);
 }
 
 .page_content {
