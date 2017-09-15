@@ -101,7 +101,6 @@
 svg text {
     fill: var(--chart-meta-color);
     font-size: 12px;
-    font-family: 'Roboto Mono', monospace;
 }
 
 .tick line {
